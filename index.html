@@ -5,7 +5,7 @@ title: JonTheNerd
 
 <div class="home">
     <ul class="post-list">
-    <!-- This loops through the paginated posts -->
+    <!-- Paginated Posts -->
     {% for post in paginator.posts %}
     <li class="post">
         <article>
@@ -23,9 +23,9 @@ title: JonTheNerd
                 {% endif %}
             </p>
             {% if post.excerpt %}
-                <p class="post-excerpt">
+                <div class="post-excerpt">
                     {{ post.excerpt }}
-                </p>
+                </div>
             {% endif %}
         </article>
     </li>
