@@ -12,7 +12,7 @@ Got this error after migrating a SP2007 application to SP2010.
 
 The feature it is complaining about is a hidden feature with displayname "IPFSSiteFeatures". This feature was already enabled on the migrated application...but resolving the error was as simple as disabling and then re-enabling the feature. Here's the PowerShell to do that:
 
-{% highlight powershell %}
-Disable-SPFeature &quot;IPFSSiteFeatures&quot; -url &quot;http://yourwebapp&quot;
-Enable-SPFeature &quot;IPFSSiteFeatures&quot; -url &quot;http://yourwebapp&quot;
-{% endhighlight %}
+```powershell
+Disable-SPFeature "IPFSSiteFeatures" -url "http://yourwebapp";
+Enable-SPFeature "IPFSSiteFeatures" -url "http://yourwebapp";
+```
