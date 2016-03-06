@@ -8,10 +8,11 @@ categories: [Programming, Programming, SharePoint]
 ---
 Got this error after migrating a SP2007 application to SP2010. 
 
-<img src="http://www.jonthenerd.com/wp-content/uploads/2011/02/InfoPathError.png" alt="Activation could not be completed because the InfoPath Forms Services support feature is not present." title="InfoPathError" class="aligncenter size-medium wp-image-172" />
+> Activation could not be completed because the InfoPath Forms Services support feature is not present.
 
 The feature it is complaining about is a hidden feature with displayname "IPFSSiteFeatures". This feature was already enabled on the migrated application...but resolving the error was as simple as disabling and then re-enabling the feature. Here's the PowerShell to do that:
 
-[powershell]Disable-SPFeature &quot;IPFSSiteFeatures&quot; -url &quot;http://yourwebapp&quot;
+{% highlight powershell %}
+Disable-SPFeature &quot;IPFSSiteFeatures&quot; -url &quot;http://yourwebapp&quot;
 Enable-SPFeature &quot;IPFSSiteFeatures&quot; -url &quot;http://yourwebapp&quot;
-[/powershell]
+{% endhighlight %}
