@@ -1,0 +1,20 @@
+# General Jekyll Settings
+exclude: ["Gemfile", "Gemfile.lock", "LICENSE"]
+markdown: kramdown
+gems: [jekyll-paginate]
+paginate: 5
+excerpt_separator: <!--more-->
+
+# Site settings
+title: JonTheNerd
+email: jon.badgett@outlook.com
+description: > # this means to ignore newlines until "baseurl:"
+  Jon Badgett's personal blog. Open Source projects, observations on life, 
+  and other oddities that I find interesting.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://jonthenerd.github.io" # the base hostname & protocol for your site
+gh-pages-url: "https://github.com/jonthenerd/jonthenerd.github.io"
+twitter_username: jonthenerd
+github_username:  jonthenerd
+
+
