@@ -10,11 +10,9 @@
     {% if page.section %}
     <meta property="article:section" content="{{ page.section | escape }}" />
     {% endif %}
-    {% if page.categories %}
-    {% for category in page.categories %}
+    {% if page.categories %}{% for category in page.categories %}
     <meta property="article:tag" content="{{ category | escape }}" />
-    {% endfor %}
-    {% endif %}
+    {% endfor %}{% endif %}
 {% else %}
     <meta property="og:type" content="website" />
 {% endif %}
