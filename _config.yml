@@ -18,6 +18,10 @@ gh-pages-url: "https://github.com/jonthenerd/jonthenerd.github.io"
 twitter_username: jonthenerd
 github_username:  jonthenerd
 fb_profileurl: "https://www.facebook.com/jon.badgett.5"
+gh_profileurl: "https://github.com/jonthenerd"
+li_profileurl: "https://www.linkedin.com/in/jon-badgett-825a326b"
+gp_profileurl: "https://plus.google.com/+JonBadgett"
+author: Jon Badgett
 
 # defaults
 defaults:
