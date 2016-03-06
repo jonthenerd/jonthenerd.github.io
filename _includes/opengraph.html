@@ -1,4 +1,5 @@
 <meta property="og:title" content="{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}" />
+<meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
 <meta property="og:site_name" content="{{ site.title | escape }}" />
 {% if page.is_post %}
     <meta property="og:type" content="article" />
