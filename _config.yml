@@ -1,7 +1,7 @@
 # General Jekyll Settings
 exclude: ["Gemfile", "Gemfile.lock", "LICENSE"]
 markdown: kramdown
-gems: [jekyll-paginate]
+gems: [jekyll-paginate, jekyll-sitemap]
 paginate: 5
 excerpt_separator: <!--more-->
 permalink: "/:year/:month/:day/:title"  
