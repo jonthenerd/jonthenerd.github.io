@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
-
+{% if page.is_post %}
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+{% else %}
+<html prefix="og: http://ogp.me/ns#">
+{% endif %}
   {% include head.html %}
 
   <body>
