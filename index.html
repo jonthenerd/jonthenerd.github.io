@@ -4,6 +4,13 @@ title: JonTheNerd
 ---
 
 <div class="home">
+    <p><span class="nice-orange">Welcome to jonthenerd.com! Read <a href="/about">About Me</a>, browse the below blog categories, or just
+        read posts in descending order...</span> </p>
+
+    <h2 class="nice-blue">## Blog Categories</h2>
+    {% include category-display.html mode="Alpha-Grouped" %}
+
+
     <ul class="post-list">
     <!-- Paginated Posts -->
     {% for post in paginator.posts %}

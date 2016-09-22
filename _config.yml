@@ -1,10 +1,17 @@
 # General Jekyll Settings
-exclude: ["Gemfile", "Gemfile.lock", "LICENSE"]
+exclude: 
+  - Gemfile 
+  - Gemfile.lock 
+  - LICENSE 
+  - node_modules 
+  - package.json
+  - gulpfile.js
 markdown: kramdown
 gems: [jekyll-paginate, jekyll-sitemap]
 paginate: 5
 excerpt_separator: <!--more-->
 permalink: "/:year/:month/:day/:title"  
+empty_array: []
 
 # Site settings
 title: JonTheNerd
@@ -24,14 +31,24 @@ gp_profileurl: "https://plus.google.com/+JonBadgett"
 tw_profileurl: "https://twitter.com/jonthenerd"
 author: Jon Badgett
 
+# Collections
+collections:
+    cats:
+        output: true
+        permalink: /categories/:name/    
+
 # defaults
 defaults:
-  -
-    scope:
+  - scope:
       path: ""      # empty string for all files
       type: posts   # limit to posts
     values:
       is_post: true # automatically set is_post=true for all posts
       layout: post
+  - scope:
+      path: ""
+      type: cats
+    values:
+      layout: category
 
 

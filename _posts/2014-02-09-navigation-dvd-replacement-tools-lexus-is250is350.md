@@ -4,7 +4,7 @@ title: Navigation DVD Replacement Tools - Lexus IS250/IS350
 date: 2014-02-09 19:36
 author: Jon Badgett
 
-categories: [Cars, Cars]
+categories: [Cars]
 ---
 I decided to upgrade the navigation DVD in my car. Being who I am, this is a DIY project (once you get the DVD, of course).
 <!--more-->

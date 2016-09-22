@@ -1,0 +1,26 @@
+{
+  "name": "jonthenerd-dot-com",
+  "version": "1.0.0",
+  "description": "jonthenerd.com",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "es6-template-strings": "^2.0.1",
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7",
+    "yaml-front-matter": "^3.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonthenerd/jonthenerd.github.io.git"
+  },
+  "author": "Jon Badgett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonthenerd/jonthenerd.github.io/issues"
+  },
+  "homepage": "https://github.com/jonthenerd/jonthenerd.github.io#readme"
+}

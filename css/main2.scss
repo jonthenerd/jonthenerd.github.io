@@ -1,0 +1,56 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import
+        "base2",
+        "layout2"
+        
+;
+
+
+$a-tags: 'a, a:active, a:hover, a:visited';
+$a-tags-hover: 'a:active, a:hover';
+
+#{$a-tags} {
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px dotted #000;
+
+}
+#{$a-tags-hover} {
+    color: rgb(156, 220, 254);
+    border-bottom: 1px dotted #000;
+}
+
+.nice-blue {
+    color: rgb(86, 156, 214);
+}
+.nice-orange {
+    color: rgb(206, 145, 120);
+}
+header {
+    
+    background-color: rgb(35, 40, 45);
+    color: rgb(212, 212, 212);
+    pre {
+        margin-top: 0;
+    }
+}
+.category-display {
+    &.alpha-grouped {
+        li { list-style-type: none; }
+        ul ul {
+            display: inline;
+            margin-left: 0;
+            padding-left: 0;
+            li {
+                display: inline;
+                margin-left: 0;
+                padding-left: 0;
+            }
+        }        
+    }
+} 

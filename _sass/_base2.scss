@@ -1,0 +1,21 @@
+html, body {
+    font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+    color: #000;
+    background: #fff;
+    font-size: 9pt;
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-feature-settings: "kern" 1;
+    -moz-font-feature-settings: "kern" 1;
+    -o-font-feature-settings: "kern" 1;
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+}
+.clear-fix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
