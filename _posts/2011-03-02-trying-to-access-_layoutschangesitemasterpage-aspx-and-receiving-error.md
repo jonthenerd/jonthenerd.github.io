@@ -4,7 +4,7 @@ title: Trying to access _Layouts/ChangeSiteMasterPage.aspx and receiving error
 date: 2011-03-02 08:48
 author: Jon Badgett
 
-categories: [SharePoint, Software]
+categories: [SharePoint]
 ---
 If you try to access the SharePoint URL "_Layouts/ChangeSiteMasterPage.aspx" and receive the following error:
 

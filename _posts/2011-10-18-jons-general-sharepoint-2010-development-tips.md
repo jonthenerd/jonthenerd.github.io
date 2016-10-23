@@ -4,7 +4,7 @@ title: Jon's General SharePoint 2010 Development Tips
 date: 2011-10-18 09:11
 author: Jon Badgett
 
-categories: [Programming, Programming, SharePoint, SharePoint 2010]
+categories: [Programming, Programming, SharePoint]
 ---
 In the time I've been doing SharePoint development, and SharePoint 2010 development in particular, I've tried to blog about the snags or neat stuff I've come across. This post is for all those little pieces of knowledge that come from working with the platform that don't seem large enough for their own post. If you find it useful, let me know in the comments.
 <h2>The Very Basics</h2>

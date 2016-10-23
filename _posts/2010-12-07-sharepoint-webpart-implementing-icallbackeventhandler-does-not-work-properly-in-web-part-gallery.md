@@ -4,7 +4,7 @@ title: SharePoint WebPart implementing ICallbackEventHandler does not work prope
 date: 2010-12-07 17:00
 author: Jon Badgett
 
-categories: [Computers, Programming, Programming, SharePoint]
+categories: [Programming, SharePoint]
 ---
 In migrating some WebParts from SP2007 to SP2010, I came across a webpart that implements ICallbackEventHandler. This webpart was working fine when placed on the page, but did not work correctly in the webpart gallery. The specific error message being received was "The target 'ctl00$PlaceHolderMain$ctl00' for the callback could not be found or did not implement ICallbackEventHandler". This error is due to the webpart being added to the preview page dynamically at runtime. Everything online I've seen assumes that pages doing this can be modified to load controls dynamically either in the Init event or on each Load event. Since SharePoint developers can't affect the Web Part preview page - the best I could come up with is to prevent the registratration for callback by checking the ID of the control in the Load event. This will tell you if the control is being loaded dynamically, or if it has been placed on a page.
 

@@ -4,7 +4,7 @@ title: CMS Made Simple & HostGator - Can't upload files
 date: 2014-11-22 21:15
 author: Jon Badgett
 
-categories: [CMS Made Simple, HostGator, Software]
+categories: [CMS Made Simple]
 ---
 <!--more-->
 

@@ -4,7 +4,7 @@ title: IP30 Programming - Part 2
 date: 2012-10-07 15:12
 author: Jon Badgett
 
-categories: [Android, IP30, Programming, Programming]
+categories: [Android, Programming]
 ---
 <!--more-->
 The batteries on the IP30 and CN3 are fully charged and ready for some tinkering.

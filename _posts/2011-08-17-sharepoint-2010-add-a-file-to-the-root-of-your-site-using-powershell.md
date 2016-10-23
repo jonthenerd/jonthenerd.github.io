@@ -4,7 +4,7 @@ title: "SharePoint 2010: Add a file to the root of your site using PowerShell"
 date: 2011-08-17 11:10
 author: Jon Badgett
 
-categories: [PowerShell, Programming, SharePoint, Software]
+categories: [PowerShell, Programming, SharePoint]
 ---
 This can be useful when you need a file to be right off the root of your Internet facing site - files like robots.txt, sitemap.xml, or the verification file for Google Webmaster tools. We'll take advantage of PowerShell's ability to use any .NET methods along with the Files collection on each SPWeb in SharePoint.
 

@@ -4,7 +4,7 @@ title: SharePoint 2010 Custom Action IDs for Site Settings page
 date: 2011-04-05 16:09
 author: Jon Badgett
 
-categories: [Software]
+categories: [SharePoint, Programming]
 ---
 Since the <a href="http://msdn.microsoft.com/en-us/library/bb802730.aspx">MSDN documentation for Default Custom Action Loacations and IDs </a>is unreliable (they look to have copy+pasted the information from the SharePoint 2007 documentation), our only sure bet is to browse the file system and find the custom action IDs and groups ourselves.
 

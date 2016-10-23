@@ -2,5 +2,5 @@
 title: "Android"
 title-lower: "android"
 title-upper: "ANDROID"
-post-count: 4
+post-count: 2
 ---

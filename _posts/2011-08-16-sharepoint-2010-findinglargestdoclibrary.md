@@ -4,7 +4,7 @@ title: "SharePoint 2010: Finding the largest document library in a site collecti
 date: 2011-08-16 16:01
 author: Jon Badgett
 
-categories: [PowerShell, Programming, SharePoint, Software]
+categories: [PowerShell, Programming, SharePoint]
 ---
 SharePoint 2007 came with a page (storman.aspx) dedicated to showing you how much space each of the lists in your site collection were taking up. SharePoint 2010 removed this page. Luckily, SharePoint 2010 SP1 added it back in. But what if you're still haven't updated to SP1 and you're getting warnings/errors about running out of space?
 

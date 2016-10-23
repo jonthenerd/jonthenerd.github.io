@@ -1,0 +1,30 @@
+{% assign site_categories = site.cats  %}
+{% assign site_categories = site_categories | sort: "title-lower" %}
+
+{% if include.mode == "Alpha-Grouped" %}
+    <div class="category-display alpha-grouped">
+    {% assign curGroupLetter = "" %}
+    <table>
+        <tr>
+{% for category in site_categories %}{% assign curFirstLetter = category.title-upper | slice: 0 %}{% if curFirstLetter != curGroupLetter and curGroupLetter != "" %}</td></tr>{% endif %}{% if curFirstLetter != curGroupLetter %}{% assign curGroupLetter = curFirstLetter %}<tr><td>{{ curGroupLetter}}</td>
+<td>
+{% else %}, {% endif %}<a href="{{ category.url }}">{{ category.title }}{% if include.post-count == "true" %} ({{ category.post-count }}){% endif %}</a>{% endfor %}
+    </td>
+    </tr>
+    </table>
+    </div>
+{% elsif include.mode == "Alphabetic-List" %}
+    <div class="category-display alphabetic-list">
+        <ul>
+            {% for category in site_categories %}
+                <li><a href="{{ category.url }}">{{ category.title }}{% if include.post-count == "true" %} ({{ category.post-count }}){% endif %}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% elsif include.mode == "Post-List" %}
+    {% for post-category in include.categories %}
+        {% assign post-category-upper = post-category | upcase %}
+        {% assign site_category = site_categories | where: "title-upper", post-category-upper | first %}
+        <a href="{{ site_category.url }}">{{ site_category.title }}</a>{% if forloop.rindex0 != 0 %}, {% endif %}
+    {% endfor %}
+{% endif %}

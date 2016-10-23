@@ -4,7 +4,7 @@ title: Communicating with the Intermec IP30 RFID reader over bluetooth...hopeful
 date: 2012-10-05 17:50
 author: Jon Badgett
 
-categories: [Android, IP30, Programming, Programming]
+categories: [Android, Programming]
 ---
 I'm starting work on a project for my MBA program that involves using a mobile RFID reader with an Android device.
 <!--more-->

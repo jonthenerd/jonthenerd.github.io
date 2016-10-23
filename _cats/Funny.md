@@ -2,5 +2,5 @@
 title: "Funny"
 title-lower: "funny"
 title-upper: "FUNNY"
-post-count: 5
+post-count: 3
 ---

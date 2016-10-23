@@ -4,7 +4,7 @@ title: Playing with Open Source Automation
 date: 2013-09-13 19:11
 author: Jon Badgett
 
-categories: [Home Automation, Home Automation, Programming, Programming, Software, Software]
+categories: [Programming]
 ---
 We're preparing to move into a new house and I've discovered that I'm interested in home automation. Well... not really home automation so much as the nerdy aspect of controlling physical things through code. 
 

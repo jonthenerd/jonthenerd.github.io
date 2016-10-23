@@ -3,7 +3,7 @@ layout: post
 title: 'GIMP How to make fuzzy border transparent'
 date: 2010-06-13 19:02
 author: Jon Badgett
-categories: [Gimp, Image Editing, Software]
+categories: [Software]
 ---
 
 * Do not use the "Flatten Image" option. A new layer will be created  containing only the border (this layer will be the active layer).

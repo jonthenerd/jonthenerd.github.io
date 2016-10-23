@@ -2,5 +2,5 @@
 title: "Linux"
 title-lower: "linux"
 title-upper: "LINUX"
-post-count: 11
+post-count: 5
 ---

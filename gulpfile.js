@@ -1,4 +1,13 @@
 var gulp = require('gulp')
+    , del = require('del')
+    , rename = require('gulp-rename')
+    , sass = require('gulp-sass')
+    , cssnano = require('gulp-cssnano')
+    , sourcemaps = require('gulp-sourcemaps')
+    , gulpif = require('gulp-if')
+    , uglify = require('gulp-uglify')
+    , concat = require('gulp-concat')
+    , flatten = require('gulp-flatten')
     , child = require('child_process')
     , util = require('gulp-util')
     , fs = require('fs')
@@ -95,7 +104,53 @@ gulp.task('categories', [], function(cb) {
 
 });
 
-gulp.task('jekyll', () => {
+gulp.task('clean:css', function(){
+    return del(['css/**/*']);
+});
+
+gulp.task('css', ['clean:css'], function(){
+    return gulp.src(['_sass/jonthenerd.scss'])
+        .pipe(sass({
+            includePaths: ['node_modules/bootstrap-sass/assets/stylesheets'],
+            precision: 8 /* for proper twitter bootstrap compile */
+        }))
+        .pipe(cssnano({
+            zindex : false
+        }))
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('css'));    
+});
+
+gulp.task('clean:js', function(){
+    return del(['js/**/*']);
+});
+
+gulp.task('js', ['clean:js'], function(){
+    return gulp.src([
+        'node_modules/jquery/dist/jquery.min.js', 
+        'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js', 
+        '_js/jonthenerd.js'])
+        .pipe(sourcemaps.init())
+        .pipe(gulpif(function(file){
+            if (file.path.indexOf('.min.js') === -1) {
+                return true;
+            }
+            return false;
+        }, uglify({
+                mangle: true,
+                compress: true,
+                preserveComments: 'license'   
+            })))
+        .pipe(concat('jonthenerd.min.js'))
+        .pipe(sourcemaps.write('./'))
+        .pipe(flatten())
+        .pipe(gulp.dest('js')); 
+});
+
+
+gulp.task('jekyll',['css', 'js', 'categories'], () => {
     const jekyll = child.spawn('bundle', ['exec', 'jekyll', 'serve', '--watch']);
 
     const jekyllLogger = (buffer) => {
@@ -113,10 +168,14 @@ gulp.task('jekyll', () => {
 });
 
 
-gulp.task('default', ['categories', 'jekyll'], function() {
+gulp.task('default', ['jekyll'], function() {
     
     gulp.watch('_posts/*.*', ['categories'], function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
+
+    gulp.watch('_sass/**/*', ['css'], function(event) {
+        console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+    })
 
 });

@@ -4,7 +4,7 @@ title: "SharePoint 2010 - MigrateUser Error 'Value cannot be null. Parameter nam
 date: 2013-01-22 13:42
 author: Jon Badgett
 
-categories: [SharePoint 2010, Software]
+categories: [SharePoint]
 ---
 When using the stsadm command:
 

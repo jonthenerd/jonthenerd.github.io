@@ -6,6 +6,9 @@ exclude:
   - node_modules 
   - package.json
   - gulpfile.js
+  - _sass
+  - .sass-cache
+  - _js
 markdown: kramdown
 gems: [jekyll-paginate, jekyll-sitemap]
 paginate: 5
@@ -49,6 +52,8 @@ defaults:
       path: ""
       type: cats
     values:
+      is_post: false
+      is_category: true
       layout: category
 
 

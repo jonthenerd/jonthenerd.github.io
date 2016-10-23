@@ -2,5 +2,5 @@
 title: "Freeware"
 title-lower: "freeware"
 title-upper: "FREEWARE"
-post-count: 5
+post-count: 2
 ---

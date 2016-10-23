@@ -4,7 +4,7 @@ title: SharePoint Content Query WebPart easy values
 date: 2010-10-14 13:06
 author: Jon Badgett
 
-categories: [Computers, Programming, Programming, SharePoint, Web Design]
+categories: [Programming, SharePoint]
 ---
 Sometimes it's helpful to see exactly what your CQW is receiving. Put this into a style and see what properties and data you're receiving:
 

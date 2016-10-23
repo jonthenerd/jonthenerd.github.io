@@ -4,7 +4,7 @@ title: Print Helper for Google Calendar
 date: 2011-01-14 17:38
 author: Jon Badgett
 
-categories: [Google, Programming, Programming]
+categories: [Programming]
 ---
 
 Published my first Google Chrome extension today, Print Helper for Google Calendar. 

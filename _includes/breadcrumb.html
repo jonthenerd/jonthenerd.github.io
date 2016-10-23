@@ -1,0 +1,6 @@
+<ol class="breadcrumb">
+    <li><a href="/">{{ site.title }}</a></li>
+    {% if page.is_post %}<li>Blog</a>{% endif %}
+    {% if page.is_category %}<li><a href="/categories">Categories</a></li>{% endif %}
+    <li class="active">{{ page.title }}</a>
+</ol>

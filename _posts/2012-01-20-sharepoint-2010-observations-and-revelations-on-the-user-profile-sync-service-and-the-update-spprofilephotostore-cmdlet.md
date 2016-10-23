@@ -4,7 +4,7 @@ title: "SharePoint 2010: Observations and Revelations on the User Profile Sync S
 date: 2012-01-20 13:46
 author: Jon Badgett
 
-categories: [Programming, SharePoint, SharePoint 2010, Software]
+categories: [SharePoint]
 ---
 These are my notes while trying to diagnose and better understnad some issues and oddities with the SharePoint 2010 User Profile Service Application.
 
