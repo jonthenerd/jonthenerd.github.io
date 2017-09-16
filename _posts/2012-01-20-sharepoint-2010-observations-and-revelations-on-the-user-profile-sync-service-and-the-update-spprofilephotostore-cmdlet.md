@@ -10,8 +10,8 @@ These are my notes while trying to diagnose and better understnad some issues an
 
 If you're wanting to populate pictures into people's profiles, you'll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is <a href="http://www.reflector.net/">Redgate Reflector</a> (a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing. I've written some comments to help understand what's going on, as well as renamed some variables for the section I was more interested in understanding. You'll want to open the code in a new window (highlight on the top right of the code section), as some of the lines are quite long:
 
-[sourcecode lang="csharp"]
-[Cmdlet(&quot;Update&quot;, &quot;SPProfilePhotoStore&quot;)]
+```csharp
+[Cmdlet("Update", "SPProfilePhotoStore")]
 internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
 {
     // Fields
@@ -40,16 +40,16 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
                 try
                 {
                     // Get the PictureURL property of the user profile
-                    object obj2 = profile[&quot;PictureURL&quot;].Value;
-                    if ((obj2 != null) &amp;&amp; !string.IsNullOrEmpty((string) obj2))
+                    object obj2 = profile["PictureURL"].Value;
+                    if ((obj2 != null) && !string.IsNullOrEmpty((string) obj2))
                     {
                         // This user has a PictureURL property. Get the path
-                        string path = profile[&quot;PictureURL&quot;].Value.ToString();
-                        string format = StringResourceManager.GetString(&quot;Powershell_MovePictures_GenericError_Text&quot;);
-                        format = string.Format(CultureInfo.InvariantCulture, format, new object[] { path, (string) profile[&quot;AccountName&quot;].Value });
+                        string path = profile["PictureURL"].Value.ToString();
+                        string format = StringResourceManager.GetString("Powershell_MovePictures_GenericError_Text");
+                        format = string.Format(CultureInfo.InvariantCulture, format, new object[] { path, (string) profile["AccountName"].Value });
 
                         // If the PictureURL property has a link to the medium thumbnail, don't process further.
-                        if (!Path.GetFileNameWithoutExtension(path).EndsWith(&quot;_MThumb&quot;, StringComparison.Ordinal))
+                        if (!Path.GetFileNameWithoutExtension(path).EndsWith("_MThumb", StringComparison.Ordinal))
                         {
                             bool flag = false;
                             byte[] buffer = null;
@@ -76,7 +76,7 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
                                         else
                                         {
                                             // The file doesn't exist. Write an error.
-                                            string str4 = StringResourceManager.GetString(&quot;Powershell_MovePictures_FileNotFound_Text&quot;);
+                                            string str4 = StringResourceManager.GetString("Powershell_MovePictures_FileNotFound_Text");
                                             str4 = string.Format(CultureInfo.CurrentCulture, str4, new object[] { path });
                                             base.WriteError(new FileNotFoundException(format + str4), ErrorCategory.WriteError, null);
                                         }
@@ -90,7 +90,7 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
                                 {
                                     WebClient client = new WebClient();
                                     CredentialCache cache = new CredentialCache();
-                                    cache.Add(new Uri(path), &quot;Ntlm&quot;, CredentialCache.DefaultNetworkCredentials);
+                                    cache.Add(new Uri(path), "Ntlm", CredentialCache.DefaultNetworkCredentials);
                                     client.Credentials = cache;
                                     buffer = client.DownloadData(new Uri(path));
                                 }
@@ -104,8 +104,8 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
                             // Did we read the file into memory?
                             if (buffer != null)
                             {
-                                string str7 = UrlUtility.ConvertToLegalFileName(profile[&quot;AccountName&quot;].Value.ToString(), '_');
-                                string str8 = &quot;.jpg&quot;;
+                                string str7 = UrlUtility.ConvertToLegalFileName(profile["AccountName"].Value.ToString(), '_');
+                                string str8 = ".jpg";
                                 try
                                 {
                                     using (MemoryStream stream = new MemoryStream(buffer))
@@ -113,11 +113,11 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
                                         using (Bitmap bitmap = new Bitmap(stream, true))
                                         {
                                             // Create a large thumbnail
-                                            UserProfilePhotos.CreateThumbnail(bitmap, UserProfilePhotos.LargeThumbnailSize, UserProfilePhotos.LargeThumbnailSize, this.m_profilePicFolder, str7 + &quot;_LThumb&quot; + str8);
+                                            UserProfilePhotos.CreateThumbnail(bitmap, UserProfilePhotos.LargeThumbnailSize, UserProfilePhotos.LargeThumbnailSize, this.m_profilePicFolder, str7 + "_LThumb" + str8);
                                             // Create a medium thumbnail
-                                            SPFile file2 = UserProfilePhotos.CreateThumbnail(bitmap, UserProfilePhotos.MediumThumbnailSize, UserProfilePhotos.MediumThumbnailSize, this.m_profilePicFolder, str7 + &quot;_MThumb&quot; + str8);
+                                            SPFile file2 = UserProfilePhotos.CreateThumbnail(bitmap, UserProfilePhotos.MediumThumbnailSize, UserProfilePhotos.MediumThumbnailSize, this.m_profilePicFolder, str7 + "_MThumb" + str8);
                                             // Create a small thumbnail
-                                            UserProfilePhotos.CreateThumbnail(bitmap, UserProfilePhotos.SmallThumbnailSize, UserProfilePhotos.SmallThumbnailSize, this.m_profilePicFolder, str7 + &quot;_SThumb&quot; + str8);
+                                            UserProfilePhotos.CreateThumbnail(bitmap, UserProfilePhotos.SmallThumbnailSize, UserProfilePhotos.SmallThumbnailSize, this.m_profilePicFolder, str7 + "_SThumb" + str8);
                                             // Get a URL to the Medium Size Thumbnail
                                             str5 = UrlUtility.EnsureTrailingSlash(this.m_userProfileManager.MySiteHostUrl) + file2.Url;
                                         }
@@ -130,14 +130,14 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
                                 }
                             }
                             // If the URL to the medium thumbnail isn't null and we successfully created the thumbnails...
-                            if ((str5 != null) &amp;&amp; !flag)
+                            if ((str5 != null) && !flag)
                             {
                                 // Set the PictureURL value
-                                profile[&quot;PictureURL&quot;].Value = str5;
+                                profile["PictureURL"].Value = str5;
                                 profile.Commit();
                                 // Write to the log (verbose) that we set the Picture up.
-                                string str9 = StringResourceManager.GetString(&quot;Powershell_MovePictures_PhotoMoved_Text&quot;);
-                                str9 = string.Format(CultureInfo.InvariantCulture, str9, new object[] { profile[&quot;AccountName&quot;].ToString(), DateTime.Now.ToLongTimeString() });
+                                string str9 = StringResourceManager.GetString("Powershell_MovePictures_PhotoMoved_Text");
+                                str9 = string.Format(CultureInfo.InvariantCulture, str9, new object[] { profile["AccountName"].ToString(), DateTime.Now.ToLongTimeString() });
                                 base.WriteVerbose(str9);
                             }
                         }
@@ -145,8 +145,8 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
                 }
                 catch (Exception exception4)
                 {
-                    string str10 = StringResourceManager.GetString(&quot;Powershell_MovePictures_GenericError_Text&quot;);
-                    str10 = string.Format(CultureInfo.InvariantCulture, str10, new object[] { string.Empty, (string) profile[&quot;AccountName&quot;].Value });
+                    string str10 = StringResourceManager.GetString("Powershell_MovePictures_GenericError_Text");
+                    str10 = string.Format(CultureInfo.InvariantCulture, str10, new object[] { string.Empty, (string) profile["AccountName"].Value });
                     base.WriteError(new SPException(str10 + exception4.ToString()), ErrorCategory.WriteError, null);
                 }
             }
@@ -161,7 +161,7 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
                 using (SPWeb web2 = site2.RootWeb)
                 {
                     // Get the PhotoListURL
-                    string importPhotoListUrl = UserProfileGlobal.GetImportPhotoListUrl(ProfileType.User) + &quot;/&quot; + UserProfileGlobal.GetImportPhotoFolderName(web2.Locale) + &quot;/&quot;;
+                    string importPhotoListUrl = UserProfileGlobal.GetImportPhotoListUrl(ProfileType.User) + "/" + UserProfileGlobal.GetImportPhotoFolderName(web2.Locale) + "/";
                     // Enumerate through all UserProfiles
                     foreach (UserProfile profile2 in this.m_userProfileManager)
                     {
@@ -172,11 +172,11 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
                         SPFile file3 = web2.GetFile(importPhotoFilenameWithListUrl);
 
                         // If the file exists, run below.
-                        if ((file3 != null) &amp;&amp; file3.Exists)
+                        if ((file3 != null) && file3.Exists)
                         {
                             // Format an error message in case we need it later.
-                            string str15 = StringResourceManager.GetString(&quot;Powershell_MovePictures_GenericError_Text&quot;);
-                            str15 = string.Format(CultureInfo.InvariantCulture, str15, new object[] { file3.ToString(), (string) profile2[&quot;AccountName&quot;].Value });
+                            string str15 = StringResourceManager.GetString("Powershell_MovePictures_GenericError_Text");
+                            str15 = string.Format(CultureInfo.InvariantCulture, str15, new object[] { file3.ToString(), (string) profile2["AccountName"].Value });
 
                             // Try opening the file and reading it into memory
                             byte[] buffer2 = null;
@@ -195,8 +195,8 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
                             if (buffer2 != null)
                             {
                                 // We've got the temporary file in memory. Determine what we should rename it
-                                string str17 = profile2[&quot;AccountName&quot;].Value.ToString().Replace(@&quot;\&quot;, &quot;_&quot;);
-                                string str18 = &quot;.jpg&quot;;
+                                string str17 = profile2["AccountName"].Value.ToString().Replace(@"\", "_");
+                                string str18 = ".jpg";
                                 string mediumThumbnailURL = null;
                                 bool createThumbnailsSuccess = true;
                                 try
@@ -206,11 +206,11 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
                                         using (Bitmap bitmap2 = new Bitmap(stream2, true))
                                         {
                                             // Create a Thumbnail - large size
-                                            UserProfilePhotos.CreateThumbnail(bitmap2, UserProfilePhotos.LargeThumbnailSize, UserProfilePhotos.LargeThumbnailSize, this.m_profilePicFolder, str17 + &quot;_LThumb&quot; + str18);
+                                            UserProfilePhotos.CreateThumbnail(bitmap2, UserProfilePhotos.LargeThumbnailSize, UserProfilePhotos.LargeThumbnailSize, this.m_profilePicFolder, str17 + "_LThumb" + str18);
                                             // Create a Thumbanil - medium size, and get a reference to the file it creates
-                                            SPFile file4 = UserProfilePhotos.CreateThumbnail(bitmap2, UserProfilePhotos.MediumThumbnailSize, UserProfilePhotos.MediumThumbnailSize, this.m_profilePicFolder, str17 + &quot;_MThumb&quot; + str18);
+                                            SPFile file4 = UserProfilePhotos.CreateThumbnail(bitmap2, UserProfilePhotos.MediumThumbnailSize, UserProfilePhotos.MediumThumbnailSize, this.m_profilePicFolder, str17 + "_MThumb" + str18);
                                             // Create a Thumbnail - small size
-                                            UserProfilePhotos.CreateThumbnail(bitmap2, UserProfilePhotos.SmallThumbnailSize, UserProfilePhotos.SmallThumbnailSize, this.m_profilePicFolder, str17 + &quot;_SThumb&quot; + str18);
+                                            UserProfilePhotos.CreateThumbnail(bitmap2, UserProfilePhotos.SmallThumbnailSize, UserProfilePhotos.SmallThumbnailSize, this.m_profilePicFolder, str17 + "_SThumb" + str18);
                                             // Build a URL that points to the medium size thumbnail
                                             mediumThumbnailURL = this.m_userProfileManager.MySiteHostUrl + file4.Url;
                                         }
@@ -222,10 +222,10 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
                                     createThumbnailsSuccess = false;
                                 }
                                 // Have we successfully created the thumbnails and have a path to the medium thumbnail?
-                                if (createThumbnailsSuccess &amp;&amp; (mediumThumbnailURL != null))
+                                if (createThumbnailsSuccess && (mediumThumbnailURL != null))
                                 {
                                     // Set the PictureURL property
-                                    profile2[&quot;PictureURL&quot;].Value = mediumThumbnailURL;
+                                    profile2["PictureURL"].Value = mediumThumbnailURL;
                                     profile2.Commit();
                                     // If -NoDelete wasn't specified, then delete the image with the Guid_ID pattern for this user profile.
                                     if (!this.m_noDelete.HasValue || (this.m_noDelete == false))
@@ -246,24 +246,24 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
         SPSite site = this.MySiteHostLocation.Read();
         if (site == null)
         {
-            string message = StringResourceManager.GetString(&quot;Powershell_MovePictures_NullMySiteHost_Text&quot;);
+            string message = StringResourceManager.GetString("Powershell_MovePictures_NullMySiteHost_Text");
             base.ThrowTerminatingError(new ArgumentException(message), ErrorCategory.InvalidArgument, null);
         }
         SPServiceContext serviceContext = SPServiceContext.GetContext(site);
         if (serviceContext == null)
         {
-            string str2 = StringResourceManager.GetString(&quot;Powershell_MovePictures_ServerContextNotFound_Text&quot;);
+            string str2 = StringResourceManager.GetString("Powershell_MovePictures_ServerContextNotFound_Text");
             base.ThrowTerminatingError(new ArgumentException(str2), ErrorCategory.ObjectNotFound, null);
         }
         this.m_userProfileManager = new UserProfileManager(serviceContext);
         if (this.m_userProfileManager == null)
         {
-            string str3 = StringResourceManager.GetString(&quot;Powershell_MovePictures_ProfManagerNotFound_Text&quot;);
+            string str3 = StringResourceManager.GetString("Powershell_MovePictures_ProfManagerNotFound_Text");
             base.ThrowTerminatingError(new ArgumentException(str3), ErrorCategory.ObjectNotFound, null);
         }
         if (!this.m_userProfileManager.IsProfileAdmin)
         {
-            string str4 = StringResourceManager.GetString(&quot;Powershell_MovePictures_NotProfileAdmin_Text&quot;);
+            string str4 = StringResourceManager.GetString("Powershell_MovePictures_NotProfileAdmin_Text");
             base.ThrowTerminatingError(new ArgumentException(str4), ErrorCategory.InvalidOperation, null);
         }
         try
@@ -317,7 +317,7 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
     }
 }
 
-[/sourcecode]
+```
 
 From this we gather that the command has two modes depending on whether the -CreateThumbnailsForImportedPhotos flag is specified.
 
