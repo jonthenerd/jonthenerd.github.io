@@ -10,7 +10,7 @@ exclude:
   - .sass-cache
   - _js
 markdown: kramdown
-gems: [jekyll-paginate, jekyll-sitemap]
+plugins: [jekyll-paginate, jekyll-sitemap]
 paginate: 5
 excerpt_separator: <!--more-->
 permalink: "/:year/:month/:day/:title"  
