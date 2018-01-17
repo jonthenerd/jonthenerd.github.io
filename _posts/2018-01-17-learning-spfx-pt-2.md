@@ -30,7 +30,7 @@ For the most part, the above instructions work just fine. However, there are a c
 	    "package:ship": "gulp package-solution --ship",
 	    "trust-dev-cert": "gulp trust-dev-cert",
 	    "serve:nobrowser": "gulp serve --nobrowser"
-  	},
+	},
 	```
 You'll then run the gulp commands listed in the tutorial using npm run \<scriptname\> :
 
@@ -62,7 +62,7 @@ At the time of this wring, Top and Bottom.
 
 There is sample code available for creating an aplication customizer extension to add a mega menu at the top of pages. The thought being that you could deploy this customization to all of the sites you wanted to be a part of your intranet portal and you'd have consistent navigation. 
 
-If you're going to be using the SharePoint mobile app, and the above noted disappearing act has been fixed in either the sample code or the mobile app, the placement of the top element placeholder is different than that in mobile or desktop web browsers, which would cause confusion for users. **As such, if usage of the SharePoint mobile app is desired, the top placeholder area shouldn't be used to provide consistent cross-site global navigation.** 
+If you're going to be using the SharePoint mobile app, and the above noted disappearing act has been fixed in either the sample code or the mobile app, the placement of the top element placeholder is different than that in mobile or desktop web browsers, which could cause confusion for users. **As such, if usage of the SharePoint mobile app is desired, think critically about how the navigation would be displayed to end users in the app / web browsers to ensure it's not confusing. If you can't do this, avoid putting a menu here.** 
 
 What I'd advise doing as an alternative to this involves Hub Sites (which aren't released yet). They purport to allow for the establishment of consistent global navigation for all sites joined to the hub. You'd then use the left (current) navigation for within-site navigation purposes. 
 
