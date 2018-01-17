@@ -2,7 +2,7 @@
 title: "SharePoint Framework: Getting Started"
 date: 2018-01-16
 author: Jon Badgett
-categories: [SharePoint]
+categories: [SharePoint, Programming]
 ---
 
 Today I decided that it was time I learned how to build [SharePoint Framework (SPFx)](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview) webparts. Easy enough right? Find the right tutorial online, follow instrucitons, hello world! Let's get started.
