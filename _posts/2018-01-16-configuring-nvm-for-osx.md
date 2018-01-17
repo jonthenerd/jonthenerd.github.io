@@ -85,19 +85,17 @@ For this, we're going to place a .nvmrc into the root of each project that utili
 
 1. Get to the target directory
 2. Run one of the following:
+    ```shell
+    echo "5.9" > .nvmrc
 
-```shell
-echo "5.9" > .nvmrc
+    echo "lts/*" > .nvmrc # to default to the latest LTS version
 
-echo "lts/*" > .nvmrc # to default to the latest LTS version
-
-echo "node" > .nvmrc # to default to the latest version
-```
+    echo "node" > .nvmrc # to default to the latest version
+    ```
 
 3. Start using that node version using the following command:
-
-```shell
-nvm use
-```
+    ```shell
+    nvm use
+    ```
 
 4. (optional) You can configure auto-switching to the desired node version instead of having to type nvm use. This requires using [AVN (Automatic Version Switching for Node)](https://github.com/wbyoung/avn) which works in conjunction with the .nvmrc file.
