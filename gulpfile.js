@@ -109,7 +109,7 @@ gulp.task('clean:css', function(){
 });
 
 gulp.task('css', ['clean:css'], function(){
-    return gulp.src(['_sass/jonthenerd.scss'])
+    return gulp.src(['_sass/jonthenerd.scss', "_sass/syntax.scss"])
         .pipe(sass({
             includePaths: ['node_modules/bootstrap-sass/assets/stylesheets'],
             precision: 8 /* for proper twitter bootstrap compile */

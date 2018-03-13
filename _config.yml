@@ -9,7 +9,14 @@ exclude:
   - _sass
   - .sass-cache
   - _js
+  - yarn-error.log
+  - yarn.lock
+  - package-lock.json
+  - README.md
 markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 plugins: [jekyll-paginate, jekyll-sitemap]
 paginate: 5
 excerpt_separator: <!--more-->
