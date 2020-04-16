@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "dependencies": {},
   "devDependencies": {
-    "bootstrap-sass": "^3.3.7",
+    "bootstrap-sass": "^3.4.1",
     "del": "^2.2.2",
     "es6-template-strings": "^2.0.1",
     "gulp": "^3.9.1",
