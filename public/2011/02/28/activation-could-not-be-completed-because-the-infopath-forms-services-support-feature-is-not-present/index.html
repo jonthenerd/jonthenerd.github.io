@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Activation could not be completed because the InfoPath Forms Services support feature is not present. &ndash; JonTheNerd</title>
+    </head>
+
+<body>
+    
+    <nav>
+    <a href="/">JonTheNerd</a>
+    <ul>
+        <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+    
+<h1>Activation could not be completed because the InfoPath Forms Services support feature is not present.</h1>
+<p>Got this error after migrating a SP2007 application to SP2010.</p>
+<blockquote>
+<p>Activation could not be completed because the InfoPath Forms Services support
+feature is not present.</p>
+</blockquote>
+<p>The feature it is complaining about is a hidden feature with displayname
+&ldquo;IPFSSiteFeatures&rdquo;. This feature was already enabled on the migrated
+application&hellip;but resolving the error was as simple as disabling and then
+re-enabling the feature. Here&rsquo;s the PowerShell to do that:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">Disable-SPFeature <span style="color:#e6db74">&#34;IPFSSiteFeatures&#34;</span> -url <span style="color:#e6db74">&#34;http://yourwebapp&#34;</span>;
+Enable-SPFeature <span style="color:#e6db74">&#34;IPFSSiteFeatures&#34;</span> -url <span style="color:#e6db74">&#34;http://yourwebapp&#34;</span>;
+</code></pre></div>
+
+    
+    
+    
+</body>
+
+</html>

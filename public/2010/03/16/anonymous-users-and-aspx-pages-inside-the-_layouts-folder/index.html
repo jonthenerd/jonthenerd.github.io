@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anonymous users and aspx pages inside the _layouts folder &ndash; JonTheNerd</title>
+    </head>
+
+<body>
+    
+    <nav>
+    <a href="/">JonTheNerd</a>
+    <ul>
+        <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+    
+<h1>Anonymous users and aspx pages inside the _layouts folder</h1>
+<p>I ran smack into an issue that was looking to be a serious problem yesterday.
+One of my development projects (SharePoint) is an anonymous access public-facing
+website. This site using built-in SharePoint web services and the download.aspx
+page in the _layouts directory to facilitate lookup of related documents and
+provide download capability. The issue? Anonymous users can&rsquo;t use any of the
+application pages in the _layouts folder. <!-- raw HTML omitted --><!-- raw HTML omitted -->Lots of head scratching
+and some creative Google searches led me to the &ldquo;DotNetIdeas&rdquo; blog, specifically
+<!-- raw HTML omitted -->this
+post<!-- raw HTML omitted -->. It details how the _layouts, _controltemplates, and _vti_bin
+directories are affected by allowing access to anonymous users. I recommend you
+go read their post, but the key excerpt is this:<!-- raw HTML omitted --><!-- raw HTML omitted -->Anonymous
+users can never load pages inheriting from
+Microsoft.SharePoint.WebContorls.LayoutsPageBase<!-- raw HTML omitted -->The answer to my
+issue is to create my own download.aspx page (not overwriting the original)
+without inheriting from this class. I&rsquo;d still be hunting whatever setting was
+keeping anonymous users from these pages if not for that helpful post though.</p>
+
+
+    
+    
+    
+</body>
+
+</html>

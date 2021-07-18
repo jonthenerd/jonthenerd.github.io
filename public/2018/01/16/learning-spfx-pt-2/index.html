@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SharePoint Framework: Extensions - Application Customizer &ndash; JonTheNerd</title>
+    </head>
+
+<body>
+    
+    <nav>
+    <a href="/">JonTheNerd</a>
+    <ul>
+        <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+    
+<h1>SharePoint Framework: Extensions - Application Customizer</h1>
+<p>Next in this series on the SharePoint Framework are extensions.
+<a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/overview-extensions">According to docs.microsoft.com, SPFx Extensions allow for the customization of multiple facets of the SharePoint experience</a>.
+I&rsquo;ll focus on differences I made while following the online tutorial and my
+observations on capabilities and impacts of SPFx Application Customizer
+extensions.</p>
+<p>The best way to get started learning about these types of SharePoint
+customization is to read the relevant docs.mocrosoft.com documentation:</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/overview-extensions">Overview of SharePoint Framework Extensions</a></li>
+<li><a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/get-started/build-a-hello-world-extension">Build your first SharePoint Framework Extension (Hello World part 1)</a></li>
+</ul>
+<p>For the most part, the above instructions work just fine. However, there are a
+couple modifications that I made:</p>
+<ul>
+<li>
+<p>Use <a href="https://github.com/creationix/nvm">Node Version Manager</a> to ensure that
+you&rsquo;re using the supported version of node and npm that go with the SharePoint
+Framework (node 6.11.5 at the time of this writing).
+<a href="/2018/01/16/configuring-nvm-for-osx">Here&rsquo;s a post I wrote on how to set it up on MacOS</a>.
+This will avoid HTTP2/SSL issues when launching the workbench.</p>
+</li>
+<li>
+<p>Modify the package.json scripts to include the necessary gulp commands such
+that you don&rsquo;t have to have gulp installed globally. Here&rsquo;s what that section
+should look like:</p>
+<pre><code>```json
+&quot;scripts&quot;: {
+    &quot;build&quot;: &quot;gulp bundle&quot;,
+    &quot;clean&quot;: &quot;gulp clean&quot;,
+    &quot;test&quot;: &quot;gulp test&quot;,
+    &quot;bundle&quot;: &quot;gulp bundle&quot;,
+    &quot;bundle:ship&quot;: &quot;gulp bundle --ship&quot;,
+    &quot;package&quot;: &quot;gulp package-solution&quot;,
+    &quot;package:ship&quot;: &quot;gulp package-solution --ship&quot;,
+    &quot;trust-dev-cert&quot;: &quot;gulp trust-dev-cert&quot;,
+    &quot;serve:nobrowser&quot;: &quot;gulp serve --nobrowser&quot;
+},
+```
+</code></pre>
+<p>You&rsquo;ll then run the gulp commands listed in the tutorial using npm run
+&lt;scriptname&gt; :</p>
+<pre><code>```shell
+npm run trust-dev-cert		# To trust the dev cert
+npm run serve:nobrowser		# To start hosting the extension without launching workbench
+```
+</code></pre>
+</li>
+</ul>
+<h2 id="observations-on-application-customizer-extensions">Observations on Application Customizer Extensions</h2>
+<p>Working through the online tutorials, I had a number of items I wanted
+clarification on that aren&rsquo;t spelled out in the documentation that I&rsquo;ve run
+across. Here are my notes.</p>
+<h3 id="which-placeholders-are-available">Which placeholders are available?</h3>
+<p>At the time of this wring, Top and Bottom.</p>
+<h3 id="how-do-these-different-placeholder-areas-appear-and-function-in-desktop-web-browsers-mobile-web-browsers-and-the-sharepoint-mobile-app">How do these different placeholder areas appear and function in desktop web browsers, mobile web browsers, and the SharePoint mobile app?</h3>
+<ul>
+<li><strong>On a desktop web browser</strong>, these appear directly underneath the app
+launcher (and above the site icon) and attached to the bottom of the browser
+window (the main site area is then placed within a div that has a vertical
+scrollbar).</li>
+<li><strong>On a mobile web browser</strong>, placement is the same as the desktop web browser.
+However, the behavior when scrolling is different. When scrolling down the
+page, the top placeholder content as well as the site title/global nav area
+scroll with the page and are removed from view. However, the content of the
+bottom placeholder is <em>always visible</em>.</li>
+<li><strong>On the SharePoint mobile app (IOS tested, v3.7.0)</strong> The good news? the
+content of the top and bottom placeholder make an appearance. Now here&rsquo;s
+what&rsquo;s not so great:
+<ul>
+<li>The placement of the content within the Top placeholder is different. It now
+appears beneath the site title / global navigation area.</li>
+<li>The bottom placeholder is not initially visible when loading a site within
+the app. After scrolling down a bit, the content of the bottom placeholder
+appears.</li>
+<li>The SharePoint app doesn&rsquo;t load the necessary css to alow the ms- classes to
+work (like ms-bgColor-themeDark ms-fontColor-white used in the HelloWorld
+Demo). This causes the background of the HelloWorld extension to appear
+transparent. I added hard coded background-color and color style values and
+these appeared fine in the application.</li>
+<li>At least with the code used from the tutorial, the customizations only
+appeared for me on initial load of the application and site. If I browsed to
+something else and then came back to app, the content of the top and bottom
+placeholders was not present. I&rsquo;m hopeful that this is just a bug with the
+HelloWorld code.
+<a href="https://github.com/SharePoint/sp-dev-docs/issues/1069">Issue #1069, SPFx Application Customizer, placeholder not re-rendering on page load</a>
+looks like it could be related, but the advised fix didn&rsquo;t address the issue
+within the app. Either there&rsquo;s something missing that&rsquo;s needed to keep it
+working, or there is a bug with the mobile app.</li>
+</ul>
+</li>
+</ul>
+<h3 id="how-do-the-above-observations-affect-the-buildout-of-a-modern-intranet-on-o365">How do the above observations affect the buildout of a modern intranet on O365?</h3>
+<h4 id="_on-global-navigation_"><em>On Global Navigation</em></h4>
+<p>There is sample code available for creating an aplication customizer extension
+to add a mega menu at the top of pages. The thought being that you could deploy
+this customization to all of the sites you wanted to be a part of your intranet
+portal and you&rsquo;d have consistent navigation.</p>
+<p>If you&rsquo;re going to be using the SharePoint mobile app, and the above noted
+disappearing act has been fixed in either the sample code or the mobile app, the
+placement of the top element placeholder is different than that in mobile or
+desktop web browsers, which could cause confusion for users. <strong>As such, if usage
+of the SharePoint mobile app is desired, think critically about how the
+navigation would be displayed to end users in the app / web browsers to ensure
+it&rsquo;s not confusing. If you can&rsquo;t do this, avoid putting a menu here.</strong></p>
+<p>What I&rsquo;d advise doing as an alternative to this involves Hub Sites (which aren&rsquo;t
+released yet). They purport to allow for the establishment of consistent global
+navigation for all sites joined to the hub. You&rsquo;d then use the left (current)
+navigation for within-site navigation purposes.</p>
+<h4 id="_on-consistent-footers_"><em>On Consistent Footers</em></h4>
+<p>In my mind, the bottom placeholder area has been where I wanted to put
+consistent footer information (a company logo, contact information for the
+page/site, social media links, etc.). This kind of thing tends to take up a
+decent amount of vertical space, which is ok because the user has to scroll to
+the bottom to see it anyway. It&rsquo;s not in the way.</p>
+<p>With the current implementation though, significant caution is warranted. Would
+you want half of the screen real-estate occupied with the same footer
+information? No. As a user, I&rsquo;d find it annoying if anything was attached to the
+bottom of my screen blocking valuable reading space, particularly if it appears
+page after page, throughout my entire usage of a site/app. <strong>Advice - don&rsquo;t use
+the bottom placeholder to load your consistent footer.</strong></p>
+<p>What&rsquo;s the alternative? Think of the places in your Intranet portal that
+<em>really</em> need a footer. You&rsquo;ve got the main landing page and probably another
+handful of pages that see really high traffic. Outside of this, if you have some
+logic to display contact info for a given page, you might want that on
+additional pages but probably also want the ability for the information not to
+be shown if a page author opts out. So - build 1 or 2 SPFx WebParts for footer
+usage. One would be your <em>big footer</em> for your main landing page. The second
+you&rsquo;d advise page authors use so they can show page contact information. If they
+want the info, they&rsquo;ll add the WebPart. If they want to opt out, they&rsquo;ll omit
+it.</p>
+<h4 id="_what-do-we-use-these-placeholders-for-anyway_"><em>What do we use these Placeholders for anyway?!</em></h4>
+<p>I think the big usage of the placeholders is for context-sensitive
+notifications, <em>not branding</em>.</p>
+<p>Let&rsquo;s take our page footer example above. You could present a notification to a
+page author (while they&rsquo;re authoring) advising them to add the footer WebPart
+(and allow them to dismiss the notification until their next browser session or
+something).</p>
+<p>Obviously, there are plenty of usages for notifications&hellip;</p>
+<p>In order to leverage O365 and avoid over-customization that causes upgrade <em>fun</em>
+down the road, it requires stepping back from our typical approaches (like
+adding mega menus and footers) and thinking about (1) what are we trying to have
+the user see or do, (2) when this is really necessary and when it&rsquo;s not, and (3)
+how do we guide them to see the items or take the actions we want in the most
+supported fashion. In this way we&rsquo;ll minimize our development costs, maximize
+our investment in the O365/SharePoint platform, and focus more on extracting
+business value than simply re-implementing the same old thing atop the latest
+SharePoint release.</p>
+
+    
+    
+    
+</body>
+
+</html>

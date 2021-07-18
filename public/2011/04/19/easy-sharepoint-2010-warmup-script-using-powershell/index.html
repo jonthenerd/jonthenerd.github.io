@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Easy SharePoint 2010 warmup Script using PowerShell &ndash; JonTheNerd</title>
+    </head>
+
+<body>
+    
+    <nav>
+    <a href="/">JonTheNerd</a>
+    <ul>
+        <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+    
+<h1>Easy SharePoint 2010 warmup Script using PowerShell</h1>
+<p>|- This idea comes from
+<!-- raw HTML omitted -->Kirk
+Hofer&rsquo;s blog<!-- raw HTML omitted -->, but modfied to use the SharePoint 2010 powershell commandlets
+and not care about specifying credentials in the script. I figured most people
+would just keep using the credentials specified in their scheduled task. The
+script loads the SharePoint plugin, enumerates the zones, and sends a request to
+each one.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#66d9ef">function</span> Get-WebPage(<span style="color:#66d9ef">[string]</span>$url) { $wc = new-object net.webclient; $wc.credentials = <span style="color:#66d9ef">[System.Net.CredentialCache]</span>::DefaultCredentials; $pageContents = $wc.DownloadString($url); $wc.Dispose(); <span style="color:#66d9ef">return</span> $pageContents; }
+Get-SPAlternateUrl -Zone <span style="color:#66d9ef">Default</span> | foreach-object { write-host $_.IncomingUrl; $html = Get-WebPage -url $_.IncomingUrl; } ```
+</code></pre></div>
+
+    
+    
+    
+</body>
+
+</html>

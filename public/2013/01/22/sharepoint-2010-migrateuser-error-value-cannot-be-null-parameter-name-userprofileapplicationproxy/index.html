@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SharePoint 2010 - MigrateUser Error &#39;Value cannot be null. Parameter name: userProfileApplicationProxy&#39; &ndash; JonTheNerd</title>
+    </head>
+
+<body>
+    
+    <nav>
+    <a href="/">JonTheNerd</a>
+    <ul>
+        <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+    
+<h1>SharePoint 2010 - MigrateUser Error &#39;Value cannot be null. Parameter name: userProfileApplicationProxy&#39;</h1>
+<p>When using the stsadm command:</p>
+<p>stsadm.exe -o migrateuser oldlogin &ldquo;domainusername&rdquo; -newlogin
+&ldquo;domainnewusername&rdquo;</p>
+<p>We received this error message:</p>
+<p>Value cannot be null. Parameter name: userProfileApplicationProxy</p>
+<p>If you look in the ULS logs, you&rsquo;ll find that there is an Access Denied event
+occuring. We were able to resolve this by going into Central Administration,
+selecting the User Service Application, and ensuring that the administrator
+account being used to run the above command has Full Control rights to the
+Service Application. You can find this by going to the following in Central
+Administration:</p>
+<p>Application Management -&gt; Manage Service Applications -&gt; Select, but do
+not follow the link for your User Profile Sync service -&gt; The &ldquo;Permissions&rdquo;
+button in the ribbon</p>
+
+
+    
+    
+    
+</body>
+
+</html>

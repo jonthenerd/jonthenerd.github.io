@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
-    {{ range .AlternativeOutputFormats -}}
-    {{ printf `
-    <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-    {{ end -}}
+    <link rel="stylesheet" href="/styles/syntax-github.css" />
+    {{ range .AlternativeOutputFormats -}}{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}{{ end -}}
 </head>
-
 <body>
     <!-- Code that all your templates share, like a header -->
     {{ partial "header/site-header.html" .}}
@@ -21,5 +17,4 @@
     <!-- More shared code, perhaps a footer but that can be overridden if need be in  -->
     {{ end }}
 </body>
-
 </html>

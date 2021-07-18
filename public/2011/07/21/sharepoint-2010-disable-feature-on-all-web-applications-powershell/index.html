@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SharePoint 2010: Disable Feature on all Web Applications PowerShell &ndash; JonTheNerd</title>
+    </head>
+
+<body>
+    
+    <nav>
+    <a href="/">JonTheNerd</a>
+    <ul>
+        <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+    
+<h1>SharePoint 2010: Disable Feature on all Web Applications PowerShell</h1>
+<p>Because it&rsquo;s easier to copy+paste this later&hellip; This will disable a feature on
+all web applications in a farm. Very convenient for when you&rsquo;re removing a
+feature from a solution. [code lang=&ldquo;ps&rdquo;] Get-SPWebApplication | ForEach-Object
+{Disable-SPFeature &quot;Solution.Name<em>FeatureName&quot; -url $</em>.Url;} [/code]</p>
+
+
+    
+    
+    
+</body>
+
+</html>

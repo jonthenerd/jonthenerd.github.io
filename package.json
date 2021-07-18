@@ -18,6 +18,7 @@
   "homepage": "https://github.com/jonthenerd/jonthenerd.github.io#readme",
   "devDependencies": {
     "gray-matter": "^4.0.3",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "prettier-plugin-go-template": "0.0.11"
   }
 }

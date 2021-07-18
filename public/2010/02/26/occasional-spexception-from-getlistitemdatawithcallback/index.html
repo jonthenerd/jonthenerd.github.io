@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Occasional SPException from GetListItemDataWithCallback &ndash; JonTheNerd</title>
+    </head>
+
+<body>
+    
+    <nav>
+    <a href="/">JonTheNerd</a>
+    <ul>
+        <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+    
+<h1>Occasional SPException from GetListItemDataWithCallback</h1>
+<p>Wrote a new field control today (SharePoint) that queried a specific list in
+another site collection based on the value of a field from the current list
+item. This worked great each time I&rsquo;d test it out and add some additional
+functionality. When I finished the control, I did a little harder testing by
+hitting the refresh button in my browser over and over again. Randomly, my
+control wouldn&rsquo;t render. Other times it would be fine. What&rsquo;s up with
+that?<!-- raw HTML omitted --><!-- raw HTML omitted -->If you Google it enough, you&rsquo;ll find that this message
+generally appears when your CAML is malformed. Well - I used an XmlWriter to
+build my CAML query (that way my inserted value from the item would be escaped
+properly for XML), so surely my CAML must be fine if it&rsquo;s working most times???
+Right??? Nope. The XmlWriter by default puts in a processing instruction on the
+first line:<!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;xml version=&ldquo;1.0&rdquo; encoding=&ldquo;UTF-8&rdquo;
+?&gt;<!-- raw HTML omitted --><!-- raw HTML omitted -->Remove this first line and the field controls render each time
+without error. The specific error I was receiving
+was:<!-- raw HTML omitted --><!-- raw HTML omitted -->Microsoft.SharePoint.SPException was
+caught<!-- raw HTML omitted -->Message=&ldquo;Exception occurred. (Exception from HRESULT: 0x80020009
+(DISP_E_EXCEPTION))&quot;<!-- raw HTML omitted -->Source=&ldquo;Microsoft.SharePoint&rdquo;<!-- raw HTML omitted -->ErrorCode=-2147352567<!-- raw HTML omitted -->StackTrace:<!-- raw HTML omitted -->at
+Microsoft.SharePoint.Library.SPRequest.GetListItemDataWithCallback(String
+bstrUrl, String bstrListName, String bstrViewName, String bstrViewXml,
+SAFEARRAYFLAGS fSafeArrayFlags, ISP2DSafeArrayWriter pSACallback,
+ISPDataCallback pPagingCallback, ISPDataCallback pSchemaCallback)</p>
+
+
+    
+    
+    
+</body>
+
+</html>

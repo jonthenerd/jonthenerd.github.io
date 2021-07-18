@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>XSLT that emits source XML &ndash; JonTheNerd</title>
+    </head>
+
+<body>
+    
+    <nav>
+    <a href="/">JonTheNerd</a>
+    <ul>
+        <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+    
+<h1>XSLT that emits source XML</h1>
+<dl>
+<dt>? I got this from a friend and have found it very useful for debugging my XSLT</dt>
+<dt>from content query web parts and data view web parts in Visual Studio. The below</dt>
+<dt>XSLT will output the source XML given to</dt>
+<dt>it:<!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;pre style=&ldquo;BORDER-BOTTOM</dt>
+<dd>#999999 1px dashed; BORDER-LEFT: #999999 1px dashed; PADDING-BOTTOM: 5px; LINE-HEIGHT: 14px; BACKGROUND-COLOR: #eee; PADDING-LEFT: 5px; WIDTH: 100%; PADDING-RIGHT: 5px; FONT-FAMILY: Andale Mono, Lucida Console, Monaco, fixed, monospace; COLOR: #000000; FONT-SIZE: 12px; OVERFLOW: auto; BORDER-TOP: #999999 1px dashed; BORDER-RIGHT: #999999 1px dashed; PADDING-TOP: 5px&rdquo;&gt;<!-- raw HTML omitted -->&lt;?xml
+version=&ldquo;1.0&rdquo; encoding=&ldquo;utf-8&rdquo;?&gt;<!-- raw HTML omitted -->&lt;xsl:stylesheet version=&ldquo;1.0&rdquo;
+xmlns:xsl=&ldquo;<a href="http://www.w3.org/1999/XSL/Transform%22">http://www.w3.org/1999/XSL/Transform&quot;</a><!-- raw HTML omitted -->
+xmlns:msxsl=&ldquo;urn:schemas-microsoft-com:xslt&rdquo;
+exclude-result-prefixes=&ldquo;msxsl&rdquo;&gt;<!-- raw HTML omitted --> &lt;xsl:output method=&ldquo;xml&rdquo;
+indent=&ldquo;yes&rdquo;/&gt;<!-- raw HTML omitted --><!-- raw HTML omitted --> &lt;xsl:template match=&quot;@_ node()&quot;&gt;<!-- raw HTML omitted -->
+&lt;xsl:copy&gt;<!-- raw HTML omitted --> &lt;xsl:apply-templates select=&quot;@_ node()&quot;/&gt;<!-- raw HTML omitted -->
+&lt;/xsl:copy&gt;<!-- raw HTML omitted -->
+&lt;/xsl:template&gt;<!-- raw HTML omitted -->&lt;/xsl:stylesheet&gt;<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></dd>
+</dl>
+
+
+    
+    
+    
+</body>
+
+</html>

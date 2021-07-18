@@ -1,10 +1,14 @@
 ---
 title: "SharePoint 2010: Setting custom User Profile properties Gotchas"
-date: 2011-10-28 16:18
+date: "2011-10-28"
 author: Jon Badgett
-categories: [Programming, SharePoint]
+categories:
+  - Programming
+  - SharePoint
 draft: false
+slug: sharepoint-2010-setting-custom-user-profile-properties-gotchas
 ---
+
 <h2>The Goal</h2>
 The goal is to create a custom User Profile property and then set and retrieve its value using C#.
 <h2>The resources</h2>
@@ -18,4 +22,9 @@ Using the above resources, you can piece together how to programatically create 
 
 What else do you need?
 
-Custom User Profile Properties (and several of the Out of Box ones) depend on a Managed Metadata Service Application being setup and associated with the application you're working with. This is fairly trivial to setup. Just remember that after you set it up via the UI, you'll need to start it on the "Manage services on this server" page, and then perform an IIS reset. Forgetting these will keep your Managed Metadata service from working.
+Custom User Profile Properties (and several of the Out of Box ones) depend on a
+Managed Metadata Service Application being setup and associated with the
+application you're working with. This is fairly trivial to setup. Just remember
+that after you set it up via the UI, you'll need to start it on the "Manage
+services on this server" page, and then perform an IIS reset. Forgetting these
+will keep your Managed Metadata service from working.

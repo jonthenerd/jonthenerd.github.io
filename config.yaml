@@ -2,4 +2,16 @@ baseURL: "http://www.jonthenerd.com/"
 languageCode: "en-us"
 title: "JonTheNerd"
 permalinks:
-    posts: /:year/:month/:day/:title/
+    posts: /:year/:month/:day/:slug/
+
+outputFormats:
+    RSS:
+        mediatype: "application/rss"
+        baseName: "feed"
+
+outputs:
+    home:
+        - HTML
+        - RSS
+
+pygmentsUseClasses: true

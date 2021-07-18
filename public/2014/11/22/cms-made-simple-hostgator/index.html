@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CMS Made Simple &amp; HostGator - Can&#39;t upload files &ndash; JonTheNerd</title>
+    </head>
+
+<body>
+    
+    <nav>
+    <a href="/">JonTheNerd</a>
+    <ul>
+        <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+    
+<h1>CMS Made Simple &amp; HostGator - Can&#39;t upload files</h1>
+<p>|-</p>
+<p>I administer a CMS Made Simple site that runs on HostGator. I got a report from
+a user that they couldn&rsquo;t upload any files. Strange! I checked it out, and
+neither could I (through the web interface). I could upload a file straight to
+the /uploads directory, but I couldn&rsquo;t delete the file. It would complain about
+my actions being limited to the uploads folder&hellip; so it thought I wasn&rsquo;t in it?
+Logged into HostGator&rsquo;s cPanel and found that my root path had changed from
+/home to /home4 &hellip; no notice from HostGator about this, it just changed.
+Changed the config.php of the CMS Made Simple site to have /home4 wherever /home
+was before - all is working now.</p>
+
+    
+    
+    
+</body>
+
+</html>

@@ -1,13 +1,31 @@
 ---
-title: "SharePoint 2010: Observations and Revelations on the User Profile Sync Service and the Update-SPProfilePhotoStore cmdlet"
-date: 2012-01-20 13:46
+title: >-
+  SharePoint 2010: Observations and Revelations on the User Profile Sync Service
+  and the Update-SPProfilePhotoStore cmdlet
+date: "2012-01-20"
 author: Jon Badgett
-categories: [SharePoint]
+categories:
+  - SharePoint
 draft: false
+slug: >-
+  sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet
 ---
-These are my notes while trying to diagnose and better understnad some issues and oddities with the SharePoint 2010 User Profile Service Application.
 
-If you're wanting to populate pictures into people's profiles, you'll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is <a href="http://www.reflector.net/">Redgate Reflector</a> (a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing. I've written some comments to help understand what's going on, as well as renamed some variables for the section I was more interested in understanding. You'll want to open the code in a new window (highlight on the top right of the code section), as some of the lines are quite long:
+These are my notes while trying to diagnose and better understnad some issues
+and oddities with the SharePoint 2010 User Profile Service Application.
+
+If you're wanting to populate pictures into people's profiles, you'll be using
+the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or
+incremental - or your custom built one). This cmdlet is in
+the Microsoft.Office.Server.UserProfiles dll, specifically the
+Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore
+class. Thanks to the goodness that is
+<a href="http://www.reflector.net/">Redgate Reflector</a> (a must have for any
+SP developer), we can get a more clear undertanding of what the cmdlet is doing.
+I've written some comments to help understand what's going on, as well as
+renamed some variables for the section I was more interested in understanding.
+You'll want to open the code in a new window (highlight on the top right of the
+code section), as some of the lines are quite long:
 
 ```csharp
 [Cmdlet("Update", "SPProfilePhotoStore")]
@@ -318,16 +336,28 @@ internal sealed class SPCmdletUserProfilePhotoStore : SPCmdlet
 
 ```
 
-From this we gather that the command has two modes depending on whether the -CreateThumbnailsForImportedPhotos flag is specified.
+From this we gather that the command has two modes depending on whether the
+-CreateThumbnailsForImportedPhotos flag is specified.
 
 <strong>CreateThumbnailsForImportedPhotos specified</strong>
 
-This mode appears intended for those who are importing their pictures from Active Directory (or other source) as a raw picture (Octet String for AD) in bytes.
+This mode appears intended for those who are importing their pictures from
+Active Directory (or other source) as a raw picture (Octet String for AD) in
+bytes.
 
 <strong>CreateThumbnailsForImportedPhotos not specified</strong>
 
-This mode appears intended for the use cases where the PictureURL property has been prepopulated with a URL that either points to an image in SharePoint or an image available on another web server. This mode still will create thumbnails for you, but it doesn't look for the temporary pictures in the form {GUID}_ID to make the thumbnails from - it will try and access the picture located at the URL specified in the PictureURL property.
+This mode appears intended for the use cases where the PictureURL property has
+been prepopulated with a URL that either points to an image in SharePoint or an
+image available on another web server. This mode still will create thumbnails
+for you, but it doesn't look for the temporary pictures in the form {GUID}\_ID
+to make the thumbnails from - it will try and access the picture located at the
+URL specified in the PictureURL property.
 
-So - if you're importing your pictures from Active Directory and a user removes their picture from the directory, there is no means in the powershell (or observed from the import process) to take care of removing the picture from SharePoint.
+So - if you're importing your pictures from Active Directory and a user removes
+their picture from the directory, there is no means in the powershell (or
+observed from the import process) to take care of removing the picture from
+SharePoint.
 
-I'll post more as more is learned. There doesn't seem to be much information on some of these things.
+I'll post more as more is learned. There doesn't seem to be much information on
+some of these things.

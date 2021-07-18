@@ -1,14 +1,23 @@
 ---
 title: CMS Made Simple - Enable SSL for the Admin Directory
-date: 2014-09-02 19:37
+date: "2014-09-02"
 author: Jon Badgett
-categories: [CMS Made Simple, Programming]
+categories:
+  - CMS Made Simple
+  - Programming
 draft: false
+slug: cms-made-simple-enable-ssl-for-the-admin-directory
 ---
-Recently updated a site I maintain that uses the great <a href="http://www.cmsmadesimple.org/">CMS Made Simple</a> and had to reconfigure SSL (https) for the administrative areas of the site. I've done this previously, but had forgotten exactly what I did.
+
+Recently updated a site I maintain that uses the great
+<a href="http://www.cmsmadesimple.org/">CMS Made Simple</a> and had to
+reconfigure SSL (https) for the administrative areas of the site. I've done this
+previously, but had forgotten exactly what I did.
+
 <!--more-->
 
 Here's all it takes:
+
 <ol>
 	<li>Get an SSL certificate configured on your domain. You can find instructions for that somewhere else.</li>
 	<li>Modify the config.php file in the base directory. Find the line that's setting up the "root_url" variable. Replace it with the following, replacing &lt;hostname&gt; with your site's host name:<code>
@@ -25,4 +34,5 @@ RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 </code></li>
 </ol>
 
-Done! Your admin directory should now require HTTPS. This works as of CMS Made Simple version 1.11.11.
+Done! Your admin directory should now require HTTPS. This works as of CMS Made
+Simple version 1.11.11.

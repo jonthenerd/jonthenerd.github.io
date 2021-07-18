@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Muhimbi PDF Converter Services &amp; InfoPath Error &ndash; JonTheNerd</title>
+    </head>
+
+<body>
+    
+    <nav>
+    <a href="/">JonTheNerd</a>
+    <ul>
+        <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+    
+<h1>Muhimbi PDF Converter Services &amp; InfoPath Error</h1>
+<p>Ran across an error while proving out a new Muhimbi PDF Converter Services
+install. I haven&rsquo;t seen it&rsquo;s like anywhere online, but managed to find a
+resolution.</p>
+<p>This is most easily demonstrated if you&rsquo;re running the Muhimbi Document
+Converter Diagnostics tool from the server performing conversions:</p>
+<ul>
+<li>Author a new InfoPath form template and save it to C:\TEMP as form1.xsn</li>
+<li>Fill out an instance of the form and save it to C:\TEMP as form1.xml</li>
+<li>Use the diagnostics tool to attempt a conversion of the xml file.</li>
+</ul>
+<p>Here&rsquo;s the error:</p>
+<blockquote>
+<p>FaultException occurred: ExceptionType: Unknown
+System.ServiceModel.FaultException`1[TestHarness.DocumentConverterService.WebServiceFaultException]:
+Muhimbi.DocumentConverter.WebService.Data.WebServiceInternalException:
+Exception of type
+&lsquo;Muhimbi.DocumentConverter.WebService.Data.WebServiceInternalException&rsquo; was
+thrown. - Details: &ldquo;Access is denied.&rdquo;</p>
+</blockquote>
+<p>However, all other conversions attempted were successful (tested Word and
+PowerPoint). What&rsquo;s going on here?</p>
+<p>For grins, I removed the additional Authentication settings I had applied in the
+configuration file for converter services. Low and behold, the InfoPath
+conversions started working. I added the authentication settings back, and I got
+the same results as before&hellip;</p>
+<p>The fix? You must add the account used to run the Muhimbi service to the group
+you created that should be allowed to perform conversions. My bet is there is
+some logic where the service calls itself through the port exposed, and there
+the WCF service checks permissions and calls Access Denied.</p>
+
+    
+    
+    
+</body>
+
+</html>

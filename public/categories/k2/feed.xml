@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>K2 on JonTheNerd</title>
+    <link>http://www.jonthenerd.com/categories/k2/</link>
+    <description>Recent content in K2 on JonTheNerd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 30 Mar 2016 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/categories/k2/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K2 - Service Account Rights Issue</title>
+      <link>http://www.jonthenerd.com/2016/03/30/k2-service-account-rights-issue/</link>
+      <pubDate>Wed, 30 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2016/03/30/k2-service-account-rights-issue/</guid>
+      <description>&lt;p&gt;In two scenarios, errors wer observed when using K2 designer within
+SharePoint 2013.&lt;/p&gt;
+&lt;p&gt;Working with K2 support, a resolution was found to this.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

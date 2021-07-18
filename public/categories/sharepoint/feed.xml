@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SharePoint on JonTheNerd</title>
+    <link>http://www.jonthenerd.com/categories/sharepoint/</link>
+    <description>Recent content in SharePoint on JonTheNerd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 03 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/categories/sharepoint/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Microsoft Flow: Using the SharePoint REST API</title>
+      <link>http://www.jonthenerd.com/2018/05/03/rest-and-flow/</link>
+      <pubDate>Thu, 03 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2018/05/03/rest-and-flow/</guid>
+      <description>&lt;p&gt;This post will contain whatever handy information I come across for utilizing
+the SharePoint REST APIs with Microsoft Flow.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SharePoint Framework: Extensions - Application Customizer</title>
+      <link>http://www.jonthenerd.com/2018/01/16/learning-spfx-pt-2/</link>
+      <pubDate>Tue, 16 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2018/01/16/learning-spfx-pt-2/</guid>
+      <description>&lt;p&gt;Next in this series on the SharePoint Framework are extensions.
+&lt;a href=&#34;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/overview-extensions&#34;&gt;According to docs.microsoft.com, SPFx Extensions allow for the customization of multiple facets of the SharePoint experience&lt;/a&gt;.
+I&amp;rsquo;ll focus on differences I made while following the online tutorial and my
+observations on capabilities and impacts of SPFx Application Customizer
+extensions.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SharePoint Framework: Getting Started</title>
+      <link>http://www.jonthenerd.com/2018/01/15/learning-spfx-pt-1/</link>
+      <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2018/01/15/learning-spfx-pt-1/</guid>
+      <description>&lt;p&gt;Today I decided that it was time I learned how to build
+&lt;a href=&#34;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview&#34;&gt;SharePoint Framework (SPFx)&lt;/a&gt;
+webparts. Easy enough right? Find the right tutorial online, follow
+instrucitons, hello world! Let&amp;rsquo;s get started.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SharePoint: Search Managed Properties missing after full crawl</title>
+      <link>http://www.jonthenerd.com/2017/09/15/managed-props-and-config-cache/</link>
+      <pubDate>Fri, 15 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2017/09/15/managed-props-and-config-cache/</guid>
+      <description>&lt;p&gt;Scenario:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SharePoint 2013&lt;/li&gt;
+&lt;li&gt;You&amp;rsquo;ve created some site columns, added them to a content type, then added
+that content type to a list/library.&lt;/li&gt;
+&lt;li&gt;You add some test data.&lt;/li&gt;
+&lt;li&gt;Run a full crawl.&lt;/li&gt;
+&lt;li&gt;Create managed properties, mapping them to the crawled properties.&lt;/li&gt;
+&lt;li&gt;Run another full crawl (to populate the managed properties)&lt;/li&gt;
+&lt;li&gt;Managed properties on search results are missing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What do you do now?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SharePoint: The server was unable to save the form at this time</title>
+      <link>http://www.jonthenerd.com/2016/07/05/the-server-was-unable-to-save/</link>
+      <pubDate>Tue, 05 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2016/07/05/the-server-was-unable-to-save/</guid>
+      <description>&lt;p&gt;We ran across an issue in a test environment where we were unable to add items
+to a list, or a document library. However, you could use Windows explorer view
+to upload a document.&lt;/p&gt;
+&lt;p&gt;The specific error message seen was:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;The server was unable to save the form at this time. Please try again.
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010 - MigrateUser Error &#39;Value cannot be null. Parameter name: userProfileApplicationProxy&#39;</title>
+      <link>http://www.jonthenerd.com/2013/01/22/sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy/</link>
+      <pubDate>Tue, 22 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2013/01/22/sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy/</guid>
+      <description>When using the stsadm command:
+stsadm.exe -o migrateuser oldlogin &amp;ldquo;domainusername&amp;rdquo; -newlogin &amp;ldquo;domainnewusername&amp;rdquo;
+We received this error message:
+Value cannot be null. Parameter name: userProfileApplicationProxy
+If you look in the ULS logs, you&amp;rsquo;ll find that there is an Access Denied event occuring. We were able to resolve this by going into Central Administration, selecting the User Service Application, and ensuring that the administrator account being used to run the above command has Full Control rights to the Service Application.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: Observations and Revelations on the User Profile Sync Service and the Update-SPProfilePhotoStore cmdlet</title>
+      <link>http://www.jonthenerd.com/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/</link>
+      <pubDate>Fri, 20 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/</guid>
+      <description>These are my notes while trying to diagnose and better understnad some issues and oddities with the SharePoint 2010 User Profile Service Application.
+If you&amp;rsquo;re wanting to populate pictures into people&amp;rsquo;s profiles, you&amp;rsquo;ll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is Redgate Reflector(a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: Ribbon CustomActions</title>
+      <link>http://www.jonthenerd.com/2012/01/04/sharepoint-2010-ribbon-customactions/</link>
+      <pubDate>Wed, 04 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2012/01/04/sharepoint-2010-ribbon-customactions/</guid>
+      <description>Developing a CustomAction for the Ribbon and SharePoint 2010? If you&amp;rsquo;re like me - you follow some instructions online, deploy it once to verify it works, then change as needed and redeploy. One catch though - the data needed for the ribbon custom action to work is fetched by the browser and CACHED! So you won&amp;rsquo;t see your changes&amp;hellip;until you clear your cache. Stupid but true. You&amp;rsquo;re welcome.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: Setting custom User Profile properties Gotchas</title>
+      <link>http://www.jonthenerd.com/2011/10/28/sharepoint-2010-setting-custom-user-profile-properties-gotchas/</link>
+      <pubDate>Fri, 28 Oct 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/10/28/sharepoint-2010-setting-custom-user-profile-properties-gotchas/</guid>
+      <description>What else do you need?
+Custom User Profile Properties (and several of the Out of Box ones) depend on a Managed Metadata Service Application being setup and associated with the application you&amp;rsquo;re working with. This is fairly trivial to setup. Just remember that after you set it up via the UI, you&amp;rsquo;ll need to start it on the &amp;ldquo;Manage services on this server&amp;rdquo; page, and then perform an IIS reset. Forgetting these will keep your Managed Metadata service from working.</description>
+    </item>
+    
+    <item>
+      <title>Jon&#39;s General SharePoint 2010 Development Tips</title>
+      <link>http://www.jonthenerd.com/2011/10/18/jons-general-sharepoint-2010-development-tips/</link>
+      <pubDate>Tue, 18 Oct 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/10/18/jons-general-sharepoint-2010-development-tips/</guid>
+      <description>In the time I&amp;rsquo;ve been doing SharePoint development, and SharePoint 2010 development in particular, I&amp;rsquo;ve tried to blog about the snags or neat stuff I&amp;rsquo;ve come across. This post is for all those little pieces of knowledge that come from working with the platform that don&amp;rsquo;t seem large enough for their own post. If you find it useful, let me know in the comments.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: The web application at ... could not be found. Verify that you have typed the URL correctly.</title>
+      <link>http://www.jonthenerd.com/2011/09/14/sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly/</link>
+      <pubDate>Wed, 14 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/09/14/sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly/</guid>
+      <description>|- and so on with the error message. Do these also fit your situation? 1) The error happens when running a console application 2) Using PowerShell works to access the SPSite, SPWeb, or SPWebApplication that you&amp;rsquo;re accessing in your console application How do you fix this? Change your build platform target to x64 instead of x86. Also keep in mind that this is a per build configuration setting (so you have the setting for Debug and Release compile modes).</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: Add a file to the root of your site using PowerShell</title>
+      <link>http://www.jonthenerd.com/2011/08/17/sharepoint-2010-add-a-file-to-the-root-of-your-site-using-powershell/</link>
+      <pubDate>Wed, 17 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/08/17/sharepoint-2010-add-a-file-to-the-root-of-your-site-using-powershell/</guid>
+      <description>This can be useful when you need a file to be right off the root of your Internet facing site - files like robots.txt, sitemap.xml, or the verification file for Google Webmaster tools. We&amp;rsquo;ll take advantage of PowerShell&amp;rsquo;s ability to use any .NET methods along with the Files collection on each SPWeb in SharePoint. $fileBytes = [system.io.file]::ReadAllBytes(&amp;quot;c:\the\full\path\to\your\file.txt&amp;quot;); $site = Get-SPSite &amp;quot;http://yourdomain:portifneeded&amp;quot;; $site.RootWeb.Files.Add(&amp;quot;file.txt&amp;quot;, $fileBytes, $true); This will result in a file.txt located at &amp;ldquo;http://yourdomain:portifneeded/file.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: Finding the largest document library in a site collection</title>
+      <link>http://www.jonthenerd.com/2011/08/16/sharepoint-2010-findinglargestdoclibrary/</link>
+      <pubDate>Tue, 16 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/08/16/sharepoint-2010-findinglargestdoclibrary/</guid>
+      <description>SharePoint 2007 came with a page (storman.aspx) dedicated to showing you how much space each of the lists in your site collection were taking up. SharePoint 2010 removed this page. Luckily, SharePoint 2010 SP1 added it back in. But what if you&amp;rsquo;re still haven&amp;rsquo;t updated to SP1 and you&amp;rsquo;re getting warnings/errors about running out of space?
+Obviously - up the space so as to avoid additional noise from your users. Then - figure out which libraries are taking up the most space.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: Unable to delete site/web after SP1</title>
+      <link>http://www.jonthenerd.com/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/</link>
+      <pubDate>Thu, 11 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/</guid>
+      <description>&lt;p&gt;While doing some testing after upgrading my dev machine to SP1, I ran into two
+separate issues when trying to delete a web through the UI by using the &amp;ldquo;Sites
+and Workspaces&amp;rdquo; link in Site Settings. Deleting through powershell worked fine.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: Disable Feature on all Web Applications PowerShell</title>
+      <link>http://www.jonthenerd.com/2011/07/21/sharepoint-2010-disable-feature-on-all-web-applications-powershell/</link>
+      <pubDate>Thu, 21 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/07/21/sharepoint-2010-disable-feature-on-all-web-applications-powershell/</guid>
+      <description>Because it&amp;rsquo;s easier to copy+paste this later&amp;hellip; This will disable a feature on all web applications in a farm. Very convenient for when you&amp;rsquo;re removing a feature from a solution. [code lang=&amp;ldquo;ps&amp;rdquo;] Get-SPWebApplication | ForEach-Object {Disable-SPFeature &amp;quot;Solution.NameFeatureName&amp;quot; -url $.Url;} [/code]</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: Remove existing reusable content items using PowerShell</title>
+      <link>http://www.jonthenerd.com/2011/07/06/sharepoint-2010-remove-existing-reusable-content-items-using-powershell/</link>
+      <pubDate>Wed, 06 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/07/06/sharepoint-2010-remove-existing-reusable-content-items-using-powershell/</guid>
+      <description>|- This same PowerShell could be used for any other list to remove all of the items. I just needed it to remove the OOB reusable content. [ps] $siteColTemp = Get-SPSite &amp;quot;http://yourSiteCollectionUrl&amp;quot;; $reusableContentList = $siteColTemp.RootWeb.Lists[&amp;quot;Reusable Content&amp;quot;]; $reusableContentItems = $reusableContentList.Items; $reusableContentItemsCount = $reusableContentItems.Count; for($x=$reusableContentItemsCount-1;$x -ge 0; $x&amp;ndash;){$reusableContentItems[$x].Delete();} [/ps]</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010 SP1 Upgrade Error &#34;Unable to create a Service Connection Point in the current Active Directory domain.&#34;</title>
+      <link>http://www.jonthenerd.com/2011/06/30/sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain/</link>
+      <pubDate>Thu, 30 Jun 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/06/30/sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain/</guid>
+      <description>Full error: &amp;ldquo;Unable to create a Service Connection Point in the current Active Directory domain. Verify that the SharePoint container exists in the current domain and that you have rights to write to it.&amp;rdquo;
+After installing SP2010 SP1, PSConfig failed and the log had the above error. I found that the timer service was stopped and restarted it. Retried install - no error.</description>
+    </item>
+    
+    <item>
+      <title>Easy SharePoint 2010 warmup Script using PowerShell</title>
+      <link>http://www.jonthenerd.com/2011/04/19/easy-sharepoint-2010-warmup-script-using-powershell/</link>
+      <pubDate>Tue, 19 Apr 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/04/19/easy-sharepoint-2010-warmup-script-using-powershell/</guid>
+      <description>|- This idea comes from Kirk Hofer&amp;rsquo;s blog, but modfied to use the SharePoint 2010 powershell commandlets and not care about specifying credentials in the script. I figured most people would just keep using the credentials specified in their scheduled task. The script loads the SharePoint plugin, enumerates the zones, and sends a request to each one.
+function Get-WebPage([string]$url) { $wc = new-object net.webclient; $wc.credentials = [System.Net.CredentialCache]::DefaultCredentials; $pageContents = $wc.DownloadString($url); $wc.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010 Custom Action IDs for Site Settings page</title>
+      <link>http://www.jonthenerd.com/2011/04/05/sharepoint-2010-custom-action-ids-for-site-settings-page/</link>
+      <pubDate>Tue, 05 Apr 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/04/05/sharepoint-2010-custom-action-ids-for-site-settings-page/</guid>
+      <description>Since the MSDN documentation for Default Custom Action Loacations and IDs is unreliable (they look to have copy+pasted the information from the SharePoint 2007 documentation), our only sure bet is to browse the file system and find the custom action IDs and groups ourselves.
+I had need of this information today, and found the items from the site settings page located at: C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\14\TEMPLATE\FEATURES\SiteSettings\SiteSettings.xml
+For those looking specifically for it, here is the custom action for &amp;ldquo;Delete this site&amp;rdquo;:</description>
+    </item>
+    
+    <item>
+      <title>Activate Feature on all Site Collections in a Web Application</title>
+      <link>http://www.jonthenerd.com/2011/03/24/activate-feature-on-all-sc/</link>
+      <pubDate>Thu, 24 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/03/24/activate-feature-on-all-sc/</guid>
+      <description>This is pretty easy using powerhell with SharePoint 2010:
+[powershell]Get-SPWebApplication &amp;quot;http://WebApplicationUrl:PortIfNeeded&amp;quot; | Get-SPSite | ForEach-Object{Enable-SPFeature &amp;quot;Solution.NameFeatureName&amp;quot; -url $.Url}[/powershell]</description>
+    </item>
+    
+    <item>
+      <title>Trying to access _Layouts/ChangeSiteMasterPage.aspx and receiving error</title>
+      <link>http://www.jonthenerd.com/2011/03/02/trying-to-access-_layoutschangesitemasterpage-aspx-and-receiving-error/</link>
+      <pubDate>Wed, 02 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/03/02/trying-to-access-_layoutschangesitemasterpage-aspx-and-receiving-error/</guid>
+      <description>If you try to access the SharePoint URL &amp;ldquo;_Layouts/ChangeSiteMasterPage.aspx&amp;rdquo; and receive the following error:
+&amp;ldquo;One or more field types are not installed properly. Go to the list settings page to delete these fields.&amp;rdquo;
+The &amp;ldquo;SharePoint Server Publishing Infrastructure&amp;rdquo; feature needs to be turned on.</description>
+    </item>
+    
+    <item>
+      <title>Activation could not be completed because the InfoPath Forms Services support feature is not present.</title>
+      <link>http://www.jonthenerd.com/2011/02/28/activation-could-not-be-completed-because-the-infopath-forms-services-support-feature-is-not-present/</link>
+      <pubDate>Mon, 28 Feb 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/02/28/activation-could-not-be-completed-because-the-infopath-forms-services-support-feature-is-not-present/</guid>
+      <description>&lt;p&gt;Got this error after migrating a SP2007 application to SP2010.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Disable Throttling for a specific SharePoint 2010 list with PowerShell</title>
+      <link>http://www.jonthenerd.com/2011/01/11/disable-throttling-for-a-specific-sharepoint-2010-list-with-powershell/</link>
+      <pubDate>Tue, 11 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/01/11/disable-throttling-for-a-specific-sharepoint-2010-list-with-powershell/</guid>
+      <description>The following can be used to disable throttling on a specific list (must be run as an account with enough priv.): [powershell] $web = Get-SPWeb http://whateverWeb $list = $web.Lists[“List Title”] $list.enablethrottling = $false $list.update() [/powershell]</description>
+    </item>
+    
+    <item>
+      <title>SharePoint WebPart implementing ICallbackEventHandler does not work properly in Web Part Gallery</title>
+      <link>http://www.jonthenerd.com/2010/12/07/sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/</link>
+      <pubDate>Tue, 07 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2010/12/07/sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/</guid>
+      <description>In migrating some WebParts from SP2007 to SP2010, I came across a webpart that implements ICallbackEventHandler. This webpart was working fine when placed on the page, but did not work correctly in the webpart gallery. The specific error message being received was &amp;ldquo;The target &amp;lsquo;ctl00$PlaceHolderMain$ctl00&amp;rsquo; for the callback could not be found or did not implement ICallbackEventHandler&amp;rdquo;. This error is due to the webpart being added to the preview page dynamically at runtime.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint Content Query WebPart easy values</title>
+      <link>http://www.jonthenerd.com/2010/10/14/sharepoint-content-query-webpart-easy-values/</link>
+      <pubDate>Thu, 14 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2010/10/14/sharepoint-content-query-webpart-easy-values/</guid>
+      <description>Sometimes it&amp;rsquo;s helpful to see exactly what your CQW is receiving. Put this into a style and see what properties and data you&amp;rsquo;re receiving:
+[sourcecode language=&amp;ldquo;xslt&amp;rdquo;]&amp;lt;xsl:for-each select=&amp;quot;@*&amp;quot;&amp;gt; P:&amp;lt;xsl:value-of select=&amp;quot;name()&amp;quot; /&amp;gt;&amp;lt;br/&amp;gt; V:&amp;lt;xsl:value-of select=&amp;quot;.&amp;quot; /&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;/xsl:for-each&amp;gt;[/sourcecode]</description>
+    </item>
+    
+    <item>
+      <title>Anonymous users and aspx pages inside the _layouts folder</title>
+      <link>http://www.jonthenerd.com/2010/03/16/anonymous-users-and-aspx-pages-inside-the-_layouts-folder/</link>
+      <pubDate>Tue, 16 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2010/03/16/anonymous-users-and-aspx-pages-inside-the-_layouts-folder/</guid>
+      <description>I ran smack into an issue that was looking to be a serious problem yesterday. One of my development projects (SharePoint) is an anonymous access public-facing website. This site using built-in SharePoint web services and the download.aspx page in the _layouts directory to facilitate lookup of related documents and provide download capability. The issue? Anonymous users can&amp;rsquo;t use any of the application pages in the _layouts folder. Lots of head scratching and some creative Google searches led me to the &amp;ldquo;DotNetIdeas&amp;rdquo; blog, specifically this post.</description>
+    </item>
+    
+    <item>
+      <title>Occasional SPException from GetListItemDataWithCallback</title>
+      <link>http://www.jonthenerd.com/2010/02/26/occasional-spexception-from-getlistitemdatawithcallback/</link>
+      <pubDate>Fri, 26 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2010/02/26/occasional-spexception-from-getlistitemdatawithcallback/</guid>
+      <description>Wrote a new field control today (SharePoint) that queried a specific list in another site collection based on the value of a field from the current list item. This worked great each time I&amp;rsquo;d test it out and add some additional functionality. When I finished the control, I did a little harder testing by hitting the refresh button in my browser over and over again. Randomly, my control wouldn&amp;rsquo;t render. Other times it would be fine.</description>
+    </item>
+    
+    <item>
+      <title>Unable to delete field in SharePoint library</title>
+      <link>http://www.jonthenerd.com/2010/02/25/unable-to-delete-field-in-sharepoint-library/</link>
+      <pubDate>Thu, 25 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2010/02/25/unable-to-delete-field-in-sharepoint-library/</guid>
+      <description>Trying to delete a field in a SharePoint library and get the message &amp;ldquo;Cannot complete this action. Pleast try again.&amp;rdquo;? This drove me nuts, as even invoking the delete method via the object model gives this message. What I found to allow a delete was pushing down changes via the content type gallery in the site collection (if the field was ever a part of that content type). This can be found by going to the following:_ Site Settings_ Site Content Type Gallery_ Choose Content Type_ Advanced Settings_ Make sure radio button &amp;ldquo;Update all content types inheriting from this type&amp;rdquo; is checked_ Click OKI had several libraries with several fields that had this issue (all fields used to be a part of the content type but had since been orphaned due to changing the definition of the content type in the elements.</description>
+    </item>
+    
+    <item>
+      <title>XSLT that emits source XML</title>
+      <link>http://www.jonthenerd.com/2010/01/27/xslt-that-emits-source-xml/</link>
+      <pubDate>Wed, 27 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2010/01/27/xslt-that-emits-source-xml/</guid>
+      <description>? I got this from a friend and have found it very useful for debugging my XSLT from content query web parts and data view web parts in Visual Studio. The below XSLT will output the source XML given to it:&amp;lt;pre style=&amp;ldquo;BORDER-BOTTOM #999999 1px dashed; BORDER-LEFT: #999999 1px dashed; PADDING-BOTTOM: 5px; LINE-HEIGHT: 14px; BACKGROUND-COLOR: #eee; PADDING-LEFT: 5px; WIDTH: 100%; PADDING-RIGHT: 5px; FONT-FAMILY: Andale Mono, Lucida Console, Monaco, fixed, monospace; COLOR: #000000; FONT-SIZE: 12px; OVERFLOW: auto; BORDER-TOP: #999999 1px dashed; BORDER-RIGHT: #999999 1px dashed; PADDING-TOP: 5px&amp;rdquo;&amp;gt;&amp;lt;?</description>
+    </item>
+    
+    <item>
+      <title>IE8 Standards Mode and MOSS</title>
+      <link>http://www.jonthenerd.com/2009/10/26/ie8-standards-mode-and-moss/</link>
+      <pubDate>Mon, 26 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2009/10/26/ie8-standards-mode-and-moss/</guid>
+      <description>Using IE8 Standards Mode with MOSS has been fairly trouble-free so far. However, the richhtmlfield editor throws javascript errors when the page is in IE8 Standards mode. Without switching to the Telerikcontrol or defaulting all of my pages to IE7 mode - there is a simpler fix!Enable IE7 compatability mode only on your edit pages. My master page had the IE8 meta tag:&amp;lt;meta equiv=&amp;ldquo;X-UA-Compatible&amp;rdquo; content=&amp;ldquo;IE=8&amp;rdquo;&amp;gt;right under the head element. To force your edit pages into IE7 mode, use the PublishingWebControls:EditModePanel to conditionally display it.</description>
+    </item>
+    
+  </channel>
+</rss>

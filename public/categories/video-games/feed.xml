@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Video Games on JonTheNerd</title>
+    <link>http://www.jonthenerd.com/categories/video-games/</link>
+    <description>Recent content in Video Games on JonTheNerd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 21 Oct 2010 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/categories/video-games/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sonic Fan Remix</title>
+      <link>http://www.jonthenerd.com/2010/10/21/sonic-fan-remix/</link>
+      <pubDate>Thu, 21 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2010/10/21/sonic-fan-remix/</guid>
+      <description>The new Sonic 4 is a bit of a novelty. This though - this is what Sonic fans have been waiting for:
+More information on the game can be found at http://sonicfanremix.com/.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SharePoint 2010: Add a file to the root of your site using PowerShell &ndash; JonTheNerd</title>
+    </head>
+
+<body>
+    
+    <nav>
+    <a href="/">JonTheNerd</a>
+    <ul>
+        <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+    
+<h1>SharePoint 2010: Add a file to the root of your site using PowerShell</h1>
+<p>This can be useful when you need a file to be right off the root of your
+Internet facing site - files like robots.txt, sitemap.xml, or the verification
+file for Google Webmaster tools. We&rsquo;ll take advantage of PowerShell&rsquo;s ability to
+use any .NET methods along with the Files collection on each SPWeb in
+SharePoint.
+<code>$fileBytes = [system.io.file]::ReadAllBytes(&quot;c:\the\full\path\to\your\file.txt&quot;); $site = Get-SPSite &quot;http://yourdomain:portifneeded&quot;; $site.RootWeb.Files.Add(&quot;file.txt&quot;, $fileBytes, $true);</code>
+This will result in a file.txt located at
+&ldquo;http://yourdomain:portifneeded/file.txt&rdquo;. Sweet!</p>
+
+
+    
+    
+    
+</body>
+
+</html>
