@@ -1,38 +1,23 @@
 {
-  "name": "jonthenerd-dot-com",
+  "name": "jonthenerd.github.io",
   "version": "1.0.0",
-  "description": "jonthenerd.com",
-  "main": "gulpfile.js",
-  "dependencies": {},
-  "devDependencies": {
-    "bootstrap-sass": "^3.4.1",
-    "del": "^2.2.2",
-    "es6-template-strings": "^2.0.1",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-cssnano": "^2.1.2",
-    "gulp-flatten": "^0.3.1",
-    "gulp-if": "^2.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^2.1.1",
-    "gulp-uglify": "^2.0.0",
-    "gulp-util": "^3.0.7",
-    "jquery": "^3.4.0",
-    "yaml-front-matter": "^3.4.0"
-  },
+  "description": "",
+  "main": "fix-yaml.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "gulp": "gulp"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jonthenerd/jonthenerd.github.io.git"
   },
-  "author": "Jon Badgett",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jonthenerd/jonthenerd.github.io/issues"
   },
-  "homepage": "https://github.com/jonthenerd/jonthenerd.github.io#readme"
+  "homepage": "https://github.com/jonthenerd/jonthenerd.github.io#readme",
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "prettier": "^2.3.2"
+  }
 }

@@ -1,0 +1,15 @@
+# top-most EditorConfig file
+root = true
+
+# All File Defaults
+[*]
+indent_style = space
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = true
+indent_size = 4
+
+# Batch Files
+[*.{cmd,bat}]
+end_of_line = crlf

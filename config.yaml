@@ -1,0 +1,5 @@
+baseURL: "http://www.jonthenerd.com/"
+languageCode: "en-us"
+title: "JonTheNerd"
+permalinks:
+    posts: /:year/:month/:day/:title/
