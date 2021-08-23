@@ -1,0 +1,23 @@
+{{ define "title" }}{{ .Title }} &ndash; {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name headline">{{ .Title }}</h1>
+        <p class="post-meta">
+            <time datetime="{{ .Date | time.Format " 2006-01-02" }}" itemprop="datePublished">{{ .Date | time.Format
+                ":date_long" }}</time>
+            {{ if .Params.categories }}
+            | Posted in
+            {{ range $index, $category := .Params.categories }}
+            {{ if gt $index 0}}, {{ end }}<a href="/categories/{{ . | urlize }}">{{ . }}</a>
+            {{ end }}
+
+            {{ end }}
+        </p>
+    </header>
+    <div itemprop="articleBody">
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}

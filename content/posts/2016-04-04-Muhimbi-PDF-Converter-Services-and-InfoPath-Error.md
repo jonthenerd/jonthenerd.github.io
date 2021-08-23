@@ -3,7 +3,7 @@ title: Muhimbi PDF Converter Services & InfoPath Error
 date: "2016-04-03"
 author: Jon Badgett
 categories:
-  - Muhimbi PDF Converter Services
+    - Muhimbi PDF Converter Services
 draft: false
 slug: Muhimbi-PDF-Converter-Services-and-InfoPath-Error
 ---
@@ -17,9 +17,9 @@ resolution.
 This is most easily demonstrated if you're running the Muhimbi Document
 Converter Diagnostics tool from the server performing conversions:
 
-- Author a new InfoPath form template and save it to C:\TEMP as form1.xsn
-- Fill out an instance of the form and save it to C:\TEMP as form1.xml
-- Use the diagnostics tool to attempt a conversion of the xml file.
+-   Author a new InfoPath form template and save it to C:\TEMP as form1.xsn
+-   Fill out an instance of the form and save it to C:\TEMP as form1.xml
+-   Use the diagnostics tool to attempt a conversion of the xml file.
 
 Here's the error:
 

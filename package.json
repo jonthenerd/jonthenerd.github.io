@@ -4,7 +4,12 @@
   "description": "",
   "main": "fix-yaml.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:site": "hugo",
+    "build:styles": "sass scss/dark.scss:static/assets/dark.css scss/light.scss:static/assets/light.css scss/style.scss:static/assets/style.css --style compressed",
+    "build": "npm run build:styles && npm run build:site",
+    "dev:site": "hugo server",
+    "dev:styles": "sass scss/dark.scss:static/assets/dark.css scss/light.scss:static/assets/light.css scss/style.scss:static/assets/style.css --watch",
+    "dev": "concurrently \"npm run dev:site\" \"npm run dev:styles\""
   },
   "repository": {
     "type": "git",
@@ -17,8 +22,10 @@
   },
   "homepage": "https://github.com/jonthenerd/jonthenerd.github.io#readme",
   "devDependencies": {
+    "concurrently": "^6.2.1",
     "gray-matter": "^4.0.3",
     "prettier": "^2.3.2",
-    "prettier-plugin-go-template": "0.0.11"
+    "prettier-plugin-go-template": "0.0.11",
+    "sass": "^1.38.0"
   }
 }

@@ -1,6 +1,11 @@
 {{ define "title" }}{{ .Title }} &ndash; {{ .Site.Title }}{{ end }}
 
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-{{ .Content }}
+        <header>
+            <h1>{{ .Title }}</h1>
+        </header>
+        <div>
+            {{ .Content }}
+        </div>
+    </article>
 {{ end }}

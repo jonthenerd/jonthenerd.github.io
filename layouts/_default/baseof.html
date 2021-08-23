@@ -4,15 +4,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
-    <link rel="stylesheet" href="/styles/syntax-github.css" />
+    <meta name="color-scheme" content="dark light" />
+    <script>
+        if (window.matchMedia('(prefers-color-scheme: dark)').media === 'not all') {
+            document.documentElement.style.display = 'none';
+            document.head.insertAdjacentHTML(
+                "beforeend",
+                '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">',
+            );
+        }
+    </script>
+    <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+    <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
     {{ range .AlternativeOutputFormats -}}{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}{{ end -}}
 </head>
 <body>
     <!-- Code that all your templates share, like a header -->
     {{ partial "header/site-header.html" .}}
-    {{ block "main" . }}
-    <!-- The part of the page that begins to differ between templates -->
-    {{ end }}
+    <main>
+        <div class="container">
+        {{ block "main" . }}
+        <!-- The part of the page that begins to differ between templates -->
+        {{ end }}
+        </div>
+    </main>
     {{ block "footer" . }}
     <!-- More shared code, perhaps a footer but that can be overridden if need be in  -->
     {{ end }}

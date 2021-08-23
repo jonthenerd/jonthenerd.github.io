@@ -1,0 +1,12 @@
+/* Theme Variables (light on dark) */
+:root {
+    --background-color: #000;
+    --color: rgb(250, 250, 250);
+
+    --brand-color: #bbb;
+
+    --image-filter: grayscale(50%);
+}
+
+/* Syntax */
+@import "./syntax-monokai";

@@ -1,0 +1,102 @@
+/* non-theme variables */
+:root {
+  --gap: 0.75rem;
+  --font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans,
+      Helvetica Neue, Arial, sans-serif;
+}
+
+/* resets */
+html,
+body,
+ul {
+  margin: 0;
+}
+
+/* main */
+:root {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+img:not([src*=".svg"]) {
+  filter: var(--image-filter);
+}
+
+.container {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: 100%;
+  }
+}
+/* components */
+.site-header {
+  height: 50px;
+  color: var(--brand-color);
+  padding: 0 var(--gap);
+}
+.site-header div {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+.site-header h1 {
+  font-size: 18px;
+}
+.site-header ul {
+  list-style-type: none;
+}
+.site-header ul li {
+  display: inline;
+}
+.site-header a,
+.site-header a:link,
+.site-header a:visited {
+  color: var(--brand-color);
+  text-decoration: none;
+}
+.site-header a:hover {
+  color: var(--brand-color);
+  text-decoration: underline;
+}
+
+nav.pagination ul {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav.pagination ul li {
+  display: inline;
+  padding: 0 var(--gap);
+}
+
+main {
+  padding: 0 var(--gap);
+}
+
+article > h2 a,
+article > h2 a:link,
+article > h2 a:visited {
+  text-decoration: none;
+}
+article > h2 a:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=style.css.map */

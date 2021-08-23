@@ -3,12 +3,10 @@ title: CMS Made Simple & HostGator - Can't upload files
 date: "2014-11-22"
 author: Jon Badgett
 categories:
-  - CMS Made Simple
+    - CMS Made Simple
 draft: false
 slug: cms-made-simple-hostgator
 ---
-
-|-
 
   <!--more-->
 

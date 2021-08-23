@@ -1,0 +1,10 @@
+/* Theme Variables (dark on light) */
+:root {
+    --background-color: rgb(250, 250, 250);
+    --color: #000;
+
+    --brand-color: #777;
+}
+
+/* Syntax */
+@import "./syntax-github";
