@@ -1,14 +1,14 @@
 ---
 title: >-
-  SharePoint 2010: Observations and Revelations on the User Profile Sync Service
-  and the Update-SPProfilePhotoStore cmdlet
+    SharePoint 2010: Observations and Revelations on the User Profile Sync Service
+    and the Update-SPProfilePhotoStore cmdlet
 date: "2012-01-20"
 author: Jon Badgett
 categories:
-  - SharePoint
+    - SharePoint
 draft: false
 slug: >-
-  sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet
+    sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet
 ---
 
 These are my notes while trying to diagnose and better understnad some issues

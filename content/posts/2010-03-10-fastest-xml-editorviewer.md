@@ -3,7 +3,7 @@ title: Fastest XML Editor/Viewer
 date: "2010-03-10"
 author: Jon Badgett
 categories:
-  - Programming
+    - Programming
 draft: false
 slug: fastest-xml-editorviewer
 ---

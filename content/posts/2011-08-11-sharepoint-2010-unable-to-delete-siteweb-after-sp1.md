@@ -4,9 +4,9 @@ title: "SharePoint 2010: Unable to delete site/web after SP1"
 date: "2011-08-11"
 author: Jon Badgett
 categories:
-  - PowerShell
-  - Programming
-  - SharePoint
+    - PowerShell
+    - Programming
+    - SharePoint
 draft: false
 slug: sharepoint-2010-unable-to-delete-siteweb-after-sp1
 ---

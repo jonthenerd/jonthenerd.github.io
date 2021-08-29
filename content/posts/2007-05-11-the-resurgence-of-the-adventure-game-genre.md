@@ -3,7 +3,7 @@ title: The Resurgence of the Adventure Game Genre
 date: "2007-05-11"
 author: Jon Badgett
 categories:
-  - Gaming
+    - Gaming
 draft: false
 slug: the-resurgence-of-the-adventure-game-genre
 ---

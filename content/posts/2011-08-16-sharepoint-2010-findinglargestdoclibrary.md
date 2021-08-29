@@ -1,12 +1,11 @@
 ---
-title:
-  "SharePoint 2010: Finding the largest document library in a site collection"
+title: "SharePoint 2010: Finding the largest document library in a site collection"
 date: "2011-08-16"
 author: Jon Badgett
 categories:
-  - PowerShell
-  - Programming
-  - SharePoint
+    - PowerShell
+    - Programming
+    - SharePoint
 draft: false
 slug: sharepoint-2010-findinglargestdoclibrary
 ---

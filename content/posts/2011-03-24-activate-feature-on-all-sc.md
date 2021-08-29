@@ -3,8 +3,8 @@ title: Activate Feature on all Site Collections in a Web Application
 date: "2011-03-24"
 author: Jon Badgett
 categories:
-  - Programming
-  - SharePoint
+    - Programming
+    - SharePoint
 draft: false
 slug: activate-feature-on-all-sc
 ---

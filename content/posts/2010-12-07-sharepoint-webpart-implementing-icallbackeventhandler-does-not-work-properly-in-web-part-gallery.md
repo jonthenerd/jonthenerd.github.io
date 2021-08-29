@@ -1,15 +1,15 @@
 ---
 title: >-
-  SharePoint WebPart implementing ICallbackEventHandler does not work properly
-  in Web Part Gallery
+    SharePoint WebPart implementing ICallbackEventHandler does not work properly
+    in Web Part Gallery
 date: "2010-12-07"
 author: Jon Badgett
 categories:
-  - Programming
-  - SharePoint
+    - Programming
+    - SharePoint
 draft: false
 slug: >-
-  sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery
+    sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery
 ---
 
 In migrating some WebParts from SP2007 to SP2010, I came across a webpart that

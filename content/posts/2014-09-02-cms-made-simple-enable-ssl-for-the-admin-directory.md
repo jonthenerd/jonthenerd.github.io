@@ -3,8 +3,8 @@ title: CMS Made Simple - Enable SSL for the Admin Directory
 date: "2014-09-02"
 author: Jon Badgett
 categories:
-  - CMS Made Simple
-  - Programming
+    - CMS Made Simple
+    - Programming
 draft: false
 slug: cms-made-simple-enable-ssl-for-the-admin-directory
 ---

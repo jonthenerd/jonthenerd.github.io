@@ -1,6 +1,6 @@
 ---
 title: "SharePoint Framework: Getting Started"
-date: "2018-01-15"
+date: "2018-01-16"
 author: Jon Badgett
 categories:
     - SharePoint

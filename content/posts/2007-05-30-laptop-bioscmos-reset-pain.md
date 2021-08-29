@@ -3,7 +3,7 @@ title: Laptop BIOS/CMOS reset = pain
 date: "2007-05-30"
 author: Jon Badgett
 categories:
-  - Computers
+    - Computers
 draft: false
 slug: laptop-bioscmos-reset-pain
 ---

@@ -3,8 +3,8 @@ title: SharePoint 2010 Custom Action IDs for Site Settings page
 date: "2011-04-05"
 author: Jon Badgett
 categories:
-  - SharePoint
-  - Programming
+    - SharePoint
+    - Programming
 draft: false
 slug: sharepoint-2010-custom-action-ids-for-site-settings-page
 ---

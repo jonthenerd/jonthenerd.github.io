@@ -1,10 +1,10 @@
 ---
 title: Increasing the Wine font size
-date: "2007-02-03"
+date: "2007-02-04"
 author: Jon Badgett
 categories:
-  - Linux
-  - ubuntu
+    - Linux
+    - ubuntu
 draft: false
 slug: increasing-the-wine-font-size
 ---

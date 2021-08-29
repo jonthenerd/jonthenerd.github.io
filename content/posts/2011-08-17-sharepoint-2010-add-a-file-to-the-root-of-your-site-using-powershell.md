@@ -3,9 +3,9 @@ title: "SharePoint 2010: Add a file to the root of your site using PowerShell"
 date: "2011-08-17"
 author: Jon Badgett
 categories:
-  - PowerShell
-  - Programming
-  - SharePoint
+    - PowerShell
+    - Programming
+    - SharePoint
 draft: false
 slug: sharepoint-2010-add-a-file-to-the-root-of-your-site-using-powershell
 ---

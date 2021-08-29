@@ -3,9 +3,9 @@ title: Easy SharePoint 2010 warmup Script using PowerShell
 date: "2011-04-19"
 author: Jon Badgett
 categories:
-  - Programming
-  - SharePoint
-  - PowerShell
+    - Programming
+    - SharePoint
+    - PowerShell
 draft: false
 slug: easy-sharepoint-2010-warmup-script-using-powershell
 ---

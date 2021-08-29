@@ -3,7 +3,7 @@ title: Code Memories?
 date: "2008-08-02"
 author: Jon Badgett
 categories:
-  - Programming
+    - Programming
 draft: false
 slug: code-memories
 ---

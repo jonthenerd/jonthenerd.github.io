@@ -3,7 +3,7 @@ title: Dev Cheat Sheets
 date: "2010-07-10"
 author: Jon Badgett
 categories:
-  - Programming
+    - Programming
 draft: false
 slug: dev-cheat-sheets
 ---

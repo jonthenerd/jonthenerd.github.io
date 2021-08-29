@@ -1,15 +1,15 @@
 ---
 title: >-
-  Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully
-  with Android
+    Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully
+    with Android
 date: "2012-10-05"
 author: Jon Badgett
 categories:
-  - Android
-  - Programming
+    - Android
+    - Programming
 draft: false
 slug: >-
-  communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android
+    communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android
 ---
 
 |- I'm starting work on a project for my MBA program that involves using a

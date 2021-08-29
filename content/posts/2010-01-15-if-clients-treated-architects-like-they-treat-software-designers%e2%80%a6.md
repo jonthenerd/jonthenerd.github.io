@@ -3,7 +3,7 @@ title: If clients treated architects like they treat software designers…
 date: "2010-01-15"
 author: Jon Badgett
 categories:
-  - Funny
+    - Funny
 draft: false
 slug: if-clients-treated-architects-like-they-treat-software-designers%e2%80%a6
 ---

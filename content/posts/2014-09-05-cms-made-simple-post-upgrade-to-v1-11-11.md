@@ -3,8 +3,8 @@ title: CMS Made Simple - Post-Upgrade to v1.11.11
 date: "2014-09-05"
 author: Jon Badgett
 categories:
-  - CMS Made Simple
-  - Programming
+    - CMS Made Simple
+    - Programming
 draft: false
 slug: cms-made-simple-post-upgrade-to-v1-11-11
 ---

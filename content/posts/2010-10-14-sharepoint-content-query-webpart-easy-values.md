@@ -3,8 +3,8 @@ title: SharePoint Content Query WebPart easy values
 date: "2010-10-14"
 author: Jon Badgett
 categories:
-  - Programming
-  - SharePoint
+    - Programming
+    - SharePoint
 draft: false
 slug: sharepoint-content-query-webpart-easy-values
 ---

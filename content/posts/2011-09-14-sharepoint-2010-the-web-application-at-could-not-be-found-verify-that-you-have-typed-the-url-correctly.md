@@ -1,15 +1,15 @@
 ---
 title: >-
-  SharePoint 2010: The web application at ... could not be found. Verify that
-  you have typed the URL correctly.
+    SharePoint 2010: The web application at ... could not be found. Verify that
+    you have typed the URL correctly.
 date: "2011-09-14"
 author: Jon Badgett
 categories:
-  - Programming
-  - SharePoint
+    - Programming
+    - SharePoint
 draft: false
 slug: >-
-  sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly
+    sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly
 ---
 
 |- and so on with the error message. Do these also fit your situation? 1) The

@@ -3,7 +3,7 @@ title: Occasional SPException from GetListItemDataWithCallback
 date: "2010-02-26"
 author: Jon Badgett
 categories:
-  - SharePoint
+    - SharePoint
 draft: false
 slug: occasional-spexception-from-getlistitemdatawithcallback
 ---

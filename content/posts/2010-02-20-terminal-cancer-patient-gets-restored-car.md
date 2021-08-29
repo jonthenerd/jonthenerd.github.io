@@ -3,7 +3,7 @@ title: Terminal Cancer Patient gets restored car
 date: "2010-02-20"
 author: Jon Badgett
 categories:
-  - Cars
+    - Cars
 draft: false
 slug: terminal-cancer-patient-gets-restored-car
 ---

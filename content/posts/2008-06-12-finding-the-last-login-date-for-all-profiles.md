@@ -3,8 +3,8 @@ title: Finding the last login date for all profiles
 date: "2008-06-12"
 author: Jon Badgett
 categories:
-  - .NET
-  - Programming
+    - .NET
+    - Programming
 draft: false
 slug: finding-the-last-login-date-for-all-profiles
 ---

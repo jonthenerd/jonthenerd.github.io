@@ -3,8 +3,8 @@ title: Fixing a jumpy cusor/pointer on your optical/laser mouse
 date: "2009-06-07"
 author: Jon Badgett
 categories:
-  - Computers
-  - Funny
+    - Computers
+    - Funny
 draft: false
 slug: fixing-a-jumpy-cusorpointer-on-your-opticallaser-mouse
 ---

@@ -3,7 +3,7 @@ title: Fixing a noisy toilet
 date: "2009-10-25"
 author: Jon Badgett
 categories:
-  - DIY
+    - DIY
 draft: false
 slug: fixing-a-noisy-toilet
 ---

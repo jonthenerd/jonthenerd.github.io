@@ -3,7 +3,7 @@ title: Unable to delete field in SharePoint library
 date: "2010-02-25"
 author: Jon Badgett
 categories:
-  - SharePoint
+    - SharePoint
 draft: false
 slug: unable-to-delete-field-in-sharepoint-library
 ---

@@ -3,7 +3,7 @@ title: Print Helper for Google Calendar
 date: "2011-01-14"
 author: Jon Badgett
 categories:
-  - Programming
+    - Programming
 draft: false
 slug: print-helper-for-google-calendar
 ---

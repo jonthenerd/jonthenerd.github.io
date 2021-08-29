@@ -3,9 +3,9 @@ title: Disable Throttling for a specific SharePoint 2010 list with PowerShell
 date: "2011-01-11"
 author: Jon Badgett
 categories:
-  - Programming
-  - Programming
-  - SharePoint
+    - Programming
+    - Programming
+    - SharePoint
 draft: false
 slug: disable-throttling-for-a-specific-sharepoint-2010-list-with-powershell
 ---

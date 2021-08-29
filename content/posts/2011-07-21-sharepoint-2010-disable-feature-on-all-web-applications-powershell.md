@@ -3,9 +3,9 @@ title: "SharePoint 2010: Disable Feature on all Web Applications PowerShell"
 date: "2011-07-21"
 author: Jon Badgett
 categories:
-  - PowerShell
-  - Programming
-  - SharePoint
+    - PowerShell
+    - Programming
+    - SharePoint
 draft: false
 slug: sharepoint-2010-disable-feature-on-all-web-applications-powershell
 ---

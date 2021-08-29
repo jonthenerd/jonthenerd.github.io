@@ -3,7 +3,7 @@ title: WinAudit - a shameless plug for a nifty tool
 date: "2007-04-13"
 author: Jon Badgett
 categories:
-  - Freeware
+    - Freeware
 draft: false
 slug: winaudit-a-shameless-plug-for-a-nifty-tool
 ---

@@ -3,7 +3,7 @@ title: Time moves on. Google makes my extension irrelevant
 date: "2011-06-11"
 author: Jon Badgett
 categories:
-  - Programming
+    - Programming
 draft: false
 slug: time-moves-on-google-makes-my-extension-irrelevant
 ---

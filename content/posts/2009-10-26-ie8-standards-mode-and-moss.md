@@ -3,7 +3,7 @@ title: IE8 Standards Mode and MOSS
 date: "2009-10-26"
 author: Jon Badgett
 categories:
-  - SharePoint
+    - SharePoint
 draft: false
 slug: ie8-standards-mode-and-moss
 ---

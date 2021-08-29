@@ -3,9 +3,9 @@ title: Unreal Tournament Server on Ubuntu Linux (10.04)
 date: "2010-08-01"
 author: Jon Badgett
 categories:
-  - Gaming
-  - Linux
-  - ubuntu
+    - Gaming
+    - Linux
+    - ubuntu
 draft: false
 slug: unreal-tournament-server-on-ubuntu-linux-10-04
 ---

@@ -3,7 +3,7 @@ title: Playing with Open Source Automation
 date: "2013-09-13"
 author: Jon Badgett
 categories:
-  - Programming
+    - Programming
 draft: false
 slug: playing-with-open-source-automation
 ---

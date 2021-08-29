@@ -1,6 +1,6 @@
 ---
 title: "SharePoint Framework: Extensions - Application Customizer"
-date: "2018-01-16"
+date: "2018-01-17"
 author: Jon Badgett
 categories:
     - SharePoint

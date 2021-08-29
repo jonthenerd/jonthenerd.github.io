@@ -3,7 +3,7 @@ title: Trying to access _Layouts/ChangeSiteMasterPage.aspx and receiving error
 date: "2011-03-02"
 author: Jon Badgett
 categories:
-  - SharePoint
+    - SharePoint
 draft: false
 slug: trying-to-access-_layoutschangesitemasterpage-aspx-and-receiving-error
 ---

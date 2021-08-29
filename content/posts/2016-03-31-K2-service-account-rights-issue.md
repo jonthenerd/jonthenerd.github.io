@@ -1,9 +1,9 @@
 ---
 title: K2 - Service Account Rights Issue
-date: "2016-03-30"
+date: "2016-03-31"
 author: Jon Badgett
 categories:
-  - K2
+    - K2
 draft: false
 slug: K2-service-account-rights-issue
 ---

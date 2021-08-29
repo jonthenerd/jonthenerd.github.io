@@ -3,7 +3,7 @@ title: Lenovo T61 Speakers popping
 date: "2008-08-18"
 author: Jon Badgett
 categories:
-  - Computers
+    - Computers
 draft: false
 slug: lenovo-t61-speakers-popping
 ---

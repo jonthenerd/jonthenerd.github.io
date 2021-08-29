@@ -3,8 +3,8 @@ title: "SharePoint 2010: Ribbon CustomActions"
 date: "2012-01-04"
 author: Jon Badgett
 categories:
-  - Programming
-  - SharePoint
+    - Programming
+    - SharePoint
 draft: false
 slug: sharepoint-2010-ribbon-customactions
 ---

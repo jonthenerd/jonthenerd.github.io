@@ -1,10 +1,10 @@
 ---
 title: Spoofing the Mac Commercials
-date: "2007-03-10"
+date: "2007-03-11"
 author: Jon Badgett
 categories:
-  - Funny
-  - Mac
+    - Funny
+    - Mac
 draft: false
 slug: spoofing-the-mac-commercials
 ---

@@ -1,14 +1,14 @@
 ---
 title: >-
-  SharePoint 2010 - MigrateUser Error 'Value cannot be null. Parameter name:
-  userProfileApplicationProxy'
+    SharePoint 2010 - MigrateUser Error 'Value cannot be null. Parameter name:
+    userProfileApplicationProxy'
 date: "2013-01-22"
 author: Jon Badgett
 categories:
-  - SharePoint
+    - SharePoint
 draft: false
 slug: >-
-  sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy
+    sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy
 ---
 
 When using the stsadm command:

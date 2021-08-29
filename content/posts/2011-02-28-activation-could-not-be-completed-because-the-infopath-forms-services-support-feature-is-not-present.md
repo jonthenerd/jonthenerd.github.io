@@ -1,16 +1,16 @@
 ---
 title: >-
-  Activation could not be completed because the InfoPath Forms Services support
-  feature is not present.
+    Activation could not be completed because the InfoPath Forms Services support
+    feature is not present.
 date: "2011-02-28"
 author: Jon Badgett
 categories:
-  - Programming
-  - Programming
-  - SharePoint
+    - Programming
+    - Programming
+    - SharePoint
 draft: false
 slug: >-
-  activation-could-not-be-completed-because-the-infopath-forms-services-support-feature-is-not-present
+    activation-could-not-be-completed-because-the-infopath-forms-services-support-feature-is-not-present
 ---
 
 Got this error after migrating a SP2007 application to SP2010.

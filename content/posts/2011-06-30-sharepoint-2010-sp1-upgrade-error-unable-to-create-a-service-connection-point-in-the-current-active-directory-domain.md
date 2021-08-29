@@ -1,15 +1,15 @@
 ---
 title: >-
-  SharePoint 2010 SP1 Upgrade Error "Unable to create a Service Connection Point
-  in the current Active Directory domain."
+    SharePoint 2010 SP1 Upgrade Error "Unable to create a Service Connection Point
+    in the current Active Directory domain."
 date: "2011-06-30"
 author: Jon Badgett
 categories:
-  - Programming
-  - SharePoint
+    - Programming
+    - SharePoint
 draft: false
 slug: >-
-  sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain
+    sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain
 ---
 
 Full error: "Unable to create a Service Connection Point in the current Active

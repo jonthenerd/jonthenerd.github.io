@@ -3,9 +3,9 @@ title: Active Directory homeDrive (Home Folder)
 date: "2008-06-19"
 author: Jon Badgett
 categories:
-  - Active Directory
-  - Programming
-  - Windows
+    - Active Directory
+    - Programming
+    - Windows
 draft: false
 slug: active-directory-homedrive-home-folder
 ---

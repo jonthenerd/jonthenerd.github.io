@@ -3,8 +3,8 @@ title: eeePC - not for the masses
 date: "2008-06-12"
 author: Jon Badgett
 categories:
-  - Computers
-  - Linux
+    - Computers
+    - Linux
 draft: false
 slug: eeepc-not-for-the-masses
 ---

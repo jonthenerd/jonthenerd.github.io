@@ -3,8 +3,8 @@ title: Windows 7 x64 Ultimate - Taking the plunge
 date: "2009-09-18"
 author: Jon Badgett
 categories:
-  - Computers
-  - Windows
+    - Computers
+    - Windows
 draft: false
 slug: windows-7-x64-ultimate-taking-the-plunge
 ---

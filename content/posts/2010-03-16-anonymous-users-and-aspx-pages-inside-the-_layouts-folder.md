@@ -3,8 +3,8 @@ title: Anonymous users and aspx pages inside the _layouts folder
 date: "2010-03-16"
 author: Jon Badgett
 categories:
-  - Programming
-  - SharePoint
+    - Programming
+    - SharePoint
 draft: false
 slug: anonymous-users-and-aspx-pages-inside-the-_layouts-folder
 ---

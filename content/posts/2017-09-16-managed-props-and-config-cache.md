@@ -1,30 +1,30 @@
 ---
 title: "SharePoint: Search Managed Properties missing after full crawl"
-date: "2017-09-15"
+date: "2017-09-16"
 author: Jon Badgett
 categories:
-  - SharePoint
+    - SharePoint
 draft: false
 slug: managed-props-and-config-cache
 ---
 
 Scenario:
 
-- SharePoint 2013
-- You've created some site columns, added them to a content type, then added
-  that content type to a list/library.
-- You add some test data.
-- Run a full crawl.
-- Create managed properties, mapping them to the crawled properties.
-- Run another full crawl (to populate the managed properties)
-- Managed properties on search results are missing.
+-   SharePoint 2013
+-   You've created some site columns, added them to a content type, then added
+    that content type to a list/library.
+-   You add some test data.
+-   Run a full crawl.
+-   Create managed properties, mapping them to the crawled properties.
+-   Run another full crawl (to populate the managed properties)
+-   Managed properties on search results are missing.
 
 What do you do now?
 
 <!--more-->
 
-- Run another full crawl and check again.
-- Wonder why it's still not working.
+-   Run another full crawl and check again.
+-   Wonder why it's still not working.
 
 What else has worked for me? Clear the SharePoint Config Cache. This is
 referenced in a

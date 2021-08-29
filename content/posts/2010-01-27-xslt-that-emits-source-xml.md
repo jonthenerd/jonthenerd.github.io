@@ -3,8 +3,8 @@ title: XSLT that emits source XML
 date: "2010-01-27"
 author: Jon Badgett
 categories:
-  - Programming
-  - SharePoint
+    - Programming
+    - SharePoint
 draft: false
 slug: xslt-that-emits-source-xml
 ---

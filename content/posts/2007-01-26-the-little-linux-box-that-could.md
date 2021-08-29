@@ -1,11 +1,11 @@
 ---
 title: The little Linux Box that could
-date: "2007-01-25"
+date: "2007-01-26"
 author: Jon Badgett
 categories:
-  - Computers
-  - Linux
-  - Media Center
+    - Computers
+    - Linux
+    - Media Center
 draft: false
 slug: the-little-linux-box-that-could
 ---

@@ -3,7 +3,7 @@ title: Navigation DVD Replacement Tools - Lexus IS250/IS350
 date: "2014-02-09"
 author: Jon Badgett
 categories:
-  - Cars
+    - Cars
 draft: false
 slug: navigation-dvd-replacement-tools-lexus-is250is350
 ---

@@ -3,8 +3,8 @@ title: The right tools for the job
 date: "2010-02-03"
 author: Jon Badgett
 categories:
-  - Cars
-  - DIY
+    - Cars
+    - DIY
 draft: false
 slug: the-right-tools-for-the-job
 ---

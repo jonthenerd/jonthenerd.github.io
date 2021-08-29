@@ -3,8 +3,8 @@ title: "SharePoint 2010: Setting custom User Profile properties Gotchas"
 date: "2011-10-28"
 author: Jon Badgett
 categories:
-  - Programming
-  - SharePoint
+    - Programming
+    - SharePoint
 draft: false
 slug: sharepoint-2010-setting-custom-user-profile-properties-gotchas
 ---

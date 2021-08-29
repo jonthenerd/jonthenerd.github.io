@@ -3,10 +3,10 @@ title: Sonic Fan Remix
 date: "2010-10-21"
 author: Jon Badgett
 categories:
-  - Freeware
-  - Fun
-  - Gaming
-  - Video Games
+    - Freeware
+    - Fun
+    - Gaming
+    - Video Games
 draft: false
 slug: sonic-fan-remix
 ---

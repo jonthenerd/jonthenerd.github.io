@@ -1,12 +1,11 @@
 ---
-title:
-  "SharePoint 2010: Remove existing reusable content items using PowerShell"
+title: "SharePoint 2010: Remove existing reusable content items using PowerShell"
 date: "2011-07-06"
 author: Jon Badgett
 categories:
-  - PowerShell
-  - Programming
-  - SharePoint
+    - PowerShell
+    - Programming
+    - SharePoint
 draft: false
 slug: sharepoint-2010-remove-existing-reusable-content-items-using-powershell
 ---

@@ -1,14 +1,15 @@
 ---
 title: Forced Enjoyment
-date: "2007-01-28"
+date: "2007-01-29"
 slug: forced-enjoyment
 author: Jon Badgett
 categories:
-  - Linux
-  - Media Center
-  - ubuntu
+    - Linux
+    - Media Center
+    - ubuntu
 draft: false
 ---
+
 This isn't the first time I've tried Ubuntu (or Linux for that matter). Several
 times in the past few years (since 2002 actually), I'd get the "Linux Bug" and
 repartition my hard drive to be able to try out some new distro. This would

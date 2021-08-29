@@ -9,9 +9,10 @@ const postsPathNew = "./content/posts-new";
 
 function formatDate(strValue) {
     const d = new Date(strValue);
-    return `${d.getFullYear()}-${("0"+(d.getMonth()+1)).slice(-2)}-${("0" + d.getDate()).slice(-2)}`;
+    return `${d.getFullYear()}-${("0" + (d.getMonth() + 1)).slice(-2)}-${(
+        "0" + d.getDate()
+    ).slice(-2)}`;
 }
-
 
 fs.readdirSync(postsPath)
     .filter((f) => f.endsWith(".md"))
@@ -26,10 +27,8 @@ fs.readdirSync(postsPath)
         const postFormat = prettier.format(preFormat, {
             printWidth: 80,
             proseWrap: "always",
-            parser: "markdown"
+            parser: "markdown",
         });
 
         fs.writeFileSync(path.join(postsPath, file), postFormat);
-
     });
-
