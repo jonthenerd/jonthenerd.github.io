@@ -2,9 +2,9 @@
     "name": "jonthenerd.github.io",
     "version": "1.0.0",
     "description": "",
-    "main": "fix-yaml.js",
+    "main": "",
     "scripts": {
-        "build:site": "hugo --minify",
+        "build:site": "hugo",
         "build:styles": "sass scss/dark.scss:static/assets/dark.css scss/light.scss:static/assets/light.css scss/style.scss:static/assets/style.css --style compressed",
         "build": "npm run build:styles && npm run build:site",
         "dev:site": "hugo server",
