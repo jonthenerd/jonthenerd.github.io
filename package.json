@@ -4,7 +4,7 @@
     "description": "",
     "main": "fix-yaml.js",
     "scripts": {
-        "build:site": "hugo",
+        "build:site": "hugo --minify",
         "build:styles": "sass scss/dark.scss:static/assets/dark.css scss/light.scss:static/assets/light.css scss/style.scss:static/assets/style.css --style compressed",
         "build": "npm run build:styles && npm run build:site",
         "dev:site": "hugo server",
@@ -27,6 +27,6 @@
         "gray-matter": "^4.0.3",
         "prettier": "^2.3.2",
         "prettier-plugin-go-template": "0.0.11",
-        "sass": "^1.38.0"
+        "sass": "^1.38.2"
     }
 }

@@ -1,6 +1,10 @@
-baseURL: "http://www.jonthenerd.com/"
+baseURL: "http://www.jonthenerd.com"
 languageCode: "en-us"
 title: "JonTheNerd"
+
+params:
+    repoOrigin: https://github.com/jonthenerd/jonthenerd.github.io
+
 permalinks:
     posts: /:year/:month/:day/:slug/
 
