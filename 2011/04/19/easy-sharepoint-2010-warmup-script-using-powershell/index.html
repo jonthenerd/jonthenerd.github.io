@@ -35,30 +35,30 @@
 
         <main>
             
-    <article class="single" itemscope itemtype="http://schema.org/BlogPosting">
-        <header>
-            <h1 itemprop="name headline">
-                <div class="container">Easy SharePoint 2010 warmup Script using PowerShell</div>
-            </h1>
-            <div class="post-meta">
-                <div class="container">
-                    By Jon Badgett
-                    | <time
-                        datetime=" 2011-04-19"
-                        itemprop="datePublished"
-                        >April 19, 2011</time
-                    >
-                    
-                        | Posted in
-                        <a href="/categories/programming">Programming</a>, <a href="/categories/sharepoint">SharePoint</a>, <a href="/categories/powershell">PowerShell</a>
-
-                    
-                </div>
-            </div>
-        </header>
-        <div itemprop="articleBody">
+<article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name headline">
+            <div class="container">Easy SharePoint 2010 warmup Script using PowerShell</div>
+        </h1>
+        <div class="post-meta">
             <div class="container">
-            <p>|- This idea comes from
+                By Jon Badgett
+                | <time
+                    datetime=" 2011-04-19"
+                    itemprop="datePublished"
+                    >April 19, 2011</time
+                >
+                
+                    | Posted in
+                    <a href="/categories/programming">Programming</a>, <a href="/categories/sharepoint">SharePoint</a>, <a href="/categories/powershell">PowerShell</a>
+
+                
+            </div>
+        </div>
+    </header>
+    <div itemprop="articleBody">
+        <div class="container">
+        <p>|- This idea comes from
 <!-- raw HTML omitted -->Kirk
 Hofer&rsquo;s blog<!-- raw HTML omitted -->, but modfied to use the SharePoint 2010 powershell commandlets
 and not care about specifying credentials in the script. I figured most people
@@ -68,20 +68,19 @@ each one.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="k">function</span> <span class="nb">Get-WebPage</span><span class="p">(</span><span class="no">[string]</span><span class="nv">$url</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$wc</span> <span class="p">=</span> <span class="nb">new-object</span> <span class="n">net</span><span class="p">.</span><span class="n">webclient</span><span class="p">;</span> <span class="nv">$wc</span><span class="p">.</span><span class="n">credentials</span> <span class="p">=</span> <span class="no">[System.Net.CredentialCache]</span><span class="p">::</span><span class="n">DefaultCredentials</span><span class="p">;</span> <span class="nv">$pageContents</span> <span class="p">=</span> <span class="nv">$wc</span><span class="p">.</span><span class="n">DownloadString</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span> <span class="nv">$wc</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span> <span class="k">return</span> <span class="nv">$pageContents</span><span class="p">;</span> <span class="p">}</span>
 <span class="nb">Get-SPAlternateUrl</span> <span class="n">-Zone</span> <span class="k">Default</span> <span class="p">|</span> <span class="nb">foreach-object</span> <span class="p">{</span> <span class="nb">write-host</span> <span class="nv">$_</span><span class="p">.</span><span class="n">IncomingUrl</span><span class="p">;</span> <span class="nv">$html</span> <span class="p">=</span> <span class="nb">Get-WebPage</span> <span class="n">-url</span> <span class="nv">$_</span><span class="p">.</span><span class="n">IncomingUrl</span><span class="p">;</span> <span class="p">}</span> <span class="p">```</span>
 </code></pre></div>
-            </div>
         </div>
-    </article>
+    </div>
+</article>
 
         </main>
         
-    <div class="feedback">
-        <div class="container">
-            <h3>Feedback</h3>
-            <p>Submit feedback, ask questions, or just leave a comment with a
-                <a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BEasy%20SharePoint%202010%20warmup%20Script%20using%20PowerShell%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2011-04-19-easy-sharepoint-2010-warmup-script-using-powershell.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2011%2f04%2f19%2feasy-sharepoint-2010-warmup-script-using-powershell%2f">GitHub Issue</a></p>
-        </div>
+<div class="feedback">
+    <div class="container">
+        <h3>Feedback</h3>
+        <p>Submit feedback, ask questions, or just leave a comment with a
+            <a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BEasy%20SharePoint%202010%20warmup%20Script%20using%20PowerShell%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2011-04-19-easy-sharepoint-2010-warmup-script-using-powershell.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2011%2f04%2f19%2feasy-sharepoint-2010-warmup-script-using-powershell%2f">GitHub Issue</a></p>
     </div>
-something something
+</div>
 
         <footer>
     <div class="container">

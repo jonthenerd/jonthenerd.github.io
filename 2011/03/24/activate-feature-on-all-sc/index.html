@@ -35,49 +35,48 @@
 
         <main>
             
-    <article class="single" itemscope itemtype="http://schema.org/BlogPosting">
-        <header>
-            <h1 itemprop="name headline">
-                <div class="container">Activate Feature on all Site Collections in a Web Application</div>
-            </h1>
-            <div class="post-meta">
-                <div class="container">
-                    By Jon Badgett
-                    | <time
-                        datetime=" 2011-03-24"
-                        itemprop="datePublished"
-                        >March 24, 2011</time
-                    >
-                    
-                        | Posted in
-                        <a href="/categories/programming">Programming</a>, <a href="/categories/sharepoint">SharePoint</a>
-
-                    
-                </div>
-            </div>
-        </header>
-        <div itemprop="articleBody">
+<article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name headline">
+            <div class="container">Activate Feature on all Site Collections in a Web Application</div>
+        </h1>
+        <div class="post-meta">
             <div class="container">
-            <p>This is pretty easy using powerhell with SharePoint 2010:</p>
+                By Jon Badgett
+                | <time
+                    datetime=" 2011-03-24"
+                    itemprop="datePublished"
+                    >March 24, 2011</time
+                >
+                
+                    | Posted in
+                    <a href="/categories/programming">Programming</a>, <a href="/categories/sharepoint">SharePoint</a>
+
+                
+            </div>
+        </div>
+    </header>
+    <div itemprop="articleBody">
+        <div class="container">
+        <p>This is pretty easy using powerhell with SharePoint 2010:</p>
 <p>[powershell]Get-SPWebApplication
 &quot;http://WebApplicationUrl:PortIfNeeded&quot; | Get-SPSite |
 ForEach-Object{Enable-SPFeature &quot;Solution.Name<em>FeatureName&quot; -url
 $</em>.Url}[/powershell]</p>
 
-            </div>
         </div>
-    </article>
+    </div>
+</article>
 
         </main>
         
-    <div class="feedback">
-        <div class="container">
-            <h3>Feedback</h3>
-            <p>Submit feedback, ask questions, or just leave a comment with a
-                <a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BActivate%20Feature%20on%20all%20Site%20Collections%20in%20a%20Web%20Application%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2011-03-24-activate-feature-on-all-sc.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2011%2f03%2f24%2factivate-feature-on-all-sc%2f">GitHub Issue</a></p>
-        </div>
+<div class="feedback">
+    <div class="container">
+        <h3>Feedback</h3>
+        <p>Submit feedback, ask questions, or just leave a comment with a
+            <a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BActivate%20Feature%20on%20all%20Site%20Collections%20in%20a%20Web%20Application%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2011-03-24-activate-feature-on-all-sc.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2011%2f03%2f24%2factivate-feature-on-all-sc%2f">GitHub Issue</a></p>
     </div>
-something something
+</div>
 
         <footer>
     <div class="container">
