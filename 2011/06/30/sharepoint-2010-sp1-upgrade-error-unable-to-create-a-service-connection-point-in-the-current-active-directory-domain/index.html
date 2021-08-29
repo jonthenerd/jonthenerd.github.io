@@ -1,67 +1,91 @@
-<!doctype html><html lang=en>
-<head prefix="og: http://ogp.me/ns#">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
-<title>SharePoint 2010 SP1 Upgrade Error "Unable to create a Service Connection Point in the current Active Directory domain." &ndash; JonTheNerd</title>
-<meta name=color-scheme content="dark light">
-<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
-<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
-<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
-<link rel=stylesheet href=/assets/style.css>
-</head>
-<body>
-<header class=site-header>
-<div class=container>
-<h1>
-<a href=/>JonTheNerd</a>
-</h1>
-<nav>
-<ul>
-<li><a href=/about>About</a></li>
-</ul>
-</nav>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>SharePoint 2010 SP1 Upgrade Error &#34;Unable to create a Service Connection Point in the current Active Directory domain.&#34; &ndash; JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        </head>
+    <body>
+        
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-<main>
-<article class=single itemscope itemtype=http://schema.org/BlogPosting>
-<header>
-<h1 itemprop="name headline">
-<div class=container>SharePoint 2010 SP1 Upgrade Error "Unable to create a Service Connection Point in the current Active Directory domain."</div>
-</h1>
-<div class=post-meta>
-<div class=container>
-By Jon Badgett
-| <time datetime=" 2011-06-30" itemprop=datePublished>June 30, 2011</time>
-| Posted in
-<a href=/categories/programming>Programming</a>, <a href=/categories/sharepoint>SharePoint</a>
-</div>
-</div>
-</header>
-<div itemprop=articleBody>
-<div class=container>
-<p>Full error: &ldquo;Unable to create a Service Connection Point in the current Active
+
+        <main>
+            
+    <article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+            <h1 itemprop="name headline">
+                <div class="container">SharePoint 2010 SP1 Upgrade Error &#34;Unable to create a Service Connection Point in the current Active Directory domain.&#34;</div>
+            </h1>
+            <div class="post-meta">
+                <div class="container">
+                    By Jon Badgett
+                    | <time
+                        datetime=" 2011-06-30"
+                        itemprop="datePublished"
+                        >June 30, 2011</time
+                    >
+                    
+                        | Posted in
+                        <a href="/categories/programming">Programming</a>, <a href="/categories/sharepoint">SharePoint</a>
+
+                    
+                </div>
+            </div>
+        </header>
+        <div itemprop="articleBody">
+            <div class="container">
+            <p>Full error: &ldquo;Unable to create a Service Connection Point in the current Active
 Directory domain. Verify that the SharePoint container exists in the current
 domain and that you have rights to write to it.&rdquo;</p>
 <p>After installing SP2010 SP1, PSConfig failed and the log had the above error. I
 found that the timer service was stopped and restarted it. Retried install - no
 error.</p>
-</div>
-</div>
-</article>
-</main>
-<div class=feedback>
-<div class=container>
-<h3>Feedback</h3>
-<p>Submit feedback, ask questions, or just leave a comment with a
-<a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BSharePoint%202010%20SP1%20Upgrade%20Error%20%22Unable%20to%20create%20a%20Service%20Connection%20Point%20in%20the%20current%20Active%20Directory%20domain.%22%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2011-06-30-sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2011%2f06%2f30%2fsharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain%2f">GitHub Issue</a></p>
-</div>
-</div>
+
+            </div>
+        </div>
+    </article>
+
+        </main>
+        
+    <div class="feedback">
+        <div class="container">
+            <h3>Feedback</h3>
+            <p>Submit feedback, ask questions, or just leave a comment with a
+                <a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BSharePoint%202010%20SP1%20Upgrade%20Error%20%22Unable%20to%20create%20a%20Service%20Connection%20Point%20in%20the%20current%20Active%20Directory%20domain.%22%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2011-06-30-sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2011%2f06%2f30%2fsharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain%2f">GitHub Issue</a></p>
+        </div>
+    </div>
 something something
-<footer>
-<div class=container>
-built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
-</div>
+
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
 </footer>
-</body>
+
+    </body>
 </html>

@@ -1,67 +1,91 @@
-<!doctype html><html lang=en>
-<head prefix="og: http://ogp.me/ns#">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
-<title>Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully with Android &ndash; JonTheNerd</title>
-<meta name=color-scheme content="dark light">
-<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
-<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
-<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
-<link rel=stylesheet href=/assets/style.css>
-</head>
-<body>
-<header class=site-header>
-<div class=container>
-<h1>
-<a href=/>JonTheNerd</a>
-</h1>
-<nav>
-<ul>
-<li><a href=/about>About</a></li>
-</ul>
-</nav>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully with Android &ndash; JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        </head>
+    <body>
+        
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-<main>
-<article class=single itemscope itemtype=http://schema.org/BlogPosting>
-<header>
-<h1 itemprop="name headline">
-<div class=container>Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully with Android</div>
-</h1>
-<div class=post-meta>
-<div class=container>
-By Jon Badgett
-| <time datetime=" 2012-10-05" itemprop=datePublished>October 5, 2012</time>
-| Posted in
-<a href=/categories/android>Android</a>, <a href=/categories/programming>Programming</a>
-</div>
-</div>
-</header>
-<div itemprop=articleBody>
-<div class=container>
-<p>|- I&rsquo;m starting work on a project for my MBA program that involves using a
+
+        <main>
+            
+    <article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+            <h1 itemprop="name headline">
+                <div class="container">Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully with Android</div>
+            </h1>
+            <div class="post-meta">
+                <div class="container">
+                    By Jon Badgett
+                    | <time
+                        datetime=" 2012-10-05"
+                        itemprop="datePublished"
+                        >October 5, 2012</time
+                    >
+                    
+                        | Posted in
+                        <a href="/categories/android">Android</a>, <a href="/categories/programming">Programming</a>
+
+                    
+                </div>
+            </div>
+        </header>
+        <div itemprop="articleBody">
+            <div class="container">
+            <p>|- I&rsquo;m starting work on a project for my MBA program that involves using a
 mobile RFID reader with an Android device.</p>
 <p>I&rsquo;ve purchased a Nexus 7
 for the project, and the school has loaned me an
-Intermec IP30 RFID
-reader. I&rsquo;m going to detail my steps in getting this going here.</p>
-</div>
-</div>
-</article>
-</main>
-<div class=feedback>
-<div class=container>
-<h3>Feedback</h3>
-<p>Submit feedback, ask questions, or just leave a comment with a
-<a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BCommunicating%20with%20the%20Intermec%20IP30%20RFID%20reader%20over%20bluetooth...hopefully%20with%20Android%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2012-10-05-communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2012%2f10%2f05%2fcommunicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android%2f">GitHub Issue</a></p>
-</div>
-</div>
+<!-- raw HTML omitted -->Intermec IP30 RFID
+reader<!-- raw HTML omitted -->. I&rsquo;m going to detail my steps in getting this going here.</p>
+<!-- raw HTML omitted -->
+            </div>
+        </div>
+    </article>
+
+        </main>
+        
+    <div class="feedback">
+        <div class="container">
+            <h3>Feedback</h3>
+            <p>Submit feedback, ask questions, or just leave a comment with a
+                <a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BCommunicating%20with%20the%20Intermec%20IP30%20RFID%20reader%20over%20bluetooth...hopefully%20with%20Android%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2012-10-05-communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2012%2f10%2f05%2fcommunicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android%2f">GitHub Issue</a></p>
+        </div>
+    </div>
 something something
-<footer>
-<div class=container>
-built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
-</div>
+
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
 </footer>
-</body>
+
+    </body>
 </html>

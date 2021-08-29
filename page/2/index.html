@@ -1,221 +1,619 @@
-<!doctype html><html lang=en>
-<head prefix="og: http://ogp.me/ns#">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
-<title>JonTheNerd</title>
-<meta name=color-scheme content="dark light">
-<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
-<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
-<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
-<link rel=stylesheet href=/assets/style.css>
-<link rel=alternate type=application/rss+xml href=http://www.jonthenerd.com/feed.xml title=JonTheNerd>
-</head>
-<body>
-<header class=site-header>
-<div class=container>
-<h1>
-<a href=/>JonTheNerd</a>
-</h1>
-<nav>
-<ul>
-<li><a href=/about>About</a></li>
-</ul>
-</nav>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        <link rel="alternate" type="application/rss+xml" href="http://www.jonthenerd.com/feed.xml" title="JonTheNerd" />
+        </head>
+    <body>
+        
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-<main>
-<div class=homepage-content>
-<div class=container>
-</div>
-</div>
-<div class=post-list>
-<div class=container>
-<article>
-<h2><a href=/2014/09/05/cms-made-simple-post-upgrade-to-v1-11-11/>CMS Made Simple - Post-Upgrade to v1.11.11</a></h2>
-<div class=post-meta>
-<time datetime=2014-09-05 itemprop=datePublished>September 5, 2014</time>
-</div>
-<div class=summary>
-<p>After finishing an upgrade of another site&rsquo;s CMS Made Simple to version 1.11.11,
+
+        <main>
+            
+    
+
+    <div class="homepage-content">
+        <div class="container">
+            
+            
+        </div>
+    </div>
+    <div class="post-list">
+        <div class="container">
+            
+            
+                <article>
+                    <h2><a href="/2014/09/05/cms-made-simple-post-upgrade-to-v1-11-11/">CMS Made Simple - Post-Upgrade to v1.11.11</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2014-09-05"
+                            itemprop="datePublished"
+                            >September 5, 2014</time
+                        >
+                    </div>
+                    <div class="summary">
+                        <p>After finishing an upgrade of another site&rsquo;s CMS Made Simple to version 1.11.11,
 I found that in certain areas I was seeing warning messages at the top of the
 screen after editing calendar events within CGCalendar.</p>
-</div>
-<div>
-<a href=/2014/09/05/cms-made-simple-post-upgrade-to-v1-11-11/>Read More...</a>
-</div>
-</article>
-<article>
-<h2><a href=/2014/09/02/cms-made-simple-enable-ssl-for-the-admin-directory/>CMS Made Simple - Enable SSL for the Admin Directory</a></h2>
-<div class=post-meta>
-<time datetime=2014-09-02 itemprop=datePublished>September 2, 2014</time>
-</div>
-<div class=summary>
-<p>Recently updated a site I maintain that uses the great
-CMS Made Simple and had to
+                    </div>
+                    
+                        <div>
+                            <a href="/2014/09/05/cms-made-simple-post-upgrade-to-v1-11-11/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2014/09/02/cms-made-simple-enable-ssl-for-the-admin-directory/">CMS Made Simple - Enable SSL for the Admin Directory</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2014-09-02"
+                            itemprop="datePublished"
+                            >September 2, 2014</time
+                        >
+                    </div>
+                    <div class="summary">
+                        <p>Recently updated a site I maintain that uses the great
+<!-- raw HTML omitted -->CMS Made Simple<!-- raw HTML omitted --> and had to
 reconfigure SSL (https) for the administrative areas of the site. I&rsquo;ve done this
 previously, but had forgotten exactly what I did.</p>
-</div>
-<div>
-<a href=/2014/09/02/cms-made-simple-enable-ssl-for-the-admin-directory/>Read More...</a>
-</div>
-</article>
-<article>
-<h2><a href=/2014/02/09/navigation-dvd-replacement-tools-lexus-is250is350/>Navigation DVD Replacement Tools - Lexus IS250/IS350</a></h2>
-<div class=post-meta>
-<time datetime=2014-02-09 itemprop=datePublished>February 9, 2014</time>
-</div>
-<div class=summary>
-<p>|- I decided to upgrade the navigation DVD in my car. Being who I am, this is a
+                    </div>
+                    
+                        <div>
+                            <a href="/2014/09/02/cms-made-simple-enable-ssl-for-the-admin-directory/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2014/02/09/navigation-dvd-replacement-tools-lexus-is250is350/">Navigation DVD Replacement Tools - Lexus IS250/IS350</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2014-02-09"
+                            itemprop="datePublished"
+                            >February 9, 2014</time
+                        >
+                    </div>
+                    <div class="summary">
+                        <p>|- I decided to upgrade the navigation DVD in my car. Being who I am, this is a
 DIY project (once you get the DVD, of course).</p>
-</div>
-<div>
-<a href=/2014/02/09/navigation-dvd-replacement-tools-lexus-is250is350/>Read More...</a>
-</div>
-</article>
-<article>
-<h2><a href=/2013/09/13/playing-with-open-source-automation/>Playing with Open Source Automation</a></h2>
-<div class=post-meta>
-<time datetime=2013-09-13 itemprop=datePublished>September 13, 2013</time>
-</div>
-<div class=summary>
-<p>We&rsquo;re preparing to move into a new house and I&rsquo;ve discovered that I&rsquo;m interested
-in home automation. Well&mldr; not really home automation so much as the nerdy
+                    </div>
+                    
+                        <div>
+                            <a href="/2014/02/09/navigation-dvd-replacement-tools-lexus-is250is350/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2013/09/13/playing-with-open-source-automation/">Playing with Open Source Automation</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2013-09-13"
+                            itemprop="datePublished"
+                            >September 13, 2013</time
+                        >
+                    </div>
+                    <div class="summary">
+                        <p>We&rsquo;re preparing to move into a new house and I&rsquo;ve discovered that I&rsquo;m interested
+in home automation. Well&hellip; not really home automation so much as the nerdy
 aspect of controlling physical things through code.</p>
-</div>
-<div>
-<a href=/2013/09/13/playing-with-open-source-automation/>Read More...</a>
-</div>
-</article>
-<article>
-<h2><a href=/2013/01/22/sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy/>SharePoint 2010 - MigrateUser Error 'Value cannot be null. Parameter name: userProfileApplicationProxy'</a></h2>
-<div class=post-meta>
-<time datetime=2013-01-22 itemprop=datePublished>January 22, 2013</time>
-</div>
-<div class=summary>
-When using the stsadm command:
+                    </div>
+                    
+                        <div>
+                            <a href="/2013/09/13/playing-with-open-source-automation/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2013/01/22/sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy/">SharePoint 2010 - MigrateUser Error &#39;Value cannot be null. Parameter name: userProfileApplicationProxy&#39;</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2013-01-22"
+                            itemprop="datePublished"
+                            >January 22, 2013</time
+                        >
+                    </div>
+                    <div class="summary">
+                        When using the stsadm command:
 stsadm.exe -o migrateuser oldlogin &ldquo;domainusername&rdquo; -newlogin &ldquo;domainnewusername&rdquo;
 We received this error message:
 Value cannot be null. Parameter name: userProfileApplicationProxy
 If you look in the ULS logs, you&rsquo;ll find that there is an Access Denied event occuring. We were able to resolve this by going into Central Administration, selecting the User Service Application, and ensuring that the administrator account being used to run the above command has Full Control rights to the Service Application.
-</div>
-<div>
-<a href=/2013/01/22/sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy/>Read More...</a>
-</div>
-</article>
-<article>
-<h2><a href=/2012/10/07/ip30-programming-part-2/>IP30 Programming - Part 2</a></h2>
-<div class=post-meta>
-<time datetime=2012-10-07 itemprop=datePublished>October 7, 2012</time>
-</div>
-<div class=summary>
-<p>|-</p>
-</div>
-<div>
-<a href=/2012/10/07/ip30-programming-part-2/>Read More...</a>
-</div>
-</article>
-<article>
-<h2><a href=/2012/10/05/communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android/>Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully with Android</a></h2>
-<div class=post-meta>
-<time datetime=2012-10-05 itemprop=datePublished>October 5, 2012</time>
-</div>
-<div class=summary>
-<p>|- I&rsquo;m starting work on a project for my MBA program that involves using a
+                    </div>
+                    
+                        <div>
+                            <a href="/2013/01/22/sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2012/10/07/ip30-programming-part-2/">IP30 Programming - Part 2</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2012-10-07"
+                            itemprop="datePublished"
+                            >October 7, 2012</time
+                        >
+                    </div>
+                    <div class="summary">
+                        <p>|-</p>
+                    </div>
+                    
+                        <div>
+                            <a href="/2012/10/07/ip30-programming-part-2/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2012/10/05/communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android/">Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully with Android</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2012-10-05"
+                            itemprop="datePublished"
+                            >October 5, 2012</time
+                        >
+                    </div>
+                    <div class="summary">
+                        <p>|- I&rsquo;m starting work on a project for my MBA program that involves using a
 mobile RFID reader with an Android device.</p>
-</div>
-<div>
-<a href=/2012/10/05/communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android/>Read More...</a>
-</div>
-</article>
-<article>
-<h2><a href=/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/>SharePoint 2010: Observations and Revelations on the User Profile Sync Service and the Update-SPProfilePhotoStore cmdlet</a></h2>
-<div class=post-meta>
-<time datetime=2012-01-20 itemprop=datePublished>January 20, 2012</time>
-</div>
-<div class=summary>
-These are my notes while trying to diagnose and better understnad some issues and oddities with the SharePoint 2010 User Profile Service Application.
+                    </div>
+                    
+                        <div>
+                            <a href="/2012/10/05/communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/">SharePoint 2010: Observations and Revelations on the User Profile Sync Service and the Update-SPProfilePhotoStore cmdlet</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2012-01-20"
+                            itemprop="datePublished"
+                            >January 20, 2012</time
+                        >
+                    </div>
+                    <div class="summary">
+                        These are my notes while trying to diagnose and better understnad some issues and oddities with the SharePoint 2010 User Profile Service Application.
 If you&rsquo;re wanting to populate pictures into people&rsquo;s profiles, you&rsquo;ll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is Redgate Reflector(a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing.
-</div>
-<div>
-<a href=/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/>Read More...</a>
-</div>
-</article>
-<article>
-<h2><a href=/2012/01/04/sharepoint-2010-ribbon-customactions/>SharePoint 2010: Ribbon CustomActions</a></h2>
-<div class=post-meta>
-<time datetime=2012-01-04 itemprop=datePublished>January 4, 2012</time>
-</div>
-<div class=summary>
-Developing a CustomAction for the Ribbon and SharePoint 2010? If you&rsquo;re like me - you follow some instructions online, deploy it once to verify it works, then change as needed and redeploy. One catch though - the data needed for the ribbon custom action to work is fetched by the browser and CACHED! So you won&rsquo;t see your changes&mldr;until you clear your cache. Stupid but true. You&rsquo;re welcome.
-</div>
-</article>
-<article>
-<h2><a href=/2011/12/01/hands-down-the-best-blog-post-on-helpful-utility-programs-ever/>Hands down, the best blog post on helpful utility programs ever.</a></h2>
-<div class=post-meta>
-<time datetime=2011-12-01 itemprop=datePublished>December 1, 2011</time>
-</div>
-<div class=summary>
-If you&rsquo;re a developer, or an admistrator, or just command your home machine with extreme prejudice - you need to read Scott Hanselman&rsquo;s 2011 Ultimate Developer and Power Users Tool List for Windows. Lots of good utilities to be found there. Some may even change your life&mldr;
-</div>
-</article>
-<nav class=pagination aria-label=Pagination>
-<ul>
-<li class=first>
-<a href=/ aria-label=First title=First>
-<span aria-hidden=true>««</span>
-</a>
-</li>
-<li class=previous>
-<a href=/ aria-label=Previous title=Previous>
-<span aria-hidden=true>«</span>
-</a>
-</li>
-<li>
-<a href=/>
-1
-</a>
-</li>
-<li>
-<a href=/page/2/ aria-label="Current Page, Page
-                                2" aria-current=true>
-2
-</a>
-</li>
-<li>
-<a href=/page/3/>
-3
-</a>
-</li>
-<li>
-<a href=/page/4/>
-4
-</a>
-</li>
-<li>
-<a href=/page/5/>
-5
-</a>
-</li>
-<li class=next>
-<a href=/page/3/ aria-label=Next title=Next>
-<span aria-hidden=true>»</span>
-</a>
-</li>
-<li class=last>
-<a href=/page/8/ aria-label=Last title=Last>
-<span aria-hidden=true>»»</span>
-</a>
-</li>
-</ul>
-</nav>
-</div>
-</div>
-</main>
-<footer>
-<div class=container>
-built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
-</div>
+                    </div>
+                    
+                        <div>
+                            <a href="/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2012/01/04/sharepoint-2010-ribbon-customactions/">SharePoint 2010: Ribbon CustomActions</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2012-01-04"
+                            itemprop="datePublished"
+                            >January 4, 2012</time
+                        >
+                    </div>
+                    <div class="summary">
+                        Developing a CustomAction for the Ribbon and SharePoint 2010? If you&rsquo;re like me - you follow some instructions online, deploy it once to verify it works, then change as needed and redeploy. One catch though - the data needed for the ribbon custom action to work is fetched by the browser and CACHED! So you won&rsquo;t see your changes&hellip;until you clear your cache. Stupid but true. You&rsquo;re welcome.
+                    </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2011/12/01/hands-down-the-best-blog-post-on-helpful-utility-programs-ever/">Hands down, the best blog post on helpful utility programs ever.</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2011-12-01"
+                            itemprop="datePublished"
+                            >December 1, 2011</time
+                        >
+                    </div>
+                    <div class="summary">
+                        If you&rsquo;re a developer, or an admistrator, or just command your home machine with extreme prejudice - you need to read Scott Hanselman&rsquo;s 2011 Ultimate Developer and Power Users Tool List for Windows. Lots of good utilities to be found there. Some may even change your life&hellip;
+                    </div>
+                    
+                </article>
+            
+            
+
+
+
+
+
+
+
+
+
+
+    <nav class="pagination" aria-label="Pagination">
+        <ul>
+            
+            
+                <li class="first">
+                    <a
+                        href="/"
+                        aria-label="First"
+                        title="First"
+                    >
+                        <span aria-hidden="true">««</span>
+                    </a>
+                </li>
+            
+
+
+            
+            
+                <li class="previous">
+                    <a
+                        href="/"
+                        aria-label="Previous"
+                        title="Previous"
+                    >
+                        <span aria-hidden="true">«</span>
+                    </a>
+                </li>
+            
+
+
+            
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+                            
+                        
+
+
+                        
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+                    <li>
+                        <a
+                            href="/"
+                            
+                        >
+                            1
+                        </a>
+                    </li>
+                
+
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+                            
+                        
+
+
+                        
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+                    <li>
+                        <a
+                            href="/page/2/"
+                            
+                                aria-label="Current Page, Page
+                                2" aria-current="true"
+                            
+                        >
+                            2
+                        </a>
+                    </li>
+                
+
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+                            
+                        
+
+
+                        
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+                    <li>
+                        <a
+                            href="/page/3/"
+                            
+                        >
+                            3
+                        </a>
+                    </li>
+                
+
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+                            
+                        
+
+
+                        
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+                    <li>
+                        <a
+                            href="/page/4/"
+                            
+                        >
+                            4
+                        </a>
+                    </li>
+                
+
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+                            
+                        
+
+
+                        
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+                    <li>
+                        <a
+                            href="/page/5/"
+                            
+                        >
+                            5
+                        </a>
+                    </li>
+                
+
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+
+
+                        
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+
+
+                        
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+
+
+                        
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+
+            
+
+
+            
+            
+                <li class="next">
+                    <a
+                        href="/page/3/"
+                        aria-label="Next"
+                        title="Next"
+                    >
+                        <span aria-hidden="true">»</span>
+                    </a>
+                </li>
+            
+
+
+            
+            
+                <li class="last">
+                    <a
+                        href="/page/8/"
+                        aria-label="Last"
+                        title="Last"
+                    >
+                        <span aria-hidden="true">»»</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+
+
+        </div>
+    </div>
+
+        </main>
+        
+            
+        
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
 </footer>
-</body>
+
+    </body>
 </html>

@@ -1,1 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Media Center on JonTheNerd</title><link>http://www.jonthenerd.com/categories/media-center/</link><description>Recent content in Media Center on JonTheNerd</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 29 Jan 2007 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/categories/media-center/feed.xml" rel="self" type="application/rss+xml"/><item><title>Forced Enjoyment</title><link>http://www.jonthenerd.com/2007/01/29/forced-enjoyment/</link><pubDate>Mon, 29 Jan 2007 00:00:00 +0000</pubDate><guid>http://www.jonthenerd.com/2007/01/29/forced-enjoyment/</guid><description>This isn&amp;rsquo;t the first time I&amp;rsquo;ve tried Ubuntu (or Linux for that matter). Several times in the past few years (since 2002 actually), I&amp;rsquo;d get the &amp;ldquo;Linux Bug&amp;rdquo; and repartition my hard drive to be able to try out some new distro. This would normally come about after I&amp;rsquo;d read some positive review of said distro (or from a friend). What have I tried in the past? I started out on Mandrake (now Mandriva), moved to SUSE 8 &amp;amp; 9, then MEPIS (great distro btw), and now Ubuntu.</description></item><item><title>The little Linux Box that could</title><link>http://www.jonthenerd.com/2007/01/26/the-little-linux-box-that-could/</link><pubDate>Fri, 26 Jan 2007 00:00:00 +0000</pubDate><guid>http://www.jonthenerd.com/2007/01/26/the-little-linux-box-that-could/</guid><description>I decided that in order to tinker without disrupting the smooth operation of my workhorse PC, I ought to just build a testing box. In the event that I can actually tinker enough to stop wanting to tinker (like that&amp;rsquo;s going to happen), I also wanted the PC to serve a dual role as an eventual Media Center PC (Windows or otherwise). So I laid out some requirements:Multiple Core - I&amp;rsquo;ve read that the latest versions of software that play High-Def video (DVD &amp;amp; Blu-Ray) recommend having dual core.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Media Center on JonTheNerd</title>
+    <link>http://www.jonthenerd.com/categories/media-center/</link>
+    <description>Recent content in Media Center on JonTheNerd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 29 Jan 2007 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/categories/media-center/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Forced Enjoyment</title>
+      <link>http://www.jonthenerd.com/2007/01/29/forced-enjoyment/</link>
+      <pubDate>Mon, 29 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2007/01/29/forced-enjoyment/</guid>
+      <description>This isn&amp;rsquo;t the first time I&amp;rsquo;ve tried Ubuntu (or Linux for that matter). Several times in the past few years (since 2002 actually), I&amp;rsquo;d get the &amp;ldquo;Linux Bug&amp;rdquo; and repartition my hard drive to be able to try out some new distro. This would normally come about after I&amp;rsquo;d read some positive review of said distro (or from a friend). What have I tried in the past? I started out on Mandrake (now Mandriva), moved to SUSE 8 &amp;amp; 9, then MEPIS (great distro btw), and now Ubuntu.</description>
+    </item>
+    
+    <item>
+      <title>The little Linux Box that could</title>
+      <link>http://www.jonthenerd.com/2007/01/26/the-little-linux-box-that-could/</link>
+      <pubDate>Fri, 26 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2007/01/26/the-little-linux-box-that-could/</guid>
+      <description>I decided that in order to tinker without disrupting the smooth operation of my workhorse PC, I ought to just build a testing box. In the event that I can actually tinker enough to stop wanting to tinker (like that&amp;rsquo;s going to happen), I also wanted the PC to serve a dual role as an eventual Media Center PC (Windows or otherwise). So I laid out some requirements:Multiple Core - I&amp;rsquo;ve read that the latest versions of software that play High-Def video (DVD &amp;amp; Blu-Ray) recommend having dual core.</description>
+    </item>
+    
+  </channel>
+</rss>

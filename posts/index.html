@@ -1,118 +1,212 @@
-<!doctype html><html lang=en>
-<head prefix="og: http://ogp.me/ns#">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
-<title>JonTheNerd</title>
-<meta name=color-scheme content="dark light">
-<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
-<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
-<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
-<link rel=stylesheet href=/assets/style.css>
-<link rel=alternate type=application/rss+xml href=http://www.jonthenerd.com/posts/feed.xml title=JonTheNerd>
-</head>
-<body>
-<header class=site-header>
-<div class=container>
-<h1>
-<a href=/>JonTheNerd</a>
-</h1>
-<nav>
-<ul>
-<li><a href=/about>About</a></li>
-</ul>
-</nav>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        <link rel="alternate" type="application/rss+xml" href="http://www.jonthenerd.com/posts/feed.xml" title="JonTheNerd" />
+        </head>
+    <body>
+        
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-<main>
-<div class=auto-list>
-<div class=container>
-<header>
-<h1>Posts</h1>
-</header>
-<ul>
-<li>2021-08-28 <a href=http://www.jonthenerd.com/2021/08/28/hugo/>Hugo</a></li>
-<li>2018-05-04 <a href=http://www.jonthenerd.com/2018/05/04/rest-and-flow/>Microsoft Flow: Using the SharePoint REST API</a></li>
-<li>2018-01-17 <a href=http://www.jonthenerd.com/2018/01/17/learning-spfx-pt-2/>SharePoint Framework: Extensions - Application Customizer</a></li>
-<li>2018-01-16 <a href=http://www.jonthenerd.com/2018/01/16/configuring-nvm-for-osx/>Configuring Node Version Manager (NVM) for OS X</a></li>
-<li>2018-01-16 <a href=http://www.jonthenerd.com/2018/01/16/learning-spfx-pt-1/>SharePoint Framework: Getting Started</a></li>
-<li>2017-09-16 <a href=http://www.jonthenerd.com/2017/09/16/managed-props-and-config-cache/>SharePoint: Search Managed Properties missing after full crawl</a></li>
-<li>2016-07-06 <a href=http://www.jonthenerd.com/2016/07/06/the-server-was-unable-to-save/>SharePoint: The server was unable to save the form at this time</a></li>
-<li>2016-04-04 <a href=http://www.jonthenerd.com/2016/04/04/muhimbi-pdf-converter-services-and-infopath-error/>Muhimbi PDF Converter Services & InfoPath Error</a></li>
-<li>2016-03-31 <a href=http://www.jonthenerd.com/2016/03/31/k2-service-account-rights-issue/>K2 - Service Account Rights Issue</a></li>
-<li>2014-11-22 <a href=http://www.jonthenerd.com/2014/11/22/cms-made-simple-hostgator/>CMS Made Simple & HostGator - Can't upload files</a></li>
-<li>2014-09-05 <a href=http://www.jonthenerd.com/2014/09/05/cms-made-simple-post-upgrade-to-v1-11-11/>CMS Made Simple - Post-Upgrade to v1.11.11</a></li>
-<li>2014-09-02 <a href=http://www.jonthenerd.com/2014/09/02/cms-made-simple-enable-ssl-for-the-admin-directory/>CMS Made Simple - Enable SSL for the Admin Directory</a></li>
-<li>2014-02-09 <a href=http://www.jonthenerd.com/2014/02/09/navigation-dvd-replacement-tools-lexus-is250is350/>Navigation DVD Replacement Tools - Lexus IS250/IS350</a></li>
-<li>2013-09-13 <a href=http://www.jonthenerd.com/2013/09/13/playing-with-open-source-automation/>Playing with Open Source Automation</a></li>
-<li>2013-01-22 <a href=http://www.jonthenerd.com/2013/01/22/sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy/>SharePoint 2010 - MigrateUser Error 'Value cannot be null. Parameter name: userProfileApplicationProxy'</a></li>
-<li>2012-10-07 <a href=http://www.jonthenerd.com/2012/10/07/ip30-programming-part-2/>IP30 Programming - Part 2</a></li>
-<li>2012-10-05 <a href=http://www.jonthenerd.com/2012/10/05/communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android/>Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully with Android</a></li>
-<li>2012-01-20 <a href=http://www.jonthenerd.com/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/>SharePoint 2010: Observations and Revelations on the User Profile Sync Service and the Update-SPProfilePhotoStore cmdlet</a></li>
-<li>2012-01-04 <a href=http://www.jonthenerd.com/2012/01/04/sharepoint-2010-ribbon-customactions/>SharePoint 2010: Ribbon CustomActions</a></li>
-<li>2011-12-01 <a href=http://www.jonthenerd.com/2011/12/01/hands-down-the-best-blog-post-on-helpful-utility-programs-ever/>Hands down, the best blog post on helpful utility programs ever.</a></li>
-<li>2011-10-28 <a href=http://www.jonthenerd.com/2011/10/28/sharepoint-2010-setting-custom-user-profile-properties-gotchas/>SharePoint 2010: Setting custom User Profile properties Gotchas</a></li>
-<li>2011-10-18 <a href=http://www.jonthenerd.com/2011/10/18/jons-general-sharepoint-2010-development-tips/>Jon's General SharePoint 2010 Development Tips</a></li>
-<li>2011-09-14 <a href=http://www.jonthenerd.com/2011/09/14/sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly/>SharePoint 2010: The web application at ... could not be found. Verify that you have typed the URL correctly.</a></li>
-<li>2011-08-17 <a href=http://www.jonthenerd.com/2011/08/17/sharepoint-2010-add-a-file-to-the-root-of-your-site-using-powershell/>SharePoint 2010: Add a file to the root of your site using PowerShell</a></li>
-<li>2011-08-16 <a href=http://www.jonthenerd.com/2011/08/16/sharepoint-2010-findinglargestdoclibrary/>SharePoint 2010: Finding the largest document library in a site collection</a></li>
-<li>2011-08-11 <a href=http://www.jonthenerd.com/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/>SharePoint 2010: Unable to delete site/web after SP1</a></li>
-<li>2011-07-21 <a href=http://www.jonthenerd.com/2011/07/21/sharepoint-2010-disable-feature-on-all-web-applications-powershell/>SharePoint 2010: Disable Feature on all Web Applications PowerShell</a></li>
-<li>2011-07-06 <a href=http://www.jonthenerd.com/2011/07/06/sharepoint-2010-remove-existing-reusable-content-items-using-powershell/>SharePoint 2010: Remove existing reusable content items using PowerShell</a></li>
-<li>2011-06-30 <a href=http://www.jonthenerd.com/2011/06/30/sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain/>SharePoint 2010 SP1 Upgrade Error "Unable to create a Service Connection Point in the current Active Directory domain."</a></li>
-<li>2011-06-11 <a href=http://www.jonthenerd.com/2011/06/11/time-moves-on-google-makes-my-extension-irrelevant/>Time moves on. Google makes my extension irrelevant</a></li>
-<li>2011-04-19 <a href=http://www.jonthenerd.com/2011/04/19/easy-sharepoint-2010-warmup-script-using-powershell/>Easy SharePoint 2010 warmup Script using PowerShell</a></li>
-<li>2011-04-05 <a href=http://www.jonthenerd.com/2011/04/05/sharepoint-2010-custom-action-ids-for-site-settings-page/>SharePoint 2010 Custom Action IDs for Site Settings page</a></li>
-<li>2011-03-24 <a href=http://www.jonthenerd.com/2011/03/24/activate-feature-on-all-sc/>Activate Feature on all Site Collections in a Web Application</a></li>
-<li>2011-03-02 <a href=http://www.jonthenerd.com/2011/03/02/trying-to-access-_layoutschangesitemasterpage-aspx-and-receiving-error/>Trying to access _Layouts/ChangeSiteMasterPage.aspx and receiving error</a></li>
-<li>2011-02-28 <a href=http://www.jonthenerd.com/2011/02/28/activation-could-not-be-completed-because-the-infopath-forms-services-support-feature-is-not-present/>Activation could not be completed because the InfoPath Forms Services support feature is not present.</a></li>
-<li>2011-01-14 <a href=http://www.jonthenerd.com/2011/01/14/print-helper-for-google-calendar/>Print Helper for Google Calendar</a></li>
-<li>2011-01-11 <a href=http://www.jonthenerd.com/2011/01/11/disable-throttling-for-a-specific-sharepoint-2010-list-with-powershell/>Disable Throttling for a specific SharePoint 2010 list with PowerShell</a></li>
-<li>2010-12-07 <a href=http://www.jonthenerd.com/2010/12/07/sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/>SharePoint WebPart implementing ICallbackEventHandler does not work properly in Web Part Gallery</a></li>
-<li>2010-10-21 <a href=http://www.jonthenerd.com/2010/10/21/sonic-fan-remix/>Sonic Fan Remix</a></li>
-<li>2010-10-14 <a href=http://www.jonthenerd.com/2010/10/14/sharepoint-content-query-webpart-easy-values/>SharePoint Content Query WebPart easy values</a></li>
-<li>2010-09-29 <a href=http://www.jonthenerd.com/2010/09/29/net-4-and-ftp/>.NET 4 and FTP</a></li>
-<li>2010-09-22 <a href=http://www.jonthenerd.com/2010/09/22/asp-net-padding-oracle/>ASP.NET Padding Oracle</a></li>
-<li>2010-08-01 <a href=http://www.jonthenerd.com/2010/08/01/unreal-tournament-server-on-ubuntu-linux-10-04/>Unreal Tournament Server on Ubuntu Linux (10.04)</a></li>
-<li>2010-07-10 <a href=http://www.jonthenerd.com/2010/07/10/dev-cheat-sheets/>Dev Cheat Sheets</a></li>
-<li>2010-06-13 <a href=http://www.jonthenerd.com/2010/06/13/gimp-how-to-make-fuzzy-border-transparent/>GIMP How to make fuzzy border transparent</a></li>
-<li>2010-06-01 <a href=http://www.jonthenerd.com/2010/06/01/what-motivates-us/>What motivates us?</a></li>
-<li>2010-03-16 <a href=http://www.jonthenerd.com/2010/03/16/anonymous-users-and-aspx-pages-inside-the-_layouts-folder/>Anonymous users and aspx pages inside the _layouts folder</a></li>
-<li>2010-03-10 <a href=http://www.jonthenerd.com/2010/03/10/fastest-xml-editorviewer/>Fastest XML Editor/Viewer</a></li>
-<li>2010-02-26 <a href=http://www.jonthenerd.com/2010/02/26/occasional-spexception-from-getlistitemdatawithcallback/>Occasional SPException from GetListItemDataWithCallback</a></li>
-<li>2010-02-25 <a href=http://www.jonthenerd.com/2010/02/25/unable-to-delete-field-in-sharepoint-library/>Unable to delete field in SharePoint library</a></li>
-<li>2010-02-20 <a href=http://www.jonthenerd.com/2010/02/20/terminal-cancer-patient-gets-restored-car/>Terminal Cancer Patient gets restored car</a></li>
-<li>2010-02-03 <a href=http://www.jonthenerd.com/2010/02/03/the-right-tools-for-the-job/>The right tools for the job</a></li>
-<li>2010-01-27 <a href=http://www.jonthenerd.com/2010/01/27/xslt-that-emits-source-xml/>XSLT that emits source XML</a></li>
-<li>2010-01-15 <a href=http://www.jonthenerd.com/2010/01/15/if-clients-treated-architects-like-they-treat-software-designers/>If clients treated architects like they treat software designers…</a></li>
-<li>2009-10-26 <a href=http://www.jonthenerd.com/2009/10/26/ie8-standards-mode-and-moss/>IE8 Standards Mode and MOSS</a></li>
-<li>2009-10-25 <a href=http://www.jonthenerd.com/2009/10/25/fixing-a-noisy-toilet/>Fixing a noisy toilet</a></li>
-<li>2009-09-18 <a href=http://www.jonthenerd.com/2009/09/18/windows-7-x64-ultimate-taking-the-plunge/>Windows 7 x64 Ultimate - Taking the plunge</a></li>
-<li>2009-06-07 <a href=http://www.jonthenerd.com/2009/06/07/fixing-a-jumpy-cusorpointer-on-your-opticallaser-mouse/>Fixing a jumpy cusor/pointer on your optical/laser mouse</a></li>
-<li>2009-01-11 <a href=http://www.jonthenerd.com/2009/01/11/jon-can-cook/>Jon can cook...</a></li>
-<li>2008-08-18 <a href=http://www.jonthenerd.com/2008/08/18/lenovo-t61-speakers-popping/>Lenovo T61 Speakers popping</a></li>
-<li>2008-08-02 <a href=http://www.jonthenerd.com/2008/08/02/code-memories/>Code Memories?</a></li>
-<li>2008-06-19 <a href=http://www.jonthenerd.com/2008/06/19/active-directory-homedrive-home-folder/>Active Directory homeDrive (Home Folder)</a></li>
-<li>2008-06-12 <a href=http://www.jonthenerd.com/2008/06/12/boxes-of-orden/>Boxes of Orden</a></li>
-<li>2008-06-12 <a href=http://www.jonthenerd.com/2008/06/12/eeepc-not-for-the-masses/>eeePC - not for the masses</a></li>
-<li>2008-06-12 <a href=http://www.jonthenerd.com/2008/06/12/finding-the-last-login-date-for-all-profiles/>Finding the last login date for all profiles</a></li>
-<li>2007-05-30 <a href=http://www.jonthenerd.com/2007/05/30/laptop-bioscmos-reset-pain/>Laptop BIOS/CMOS reset = pain</a></li>
-<li>2007-05-11 <a href=http://www.jonthenerd.com/2007/05/11/the-resurgence-of-the-adventure-game-genre/>The Resurgence of the Adventure Game Genre</a></li>
-<li>2007-04-13 <a href=http://www.jonthenerd.com/2007/04/13/winaudit-a-shameless-plug-for-a-nifty-tool/>WinAudit - a shameless plug for a nifty tool</a></li>
-<li>2007-03-11 <a href=http://www.jonthenerd.com/2007/03/11/spoofing-the-mac-commercials/>Spoofing the Mac Commercials</a></li>
-<li>2007-02-10 <a href=http://www.jonthenerd.com/2007/02/10/docx-file-converter/>docx file converter</a></li>
-<li>2007-02-04 <a href=http://www.jonthenerd.com/2007/02/04/increasing-the-wine-font-size/>Increasing the Wine font size</a></li>
-<li>2007-01-29 <a href=http://www.jonthenerd.com/2007/01/29/forced-enjoyment/>Forced Enjoyment</a></li>
-<li>2007-01-26 <a href=http://www.jonthenerd.com/2007/01/26/decided-it-was-time-to-start-a-blog/>Decided it was time to start a blog</a></li>
-<li>2007-01-26 <a href=http://www.jonthenerd.com/2007/01/26/the-little-linux-box-that-could/>The little Linux Box that could</a></li>
-</ul>
-</div>
-</div>
-</main>
-<footer>
-<div class=container>
-built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
-</div>
+
+        <main>
+            
+    <div class="auto-list">
+        <div class="container">
+            <header>
+                <h1>Posts</h1>
+            </header>
+            
+
+            <ul>
+                
+                <li>2021-08-28 <a href="http://www.jonthenerd.com/2021/08/28/hugo/">Hugo</a></li>
+                
+                <li>2018-05-04 <a href="http://www.jonthenerd.com/2018/05/04/rest-and-flow/">Microsoft Flow: Using the SharePoint REST API</a></li>
+                
+                <li>2018-01-17 <a href="http://www.jonthenerd.com/2018/01/17/learning-spfx-pt-2/">SharePoint Framework: Extensions - Application Customizer</a></li>
+                
+                <li>2018-01-16 <a href="http://www.jonthenerd.com/2018/01/16/configuring-nvm-for-osx/">Configuring Node Version Manager (NVM) for OS X</a></li>
+                
+                <li>2018-01-16 <a href="http://www.jonthenerd.com/2018/01/16/learning-spfx-pt-1/">SharePoint Framework: Getting Started</a></li>
+                
+                <li>2017-09-16 <a href="http://www.jonthenerd.com/2017/09/16/managed-props-and-config-cache/">SharePoint: Search Managed Properties missing after full crawl</a></li>
+                
+                <li>2016-07-06 <a href="http://www.jonthenerd.com/2016/07/06/the-server-was-unable-to-save/">SharePoint: The server was unable to save the form at this time</a></li>
+                
+                <li>2016-04-04 <a href="http://www.jonthenerd.com/2016/04/04/muhimbi-pdf-converter-services-and-infopath-error/">Muhimbi PDF Converter Services &amp; InfoPath Error</a></li>
+                
+                <li>2016-03-31 <a href="http://www.jonthenerd.com/2016/03/31/k2-service-account-rights-issue/">K2 - Service Account Rights Issue</a></li>
+                
+                <li>2014-11-22 <a href="http://www.jonthenerd.com/2014/11/22/cms-made-simple-hostgator/">CMS Made Simple &amp; HostGator - Can&#39;t upload files</a></li>
+                
+                <li>2014-09-05 <a href="http://www.jonthenerd.com/2014/09/05/cms-made-simple-post-upgrade-to-v1-11-11/">CMS Made Simple - Post-Upgrade to v1.11.11</a></li>
+                
+                <li>2014-09-02 <a href="http://www.jonthenerd.com/2014/09/02/cms-made-simple-enable-ssl-for-the-admin-directory/">CMS Made Simple - Enable SSL for the Admin Directory</a></li>
+                
+                <li>2014-02-09 <a href="http://www.jonthenerd.com/2014/02/09/navigation-dvd-replacement-tools-lexus-is250is350/">Navigation DVD Replacement Tools - Lexus IS250/IS350</a></li>
+                
+                <li>2013-09-13 <a href="http://www.jonthenerd.com/2013/09/13/playing-with-open-source-automation/">Playing with Open Source Automation</a></li>
+                
+                <li>2013-01-22 <a href="http://www.jonthenerd.com/2013/01/22/sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy/">SharePoint 2010 - MigrateUser Error &#39;Value cannot be null. Parameter name: userProfileApplicationProxy&#39;</a></li>
+                
+                <li>2012-10-07 <a href="http://www.jonthenerd.com/2012/10/07/ip30-programming-part-2/">IP30 Programming - Part 2</a></li>
+                
+                <li>2012-10-05 <a href="http://www.jonthenerd.com/2012/10/05/communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android/">Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully with Android</a></li>
+                
+                <li>2012-01-20 <a href="http://www.jonthenerd.com/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/">SharePoint 2010: Observations and Revelations on the User Profile Sync Service and the Update-SPProfilePhotoStore cmdlet</a></li>
+                
+                <li>2012-01-04 <a href="http://www.jonthenerd.com/2012/01/04/sharepoint-2010-ribbon-customactions/">SharePoint 2010: Ribbon CustomActions</a></li>
+                
+                <li>2011-12-01 <a href="http://www.jonthenerd.com/2011/12/01/hands-down-the-best-blog-post-on-helpful-utility-programs-ever/">Hands down, the best blog post on helpful utility programs ever.</a></li>
+                
+                <li>2011-10-28 <a href="http://www.jonthenerd.com/2011/10/28/sharepoint-2010-setting-custom-user-profile-properties-gotchas/">SharePoint 2010: Setting custom User Profile properties Gotchas</a></li>
+                
+                <li>2011-10-18 <a href="http://www.jonthenerd.com/2011/10/18/jons-general-sharepoint-2010-development-tips/">Jon&#39;s General SharePoint 2010 Development Tips</a></li>
+                
+                <li>2011-09-14 <a href="http://www.jonthenerd.com/2011/09/14/sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly/">SharePoint 2010: The web application at ... could not be found. Verify that you have typed the URL correctly.</a></li>
+                
+                <li>2011-08-17 <a href="http://www.jonthenerd.com/2011/08/17/sharepoint-2010-add-a-file-to-the-root-of-your-site-using-powershell/">SharePoint 2010: Add a file to the root of your site using PowerShell</a></li>
+                
+                <li>2011-08-16 <a href="http://www.jonthenerd.com/2011/08/16/sharepoint-2010-findinglargestdoclibrary/">SharePoint 2010: Finding the largest document library in a site collection</a></li>
+                
+                <li>2011-08-11 <a href="http://www.jonthenerd.com/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/">SharePoint 2010: Unable to delete site/web after SP1</a></li>
+                
+                <li>2011-07-21 <a href="http://www.jonthenerd.com/2011/07/21/sharepoint-2010-disable-feature-on-all-web-applications-powershell/">SharePoint 2010: Disable Feature on all Web Applications PowerShell</a></li>
+                
+                <li>2011-07-06 <a href="http://www.jonthenerd.com/2011/07/06/sharepoint-2010-remove-existing-reusable-content-items-using-powershell/">SharePoint 2010: Remove existing reusable content items using PowerShell</a></li>
+                
+                <li>2011-06-30 <a href="http://www.jonthenerd.com/2011/06/30/sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain/">SharePoint 2010 SP1 Upgrade Error &#34;Unable to create a Service Connection Point in the current Active Directory domain.&#34;</a></li>
+                
+                <li>2011-06-11 <a href="http://www.jonthenerd.com/2011/06/11/time-moves-on-google-makes-my-extension-irrelevant/">Time moves on. Google makes my extension irrelevant</a></li>
+                
+                <li>2011-04-19 <a href="http://www.jonthenerd.com/2011/04/19/easy-sharepoint-2010-warmup-script-using-powershell/">Easy SharePoint 2010 warmup Script using PowerShell</a></li>
+                
+                <li>2011-04-05 <a href="http://www.jonthenerd.com/2011/04/05/sharepoint-2010-custom-action-ids-for-site-settings-page/">SharePoint 2010 Custom Action IDs for Site Settings page</a></li>
+                
+                <li>2011-03-24 <a href="http://www.jonthenerd.com/2011/03/24/activate-feature-on-all-sc/">Activate Feature on all Site Collections in a Web Application</a></li>
+                
+                <li>2011-03-02 <a href="http://www.jonthenerd.com/2011/03/02/trying-to-access-_layoutschangesitemasterpage-aspx-and-receiving-error/">Trying to access _Layouts/ChangeSiteMasterPage.aspx and receiving error</a></li>
+                
+                <li>2011-02-28 <a href="http://www.jonthenerd.com/2011/02/28/activation-could-not-be-completed-because-the-infopath-forms-services-support-feature-is-not-present/">Activation could not be completed because the InfoPath Forms Services support feature is not present.</a></li>
+                
+                <li>2011-01-14 <a href="http://www.jonthenerd.com/2011/01/14/print-helper-for-google-calendar/">Print Helper for Google Calendar</a></li>
+                
+                <li>2011-01-11 <a href="http://www.jonthenerd.com/2011/01/11/disable-throttling-for-a-specific-sharepoint-2010-list-with-powershell/">Disable Throttling for a specific SharePoint 2010 list with PowerShell</a></li>
+                
+                <li>2010-12-07 <a href="http://www.jonthenerd.com/2010/12/07/sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/">SharePoint WebPart implementing ICallbackEventHandler does not work properly in Web Part Gallery</a></li>
+                
+                <li>2010-10-21 <a href="http://www.jonthenerd.com/2010/10/21/sonic-fan-remix/">Sonic Fan Remix</a></li>
+                
+                <li>2010-10-14 <a href="http://www.jonthenerd.com/2010/10/14/sharepoint-content-query-webpart-easy-values/">SharePoint Content Query WebPart easy values</a></li>
+                
+                <li>2010-09-29 <a href="http://www.jonthenerd.com/2010/09/29/net-4-and-ftp/">.NET 4 and FTP</a></li>
+                
+                <li>2010-09-22 <a href="http://www.jonthenerd.com/2010/09/22/asp-net-padding-oracle/">ASP.NET Padding Oracle</a></li>
+                
+                <li>2010-08-01 <a href="http://www.jonthenerd.com/2010/08/01/unreal-tournament-server-on-ubuntu-linux-10-04/">Unreal Tournament Server on Ubuntu Linux (10.04)</a></li>
+                
+                <li>2010-07-10 <a href="http://www.jonthenerd.com/2010/07/10/dev-cheat-sheets/">Dev Cheat Sheets</a></li>
+                
+                <li>2010-06-13 <a href="http://www.jonthenerd.com/2010/06/13/gimp-how-to-make-fuzzy-border-transparent/">GIMP How to make fuzzy border transparent</a></li>
+                
+                <li>2010-06-01 <a href="http://www.jonthenerd.com/2010/06/01/what-motivates-us/">What motivates us?</a></li>
+                
+                <li>2010-03-16 <a href="http://www.jonthenerd.com/2010/03/16/anonymous-users-and-aspx-pages-inside-the-_layouts-folder/">Anonymous users and aspx pages inside the _layouts folder</a></li>
+                
+                <li>2010-03-10 <a href="http://www.jonthenerd.com/2010/03/10/fastest-xml-editorviewer/">Fastest XML Editor/Viewer</a></li>
+                
+                <li>2010-02-26 <a href="http://www.jonthenerd.com/2010/02/26/occasional-spexception-from-getlistitemdatawithcallback/">Occasional SPException from GetListItemDataWithCallback</a></li>
+                
+                <li>2010-02-25 <a href="http://www.jonthenerd.com/2010/02/25/unable-to-delete-field-in-sharepoint-library/">Unable to delete field in SharePoint library</a></li>
+                
+                <li>2010-02-20 <a href="http://www.jonthenerd.com/2010/02/20/terminal-cancer-patient-gets-restored-car/">Terminal Cancer Patient gets restored car</a></li>
+                
+                <li>2010-02-03 <a href="http://www.jonthenerd.com/2010/02/03/the-right-tools-for-the-job/">The right tools for the job</a></li>
+                
+                <li>2010-01-27 <a href="http://www.jonthenerd.com/2010/01/27/xslt-that-emits-source-xml/">XSLT that emits source XML</a></li>
+                
+                <li>2010-01-15 <a href="http://www.jonthenerd.com/2010/01/15/if-clients-treated-architects-like-they-treat-software-designers/">If clients treated architects like they treat software designers…</a></li>
+                
+                <li>2009-10-26 <a href="http://www.jonthenerd.com/2009/10/26/ie8-standards-mode-and-moss/">IE8 Standards Mode and MOSS</a></li>
+                
+                <li>2009-10-25 <a href="http://www.jonthenerd.com/2009/10/25/fixing-a-noisy-toilet/">Fixing a noisy toilet</a></li>
+                
+                <li>2009-09-18 <a href="http://www.jonthenerd.com/2009/09/18/windows-7-x64-ultimate-taking-the-plunge/">Windows 7 x64 Ultimate - Taking the plunge</a></li>
+                
+                <li>2009-06-07 <a href="http://www.jonthenerd.com/2009/06/07/fixing-a-jumpy-cusorpointer-on-your-opticallaser-mouse/">Fixing a jumpy cusor/pointer on your optical/laser mouse</a></li>
+                
+                <li>2009-01-11 <a href="http://www.jonthenerd.com/2009/01/11/jon-can-cook/">Jon can cook...</a></li>
+                
+                <li>2008-08-18 <a href="http://www.jonthenerd.com/2008/08/18/lenovo-t61-speakers-popping/">Lenovo T61 Speakers popping</a></li>
+                
+                <li>2008-08-02 <a href="http://www.jonthenerd.com/2008/08/02/code-memories/">Code Memories?</a></li>
+                
+                <li>2008-06-19 <a href="http://www.jonthenerd.com/2008/06/19/active-directory-homedrive-home-folder/">Active Directory homeDrive (Home Folder)</a></li>
+                
+                <li>2008-06-12 <a href="http://www.jonthenerd.com/2008/06/12/boxes-of-orden/">Boxes of Orden</a></li>
+                
+                <li>2008-06-12 <a href="http://www.jonthenerd.com/2008/06/12/eeepc-not-for-the-masses/">eeePC - not for the masses</a></li>
+                
+                <li>2008-06-12 <a href="http://www.jonthenerd.com/2008/06/12/finding-the-last-login-date-for-all-profiles/">Finding the last login date for all profiles</a></li>
+                
+                <li>2007-05-30 <a href="http://www.jonthenerd.com/2007/05/30/laptop-bioscmos-reset-pain/">Laptop BIOS/CMOS reset = pain</a></li>
+                
+                <li>2007-05-11 <a href="http://www.jonthenerd.com/2007/05/11/the-resurgence-of-the-adventure-game-genre/">The Resurgence of the Adventure Game Genre</a></li>
+                
+                <li>2007-04-13 <a href="http://www.jonthenerd.com/2007/04/13/winaudit-a-shameless-plug-for-a-nifty-tool/">WinAudit - a shameless plug for a nifty tool</a></li>
+                
+                <li>2007-03-11 <a href="http://www.jonthenerd.com/2007/03/11/spoofing-the-mac-commercials/">Spoofing the Mac Commercials</a></li>
+                
+                <li>2007-02-10 <a href="http://www.jonthenerd.com/2007/02/10/docx-file-converter/">docx file converter</a></li>
+                
+                <li>2007-02-04 <a href="http://www.jonthenerd.com/2007/02/04/increasing-the-wine-font-size/">Increasing the Wine font size</a></li>
+                
+                <li>2007-01-29 <a href="http://www.jonthenerd.com/2007/01/29/forced-enjoyment/">Forced Enjoyment</a></li>
+                
+                <li>2007-01-26 <a href="http://www.jonthenerd.com/2007/01/26/decided-it-was-time-to-start-a-blog/">Decided it was time to start a blog</a></li>
+                
+                <li>2007-01-26 <a href="http://www.jonthenerd.com/2007/01/26/the-little-linux-box-that-could/">The little Linux Box that could</a></li>
+                
+            </ul>
+        </div>
+    </div>
+
+        </main>
+        
+            
+        
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
 </footer>
-</body>
+
+    </body>
 </html>

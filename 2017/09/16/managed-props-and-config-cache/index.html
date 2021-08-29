@@ -1,46 +1,65 @@
-<!doctype html><html lang=en>
-<head prefix="og: http://ogp.me/ns#">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
-<title>SharePoint: Search Managed Properties missing after full crawl &ndash; JonTheNerd</title>
-<meta name=color-scheme content="dark light">
-<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
-<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
-<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
-<link rel=stylesheet href=/assets/style.css>
-</head>
-<body>
-<header class=site-header>
-<div class=container>
-<h1>
-<a href=/>JonTheNerd</a>
-</h1>
-<nav>
-<ul>
-<li><a href=/about>About</a></li>
-</ul>
-</nav>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>SharePoint: Search Managed Properties missing after full crawl &ndash; JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        </head>
+    <body>
+        
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-<main>
-<article class=single itemscope itemtype=http://schema.org/BlogPosting>
-<header>
-<h1 itemprop="name headline">
-<div class=container>SharePoint: Search Managed Properties missing after full crawl</div>
-</h1>
-<div class=post-meta>
-<div class=container>
-By Jon Badgett
-| <time datetime=" 2017-09-16" itemprop=datePublished>September 16, 2017</time>
-| Posted in
-<a href=/categories/sharepoint>SharePoint</a>
-</div>
-</div>
-</header>
-<div itemprop=articleBody>
-<div class=container>
-<p>Scenario:</p>
+
+        <main>
+            
+    <article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+            <h1 itemprop="name headline">
+                <div class="container">SharePoint: Search Managed Properties missing after full crawl</div>
+            </h1>
+            <div class="post-meta">
+                <div class="container">
+                    By Jon Badgett
+                    | <time
+                        datetime=" 2017-09-16"
+                        itemprop="datePublished"
+                        >September 16, 2017</time
+                    >
+                    
+                        | Posted in
+                        <a href="/categories/sharepoint">SharePoint</a>
+
+                    
+                </div>
+            </div>
+        </header>
+        <div itemprop="articleBody">
+            <div class="container">
+            <p>Scenario:</p>
 <ul>
 <li>SharePoint 2013</li>
 <li>You&rsquo;ve created some site columns, added them to a content type, then added
@@ -58,7 +77,7 @@ that content type to a list/library.</li>
 </ul>
 <p>What else has worked for me? Clear the SharePoint Config Cache. This is
 referenced in a
-<a href=https://sharepoint.stackexchange.com/questions/122486/new-managed-properties-dont-contain-values>Stack Overflow Question</a>
+<a href="https://sharepoint.stackexchange.com/questions/122486/new-managed-properties-dont-contain-values">Stack Overflow Question</a>
 and it references a
 <a href="https://blogs.technet.microsoft.com/sp/?p=373">Technet article</a>. However, the
 SO question is out of date with the article and the article has some incorrect
@@ -67,76 +86,80 @@ bit.</p>
 <p>After clearing the config cache, run a full crawl. I&rsquo;ve had success in this
 allowing Managed Properties to be populated with data and present when the above
 steps didn&rsquo;t work.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-powershell data-lang=powershell><span class=nb>Add-PSSnapin</span> <span class=n>-Name</span> <span class=n>Microsoft</span><span class=p>.</span><span class=n>SharePoint</span><span class=p>.</span><span class=n>PowerShell</span> <span class=n>-ErrorAction</span> <span class=n>SilentlyContinue</span><span class=p>;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Add-PSSnapin</span> <span class="n">-Name</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">SharePoint</span><span class="p">.</span><span class="n">PowerShell</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span><span class="p">;</span>
 
-<span class=nb>write-host</span> <span class=s2>&#34;CLEAR CONFIG CACHE ON FARM&#34;</span> <span class=o>-F</span> <span class=n>Green</span><span class=p>;</span>
+<span class="nb">write-host</span> <span class="s2">&#34;CLEAR CONFIG CACHE ON FARM&#34;</span> <span class="o">-F</span> <span class="n">Green</span><span class="p">;</span>
 
-<span class=nv>$servers</span> <span class=p>=</span> <span class=nb>get-spserver</span> <span class=p>|</span> <span class=p>?{</span><span class=nv>$_</span><span class=p>.</span><span class=n>role</span> <span class=o>-eq</span> <span class=s2>&#34;Application&#34;</span><span class=p>}</span>
-<span class=k>foreach</span> <span class=p>(</span><span class=nv>$server</span> <span class=k>in</span> <span class=nv>$servers</span><span class=p>)</span>
-<span class=p>{</span>
-    <span class=nv>$servername</span> <span class=p>=</span> <span class=nv>$server</span><span class=p>.</span><span class=n>Address</span><span class=p>;</span>
-    <span class=nb>write-host</span> <span class=s2>&#34;Stop Timer Service on server $servername&#34;</span> <span class=o>-F</span> <span class=n>Yellow</span><span class=p>;</span>
-    <span class=p>(</span><span class=nb>Get-WmiObject</span> <span class=n>Win32_Service</span> <span class=n>-filter</span> <span class=s2>&#34;name=&#39;SPTimerV4&#39;&#34;</span> <span class=n>-ComputerName</span> <span class=nv>$servername</span><span class=p>).</span><span class=n>stopservice</span><span class=p>()</span> <span class=p>|</span> <span class=nb>Out-Null</span><span class=p>;</span>
-<span class=p>}</span>
+<span class="nv">$servers</span> <span class="p">=</span> <span class="nb">get-spserver</span> <span class="p">|</span> <span class="p">?{</span><span class="nv">$_</span><span class="p">.</span><span class="n">role</span> <span class="o">-eq</span> <span class="s2">&#34;Application&#34;</span><span class="p">}</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$server</span> <span class="k">in</span> <span class="nv">$servers</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$servername</span> <span class="p">=</span> <span class="nv">$server</span><span class="p">.</span><span class="n">Address</span><span class="p">;</span>
+    <span class="nb">write-host</span> <span class="s2">&#34;Stop Timer Service on server $servername&#34;</span> <span class="o">-F</span> <span class="n">Yellow</span><span class="p">;</span>
+    <span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_Service</span> <span class="n">-filter</span> <span class="s2">&#34;name=&#39;SPTimerV4&#39;&#34;</span> <span class="n">-ComputerName</span> <span class="nv">$servername</span><span class="p">).</span><span class="n">stopservice</span><span class="p">()</span> <span class="p">|</span> <span class="nb">Out-Null</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class=k>foreach</span> <span class=p>(</span><span class=nv>$server</span> <span class=k>in</span> <span class=nv>$servers</span><span class=p>)</span>
-<span class=p>{</span>
-    <span class=nv>$servername</span> <span class=p>=</span> <span class=nv>$server</span><span class=p>.</span><span class=n>Address</span><span class=p>;</span>
-    <span class=nv>$folders</span> <span class=p>=</span> <span class=nb>Get-ChildItem</span> <span class=p>(</span><span class=s2>&#34;\\&#34;</span> <span class=p>+</span> <span class=nv>$servername</span> <span class=p>+</span> <span class=s2>&#34;\C$\ProgramData\Microsoft\SharePoint\Config&#34;</span><span class=p>);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$server</span> <span class="k">in</span> <span class="nv">$servers</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$servername</span> <span class="p">=</span> <span class="nv">$server</span><span class="p">.</span><span class="n">Address</span><span class="p">;</span>
+    <span class="nv">$folders</span> <span class="p">=</span> <span class="nb">Get-ChildItem</span> <span class="p">(</span><span class="s2">&#34;\\&#34;</span> <span class="p">+</span> <span class="nv">$servername</span> <span class="p">+</span> <span class="s2">&#34;\C$\ProgramData\Microsoft\SharePoint\Config&#34;</span><span class="p">);</span>
 
-    <span class=k>foreach</span> <span class=p>(</span><span class=nv>$folder</span> <span class=k>in</span> <span class=nv>$folders</span><span class=p>)</span>
-    <span class=p>{</span>
-        <span class=nv>$items</span> <span class=p>=</span> <span class=nb>Get-ChildItem</span> <span class=nv>$folder</span><span class=p>.</span><span class=n>FullName</span> <span class=n>-Recurse</span><span class=p>;</span>
-        <span class=k>foreach</span> <span class=p>(</span><span class=nv>$item</span> <span class=k>in</span> <span class=nv>$items</span><span class=p>)</span>
-        <span class=p>{</span>
-            <span class=k>if</span> <span class=p>(</span><span class=nv>$item</span><span class=p>.</span><span class=n>Name</span><span class=p>.</span><span class=n>ToLower</span><span class=p>()</span> <span class=o>-eq</span> <span class=s2>&#34;cache.ini&#34;</span><span class=p>)</span>
-            <span class=p>{</span>
-                <span class=nv>$cachefolder</span> <span class=p>=</span> <span class=nv>$folder</span><span class=p>.</span><span class=n>FullName</span><span class=p>;</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$folder</span> <span class="k">in</span> <span class="nv">$folders</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$items</span> <span class="p">=</span> <span class="nb">Get-ChildItem</span> <span class="nv">$folder</span><span class="p">.</span><span class="n">FullName</span> <span class="n">-Recurse</span><span class="p">;</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$item</span> <span class="k">in</span> <span class="nv">$items</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$item</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="n">ToLower</span><span class="p">()</span> <span class="o">-eq</span> <span class="s2">&#34;cache.ini&#34;</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="nv">$cachefolder</span> <span class="p">=</span> <span class="nv">$folder</span><span class="p">.</span><span class="n">FullName</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
-    <span class=nb>write-host</span> <span class=s2>&#34;Found CacheFolder on Server $servername = $cachefolder&#34;</span> <span class=o>-F</span> <span class=n>Yellow</span><span class=p>;</span>
-    <span class=nv>$cachefolderitems</span> <span class=p>=</span> <span class=nb>Get-ChildItem</span> <span class=nv>$cachefolder</span> <span class=n>-Recurse</span><span class=p>;</span>
+    <span class="nb">write-host</span> <span class="s2">&#34;Found CacheFolder on Server $servername = $cachefolder&#34;</span> <span class="o">-F</span> <span class="n">Yellow</span><span class="p">;</span>
+    <span class="nv">$cachefolderitems</span> <span class="p">=</span> <span class="nb">Get-ChildItem</span> <span class="nv">$cachefolder</span> <span class="n">-Recurse</span><span class="p">;</span>
 
-    <span class=nb>write-host</span> <span class=s2>&#34;Delete all XMQL Files inside this CacheFolder&#34;</span> <span class=o>-F</span> <span class=n>Yellow</span><span class=p>;</span>
-    <span class=k>foreach</span> <span class=p>(</span><span class=nv>$cachefolderitem</span> <span class=k>in</span> <span class=nv>$cachefolderitems</span><span class=p>)</span>
-    <span class=p>{</span>
-        <span class=k>if</span> <span class=p>(</span><span class=nv>$cachefolderitem</span> <span class=o>-like</span> <span class=s2>&#34;*.xml&#34;</span><span class=p>)</span>
-        <span class=p>{</span>
-            <span class=nv>$cachefolderitem</span><span class=p>.</span><span class=n>Delete</span><span class=p>();</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+    <span class="nb">write-host</span> <span class="s2">&#34;Delete all XMQL Files inside this CacheFolder&#34;</span> <span class="o">-F</span> <span class="n">Yellow</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$cachefolderitem</span> <span class="k">in</span> <span class="nv">$cachefolderitems</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$cachefolderitem</span> <span class="o">-like</span> <span class="s2">&#34;*.xml&#34;</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$cachefolderitem</span><span class="p">.</span><span class="n">Delete</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
-    <span class=nv>$a</span> <span class=p>=</span> <span class=nb>Get-Content</span> <span class=nv>$cachefolder</span><span class=p>\</span><span class=n>cache</span><span class=p>.</span><span class=n>ini</span><span class=p>;</span>
-    <span class=nv>$a</span> <span class=p>=</span> <span class=n>1</span><span class=p>;</span>
-    <span class=nb>write-host</span> <span class=s2>&#34;Creating a new Cache.ini File on server $servername&#34;</span> <span class=o>-F</span> <span class=n>Yellow</span><span class=p>;</span>
-    <span class=nb>Set-Content</span> <span class=nv>$a</span> <span class=n>-Path</span> <span class=nv>$cachefolder</span><span class=p>\</span><span class=n>cache</span><span class=p>.</span><span class=n>ini</span><span class=p>;</span>
-<span class=p>}</span>
+    <span class="nv">$a</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="nv">$cachefolder</span><span class="p">\</span><span class="n">cache</span><span class="p">.</span><span class="n">ini</span><span class="p">;</span>
+    <span class="nv">$a</span> <span class="p">=</span> <span class="n">1</span><span class="p">;</span>
+    <span class="nb">write-host</span> <span class="s2">&#34;Creating a new Cache.ini File on server $servername&#34;</span> <span class="o">-F</span> <span class="n">Yellow</span><span class="p">;</span>
+    <span class="nb">Set-Content</span> <span class="nv">$a</span> <span class="n">-Path</span> <span class="nv">$cachefolder</span><span class="p">\</span><span class="n">cache</span><span class="p">.</span><span class="n">ini</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class=k>foreach</span> <span class=p>(</span><span class=nv>$server</span> <span class=k>in</span> <span class=nv>$servers</span><span class=p>)</span>
-<span class=p>{</span>
-    <span class=nv>$servername</span> <span class=p>=</span> <span class=nv>$server</span><span class=p>.</span><span class=n>Address</span><span class=p>;</span>
-    <span class=nb>write-host</span> <span class=s2>&#34;START Timer Service on server $servername&#34;</span> <span class=o>-F</span> <span class=n>Yellow</span><span class=p>;</span>
-    <span class=p>(</span><span class=nb>Get-WmiObject</span> <span class=n>Win32_Service</span> <span class=n>-filter</span> <span class=s2>&#34;name=&#39;SPTimerV4&#39;&#34;</span> <span class=n>-ComputerName</span> <span class=nv>$servername</span><span class=p>).</span><span class=n>startservice</span><span class=p>()</span> <span class=p>|</span> <span class=nb>Out-Null</span><span class=p>;</span>
-<span class=p>}</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$server</span> <span class="k">in</span> <span class="nv">$servers</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nv">$servername</span> <span class="p">=</span> <span class="nv">$server</span><span class="p">.</span><span class="n">Address</span><span class="p">;</span>
+    <span class="nb">write-host</span> <span class="s2">&#34;START Timer Service on server $servername&#34;</span> <span class="o">-F</span> <span class="n">Yellow</span><span class="p">;</span>
+    <span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">Win32_Service</span> <span class="n">-filter</span> <span class="s2">&#34;name=&#39;SPTimerV4&#39;&#34;</span> <span class="n">-ComputerName</span> <span class="nv">$servername</span><span class="p">).</span><span class="n">startservice</span><span class="p">()</span> <span class="p">|</span> <span class="nb">Out-Null</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
-</div>
-</div>
-</article>
-</main>
-<div class=feedback>
-<div class=container>
-<h3>Feedback</h3>
-<p>Submit feedback, ask questions, or just leave a comment with a
-<a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BSharePoint%3a%20Search%20Managed%20Properties%20missing%20after%20full%20crawl%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2017-09-16-managed-props-and-config-cache.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2017%2f09%2f16%2fmanaged-props-and-config-cache%2f">GitHub Issue</a></p>
-</div>
-</div>
+            </div>
+        </div>
+    </article>
+
+        </main>
+        
+    <div class="feedback">
+        <div class="container">
+            <h3>Feedback</h3>
+            <p>Submit feedback, ask questions, or just leave a comment with a
+                <a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BSharePoint%3a%20Search%20Managed%20Properties%20missing%20after%20full%20crawl%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2017-09-16-managed-props-and-config-cache.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2017%2f09%2f16%2fmanaged-props-and-config-cache%2f">GitHub Issue</a></p>
+        </div>
+    </div>
 something something
-<footer>
-<div class=container>
-built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
-</div>
+
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
 </footer>
-</body>
+
+    </body>
 </html>

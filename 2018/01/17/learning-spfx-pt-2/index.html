@@ -1,93 +1,112 @@
-<!doctype html><html lang=en>
-<head prefix="og: http://ogp.me/ns#">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
-<title>SharePoint Framework: Extensions - Application Customizer &ndash; JonTheNerd</title>
-<meta name=color-scheme content="dark light">
-<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
-<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
-<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
-<link rel=stylesheet href=/assets/style.css>
-</head>
-<body>
-<header class=site-header>
-<div class=container>
-<h1>
-<a href=/>JonTheNerd</a>
-</h1>
-<nav>
-<ul>
-<li><a href=/about>About</a></li>
-</ul>
-</nav>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>SharePoint Framework: Extensions - Application Customizer &ndash; JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        </head>
+    <body>
+        
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-<main>
-<article class=single itemscope itemtype=http://schema.org/BlogPosting>
-<header>
-<h1 itemprop="name headline">
-<div class=container>SharePoint Framework: Extensions - Application Customizer</div>
-</h1>
-<div class=post-meta>
-<div class=container>
-By Jon Badgett
-| <time datetime=" 2018-01-17" itemprop=datePublished>January 17, 2018</time>
-| Posted in
-<a href=/categories/sharepoint>SharePoint</a>, <a href=/categories/programming>Programming</a>
-</div>
-</div>
-</header>
-<div itemprop=articleBody>
-<div class=container>
-<p>Next in this series on the SharePoint Framework are extensions.
-<a href=https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/overview-extensions>According to docs.microsoft.com, SPFx Extensions allow for the customization of multiple facets of the SharePoint experience</a>.
+
+        <main>
+            
+    <article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+            <h1 itemprop="name headline">
+                <div class="container">SharePoint Framework: Extensions - Application Customizer</div>
+            </h1>
+            <div class="post-meta">
+                <div class="container">
+                    By Jon Badgett
+                    | <time
+                        datetime=" 2018-01-17"
+                        itemprop="datePublished"
+                        >January 17, 2018</time
+                    >
+                    
+                        | Posted in
+                        <a href="/categories/sharepoint">SharePoint</a>, <a href="/categories/programming">Programming</a>
+
+                    
+                </div>
+            </div>
+        </header>
+        <div itemprop="articleBody">
+            <div class="container">
+            <p>Next in this series on the SharePoint Framework are extensions.
+<a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/overview-extensions">According to docs.microsoft.com, SPFx Extensions allow for the customization of multiple facets of the SharePoint experience</a>.
 I&rsquo;ll focus on differences I made while following the online tutorial and my
 observations on capabilities and impacts of SPFx Application Customizer
 extensions.</p>
 <p>The best way to get started learning about these types of SharePoint
 customization is to read the relevant docs.mocrosoft.com documentation:</p>
 <ul>
-<li><a href=https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/overview-extensions>Overview of SharePoint Framework Extensions</a></li>
-<li><a href=https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/get-started/build-a-hello-world-extension>Build your first SharePoint Framework Extension (Hello World part 1)</a></li>
+<li><a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/overview-extensions">Overview of SharePoint Framework Extensions</a></li>
+<li><a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/get-started/build-a-hello-world-extension">Build your first SharePoint Framework Extension (Hello World part 1)</a></li>
 </ul>
 <p>For the most part, the above instructions work just fine. However, there are a
 couple modifications that I made:</p>
 <ul>
 <li>
-<p>Use <a href=https://github.com/creationix/nvm>Node Version Manager</a> to ensure that
+<p>Use <a href="https://github.com/creationix/nvm">Node Version Manager</a> to ensure that
 you&rsquo;re using the supported version of node and npm that go with the SharePoint
 Framework (node 6.11.5 at the time of this writing).
-<a href=/2018/01/16/configuring-nvm-for-osx>Here&rsquo;s a post I wrote on how to set it up on MacOS</a>.
+<a href="/2018/01/16/configuring-nvm-for-osx">Here&rsquo;s a post I wrote on how to set it up on MacOS</a>.
 This will avoid HTTP2/SSL issues when launching the workbench.</p>
 </li>
 <li>
 <p>Modify the package.json scripts to include the necessary gulp commands such
 that you don&rsquo;t have to have gulp installed globally. Here&rsquo;s what that section
 should look like:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=s2>&#34;scripts&#34;</span><span class=err>:</span> <span class=p>{</span>
-    <span class=nt>&#34;build&#34;</span><span class=p>:</span> <span class=s2>&#34;gulp bundle&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;clean&#34;</span><span class=p>:</span> <span class=s2>&#34;gulp clean&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;test&#34;</span><span class=p>:</span> <span class=s2>&#34;gulp test&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;bundle&#34;</span><span class=p>:</span> <span class=s2>&#34;gulp bundle&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;bundle:ship&#34;</span><span class=p>:</span> <span class=s2>&#34;gulp bundle --ship&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;package&#34;</span><span class=p>:</span> <span class=s2>&#34;gulp package-solution&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;package:ship&#34;</span><span class=p>:</span> <span class=s2>&#34;gulp package-solution --ship&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;trust-dev-cert&#34;</span><span class=p>:</span> <span class=s2>&#34;gulp trust-dev-cert&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;serve:nobrowser&#34;</span><span class=p>:</span> <span class=s2>&#34;gulp serve --nobrowser&#34;</span>
-<span class=p>}</span>
-</code></pre></div><p>You&rsquo;ll then run the gulp commands listed in the tutorial using npm run &lt;scriptname> :</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>npm run trust-dev-cert		<span class=c1># To trust the dev cert</span>
-npm run serve:nobrowser		<span class=c1># To start hosting the extension without launching workbench</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;scripts&#34;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp bundle&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;clean&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp clean&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp test&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;bundle&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp bundle&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;bundle:ship&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp bundle --ship&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;package&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp package-solution&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;package:ship&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp package-solution --ship&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;trust-dev-cert&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp trust-dev-cert&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;serve:nobrowser&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp serve --nobrowser&#34;</span>
+<span class="p">}</span>
+</code></pre></div><p>You&rsquo;ll then run the gulp commands listed in the tutorial using npm run &lt;scriptname&gt; :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm run trust-dev-cert		<span class="c1"># To trust the dev cert</span>
+npm run serve:nobrowser		<span class="c1"># To start hosting the extension without launching workbench</span>
 </code></pre></div></li>
 </ul>
-<h2 id=observations-on-application-customizer-extensions>Observations on Application Customizer Extensions</h2>
+<h2 id="observations-on-application-customizer-extensions">Observations on Application Customizer Extensions</h2>
 <p>Working through the online tutorials, I had a number of items I wanted
 clarification on that aren&rsquo;t spelled out in the documentation that I&rsquo;ve run
 across. Here are my notes.</p>
-<h3 id=which-placeholders-are-available>Which placeholders are available?</h3>
+<h3 id="which-placeholders-are-available">Which placeholders are available?</h3>
 <p>At the time of this wring, Top and Bottom.</p>
-<h3 id=how-do-these-different-placeholder-areas-appear-and-function-in-desktop-web-browsers-mobile-web-browsers-and-the-sharepoint-mobile-app>How do these different placeholder areas appear and function in desktop web browsers, mobile web browsers, and the SharePoint mobile app?</h3>
+<h3 id="how-do-these-different-placeholder-areas-appear-and-function-in-desktop-web-browsers-mobile-web-browsers-and-the-sharepoint-mobile-app">How do these different placeholder areas appear and function in desktop web browsers, mobile web browsers, and the SharePoint mobile app?</h3>
 <ul>
 <li><strong>On a desktop web browser</strong>, these appear directly underneath the app
 launcher (and above the site icon) and attached to the bottom of the browser
@@ -117,15 +136,15 @@ appeared for me on initial load of the application and site. If I browsed to
 something else and then came back to app, the content of the top and bottom
 placeholders was not present. I&rsquo;m hopeful that this is just a bug with the
 HelloWorld code.
-<a href=https://github.com/SharePoint/sp-dev-docs/issues/1069>Issue #1069, SPFx Application Customizer, placeholder not re-rendering on page load</a>
+<a href="https://github.com/SharePoint/sp-dev-docs/issues/1069">Issue #1069, SPFx Application Customizer, placeholder not re-rendering on page load</a>
 looks like it could be related, but the advised fix didn&rsquo;t address the issue
 within the app. Either there&rsquo;s something missing that&rsquo;s needed to keep it
 working, or there is a bug with the mobile app.</li>
 </ul>
 </li>
 </ul>
-<h3 id=how-do-the-above-observations-affect-the-buildout-of-a-modern-intranet-on-o365>How do the above observations affect the buildout of a modern intranet on O365?</h3>
-<h4 id=_on-global-navigation_><em>On Global Navigation</em></h4>
+<h3 id="how-do-the-above-observations-affect-the-buildout-of-a-modern-intranet-on-o365">How do the above observations affect the buildout of a modern intranet on O365?</h3>
+<h4 id="_on-global-navigation_"><em>On Global Navigation</em></h4>
 <p>There is sample code available for creating an aplication customizer extension
 to add a mega menu at the top of pages. The thought being that you could deploy
 this customization to all of the sites you wanted to be a part of your intranet
@@ -141,7 +160,7 @@ it&rsquo;s not confusing. If you can&rsquo;t do this, avoid putting a menu here.
 released yet). They purport to allow for the establishment of consistent global
 navigation for all sites joined to the hub. You&rsquo;d then use the left (current)
 navigation for within-site navigation purposes.</p>
-<h4 id=_on-consistent-footers_><em>On Consistent Footers</em></h4>
+<h4 id="_on-consistent-footers_"><em>On Consistent Footers</em></h4>
 <p>In my mind, the bottom placeholder area has been where I wanted to put
 consistent footer information (a company logo, contact information for the
 page/site, social media links, etc.). This kind of thing tends to take up a
@@ -163,14 +182,14 @@ usage. One would be your <em>big footer</em> for your main landing page. The sec
 you&rsquo;d advise page authors use so they can show page contact information. If they
 want the info, they&rsquo;ll add the WebPart. If they want to opt out, they&rsquo;ll omit
 it.</p>
-<h4 id=_what-do-we-use-these-placeholders-for-anyway_><em>What do we use these Placeholders for anyway?!</em></h4>
+<h4 id="_what-do-we-use-these-placeholders-for-anyway_"><em>What do we use these Placeholders for anyway?!</em></h4>
 <p>I think the big usage of the placeholders is for context-sensitive
 notifications, <em>not branding</em>.</p>
 <p>Let&rsquo;s take our page footer example above. You could present a notification to a
 page author (while they&rsquo;re authoring) advising them to add the footer WebPart
 (and allow them to dismiss the notification until their next browser session or
 something).</p>
-<p>Obviously, there are plenty of usages for notifications&mldr;</p>
+<p>Obviously, there are plenty of usages for notifications&hellip;</p>
 <p>In order to leverage O365 and avoid over-customization that causes upgrade <em>fun</em>
 down the road, it requires stepping back from our typical approaches (like
 adding mega menus and footers) and thinking about (1) what are we trying to have
@@ -180,22 +199,26 @@ supported fashion. In this way we&rsquo;ll minimize our development costs, maxim
 our investment in the O365/SharePoint platform, and focus more on extracting
 business value than simply re-implementing the same old thing atop the latest
 SharePoint release.</p>
-</div>
-</div>
-</article>
-</main>
-<div class=feedback>
-<div class=container>
-<h3>Feedback</h3>
-<p>Submit feedback, ask questions, or just leave a comment with a
-<a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BSharePoint%20Framework%3a%20Extensions%20-%20Application%20Customizer%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2018-01-17-learning-spfx-pt-2.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2018%2f01%2f17%2flearning-spfx-pt-2%2f">GitHub Issue</a></p>
-</div>
-</div>
+            </div>
+        </div>
+    </article>
+
+        </main>
+        
+    <div class="feedback">
+        <div class="container">
+            <h3>Feedback</h3>
+            <p>Submit feedback, ask questions, or just leave a comment with a
+                <a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BSharePoint%20Framework%3a%20Extensions%20-%20Application%20Customizer%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2018-01-17-learning-spfx-pt-2.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2018%2f01%2f17%2flearning-spfx-pt-2%2f">GitHub Issue</a></p>
+        </div>
+    </div>
 something something
-<footer>
-<div class=container>
-built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
-</div>
+
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
 </footer>
-</body>
+
+    </body>
 </html>

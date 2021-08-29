@@ -1,73 +1,122 @@
-<!doctype html><html lang=en>
-<head prefix="og: http://ogp.me/ns#">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
-<title>JonTheNerd</title>
-<meta name=color-scheme content="dark light">
-<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
-<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
-<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
-<link rel=stylesheet href=/assets/style.css>
-<link rel=alternate type=application/rss+xml href=http://www.jonthenerd.com/categories/feed.xml title=JonTheNerd>
-</head>
-<body>
-<header class=site-header>
-<div class=container>
-<h1>
-<a href=/>JonTheNerd</a>
-</h1>
-<nav>
-<ul>
-<li><a href=/about>About</a></li>
-</ul>
-</nav>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        <link rel="alternate" type="application/rss+xml" href="http://www.jonthenerd.com/categories/feed.xml" title="JonTheNerd" />
+        </head>
+    <body>
+        
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-<main>
-<div class=auto-list>
-<div class=container>
-<header>
-<h1>Categories</h1>
-</header>
-<ul>
-<li>2021-08-28 <a href=http://www.jonthenerd.com/categories/blogging/>Blogging</a></li>
-<li>2021-08-28 <a href=http://www.jonthenerd.com/categories/hugo/>Hugo</a></li>
-<li>2018-05-04 <a href=http://www.jonthenerd.com/categories/programming/>Programming</a></li>
-<li>2018-05-04 <a href=http://www.jonthenerd.com/categories/sharepoint/>SharePoint</a></li>
-<li>2016-04-04 <a href=http://www.jonthenerd.com/categories/muhimbi-pdf-converter-services/>Muhimbi PDF Converter Services</a></li>
-<li>2016-03-31 <a href=http://www.jonthenerd.com/categories/k2/>K2</a></li>
-<li>2014-11-22 <a href=http://www.jonthenerd.com/categories/cms-made-simple/>CMS Made Simple</a></li>
-<li>2014-02-09 <a href=http://www.jonthenerd.com/categories/cars/>Cars</a></li>
-<li>2012-10-07 <a href=http://www.jonthenerd.com/categories/android/>Android</a></li>
-<li>2011-12-01 <a href=http://www.jonthenerd.com/categories/software/>Software</a></li>
-<li>2011-08-17 <a href=http://www.jonthenerd.com/categories/powershell/>PowerShell</a></li>
-<li>2010-10-21 <a href=http://www.jonthenerd.com/categories/freeware/>Freeware</a></li>
-<li>2010-10-21 <a href=http://www.jonthenerd.com/categories/fun/>Fun</a></li>
-<li>2010-10-21 <a href=http://www.jonthenerd.com/categories/gaming/>Gaming</a></li>
-<li>2010-10-21 <a href=http://www.jonthenerd.com/categories/video-games/>Video Games</a></li>
-<li>2010-09-29 <a href=http://www.jonthenerd.com/categories/.net/>.NET</a></li>
-<li>2010-09-22 <a href=http://www.jonthenerd.com/categories/asp.net/>ASP.NET</a></li>
-<li>2010-08-01 <a href=http://www.jonthenerd.com/categories/linux/>Linux</a></li>
-<li>2010-08-01 <a href=http://www.jonthenerd.com/categories/ubuntu/>ubuntu</a></li>
-<li>2010-06-01 <a href=http://www.jonthenerd.com/categories/motivation/>Motivation</a></li>
-<li>2010-02-03 <a href=http://www.jonthenerd.com/categories/diy/>DIY</a></li>
-<li>2010-01-15 <a href=http://www.jonthenerd.com/categories/funny/>Funny</a></li>
-<li>2009-09-18 <a href=http://www.jonthenerd.com/categories/computers/>Computers</a></li>
-<li>2009-09-18 <a href=http://www.jonthenerd.com/categories/windows/>Windows</a></li>
-<li>2009-01-11 <a href=http://www.jonthenerd.com/categories/food/>Food</a></li>
-<li>2008-06-19 <a href=http://www.jonthenerd.com/categories/active-directory/>Active Directory</a></li>
-<li>2007-03-11 <a href=http://www.jonthenerd.com/categories/mac/>Mac</a></li>
-<li>2007-02-10 <a href=http://www.jonthenerd.com/categories/microsoft-office/>Microsoft Office</a></li>
-<li>2007-01-29 <a href=http://www.jonthenerd.com/categories/media-center/>Media Center</a></li>
-</ul>
-</div>
-</div>
-</main>
-<footer>
-<div class=container>
-built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
-</div>
+
+        <main>
+            
+    <div class="auto-list">
+        <div class="container">
+            <header>
+                <h1>Categories</h1>
+            </header>
+            
+
+            <ul>
+                
+                <li>2021-08-28 <a href="http://www.jonthenerd.com/categories/blogging/">Blogging</a></li>
+                
+                <li>2021-08-28 <a href="http://www.jonthenerd.com/categories/hugo/">Hugo</a></li>
+                
+                <li>2018-05-04 <a href="http://www.jonthenerd.com/categories/programming/">Programming</a></li>
+                
+                <li>2018-05-04 <a href="http://www.jonthenerd.com/categories/sharepoint/">SharePoint</a></li>
+                
+                <li>2016-04-04 <a href="http://www.jonthenerd.com/categories/muhimbi-pdf-converter-services/">Muhimbi PDF Converter Services</a></li>
+                
+                <li>2016-03-31 <a href="http://www.jonthenerd.com/categories/k2/">K2</a></li>
+                
+                <li>2014-11-22 <a href="http://www.jonthenerd.com/categories/cms-made-simple/">CMS Made Simple</a></li>
+                
+                <li>2014-02-09 <a href="http://www.jonthenerd.com/categories/cars/">Cars</a></li>
+                
+                <li>2012-10-07 <a href="http://www.jonthenerd.com/categories/android/">Android</a></li>
+                
+                <li>2011-12-01 <a href="http://www.jonthenerd.com/categories/software/">Software</a></li>
+                
+                <li>2011-08-17 <a href="http://www.jonthenerd.com/categories/powershell/">PowerShell</a></li>
+                
+                <li>2010-10-21 <a href="http://www.jonthenerd.com/categories/freeware/">Freeware</a></li>
+                
+                <li>2010-10-21 <a href="http://www.jonthenerd.com/categories/fun/">Fun</a></li>
+                
+                <li>2010-10-21 <a href="http://www.jonthenerd.com/categories/gaming/">Gaming</a></li>
+                
+                <li>2010-10-21 <a href="http://www.jonthenerd.com/categories/video-games/">Video Games</a></li>
+                
+                <li>2010-09-29 <a href="http://www.jonthenerd.com/categories/.net/">.NET</a></li>
+                
+                <li>2010-09-22 <a href="http://www.jonthenerd.com/categories/asp.net/">ASP.NET</a></li>
+                
+                <li>2010-08-01 <a href="http://www.jonthenerd.com/categories/linux/">Linux</a></li>
+                
+                <li>2010-08-01 <a href="http://www.jonthenerd.com/categories/ubuntu/">ubuntu</a></li>
+                
+                <li>2010-06-01 <a href="http://www.jonthenerd.com/categories/motivation/">Motivation</a></li>
+                
+                <li>2010-02-03 <a href="http://www.jonthenerd.com/categories/diy/">DIY</a></li>
+                
+                <li>2010-01-15 <a href="http://www.jonthenerd.com/categories/funny/">Funny</a></li>
+                
+                <li>2009-09-18 <a href="http://www.jonthenerd.com/categories/computers/">Computers</a></li>
+                
+                <li>2009-09-18 <a href="http://www.jonthenerd.com/categories/windows/">Windows</a></li>
+                
+                <li>2009-01-11 <a href="http://www.jonthenerd.com/categories/food/">Food</a></li>
+                
+                <li>2008-06-19 <a href="http://www.jonthenerd.com/categories/active-directory/">Active Directory</a></li>
+                
+                <li>2007-03-11 <a href="http://www.jonthenerd.com/categories/mac/">Mac</a></li>
+                
+                <li>2007-02-10 <a href="http://www.jonthenerd.com/categories/microsoft-office/">Microsoft Office</a></li>
+                
+                <li>2007-01-29 <a href="http://www.jonthenerd.com/categories/media-center/">Media Center</a></li>
+                
+            </ul>
+        </div>
+    </div>
+
+        </main>
+        
+            
+        
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
 </footer>
-</body>
+
+    </body>
 </html>

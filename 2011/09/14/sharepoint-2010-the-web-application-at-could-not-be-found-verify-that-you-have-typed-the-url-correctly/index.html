@@ -1,46 +1,65 @@
-<!doctype html><html lang=en>
-<head prefix="og: http://ogp.me/ns#">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
-<title>SharePoint 2010: The web application at ... could not be found. Verify that you have typed the URL correctly. &ndash; JonTheNerd</title>
-<meta name=color-scheme content="dark light">
-<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
-<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
-<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
-<link rel=stylesheet href=/assets/style.css>
-</head>
-<body>
-<header class=site-header>
-<div class=container>
-<h1>
-<a href=/>JonTheNerd</a>
-</h1>
-<nav>
-<ul>
-<li><a href=/about>About</a></li>
-</ul>
-</nav>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>SharePoint 2010: The web application at ... could not be found. Verify that you have typed the URL correctly. &ndash; JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        </head>
+    <body>
+        
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-<main>
-<article class=single itemscope itemtype=http://schema.org/BlogPosting>
-<header>
-<h1 itemprop="name headline">
-<div class=container>SharePoint 2010: The web application at ... could not be found. Verify that you have typed the URL correctly.</div>
-</h1>
-<div class=post-meta>
-<div class=container>
-By Jon Badgett
-| <time datetime=" 2011-09-14" itemprop=datePublished>September 14, 2011</time>
-| Posted in
-<a href=/categories/programming>Programming</a>, <a href=/categories/sharepoint>SharePoint</a>
-</div>
-</div>
-</header>
-<div itemprop=articleBody>
-<div class=container>
-<p>|- and so on with the error message. Do these also fit your situation? 1) The
+
+        <main>
+            
+    <article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+            <h1 itemprop="name headline">
+                <div class="container">SharePoint 2010: The web application at ... could not be found. Verify that you have typed the URL correctly.</div>
+            </h1>
+            <div class="post-meta">
+                <div class="container">
+                    By Jon Badgett
+                    | <time
+                        datetime=" 2011-09-14"
+                        itemprop="datePublished"
+                        >September 14, 2011</time
+                    >
+                    
+                        | Posted in
+                        <a href="/categories/programming">Programming</a>, <a href="/categories/sharepoint">SharePoint</a>
+
+                    
+                </div>
+            </div>
+        </header>
+        <div itemprop="articleBody">
+            <div class="container">
+            <p>|- and so on with the error message. Do these also fit your situation? 1) The
 error happens when running a console application 2) Using PowerShell works to
 access the SPSite, SPWeb, or SPWebApplication that you&rsquo;re accessing in your
 console application How do you fix this? Change your build platform target to
@@ -49,22 +68,27 @@ setting (so you have the setting for Debug and Release compile modes). Why did I
 post this? Because every few months this bites me in some way. Normally for at
 least an hour at a time. It&rsquo;s extremely confusing at first and a &lsquo;doh moment
 when you figure it out.</p>
-</div>
-</div>
-</article>
-</main>
-<div class=feedback>
-<div class=container>
-<h3>Feedback</h3>
-<p>Submit feedback, ask questions, or just leave a comment with a
-<a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BSharePoint%202010%3a%20The%20web%20application%20at%20...%20could%20not%20be%20found.%20Verify%20that%20you%20have%20typed%20the%20URL%20correctly.%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2011-09-14-sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2011%2f09%2f14%2fsharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly%2f">GitHub Issue</a></p>
-</div>
-</div>
+
+            </div>
+        </div>
+    </article>
+
+        </main>
+        
+    <div class="feedback">
+        <div class="container">
+            <h3>Feedback</h3>
+            <p>Submit feedback, ask questions, or just leave a comment with a
+                <a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BSharePoint%202010%3a%20The%20web%20application%20at%20...%20could%20not%20be%20found.%20Verify%20that%20you%20have%20typed%20the%20URL%20correctly.%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2011-09-14-sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2011%2f09%2f14%2fsharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly%2f">GitHub Issue</a></p>
+        </div>
+    </div>
 something something
-<footer>
-<div class=container>
-built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
-</div>
+
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
 </footer>
-</body>
+
+    </body>
 </html>

@@ -1,77 +1,101 @@
-<!doctype html><html lang=en>
-<head prefix="og: http://ogp.me/ns#">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
-<title>Hugo &ndash; JonTheNerd</title>
-<meta name=color-scheme content="dark light">
-<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
-<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
-<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
-<link rel=stylesheet href=/assets/style.css>
-</head>
-<body>
-<header class=site-header>
-<div class=container>
-<h1>
-<a href=/>JonTheNerd</a>
-</h1>
-<nav>
-<ul>
-<li><a href=/about>About</a></li>
-</ul>
-</nav>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>Hugo &ndash; JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        </head>
+    <body>
+        
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-<main>
-<article class=single itemscope itemtype=http://schema.org/BlogPosting>
-<header>
-<h1 itemprop="name headline">
-<div class=container>Hugo</div>
-</h1>
-<div class=post-meta>
-<div class=container>
-By Jon Badgett
-| <time datetime=" 2021-08-28" itemprop=datePublished>August 28, 2021</time>
-| Posted in
-<a href=/categories/blogging>blogging</a>, <a href=/categories/hugo>Hugo</a>
-</div>
-</div>
-</header>
-<div itemprop=articleBody>
-<div class=container>
-<p>I decided to rebuild my blog atop <a href=https://gohugo.io/>Hugo</a>, the &ldquo;world&rsquo;s fastest framework for building websites.&rdquo; I did this for a few reasons:</p>
+
+        <main>
+            
+    <article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+            <h1 itemprop="name headline">
+                <div class="container">Hugo</div>
+            </h1>
+            <div class="post-meta">
+                <div class="container">
+                    By Jon Badgett
+                    | <time
+                        datetime=" 2021-08-28"
+                        itemprop="datePublished"
+                        >August 28, 2021</time
+                    >
+                    
+                        | Posted in
+                        <a href="/categories/blogging">blogging</a>, <a href="/categories/hugo">Hugo</a>
+
+                    
+                </div>
+            </div>
+        </header>
+        <div itemprop="articleBody">
+            <div class="container">
+            <p>I decided to rebuild my blog atop <a href="https://gohugo.io/">Hugo</a>, the &ldquo;world&rsquo;s fastest framework for building websites.&rdquo; I did this for a few reasons:</p>
 <ul>
 <li>
-<p>GitHub has been diligent in reminding me that there are security vulnerabilities in the dependencies of my blog. I used jekyll for the static site building, a collection of npm packages for some glue-code in the build process, and based my theme on twitter bootstrap. All of this adds up to a lot of dependencies to keep up with, and I haven&rsquo;t been blogging for a while&mldr;</p>
-<p><img src=/assets/images/2021-08-28-hugo/dependabot.png alt=Dependabot></p>
+<p>GitHub has been diligent in reminding me that there are security vulnerabilities in the dependencies of my blog. I used jekyll for the static site building, a collection of npm packages for some glue-code in the build process, and based my theme on twitter bootstrap. All of this adds up to a lot of dependencies to keep up with, and I haven&rsquo;t been blogging for a while&hellip;</p>
+<p><img src="/assets/images/2021-08-28-hugo/dependabot.png" alt="Dependabot"></p>
 <p>Hugo is a single file that&rsquo;s only needed when you build the site. Outside of that, I&rsquo;ll need just enough from NPM to roll my stylesheets. We&rsquo;ll see how long I keep it that slim.</p>
 </li>
 <li>
 <p>My site used Twitter Bootstrap as the base for its theme. This was fine at the time, as much of my work centered around usage of the framework and leveraging it for my blog felt like a good learning experience and a nice looking site. These days, my focus seems to be all about fast rendering, minimal payload, and using the latest HTML and CSS techniques to keep React components lightweight and simple to maintain. Twitter Bootstrap isn&rsquo;t as popular as it once was either.</p>
-<p>I&rsquo;ve come to appreciate much simpler looking blogs and wanted the payload to be incredibly slim. While there are several static site generators popular right now, Hugo is the fastest and most capable of keeping the site lightweight. I thought hard about using <a href=https://www.gatsbyjs.com/>Gatsby</a> as I&rsquo;d be able to use TypeScript & React (which I really enjoy), but decided I didn&rsquo;t need a Progressive Web App for my blog. I just wanted simple and fast.</p>
+<p>I&rsquo;ve come to appreciate much simpler looking blogs and wanted the payload to be incredibly slim. While there are several static site generators popular right now, Hugo is the fastest and most capable of keeping the site lightweight. I thought hard about using <a href="https://www.gatsbyjs.com/">Gatsby</a> as I&rsquo;d be able to use TypeScript &amp; React (which I really enjoy), but decided I didn&rsquo;t need a Progressive Web App for my blog. I just wanted simple and fast.</p>
 </li>
 <li>
-<p><a href=https://golang.org/>Go</a>. Never used it. Didn&rsquo;t think I&rsquo;d have reason to. Turns out, <a href=https://www.terraform.io/>Terraform</a> and particularly <a href=https://terratest.gruntwork.io/>Terratest</a> can use it for unit testing your Infrastructure as Code. In my current line of work, this is becoming increasingly more important. Hugo is built on Go. This doesn&rsquo;t seem like much of a reason, but it was enough to tip me toward using it.</p>
+<p><a href="https://golang.org/">Go</a>. Never used it. Didn&rsquo;t think I&rsquo;d have reason to. Turns out, <a href="https://www.terraform.io/">Terraform</a> and particularly <a href="https://terratest.gruntwork.io/">Terratest</a> can use it for unit testing your Infrastructure as Code. In my current line of work, this is becoming increasingly more important. Hugo is built on Go. This doesn&rsquo;t seem like much of a reason, but it was enough to tip me toward using it.</p>
 </li>
 </ul>
 <p>Maybe with less need to update dependencies I&rsquo;ll blog more often, with less dread of having to update dependencies before I can post. We&rsquo;ll see. The site is going to look mighty plain for a while until I can put a little more time into the pretty side of things. Simple is good though. It will feel like a more modern version of the early world wide web. 😄</p>
-</div>
-</div>
-</article>
-</main>
-<div class=feedback>
-<div class=container>
-<h3>Feedback</h3>
-<p>Submit feedback, ask questions, or just leave a comment with a
-<a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BHugo%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2021-08-28-hugo.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2021%2f08%2f28%2fhugo%2f">GitHub Issue</a></p>
-</div>
-</div>
+
+            </div>
+        </div>
+    </article>
+
+        </main>
+        
+    <div class="feedback">
+        <div class="container">
+            <h3>Feedback</h3>
+            <p>Submit feedback, ask questions, or just leave a comment with a
+                <a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BHugo%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2021-08-28-hugo.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2021%2f08%2f28%2fhugo%2f">GitHub Issue</a></p>
+        </div>
+    </div>
 something something
-<footer>
-<div class=container>
-built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
-</div>
+
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
 </footer>
-</body>
+
+    </body>
 </html>

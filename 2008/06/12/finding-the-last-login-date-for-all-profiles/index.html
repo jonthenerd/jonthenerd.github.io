@@ -1,52 +1,71 @@
-<!doctype html><html lang=en>
-<head prefix="og: http://ogp.me/ns#">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
-<title>Finding the last login date for all profiles &ndash; JonTheNerd</title>
-<meta name=color-scheme content="dark light">
-<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
-<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
-<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
-<link rel=stylesheet href=/assets/style.css>
-</head>
-<body>
-<header class=site-header>
-<div class=container>
-<h1>
-<a href=/>JonTheNerd</a>
-</h1>
-<nav>
-<ul>
-<li><a href=/about>About</a></li>
-</ul>
-</nav>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>Finding the last login date for all profiles &ndash; JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        </head>
+    <body>
+        
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-<main>
-<article class=single itemscope itemtype=http://schema.org/BlogPosting>
-<header>
-<h1 itemprop="name headline">
-<div class=container>Finding the last login date for all profiles</div>
-</h1>
-<div class=post-meta>
-<div class=container>
-By Jon Badgett
-| <time datetime=" 2008-06-12" itemprop=datePublished>June 12, 2008</time>
-| Posted in
-<a href=/categories/.net>.NET</a>, <a href=/categories/programming>Programming</a>
-</div>
-</div>
-</header>
-<div itemprop=articleBody>
-<div class=container>
-<p>By day I am but an humble IT worker - currently tasked with maintaining and
+
+        <main>
+            
+    <article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+            <h1 itemprop="name headline">
+                <div class="container">Finding the last login date for all profiles</div>
+            </h1>
+            <div class="post-meta">
+                <div class="container">
+                    By Jon Badgett
+                    | <time
+                        datetime=" 2008-06-12"
+                        itemprop="datePublished"
+                        >June 12, 2008</time
+                    >
+                    
+                        | Posted in
+                        <a href="/categories/.net">.NET</a>, <a href="/categories/programming">Programming</a>
+
+                    
+                </div>
+            </div>
+        </header>
+        <div itemprop="articleBody">
+            <div class="container">
+            <p>By day I am but an humble IT worker - currently tasked with maintaining and
 improving scripts and tools that keep our enterprise workstations humming. My
 largest project thus far has been an ever growing inventory script (now a .NET 2
 app) that reports information back to a SQL database. This app is run on a
 schedule by a service I wrote. The script collects great pieces of information -
 everything from the screen resolution being used to information on SQL Server
-instances on the device (yep - inventories servers too!).Anyway -
+instances on the device (yep - inventories servers too!).<!-- raw HTML omitted --><!-- raw HTML omitted -->Anyway -
 one area that posed an issue was reporting back all profiles present on a
 computer and when they were last used. This can be done a number of ways - the
 simplest of which being to enumerate the folders in the Documents and Settings
@@ -54,37 +73,42 @@ folder and then get the last modified date off of the ntuser.dat.log file within
 each directory. This file is a log (wow, couldn&rsquo;t have guessed that!) of all
 registry actions for that specific user&rsquo;s registry hive - think everything under
 HKEY_CURRENT_USER while you&rsquo;re logged in. This works great - and has for a long
-time. Recent developments have changed some of that though&mldr;What
+time. Recent developments have changed some of that though&hellip;<!-- raw HTML omitted --><!-- raw HTML omitted -->What
 happens when AntiVirus crawls each user&rsquo;s registry hive? It updates that file.
 Suddenly the inventory app was reporting each profile to be current as of the
-day the app was run&mldr;not good. I searched a long time via the Internet - and
+day the app was run&hellip;not good. I searched a long time via the Internet - and
 just poking around the registry for days. WMI didnt' help any - and neither did
 a hunch I had about using the local computer as an Active Directory forest to
 find the last login time. I came across another file you can check - and I
-believe I&rsquo;m the first on the net to post this.Check the file date on
-this file:C:\Documents and
-Settings&lt;user>UserName\Local
-Settings\Application Data\Microsoft\Windows\UsrClass.dat.LOGThis has
+believe I&rsquo;m the first on the net to post this.<!-- raw HTML omitted --><!-- raw HTML omitted -->Check the file date on
+this file:<!-- raw HTML omitted -->C:\Documents and
+Settings&lt;user&gt;<!-- raw HTML omitted -->UserName<!-- raw HTML omitted -->\Local
+Settings\Application Data\Microsoft\Windows\UsrClass.dat.LOG<!-- raw HTML omitted --><!-- raw HTML omitted -->This has
 proved to be a reliable way of getting the last login time for each profile when
 the other log file isn&rsquo;t reliable. I suspect that it may be updated on certain
 software installations - so beware. But in my case - this was a life saver. Have
-fun and let me know if it helps!</p>
-</div>
-</div>
-</article>
-</main>
-<div class=feedback>
-<div class=container>
-<h3>Feedback</h3>
-<p>Submit feedback, ask questions, or just leave a comment with a
-<a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BFinding%20the%20last%20login%20date%20for%20all%20profiles%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2008-06-12-finding-the-last-login-date-for-all-profiles.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2008%2f06%2f12%2ffinding-the-last-login-date-for-all-profiles%2f">GitHub Issue</a></p>
-</div>
-</div>
+fun and let me know if it helps!<!-- raw HTML omitted --></p>
+
+            </div>
+        </div>
+    </article>
+
+        </main>
+        
+    <div class="feedback">
+        <div class="container">
+            <h3>Feedback</h3>
+            <p>Submit feedback, ask questions, or just leave a comment with a
+                <a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BFinding%20the%20last%20login%20date%20for%20all%20profiles%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2008-06-12-finding-the-last-login-date-for-all-profiles.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2008%2f06%2f12%2ffinding-the-last-login-date-for-all-profiles%2f">GitHub Issue</a></p>
+        </div>
+    </div>
 something something
-<footer>
-<div class=container>
-built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
-</div>
+
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
 </footer>
-</body>
+
+    </body>
 </html>

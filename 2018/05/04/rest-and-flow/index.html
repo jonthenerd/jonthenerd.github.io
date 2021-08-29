@@ -1,60 +1,79 @@
-<!doctype html><html lang=en>
-<head prefix="og: http://ogp.me/ns#">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
-<title>Microsoft Flow: Using the SharePoint REST API &ndash; JonTheNerd</title>
-<meta name=color-scheme content="dark light">
-<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
-<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
-<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
-<link rel=stylesheet href=/assets/style.css>
-</head>
-<body>
-<header class=site-header>
-<div class=container>
-<h1>
-<a href=/>JonTheNerd</a>
-</h1>
-<nav>
-<ul>
-<li><a href=/about>About</a></li>
-</ul>
-</nav>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>Microsoft Flow: Using the SharePoint REST API &ndash; JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        </head>
+    <body>
+        
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-<main>
-<article class=single itemscope itemtype=http://schema.org/BlogPosting>
-<header>
-<h1 itemprop="name headline">
-<div class=container>Microsoft Flow: Using the SharePoint REST API</div>
-</h1>
-<div class=post-meta>
-<div class=container>
-By Jon Badgett
-| <time datetime=" 2018-05-04" itemprop=datePublished>May 4, 2018</time>
-| Posted in
-<a href=/categories/sharepoint>SharePoint</a>, <a href=/categories/programming>Programming</a>
-</div>
-</div>
-</header>
-<div itemprop=articleBody>
-<div class=container>
-<p>This post will contain whatever handy information I come across for utilizing
+
+        <main>
+            
+    <article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+            <h1 itemprop="name headline">
+                <div class="container">Microsoft Flow: Using the SharePoint REST API</div>
+            </h1>
+            <div class="post-meta">
+                <div class="container">
+                    By Jon Badgett
+                    | <time
+                        datetime=" 2018-05-04"
+                        itemprop="datePublished"
+                        >May 4, 2018</time
+                    >
+                    
+                        | Posted in
+                        <a href="/categories/sharepoint">SharePoint</a>, <a href="/categories/programming">Programming</a>
+
+                    
+                </div>
+            </div>
+        </header>
+        <div itemprop="articleBody">
+            <div class="container">
+            <p>This post will contain whatever handy information I come across for utilizing
 the SharePoint REST APIs with Microsoft Flow.</p>
 <p>Why would you want to do this? Because there aren&rsquo;t enough actions to accomplish
 all the things you&rsquo;d want to do with SharePoint via Flow.</p>
 <p>The first section of this guide comes from combining a few different blog posts,
 but I found
-<a href=https://blogs.u2u.be/u2u/post/calling-the-sharepoint-online-api-from-within-microsoft-flow>Calling the SharePoint Online API from within Microsoft Flow by ROBRECHT-VAN-CAENEGEM</a>
+<a href="https://blogs.u2u.be/u2u/post/calling-the-sharepoint-online-api-from-within-microsoft-flow">Calling the SharePoint Online API from within Microsoft Flow by ROBRECHT-VAN-CAENEGEM</a>
 to be the most useful. It&rsquo;s got pictures!</p>
-<h1 id=how-does-this-work>How does this work?</h1>
+<h1 id="how-does-this-work">How does this work?</h1>
 <ul>
 <li>Microsoft Flow can send generic HTTP requests, with custom headers, body, etc.</li>
 <li>For Flow to authenticate to SharePoint during the REST calls, we&rsquo;ll make use
 of the access tokens typically used for SharePoint Addins/Apps</li>
 </ul>
-<h1 id=intial-setup>Intial Setup</h1>
+<h1 id="intial-setup">Intial Setup</h1>
 <p>We&rsquo;re going to need four pieces of data:</p>
 <ul>
 <li><strong>CLIENTID</strong>: Unique id assigned to your add-in registration</li>
@@ -62,7 +81,7 @@ of the access tokens typically used for SharePoint Addins/Apps</li>
 <li><strong>REALM</strong>: This is the unique id assigned to your SharePoint Online tenant.</li>
 <li><strong>TENANT</strong>: The hostname of your tenant (e.g. example.sharepoint.com)</li>
 </ul>
-<h2 id=obtain-the-clientid-and-clientsecret-values>Obtain the CLIENTID and CLIENTSECRET values</h2>
+<h2 id="obtain-the-clientid-and-clientsecret-values">Obtain the CLIENTID and CLIENTSECRET values</h2>
 <ol>
 <li>
 <p>On the SharePoint site that you need to communicate with, navigate to
@@ -72,9 +91,9 @@ AppRegNew page</p>
 <li>
 <p>Fill in the information.</p>
 <ul>
-<li>Client Id: &#171;Generate It!&#187;</li>
-<li>Client Secret: &#171;Generate It!&#187;</li>
-<li>Title: &#171;Project Name Flow&#187;</li>
+<li>Client Id: &laquo;Generate It!&raquo;</li>
+<li>Client Secret: &laquo;Generate It!&raquo;</li>
+<li>Title: &laquo;Project Name Flow&raquo;</li>
 <li>App Domain: localhost</li>
 <li>Redirect URI: https:/localhost</li>
 </ul>
@@ -86,23 +105,23 @@ AppRegNew page</p>
 <p>Click the <em>Create</em> button.</p>
 </li>
 <li>
-<p>Navigate to the AppInv page <code>&lt;your site's URL>/_layouts/15/appinv.aspx</code></p>
+<p>Navigate to the AppInv page <code>&lt;your site's URL&gt;/_layouts/15/appinv.aspx</code></p>
 </li>
 <li>
 <p>Put the <em>Client Id</em> into the <em>App Id</em> text box and look it up.</p>
 </li>
 <li>
 <p>Paste the following XML into the <em>Permission Request XML</em> box
-(<a href=https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/add-in-permissions-in-sharepoint>modify as needed for what scope and right you need</a>):</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;AppPermissionRequests</span> <span class=na>AllowAppOnlyPolicy=</span><span class=s>&#34;true&#34;</span><span class=nt>&gt;</span>
-    <span class=nt>&lt;AppPermissionRequest</span> <span class=na>Scope=</span><span class=s>&#34;http://sharepoint/content/sitecollection&#34;</span> <span class=na>Right=</span><span class=s>&#34;FullControl&#34;</span> <span class=nt>/&gt;</span>
-<span class=nt>&lt;/AppPermissionRequests&gt;</span>
+(<a href="https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/add-in-permissions-in-sharepoint">modify as needed for what scope and right you need</a>):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;AppPermissionRequests</span> <span class="na">AllowAppOnlyPolicy=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;AppPermissionRequest</span> <span class="na">Scope=</span><span class="s">&#34;http://sharepoint/content/sitecollection&#34;</span> <span class="na">Right=</span><span class="s">&#34;FullControl&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/AppPermissionRequests&gt;</span>
 </code></pre></div></li>
 <li>
 <p>Click the <em>Create</em> button.</p>
 </li>
 </ol>
-<h2 id=obtain-the-realm-value>Obtain the REALM value</h2>
+<h2 id="obtain-the-realm-value">Obtain the REALM value</h2>
 <ol>
 <li>On the SharePoint site that you just finished app registration on, navigate
 to the AppPrincipals page
@@ -112,7 +131,7 @@ to the AppPrincipals page
 Identifier. The last section of the App Identifier, after the @, is the
 REALM value.</li>
 </ol>
-<h2 id=setup-authentication-in-flow>Setup Authentication in Flow</h2>
+<h2 id="setup-authentication-in-flow">Setup Authentication in Flow</h2>
 <ol>
 <li>
 <p>In your created flow, directly after the trigger, do the following:</p>
@@ -122,25 +141,25 @@ REALM value.</li>
 filling in your own values and using the below schema.</p>
 <ul>
 <li>Content:
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
-    <span class=nt>&#34;realm&#34;</span><span class=p>:</span> <span class=s2>&#34;{REALM}&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;clientId&#34;</span><span class=p>:</span> <span class=s2>&#34;{CLIENTID}&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;clientSecret&#34;</span><span class=p>:</span> <span class=s2>&#34;{CLIENTSECRET}&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;principal&#34;</span><span class=p>:</span> <span class=s2>&#34;00000003-0000-0ff1-ce00-000000000000&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;tenant&#34;</span><span class=p>:</span> <span class=s2>&#34;{TENANT}&#34;</span>
-<span class=p>}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;realm&#34;</span><span class="p">:</span> <span class="s2">&#34;{REALM}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;clientId&#34;</span><span class="p">:</span> <span class="s2">&#34;{CLIENTID}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;clientSecret&#34;</span><span class="p">:</span> <span class="s2">&#34;{CLIENTSECRET}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;principal&#34;</span><span class="p">:</span> <span class="s2">&#34;00000003-0000-0ff1-ce00-000000000000&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;tenant&#34;</span><span class="p">:</span> <span class="s2">&#34;{TENANT}&#34;</span>
+<span class="p">}</span>
 </code></pre></div></li>
 <li>Schema:
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
-    <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;object&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;properties&#34;</span><span class=p>:</span> <span class=p>{</span>
-        <span class=nt>&#34;realm&#34;</span><span class=p>:</span> <span class=p>{</span> <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;string&#34;</span> <span class=p>},</span>
-        <span class=nt>&#34;clientId&#34;</span><span class=p>:</span> <span class=p>{</span> <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;string&#34;</span> <span class=p>},</span>
-        <span class=nt>&#34;clientSecret&#34;</span><span class=p>:</span> <span class=p>{</span> <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;string&#34;</span> <span class=p>},</span>
-        <span class=nt>&#34;principal&#34;</span><span class=p>:</span> <span class=p>{</span> <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;string&#34;</span> <span class=p>},</span>
-        <span class=nt>&#34;tenant&#34;</span><span class=p>:</span> <span class=p>{</span> <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;string&#34;</span> <span class=p>}</span>
-    <span class=p>}</span>
-<span class=p>}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;object&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;realm&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span> <span class="p">},</span>
+        <span class="nt">&#34;clientId&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span> <span class="p">},</span>
+        <span class="nt">&#34;clientSecret&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span> <span class="p">},</span>
+        <span class="nt">&#34;principal&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span> <span class="p">},</span>
+        <span class="nt">&#34;tenant&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></li>
 </ul>
 </li>
@@ -148,7 +167,7 @@ filling in your own values and using the below schema.</p>
 <p>Create a new <strong>Initialize variable</strong> action, renamed to Initialize
 AccessTokenBody, with the following values: - Name: <code>AccessTokenBody</code> -
 Type: String - Value:
-<code>concat('grant_type=client_credentials&client_id=', body('Authentication_Values')?['clientId'], '@', body('Authentication_Values')?['realm'], '&client_secret=', body('Authentication_Values')?['clientSecret'], '&resource=', body('Authentication_Values')?['principal'], '/', body('Authentication_Values')?['tenant'], '@', body('Authentication_Values')?['realm']) </code></p>
+<code>concat('grant_type=client_credentials&amp;client_id=', body('Authentication_Values')?['clientId'], '@', body('Authentication_Values')?['realm'], '&amp;client_secret=', body('Authentication_Values')?['clientSecret'], '&amp;resource=', body('Authentication_Values')?['principal'], '/', body('Authentication_Values')?['tenant'], '@', body('Authentication_Values')?['realm']) </code></p>
 </li>
 <li>
 <p>Create a new <strong>HTTP - HTTP</strong> action.</p>
@@ -163,9 +182,9 @@ Type: String - Value:
 <li><strong>Uri</strong>:
 <code>https://accounts.accesscontrol.windows.net/@{body('Authentication_Values')?['realm']}/tokens/oauth/2</code></li>
 <li><strong>Headers</strong>:
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
-    <span class=nt>&#34;Content-Type&#34;</span><span class=p>:</span> <span class=s2>&#34;application/x-www-form-urlencoded&#34;</span>
-<span class=p>}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;Content-Type&#34;</span><span class="p">:</span> <span class="s2">&#34;application/x-www-form-urlencoded&#34;</span>
+<span class="p">}</span>
 </code></pre></div></li>
 <li><strong>Body</strong>: the <em>AccessTokenBody</em> variable</li>
 </ul>
@@ -176,13 +195,13 @@ Type: String - Value:
 <li>
 <p>Content should be set to the Body parameter from the previuos step. Schema
 should be set to the following:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
-    <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;object&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;properties&#34;</span><span class=p>:</span> <span class=p>{</span>
-        <span class=nt>&#34;token_type&#34;</span><span class=p>:</span> <span class=p>{</span> <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;string&#34;</span> <span class=p>},</span>
-        <span class=nt>&#34;access_token&#34;</span><span class=p>:</span> <span class=p>{</span> <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;string&#34;</span> <span class=p>}</span>
-    <span class=p>}</span>
-<span class=p>}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;object&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;token_type&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span> <span class="p">},</span>
+        <span class="nt">&#34;access_token&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></li>
 </ol>
 <p>With this setup, you should be able to test your FLOW and not have it error. You
@@ -191,26 +210,26 @@ the most tricky part of this is getting the Body variable of step 6 setup
 correctly. Note that my value depends upon you having renamed the steps as I
 instructed to work.</p>
 <p><strong>You&rsquo;re now ready to start using SharePoint REST APIs in Flow!</strong></p>
-<h1 id=helpful-snippets>Helpful Snippets</h1>
+<h1 id="helpful-snippets">Helpful Snippets</h1>
 <p>This section will be a hodge podge of useful snippets I plan to continue adding
 to.</p>
-<h2 id=general>General</h2>
-<h3 id=headers>Headers</h3>
+<h2 id="general">General</h2>
+<h3 id="headers">Headers</h3>
 <p>It&rsquo;s easiest to paste in the headers values of <strong>HTTP - HTTP</strong> actions if it&rsquo;s
 in text mode. Here&rsquo;s what&rsquo;s needed (adjust the name of the action where mine
 says <strong>Parse Access Token</strong> to match the name of your action that parses the
 access tokens)</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
-    <span class=nt>&#34;Authorization&#34;</span><span class=p>:</span> <span class=s2>&#34;@{body(&#39;Parse Access Token&#39;)?[&#39;token_type&#39;]} @{body(&#39;Parse Access Token&#39;)?[&#39;access_token&#39;]}&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;Accept&#34;</span><span class=p>:</span> <span class=s2>&#34;application/json;odata=verbose&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;Content-Type&#34;</span><span class=p>:</span> <span class=s2>&#34;application/json;odata=verbose&#34;</span>
-<span class=p>}</span>
-</code></pre></div><h2 id=groups-and-permissions>Groups and Permissions</h2>
-<h3 id=set-the-owner-of-a-sharepoint-group-to-another-sharepoint-group>Set the Owner of a SharePoint Group to another SharePoint Group</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;Authorization&#34;</span><span class="p">:</span> <span class="s2">&#34;@{body(&#39;Parse Access Token&#39;)?[&#39;token_type&#39;]} @{body(&#39;Parse Access Token&#39;)?[&#39;access_token&#39;]}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;Accept&#34;</span><span class="p">:</span> <span class="s2">&#34;application/json;odata=verbose&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;Content-Type&#34;</span><span class="p">:</span> <span class="s2">&#34;application/json;odata=verbose&#34;</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="groups-and-permissions">Groups and Permissions</h2>
+<h3 id="set-the-owner-of-a-sharepoint-group-to-another-sharepoint-group">Set the Owner of a SharePoint Group to another SharePoint Group</h3>
 <p>So, this apparently has been broken via typical REST API method calls for quite
 some time. There is a working alternative though - manually construct the call
 that the CSOM library would have made. The best resource I found for this is
-<a href=http://www.jrjlee.com/2014/01/custom-workflow-activity-for-setting.html>Jason Lee&rsquo;s blog post: Custom Workflow Activity for Setting a SharePoint Group Owner</a>,
+<a href="http://www.jrjlee.com/2014/01/custom-workflow-activity-for-setting.html">Jason Lee&rsquo;s blog post: Custom Workflow Activity for Setting a SharePoint Group Owner</a>,
 which is specifically talking about doing this within a SharePoint 2013 model
 workflow. We&rsquo;ll modify it slightly.</p>
 <ol>
@@ -219,25 +238,25 @@ workflow. We&rsquo;ll modify it slightly.</p>
 <li>Uri (adjust values for your environment) =
 <code>https://{TENANT}/{SPSITE_URL}/_vti_bin/client.svc/ProcessQuery</code></li>
 <li>Headers are slightly different than the Headers helpful snippet.
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
-    <span class=nt>&#34;Authorization&#34;</span><span class=p>:</span> <span class=s2>&#34;@{body(&#39;Parse Access Token&#39;)?[&#39;token_type&#39;]} @{body(&#39;Parse Access Token&#39;)?[&#39;access_token&#39;]}&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;Accept&#34;</span><span class=p>:</span> <span class=s2>&#34;application/json;odata=verbose&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;Content-Type&#34;</span><span class=p>:</span> <span class=s2>&#34;text/xml&#34;</span>
-<span class=p>}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;Authorization&#34;</span><span class="p">:</span> <span class="s2">&#34;@{body(&#39;Parse Access Token&#39;)?[&#39;token_type&#39;]} @{body(&#39;Parse Access Token&#39;)?[&#39;access_token&#39;]}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;Accept&#34;</span><span class="p">:</span> <span class="s2">&#34;application/json;odata=verbose&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;Content-Type&#34;</span><span class="p">:</span> <span class="s2">&#34;text/xml&#34;</span>
+<span class="p">}</span>
 </code></pre></div></li>
 <li>Body gets fun. You&rsquo;ve got a few values to substitute.
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;Request</span> <span class=na>AddExpandoFieldTypeSuffix=</span><span class=s>&#34;true&#34;</span> <span class=na>SchemaVersion=</span><span class=s>&#34;15.0.0.0&#34;</span> <span class=na>LibraryVersion=</span><span class=s>&#34;15.0.0.0&#34;</span> <span class=na>ApplicationName=</span><span class=s>&#34;{YOUR_APP}&#34;</span> <span class=na>xmlns=</span><span class=s>&#34;http://schemas.microsoft.com/sharepoint/clientquery/2009&#34;</span><span class=nt>&gt;</span>
-    <span class=nt>&lt;Actions&gt;</span>
-        <span class=nt>&lt;SetProperty</span> <span class=na>Id=</span><span class=s>&#34;1&#34;</span> <span class=na>ObjectPathId=</span><span class=s>&#34;2&#34;</span> <span class=na>Name=</span><span class=s>&#34;Owner&#34;</span><span class=nt>&gt;</span>
-            <span class=nt>&lt;Parameter</span> <span class=na>ObjectPathId=</span><span class=s>&#34;3&#34;</span> <span class=nt>/&gt;</span>
-        <span class=nt>&lt;/SetProperty&gt;</span>
-        <span class=nt>&lt;Method</span> <span class=na>Name=</span><span class=s>&#34;Update&#34;</span> <span class=na>Id=</span><span class=s>&#34;4&#34;</span> <span class=na>ObjectPathId=</span><span class=s>&#34;2&#34;</span> <span class=nt>/&gt;</span>
-    <span class=nt>&lt;/Actions&gt;</span>
-    <span class=nt>&lt;ObjectPaths&gt;</span>
-        <span class=nt>&lt;Identity</span> <span class=na>Id=</span><span class=s>&#34;2&#34;</span> <span class=na>Name=</span><span class=s>&#34;740c6a0b-85e2-48a0-a494-e0f1759d4aa7:site:{SPSITE_ID}:g:{TARGET_GROUP_ID}&#34;</span> <span class=nt>/&gt;</span>
-        <span class=nt>&lt;Identity</span> <span class=na>Id=</span><span class=s>&#34;3&#34;</span> <span class=na>Name=</span><span class=s>&#34;740c6a0b-85e2-48a0-a494-e0f1759d4aa7:site:{SPSITE_ID}:g:{NEW_OWNER_GROUP_ID}&#34;</span> <span class=nt>/&gt;</span>
-    <span class=nt>&lt;/ObjectPaths&gt;</span>
-<span class=nt>&lt;/Request&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;Request</span> <span class="na">AddExpandoFieldTypeSuffix=</span><span class="s">&#34;true&#34;</span> <span class="na">SchemaVersion=</span><span class="s">&#34;15.0.0.0&#34;</span> <span class="na">LibraryVersion=</span><span class="s">&#34;15.0.0.0&#34;</span> <span class="na">ApplicationName=</span><span class="s">&#34;{YOUR_APP}&#34;</span> <span class="na">xmlns=</span><span class="s">&#34;http://schemas.microsoft.com/sharepoint/clientquery/2009&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Actions&gt;</span>
+        <span class="nt">&lt;SetProperty</span> <span class="na">Id=</span><span class="s">&#34;1&#34;</span> <span class="na">ObjectPathId=</span><span class="s">&#34;2&#34;</span> <span class="na">Name=</span><span class="s">&#34;Owner&#34;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Parameter</span> <span class="na">ObjectPathId=</span><span class="s">&#34;3&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/SetProperty&gt;</span>
+        <span class="nt">&lt;Method</span> <span class="na">Name=</span><span class="s">&#34;Update&#34;</span> <span class="na">Id=</span><span class="s">&#34;4&#34;</span> <span class="na">ObjectPathId=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Actions&gt;</span>
+    <span class="nt">&lt;ObjectPaths&gt;</span>
+        <span class="nt">&lt;Identity</span> <span class="na">Id=</span><span class="s">&#34;2&#34;</span> <span class="na">Name=</span><span class="s">&#34;740c6a0b-85e2-48a0-a494-e0f1759d4aa7:site:{SPSITE_ID}:g:{TARGET_GROUP_ID}&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;Identity</span> <span class="na">Id=</span><span class="s">&#34;3&#34;</span> <span class="na">Name=</span><span class="s">&#34;740c6a0b-85e2-48a0-a494-e0f1759d4aa7:site:{SPSITE_ID}:g:{NEW_OWNER_GROUP_ID}&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/ObjectPaths&gt;</span>
+<span class="nt">&lt;/Request&gt;</span>
 </code></pre></div><ul>
 <li>YOUR_APP = Identity your app. This isn&rsquo;t really that important.</li>
 <li>SPSITE_ID = this is the GUID of the site collection you&rsquo;re working with.
@@ -249,60 +268,64 @@ owner</li>
 </ul>
 </li>
 </ol>
-<h2 id=schemas>Schemas</h2>
+<h2 id="schemas">Schemas</h2>
 <p>These are some helpful schemas to paste in to get values back from REST calls.</p>
-<h3 id=get-role-definition-or-group-id>Get Role Definition or Group Id</h3>
+<h3 id="get-role-definition-or-group-id">Get Role Definition or Group Id</h3>
 <ul>
 <li>Example URLs:
 <pre><code>https://{TENANT}/{SPSITE_URL}/_api/web/roledefinitions/getbyname('Contribute')/id
 https://{TENANT}/{SPSITE_URL}/_api/web/sitegroups/getbyname('Some%20Group')/id
 </code></pre></li>
 <li>Schema:
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
-    <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;object&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;properties&#34;</span><span class=p>:</span> <span class=p>{</span>
-        <span class=nt>&#34;d&#34;</span><span class=p>:</span> <span class=p>{</span>
-            <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;object&#34;</span><span class=p>,</span>
-            <span class=nt>&#34;properties&#34;</span><span class=p>:</span> <span class=p>{</span>
-                <span class=nt>&#34;Id&#34;</span><span class=p>:</span> <span class=p>{</span> <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;number&#34;</span> <span class=p>}</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-<span class=p>}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;object&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;d&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;object&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;Id&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;number&#34;</span> <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></li>
 </ul>
-<h3 id=get-list-or-library-id>Get List or Library Id</h3>
+<h3 id="get-list-or-library-id">Get List or Library Id</h3>
 <ul>
 <li>Schema:
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=p>{</span>
-    <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;object&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;properties&#34;</span><span class=p>:</span> <span class=p>{</span>
-        <span class=nt>&#34;d&#34;</span><span class=p>:</span> <span class=p>{</span>
-            <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;object&#34;</span><span class=p>,</span>
-            <span class=nt>&#34;properties&#34;</span><span class=p>:</span> <span class=p>{</span>
-                <span class=nt>&#34;Id&#34;</span><span class=p>:</span> <span class=p>{</span> <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;string&#34;</span> <span class=p>}</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-<span class=p>}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;object&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;d&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;object&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;properties&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;Id&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span> <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></li>
 </ul>
-</div>
-</div>
-</article>
-</main>
-<div class=feedback>
-<div class=container>
-<h3>Feedback</h3>
-<p>Submit feedback, ask questions, or just leave a comment with a
-<a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BMicrosoft%20Flow%3a%20Using%20the%20SharePoint%20REST%20API%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2018-05-04-rest-and-flow.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2018%2f05%2f04%2frest-and-flow%2f">GitHub Issue</a></p>
-</div>
-</div>
+            </div>
+        </div>
+    </article>
+
+        </main>
+        
+    <div class="feedback">
+        <div class="container">
+            <h3>Feedback</h3>
+            <p>Submit feedback, ask questions, or just leave a comment with a
+                <a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BMicrosoft%20Flow%3a%20Using%20the%20SharePoint%20REST%20API%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2018-05-04-rest-and-flow.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2018%2f05%2f04%2frest-and-flow%2f">GitHub Issue</a></p>
+        </div>
+    </div>
 something something
-<footer>
-<div class=container>
-built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
-</div>
+
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
 </footer>
-</body>
+
+    </body>
 </html>

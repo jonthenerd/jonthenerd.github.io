@@ -1,55 +1,74 @@
-<!doctype html><html lang=en>
-<head prefix="og: http://ogp.me/ns#">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
-<title>SharePoint Framework: Getting Started &ndash; JonTheNerd</title>
-<meta name=color-scheme content="dark light">
-<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
-<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
-<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
-<link rel=stylesheet href=/assets/style.css>
-</head>
-<body>
-<header class=site-header>
-<div class=container>
-<h1>
-<a href=/>JonTheNerd</a>
-</h1>
-<nav>
-<ul>
-<li><a href=/about>About</a></li>
-</ul>
-</nav>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>SharePoint Framework: Getting Started &ndash; JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        </head>
+    <body>
+        
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-<main>
-<article class=single itemscope itemtype=http://schema.org/BlogPosting>
-<header>
-<h1 itemprop="name headline">
-<div class=container>SharePoint Framework: Getting Started</div>
-</h1>
-<div class=post-meta>
-<div class=container>
-By Jon Badgett
-| <time datetime=" 2018-01-16" itemprop=datePublished>January 16, 2018</time>
-| Posted in
-<a href=/categories/sharepoint>SharePoint</a>, <a href=/categories/programming>Programming</a>
-</div>
-</div>
-</header>
-<div itemprop=articleBody>
-<div class=container>
-<p>Today I decided that it was time I learned how to build
-<a href=https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview>SharePoint Framework (SPFx)</a>
+
+        <main>
+            
+    <article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+            <h1 itemprop="name headline">
+                <div class="container">SharePoint Framework: Getting Started</div>
+            </h1>
+            <div class="post-meta">
+                <div class="container">
+                    By Jon Badgett
+                    | <time
+                        datetime=" 2018-01-16"
+                        itemprop="datePublished"
+                        >January 16, 2018</time
+                    >
+                    
+                        | Posted in
+                        <a href="/categories/sharepoint">SharePoint</a>, <a href="/categories/programming">Programming</a>
+
+                    
+                </div>
+            </div>
+        </header>
+        <div itemprop="articleBody">
+            <div class="container">
+            <p>Today I decided that it was time I learned how to build
+<a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview">SharePoint Framework (SPFx)</a>
 webparts. Easy enough right? Find the right tutorial online, follow
 instrucitons, hello world! Let&rsquo;s get started.</p>
 <p>First, you&rsquo;ll need to
-<a href=https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment>set up your SharePoint Framework development environment</a>.
+<a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment">set up your SharePoint Framework development environment</a>.
 Then you&rsquo;ll want to follow the tutorial to
-<a href=https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part>build your first web part</a>.</p>
+<a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part">build your first web part</a>.</p>
 <p>Of course, this all depends upon you having
-<a href=https://nodejs.org/en/>node js w/npm</a> installed and your code editor of choice
+<a href="https://nodejs.org/en/">node js w/npm</a> installed and your code editor of choice
 ready to go.</p>
 <p>Seeing as I had the latest version of node and a code editor ready, I just
 started at the tutorials. Quickly ran into an issue though, where neither Safari
@@ -59,11 +78,11 @@ Here&rsquo;s the exact error from Safari:</p>
 <p>Safari can&rsquo;t open the page &ldquo;https://localhost:4321/temp/workbench.html&rdquo;
 because Safari can&rsquo;t establish a secure connection to the server &ldquo;localhost&rdquo;.</p>
 </blockquote>
-<p><a href=https://github.com/SharePoint/sp-dev-docs/issues/1002>Issue #1002 on the sp-dev-docs repo</a>
+<p><a href="https://github.com/SharePoint/sp-dev-docs/issues/1002">Issue #1002 on the sp-dev-docs repo</a>
 seems to describe what&rsquo;s occurring here but no amount of setting the environment
 variable NODE_NO_HTTP2=1 would help me get past the error message.</p>
 <p>Reading back through
-<a href=https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment>how to setup your SharePoint Framework development environment</a>,
+<a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment">how to setup your SharePoint Framework development environment</a>,
 there is a note that says:</p>
 <blockquote>
 <p>The SharePoint Framework build pipeline doesn&rsquo;t currently support the LTS
@@ -80,7 +99,7 @@ Requiring that in order to use your framework you must be running a version of
 node.js that is 3 major versions behind current (9.4.0) and 2 major versions
 behind LTS (8.9.4) is <strong>lame</strong>. It means that most guides out there for how to
 quickly get started will only work if you&rsquo;re just stepping into modern web dev
-<em>for the first time</em>&mldr; If you&rsquo;ve been using node and NPM, etc. for a while
+<em>for the first time</em>&hellip; If you&rsquo;ve been using node and NPM, etc. for a while
 you&rsquo;re likely running much newer versions of these tools and they&rsquo;re likely
 installed globally. It also makes it appear there is a lack of commitment to
 bringing development practices and patterns for SharePoint up to date and
@@ -89,17 +108,17 @@ keeping it there.</li>
 it&rsquo;s going to mean making some serious changes to the configuration of my dev
 box and going outside the 1, 2, 3 hello world box.</li>
 <li>Maybe there&rsquo;s some way to manage multiple versions of Node.js without
-struggling&mldr;</li>
+struggling&hellip;</li>
 </ul>
 <p>At this point, I&rsquo;ve got projects that use much later node and NPM versions. I
 can&rsquo;t justify unintalling them just to have to do the same dance at a later
 point to get them reinstalled. What to do? Let&rsquo;s look into
-<a href=https://github.com/creationix/nvm>Node Version Manager (NVM), which allows you to manage and switch between different Node versions &ldquo;with ease&rdquo;</a>.
+<a href="https://github.com/creationix/nvm">Node Version Manager (NVM), which allows you to manage and switch between different Node versions &ldquo;with ease&rdquo;</a>.
 There&rsquo;s also
-<a href=https://github.com/coreybutler/nvm-windows>nvm-windows for Windows users</a>.
+<a href="https://github.com/coreybutler/nvm-windows">nvm-windows for Windows users</a>.
 Interested in how to get this setup? Read my post on
-<a href=/2018/01/16/configuring-nvm-for-osx/>configuring NVM for Mac OS X</a>.</p>
-<p>Now that I&rsquo;ve got NVM working and this project directory is using 6.11.5 &mldr;
+<a href="/2018/01/16/configuring-nvm-for-osx/">configuring NVM for Mac OS X</a>.</p>
+<p>Now that I&rsquo;ve got NVM working and this project directory is using 6.11.5 &hellip;
 let&rsquo;s continue on with the hello worlding.</p>
 <ol>
 <li>
@@ -107,16 +126,16 @@ let&rsquo;s continue on with the hello worlding.</p>
 </li>
 <li>
 <p>Initialize the project with NPM (to get our package.json)</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>npm init
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm init
 </code></pre></div></li>
 <li>
 <p>Intall the npm package for the Yeoman SharePoint generator (locally).</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>npm install @microsoft/generator-sharepoint --save-dev
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install @microsoft/generator-sharepoint --save-dev
 </code></pre></div></li>
 <li>
 <p>Open our project using our code editor of choice (have you tried Visual
 Studio Code yet?)</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>code .
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">code .
 </code></pre></div></li>
 <li>
 <p>Notice that we&rsquo;ve got our .nvmrc file, our package.json file, and a directory
@@ -124,7 +143,7 @@ for node_modules. Things are looking good so far.</p>
 </li>
 <li>
 <p>Let&rsquo;s run the Yeoman generator now.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>yo @microsoft/sharepoint
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">yo @microsoft/sharepoint
 </code></pre></div></li>
 <li>
 <p>We can&rsquo;t follow the next instruction to just run gulp serve, as gulp isn&rsquo;t
@@ -136,43 +155,47 @@ such, we need to change our package.json to handle running gulp for us.</p>
 <li>Open your package.json</li>
 <li>Change the scripts section to be the following:</li>
 </ol>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=s2>&#34;scripts&#34;</span><span class=err>:</span> <span class=p>{</span>
-    <span class=nt>&#34;build&#34;</span><span class=p>:</span> <span class=s2>&#34;gulp bundle&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;clean&#34;</span><span class=p>:</span> <span class=s2>&#34;gulp clean&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;test&#34;</span><span class=p>:</span> <span class=s2>&#34;gulp test&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;trust-dev-cert&#34;</span><span class=p>:</span> <span class=s2>&#34;gulp trust-dev-cert&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;serve&#34;</span><span class=p>:</span> <span class=s2>&#34;gulp serve&#34;</span>
-<span class=p>}</span><span class=err>,</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;scripts&#34;</span><span class="err">:</span> <span class="p">{</span>
+    <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp bundle&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;clean&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp clean&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp test&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;trust-dev-cert&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp trust-dev-cert&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;serve&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp serve&#34;</span>
+<span class="p">}</span><span class="err">,</span>
 </code></pre></div></li>
 <li>
 <p>Trust the Dev Cert used by workbench</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>npm run trust-dev-cert
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm run trust-dev-cert
 </code></pre></div></li>
 <li>
 <p>Fire up the workbench</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>npm run serve
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm run serve
 </code></pre></div></li>
 <li>
 <p>Marvel at it working and don&rsquo;t think about future version dependency
 conflicts :)</p>
 </li>
 </ol>
-</div>
-</div>
-</article>
-</main>
-<div class=feedback>
-<div class=container>
-<h3>Feedback</h3>
-<p>Submit feedback, ask questions, or just leave a comment with a
-<a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BSharePoint%20Framework%3a%20Getting%20Started%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2018-01-16-learning-spfx-pt-1.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2018%2f01%2f16%2flearning-spfx-pt-1%2f">GitHub Issue</a></p>
-</div>
-</div>
+            </div>
+        </div>
+    </article>
+
+        </main>
+        
+    <div class="feedback">
+        <div class="container">
+            <h3>Feedback</h3>
+            <p>Submit feedback, ask questions, or just leave a comment with a
+                <a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BSharePoint%20Framework%3a%20Getting%20Started%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2018-01-16-learning-spfx-pt-1.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2018%2f01%2f16%2flearning-spfx-pt-1%2f">GitHub Issue</a></p>
+        </div>
+    </div>
 something something
-<footer>
-<div class=container>
-built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
-</div>
+
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
 </footer>
-</body>
+
+    </body>
 </html>

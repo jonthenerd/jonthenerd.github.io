@@ -1,1 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DIY on JonTheNerd</title><link>http://www.jonthenerd.com/categories/diy/</link><description>Recent content in DIY on JonTheNerd</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 03 Feb 2010 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/categories/diy/feed.xml" rel="self" type="application/rss+xml"/><item><title>The right tools for the job</title><link>http://www.jonthenerd.com/2010/02/03/the-right-tools-for-the-job/</link><pubDate>Wed, 03 Feb 2010 00:00:00 +0000</pubDate><guid>http://www.jonthenerd.com/2010/02/03/the-right-tools-for-the-job/</guid><description>This post is more for my own self-reference later, but others may find it helpful too.I&amp;rsquo;ve been looking to do some modification to the k-member on my car whenever the weather warms up. This will involve removing the k-member before any of the work can be done. Most seem to do this while the engine is removed, but I&amp;rsquo;d rather not go through that again. I&amp;rsquo;ve been doing some reading on how to do this the safest way with the engine still in the car, and here are the tools I&amp;rsquo;m looking at:_ OTC Spring Compressor 7045B (what the GM dealer uses)_ OTC Tools 4324 Tubular Engine Support* 4 6-ton pound jack standsIt&amp;rsquo;s not the completed task you&amp;rsquo;re most proud of - it&amp;rsquo;s the tool collection you&amp;rsquo;ve amassed.</description></item><item><title>Fixing a noisy toilet</title><link>http://www.jonthenerd.com/2009/10/25/fixing-a-noisy-toilet/</link><pubDate>Sun, 25 Oct 2009 00:00:00 +0000</pubDate><guid>http://www.jonthenerd.com/2009/10/25/fixing-a-noisy-toilet/</guid><description>I&amp;rsquo;ve had to replace the flappers in all of my toilets in the 2 years I&amp;rsquo;ve been in my house. I thought that installing the higher quality flapper would be the last toilet fixes I&amp;rsquo;d be doing&amp;hellip;I was wrong.First, here&amp;rsquo;s what the inside of most toilet tanks look like:Last night the toilet in the master bath started sounding like somebody was filling the tank with a high pressure water hose. Checking the tank revealed that water was shooting out of the top of the fill valve instead of going through the fill tube.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DIY on JonTheNerd</title>
+    <link>http://www.jonthenerd.com/categories/diy/</link>
+    <description>Recent content in DIY on JonTheNerd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 Feb 2010 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/categories/diy/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The right tools for the job</title>
+      <link>http://www.jonthenerd.com/2010/02/03/the-right-tools-for-the-job/</link>
+      <pubDate>Wed, 03 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2010/02/03/the-right-tools-for-the-job/</guid>
+      <description>This post is more for my own self-reference later, but others may find it helpful too.I&amp;rsquo;ve been looking to do some modification to the k-member on my car whenever the weather warms up. This will involve removing the k-member before any of the work can be done. Most seem to do this while the engine is removed, but I&amp;rsquo;d rather not go through that again. I&amp;rsquo;ve been doing some reading on how to do this the safest way with the engine still in the car, and here are the tools I&amp;rsquo;m looking at:_ OTC Spring Compressor 7045B (what the GM dealer uses)_ OTC Tools 4324 Tubular Engine Support* 4 6-ton pound jack standsIt&amp;rsquo;s not the completed task you&amp;rsquo;re most proud of - it&amp;rsquo;s the tool collection you&amp;rsquo;ve amassed.</description>
+    </item>
+    
+    <item>
+      <title>Fixing a noisy toilet</title>
+      <link>http://www.jonthenerd.com/2009/10/25/fixing-a-noisy-toilet/</link>
+      <pubDate>Sun, 25 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2009/10/25/fixing-a-noisy-toilet/</guid>
+      <description>I&amp;rsquo;ve had to replace the flappers in all of my toilets in the 2 years I&amp;rsquo;ve been in my house. I thought that installing the higher quality flapper would be the last toilet fixes I&amp;rsquo;d be doing&amp;hellip;I was wrong.First, here&amp;rsquo;s what the inside of most toilet tanks look like:Last night the toilet in the master bath started sounding like somebody was filling the tank with a high pressure water hose. Checking the tank revealed that water was shooting out of the top of the fill valve instead of going through the fill tube.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,201 +1,589 @@
-<!doctype html><html lang=en>
-<head prefix="og: http://ogp.me/ns#">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
-<title>JonTheNerd</title>
-<meta name=color-scheme content="dark light">
-<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
-<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
-<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
-<link rel=stylesheet href=/assets/style.css>
-<link rel=alternate type=application/rss+xml href=http://www.jonthenerd.com/feed.xml title=JonTheNerd>
-</head>
-<body>
-<header class=site-header>
-<div class=container>
-<h1>
-<a href=/>JonTheNerd</a>
-</h1>
-<nav>
-<ul>
-<li><a href=/about>About</a></li>
-</ul>
-</nav>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        <link rel="alternate" type="application/rss+xml" href="http://www.jonthenerd.com/feed.xml" title="JonTheNerd" />
+        </head>
+    <body>
+        
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-<main>
-<div class=homepage-content>
-<div class=container>
-</div>
-</div>
-<div class=post-list>
-<div class=container>
-<article>
-<h2><a href=/2008/08/02/code-memories/>Code Memories?</a></h2>
-<div class=post-meta>
-<time datetime=2008-08-02 itemprop=datePublished>August 2, 2008</time>
-</div>
-<div class=summary>
-Every once in a while I&rsquo;ll start thinking of long-past written code. Lately I&rsquo;ve been thinking of C/C++&mldr; This isn&rsquo;t a language I wish to make a language coding. In fact - many parts of my C/C++ education were /very/ lacking. However, there are times when I think back to things that I could have done better, things I really enjoyed coding (Blackjack console app with ASCII cards..heh), and things I just plain didn&rsquo;t understand or care to.
-</div>
-<div>
-<a href=/2008/08/02/code-memories/>Read More...</a>
-</div>
-</article>
-<article>
-<h2><a href=/2008/06/19/active-directory-homedrive-home-folder/>Active Directory homeDrive (Home Folder)</a></h2>
-<div class=post-meta>
-<time datetime=2008-06-19 itemprop=datePublished>June 19, 2008</time>
-</div>
-<div class=summary>
-If you&rsquo;re using an automated tool to create your user accounts and assign a Home Folder (a mapped drive pointing to shared location on a server) - make certain that the property has a colon after the drive letter (e.g. Z:not Z). Without the colon, the drive will not be mapped on user log on. How do you know if this property is set correctly? Active Directory Users and Computers won&rsquo;t show you.
-</div>
-<div>
-<a href=/2008/06/19/active-directory-homedrive-home-folder/>Read More...</a>
-</div>
-</article>
-<article>
-<h2><a href=/2008/06/12/boxes-of-orden/>Boxes of Orden</a></h2>
-<div class=post-meta>
-<time datetime=2008-06-12 itemprop=datePublished>June 12, 2008</time>
-</div>
-<div class=summary>
-I just finished reading Chainfire, by Terry Goodkind. I had taken a 2 year hiatus from reading the series and finally returned to it. If you&rsquo;re looking to pick up recreational reading, I highly recommend the series. It starts with &ldquo;Wizard&rsquo;s First Rule&rdquo;. Truly one of the best series of our time.
-</div>
-</article>
-<article>
-<h2><a href=/2008/06/12/eeepc-not-for-the-masses/>eeePC - not for the masses</a></h2>
-<div class=post-meta>
-<time datetime=2008-06-12 itemprop=datePublished>June 12, 2008</time>
-</div>
-<div class=summary>
-I managed to purchase one of these little gems in late April. I&rsquo;ve been a longtime fan of Linux and Asus in general, so the thought of a little laptop running the free OS was enough to keep me dreaming until I broke down and ordered one. I bought a 7" model with the4 gig hard drive and an extra 2 gigs of ram. I did the ram install myself and setup the Advanced Desktop to my liking.
-</div>
-<div>
-<a href=/2008/06/12/eeepc-not-for-the-masses/>Read More...</a>
-</div>
-</article>
-<article>
-<h2><a href=/2008/06/12/finding-the-last-login-date-for-all-profiles/>Finding the last login date for all profiles</a></h2>
-<div class=post-meta>
-<time datetime=2008-06-12 itemprop=datePublished>June 12, 2008</time>
-</div>
-<div class=summary>
-By day I am but an humble IT worker - currently tasked with maintaining and improving scripts and tools that keep our enterprise workstations humming. My largest project thus far has been an ever growing inventory script (now a .NET 2 app) that reports information back to a SQL database. This app is run on a schedule by a service I wrote. The script collects great pieces of information - everything from the screen resolution being used to information on SQL Server instances on the device (yep - inventories servers too!
-</div>
-<div>
-<a href=/2008/06/12/finding-the-last-login-date-for-all-profiles/>Read More...</a>
-</div>
-</article>
-<article>
-<h2><a href=/2007/05/30/laptop-bioscmos-reset-pain/>Laptop BIOS/CMOS reset = pain</a></h2>
-<div class=post-meta>
-<time datetime=2007-05-30 itemprop=datePublished>May 30, 2007</time>
-</div>
-<div class=summary>
-This post is for those individuals looking to see if this is possible&mldr; I just reset the BIOS on an HP Pavilion ZE4900 (laptop) by removing and replacing the CMOS battery. The online manual doesn&rsquo;t show its location - but you need to complete disassemble the laptop down to removing the main board. The CMOS battery is located on the underside of the board toward the front of the laptop. Needless to say - the last four hours are hours I&rsquo;ll never get back :-/
-</div>
-</article>
-<article>
-<h2><a href=/2007/05/11/the-resurgence-of-the-adventure-game-genre/>The Resurgence of the Adventure Game Genre</a></h2>
-<div class=post-meta>
-<time datetime=2007-05-11 itemprop=datePublished>May 11, 2007</time>
-</div>
-<div class=summary>
-I&rsquo;ve been a gamer ever since I first laid eyes on an Atari. But of all the genres that I&rsquo;ve enjoyed - the Adventure Genre stands out the most. What games are included on this list? Pretty much all Lucas Arts games&mldr;Monkey Island (1-4), Loom, Day of the Tentacle, etc. Because of my age, these games (for the most part) came out before I was old enough to realize that I needed to go buy them.
-</div>
-<div>
-<a href=/2007/05/11/the-resurgence-of-the-adventure-game-genre/>Read More...</a>
-</div>
-</article>
-<article>
-<h2><a href=/2007/04/13/winaudit-a-shameless-plug-for-a-nifty-tool/>WinAudit - a shameless plug for a nifty tool</a></h2>
-<div class=post-meta>
-<time datetime=2007-04-13 itemprop=datePublished>April 13, 2007</time>
-</div>
-<div class=summary>
-While surfing the interwebs, checking the emails, etc. I came upon a program called WinAudit. It&rsquo;s a FREEware app that can report a lot of things about your machine and output it in a lot of different formats. Straight from their site: &ldquo;The programme has advanced features such as service tag detection, hard-drive failure diagnosis, network port to process mapping, network connection speed, system availability statistics as well as Windows® update and firewall settings.
-</div>
-<div>
-<a href=/2007/04/13/winaudit-a-shameless-plug-for-a-nifty-tool/>Read More...</a>
-</div>
-</article>
-<article>
-<h2><a href=/2007/03/11/spoofing-the-mac-commercials/>Spoofing the Mac Commercials</a></h2>
-<div class=post-meta>
-<time datetime=2007-03-11 itemprop=datePublished>March 11, 2007</time>
-</div>
-<div class=summary>
-I don&rsquo;t often laugh at online videos - but this one got me. Now don&rsquo;t get me wrong - I love the Mac&rsquo;s interface. It&rsquo;s truly a wonder. But this video is absolutely hilarious :)
-</div>
-</article>
-<article>
-<h2><a href=/2007/02/10/docx-file-converter/>docx file converter</a></h2>
-<div class=post-meta>
-<time datetime=2007-02-10 itemprop=datePublished>February 10, 2007</time>
-</div>
-<div class=summary>
-? In my other life, I teach computer courses and accept assignments through an online course management system. Our school (and myself) have yet to upgrade to Office 2007, but students aren&rsquo;t wasting any time. I found an official Microsoft converter for Office 2007 formats available here:&lt;span style=&ldquo;text-decoration underline;">http://www.microsoft.com/downloads/details.aspx?displaylang=en&amp;amp;FamilyID=941B3470-3AE9-4AEE-8F43-C6BB74CD1466
-</div>
-</article>
-<nav class=pagination aria-label=Pagination>
-<ul>
-<li class=first>
-<a href=/ aria-label=First title=First>
-<span aria-hidden=true>««</span>
-</a>
-</li>
-<li class=previous>
-<a href=/page/6/ aria-label=Previous title=Previous>
-<span aria-hidden=true>«</span>
-</a>
-</li>
-<li>
-<a href=/page/4/>
-4
-</a>
-</li>
-<li>
-<a href=/page/5/>
-5
-</a>
-</li>
-<li>
-<a href=/page/6/>
-6
-</a>
-</li>
-<li>
-<a href=/page/7/ aria-label="Current Page, Page
-                                7" aria-current=true>
-7
-</a>
-</li>
-<li>
-<a href=/page/8/>
-8
-</a>
-</li>
-<li class=next>
-<a href=/page/8/ aria-label=Next title=Next>
-<span aria-hidden=true>»</span>
-</a>
-</li>
-<li class=last>
-<a href=/page/8/ aria-label=Last title=Last>
-<span aria-hidden=true>»»</span>
-</a>
-</li>
-</ul>
-</nav>
-</div>
-</div>
-</main>
-<footer>
-<div class=container>
-built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
-</div>
+
+        <main>
+            
+    
+
+    <div class="homepage-content">
+        <div class="container">
+            
+            
+        </div>
+    </div>
+    <div class="post-list">
+        <div class="container">
+            
+            
+                <article>
+                    <h2><a href="/2008/08/02/code-memories/">Code Memories?</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2008-08-02"
+                            itemprop="datePublished"
+                            >August 2, 2008</time
+                        >
+                    </div>
+                    <div class="summary">
+                        Every once in a while I&rsquo;ll start thinking of long-past written code. Lately I&rsquo;ve been thinking of C/C++&hellip; This isn&rsquo;t a language I wish to make a language coding. In fact - many parts of my C/C++ education were /very/ lacking. However, there are times when I think back to things that I could have done better, things I really enjoyed coding (Blackjack console app with ASCII cards..heh), and things I just plain didn&rsquo;t understand or care to.
+                    </div>
+                    
+                        <div>
+                            <a href="/2008/08/02/code-memories/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2008/06/19/active-directory-homedrive-home-folder/">Active Directory homeDrive (Home Folder)</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2008-06-19"
+                            itemprop="datePublished"
+                            >June 19, 2008</time
+                        >
+                    </div>
+                    <div class="summary">
+                        If you&rsquo;re using an automated tool to create your user accounts and assign a Home Folder (a mapped drive pointing to shared location on a server) - make certain that the property has a colon after the drive letter (e.g. Z:not Z). Without the colon, the drive will not be mapped on user log on. How do you know if this property is set correctly? Active Directory Users and Computers won&rsquo;t show you.
+                    </div>
+                    
+                        <div>
+                            <a href="/2008/06/19/active-directory-homedrive-home-folder/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2008/06/12/boxes-of-orden/">Boxes of Orden</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2008-06-12"
+                            itemprop="datePublished"
+                            >June 12, 2008</time
+                        >
+                    </div>
+                    <div class="summary">
+                        I just finished reading Chainfire, by Terry Goodkind. I had taken a 2 year hiatus from reading the series and finally returned to it. If you&rsquo;re looking to pick up recreational reading, I highly recommend the series. It starts with &ldquo;Wizard&rsquo;s First Rule&rdquo;. Truly one of the best series of our time.
+                    </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2008/06/12/eeepc-not-for-the-masses/">eeePC - not for the masses</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2008-06-12"
+                            itemprop="datePublished"
+                            >June 12, 2008</time
+                        >
+                    </div>
+                    <div class="summary">
+                        I managed to purchase one of these little gems in late April. I&rsquo;ve been a longtime fan of Linux and Asus in general, so the thought of a little laptop running the free OS was enough to keep me dreaming until I broke down and ordered one. I bought a 7&quot; model with the4 gig hard drive and an extra 2 gigs of ram. I did the ram install myself and setup the Advanced Desktop to my liking.
+                    </div>
+                    
+                        <div>
+                            <a href="/2008/06/12/eeepc-not-for-the-masses/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2008/06/12/finding-the-last-login-date-for-all-profiles/">Finding the last login date for all profiles</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2008-06-12"
+                            itemprop="datePublished"
+                            >June 12, 2008</time
+                        >
+                    </div>
+                    <div class="summary">
+                        By day I am but an humble IT worker - currently tasked with maintaining and improving scripts and tools that keep our enterprise workstations humming. My largest project thus far has been an ever growing inventory script (now a .NET 2 app) that reports information back to a SQL database. This app is run on a schedule by a service I wrote. The script collects great pieces of information - everything from the screen resolution being used to information on SQL Server instances on the device (yep - inventories servers too!
+                    </div>
+                    
+                        <div>
+                            <a href="/2008/06/12/finding-the-last-login-date-for-all-profiles/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2007/05/30/laptop-bioscmos-reset-pain/">Laptop BIOS/CMOS reset = pain</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2007-05-30"
+                            itemprop="datePublished"
+                            >May 30, 2007</time
+                        >
+                    </div>
+                    <div class="summary">
+                        This post is for those individuals looking to see if this is possible&hellip; I just reset the BIOS on an HP Pavilion ZE4900 (laptop) by removing and replacing the CMOS battery. The online manual doesn&rsquo;t show its location - but you need to complete disassemble the laptop down to removing the main board. The CMOS battery is located on the underside of the board toward the front of the laptop. Needless to say - the last four hours are hours I&rsquo;ll never get back :-/
+                    </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2007/05/11/the-resurgence-of-the-adventure-game-genre/">The Resurgence of the Adventure Game Genre</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2007-05-11"
+                            itemprop="datePublished"
+                            >May 11, 2007</time
+                        >
+                    </div>
+                    <div class="summary">
+                        I&rsquo;ve been a gamer ever since I first laid eyes on an Atari. But of all the genres that I&rsquo;ve enjoyed - the Adventure Genre stands out the most. What games are included on this list? Pretty much all Lucas Arts games&hellip;Monkey Island (1-4), Loom, Day of the Tentacle, etc. Because of my age, these games (for the most part) came out before I was old enough to realize that I needed to go buy them.
+                    </div>
+                    
+                        <div>
+                            <a href="/2007/05/11/the-resurgence-of-the-adventure-game-genre/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2007/04/13/winaudit-a-shameless-plug-for-a-nifty-tool/">WinAudit - a shameless plug for a nifty tool</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2007-04-13"
+                            itemprop="datePublished"
+                            >April 13, 2007</time
+                        >
+                    </div>
+                    <div class="summary">
+                        While surfing the interwebs, checking the emails, etc. I came upon a program called WinAudit. It&rsquo;s a FREEware app that can report a lot of things about your machine and output it in a lot of different formats. Straight from their site: &ldquo;The programme has advanced features such as service tag detection, hard-drive failure diagnosis, network port to process mapping, network connection speed, system availability statistics as well as Windows® update and firewall settings.
+                    </div>
+                    
+                        <div>
+                            <a href="/2007/04/13/winaudit-a-shameless-plug-for-a-nifty-tool/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2007/03/11/spoofing-the-mac-commercials/">Spoofing the Mac Commercials</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2007-03-11"
+                            itemprop="datePublished"
+                            >March 11, 2007</time
+                        >
+                    </div>
+                    <div class="summary">
+                        I don&rsquo;t often laugh at online videos - but this one got me. Now don&rsquo;t get me wrong - I love the Mac&rsquo;s interface. It&rsquo;s truly a wonder. But this video is absolutely hilarious :)
+                    </div>
+                    
+                </article>
+            
+                <article>
+                    <h2><a href="/2007/02/10/docx-file-converter/">docx file converter</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2007-02-10"
+                            itemprop="datePublished"
+                            >February 10, 2007</time
+                        >
+                    </div>
+                    <div class="summary">
+                         ? In my other life, I teach computer courses and accept assignments through an online course management system. Our school (and myself) have yet to upgrade to Office 2007, but students aren&rsquo;t wasting any time. I found an official Microsoft converter for Office 2007 formats available here:&lt;span style=&ldquo;text-decoration underline;&quot;&gt;http://www.microsoft.com/downloads/details.aspx?displaylang=en&amp;amp;FamilyID=941B3470-3AE9-4AEE-8F43-C6BB74CD1466  
+                    </div>
+                    
+                </article>
+            
+            
+
+
+
+
+
+
+
+
+
+
+    <nav class="pagination" aria-label="Pagination">
+        <ul>
+            
+            
+                <li class="first">
+                    <a
+                        href="/"
+                        aria-label="First"
+                        title="First"
+                    >
+                        <span aria-hidden="true">««</span>
+                    </a>
+                </li>
+            
+
+
+            
+            
+                <li class="previous">
+                    <a
+                        href="/page/6/"
+                        aria-label="Previous"
+                        title="Previous"
+                    >
+                        <span aria-hidden="true">«</span>
+                    </a>
+                </li>
+            
+
+
+            
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+
+
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+
+
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+
+
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+                            
+                        
+
+
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+                    <li>
+                        <a
+                            href="/page/4/"
+                            
+                        >
+                            4
+                        </a>
+                    </li>
+                
+
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+                            
+                        
+
+
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+                    <li>
+                        <a
+                            href="/page/5/"
+                            
+                        >
+                            5
+                        </a>
+                    </li>
+                
+
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+                            
+                        
+
+
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+                    <li>
+                        <a
+                            href="/page/6/"
+                            
+                        >
+                            6
+                        </a>
+                    </li>
+                
+
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+                            
+                        
+
+
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+                    <li>
+                        <a
+                            href="/page/7/"
+                            
+                                aria-label="Current Page, Page
+                                7" aria-current="true"
+                            
+                        >
+                            7
+                        </a>
+                    </li>
+                
+
+            
+
+                
+
+
+                
+                
+
+                    
+                    
+                    
+
+                        
+                        
+                            
+                        
+
+
+                        
+                    
+
+
+                    
+                
+
+
+                
+                
+                    <li>
+                        <a
+                            href="/page/8/"
+                            
+                        >
+                            8
+                        </a>
+                    </li>
+                
+
+            
+
+
+            
+            
+                <li class="next">
+                    <a
+                        href="/page/8/"
+                        aria-label="Next"
+                        title="Next"
+                    >
+                        <span aria-hidden="true">»</span>
+                    </a>
+                </li>
+            
+
+
+            
+            
+                <li class="last">
+                    <a
+                        href="/page/8/"
+                        aria-label="Last"
+                        title="Last"
+                    >
+                        <span aria-hidden="true">»»</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+
+
+        </div>
+    </div>
+
+        </main>
+        
+            
+        
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
 </footer>
-</body>
+
+    </body>
 </html>
