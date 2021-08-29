@@ -1,7 +1,7 @@
 /* Theme Variables (light on dark) */
 :root {
     --background-color: #1e1e1e;
-    --color: rgb(250, 250, 250);
+    --color: #ccc;
 
     --brand-color: #bbb;
 
@@ -18,3 +18,19 @@
 
 /* Syntax */
 @import "./syntax-monokai";
+
+/* Anchors (because dark mode anchors look bad on IOS) */
+a {
+    &:link {
+        color: #38a7f1;
+    }
+    &:visited {
+        color: #953377;
+    }
+    &:hover {
+        color: #38a7f1;
+    }
+    &:active {
+        color: #38a7f1;
+    }
+}

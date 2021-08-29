@@ -6,12 +6,21 @@
 }
 
 /* resets */
+* {
+    box-sizing: border-box;
+}
+
 html,
+body,
 ul {
     margin: 0;
 }
-body {
-    margin: 0 0 var(--gap) 0;
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+pre {
+    white-space: pre-wrap;
 }
 
 /* main */
@@ -19,6 +28,17 @@ body {
     font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--color);
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    position: relative;
+    min-height: 100%;
 }
 
 h1,
@@ -30,9 +50,18 @@ h6 {
     font-weight: 400;
 }
 
+/* responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* apply image filter if present (dark mode) */
 img:not([src*=".svg"]) {
     filter: var(--image-filter);
 }
+
+/* layout */
 
 .container {
     width: 1000px;
@@ -162,4 +191,5 @@ article.single {
 footer {
     margin-top: 2rem;
     font-size: 0.85rem;
+    padding-bottom: var(--gap);
 }
