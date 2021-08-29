@@ -3,6 +3,8 @@
     <head prefix="og: http://ogp.me/ns#">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
         <title>SharePoint: The server was unable to save the form at this time &ndash; JonTheNerd</title>
         <meta name="color-scheme" content="dark light" />
@@ -62,8 +64,8 @@
 to a list, or a document library. However, you could use Windows explorer view
 to upload a document.</p>
 <p>The specific error message seen was:</p>
-<pre><code>The server was unable to save the form at this time. Please try again.
-</code></pre><p>Looking in the ULS log, there were odd messages dealing with authentication that
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">The server was unable to save the form at this time. Please try again.
+</code></pre></div><p>Looking in the ULS log, there were odd messages dealing with authentication that
 seemed to indicate that the Javascript CSOM was unable to process my request due
 to conversion of Windows to Claims&hellip; but we&rsquo;re using Kerberos. What&rsquo;s up?</p>
 <pre><code>Claims Windows Sign-In: Redirecting successfully signed-in user '&lt;user here&gt;' for request url 'https://your-sharepoint/_windows/default.aspx?ReturnUrl=/_vti.bin/client.svc/ProcessQuery'
