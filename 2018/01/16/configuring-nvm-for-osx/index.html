@@ -1,0 +1,144 @@
+<!doctype html><html lang=en>
+<head prefix="og: http://ogp.me/ns#">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
+<title>Configuring Node Version Manager (NVM) for OS X &ndash; JonTheNerd</title>
+<meta name=color-scheme content="dark light">
+<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
+<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
+<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
+<link rel=stylesheet href=/assets/style.css>
+</head>
+<body>
+<header class=site-header>
+<div class=container>
+<h1>
+<a href=/>JonTheNerd</a>
+</h1>
+<nav>
+<ul>
+<li><a href=/about>About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<article class=single itemscope itemtype=http://schema.org/BlogPosting>
+<header>
+<h1 itemprop="name headline">
+<div class=container>Configuring Node Version Manager (NVM) for OS X</div>
+</h1>
+<div class=post-meta>
+<div class=container>
+By Jon Badgett
+| <time datetime=" 2018-01-16" itemprop=datePublished>January 16, 2018</time>
+| Posted in
+<a href=/categories/programming>Programming</a>
+</div>
+</div>
+</header>
+<div itemprop=articleBody>
+<div class=container>
+<p>So, you have multiple projects and one or more of them have dependencies (or
+just plain don&rsquo;t work) on certain versions of node? What to do?
+<a href=https://github.com/creationix/nvm>Node Version Manager (NVM) allows you to install and switch between them &ldquo;with ease&rdquo;</a>
+(quotes added as I&rsquo;m writing this blog post as I get it installed for the first
+time myself&mldr; lets see just how easy it is!).</p>
+<h2 id=before-you-install---uninstall-node>Before You Install - Uninstall Node!</h2>
+<p>Although it&rsquo;s optional to remove previous node installations, it&rsquo;s recommended.
+There&rsquo;s a
+<a href=https://stackoverflow.com/questions/11177954/how-do-i-completely-uninstall-node-js-and-reinstall-from-beginning-mac-os-x>great post on Stack Overflow that describes how to remove nodejs manually and for this that used brew to originally install node</a>.</p>
+<h2 id=ensure-you-have-the-xcode-command-line-tools>Ensure you have the Xcode command line tools.</h2>
+<p>The Xcode command line tools (which you may already have for other reasons) are
+required. The easiest way to install them is to run the following in the
+terminal:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>xcode-select --install
+</code></pre></div><h2 id=run-the-nvm-install-script>Run the NVM Install Script</h2>
+<p>You can either use cURL or Wget to install NVM. To test if you have either, just
+type curl or wget into a terminal window and hit return. If you get some kind of
+response that isn&rsquo;t an error, you know which to use. Otherwise, you can install
+wget via brew:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>brew install wget
+</code></pre></div><p>Then you&rsquo;ll want to run the latest install script mentioned on the
+<a href=https://github.com/creationix/nvm>NVM repo</a>. <strong>Go there and copy+paste into
+your terminal window</strong>.</p>
+<p>After it installs, you ought to be able to open a fresh terminal window and type
+in <strong>nvm</strong> and see some kind of output, but not this:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>$ nvm
+-bash: nvm: <span class=nb>command</span> not found
+</code></pre></div><p>If you got that, it means that your shell isn&rsquo;t configured to use nvm. What I
+found after investigating is that NVM had added references to itself to the
+.bashrc file directly in my home directory. You can see this by typing the
+following in a terminal:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>open <span class=nv>$HOME</span>/.bashrc
+</code></pre></div><p>However, it hadn&rsquo;t added itself to the .bash_profile file.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>open <span class=nv>$HOME</span>/.bash_profile
+</code></pre></div><p>A kind user on Stack Exchange explains that
+<a href=https://apple.stackexchange.com/questions/51036/what-is-the-difference-between-bash-profile-and-bashrc>on OS X, every time terminal is run it considers it a <em>login terminal</em> which uses the .bash_profile file and not the .bashrc file</a>.
+An easy fix for this though is to just consolidate all of the customizations to
+the terminal load process into the .bashrc file.</p>
+<p>Add the following to your .bash_profile and move its contents into .bashrc.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=k>if</span> <span class=o>[</span> -f <span class=nv>$HOME</span>/.bashrc <span class=o>]</span><span class=p>;</span> <span class=k>then</span>
+        <span class=nb>source</span> <span class=nv>$HOME</span>/.bashrc
+<span class=k>fi</span>
+</code></pre></div><p>Fire up a fresh terminal and run the following, which should output <strong>nvm</strong> if
+the install was successful.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=nb>command</span> -v nvm
+</code></pre></div><h2 id=install-node-versions>Install Node Versions</h2>
+<p>We&rsquo;ve got NVM, now let&rsquo;s install the versions of node we want to use across
+ourprojects.</p>
+<h4 id=latest-node>Latest node</h4>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>nvm install node
+</code></pre></div><h4 id=specific-version-of-node>Specific version of Node</h4>
+<p><a href=https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment>Version 6.11.5 of node.js is required for SharePoint Framework development</a>
+as of this writing.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>nvm install 6.11.5
+</code></pre></div><p>Note that you can list all available installed node versions using the following
+commandline:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>nvm ls
+</code></pre></div><h2 id=configure-your-project-to-use-a-specific-version>Configure your project to use a specific version</h2>
+<p>For this, we&rsquo;re going to place a .nvmrc into the root of each project that
+utilizes node which indicates which version to use.</p>
+<ol>
+<li>
+<p>Get to the target directory</p>
+</li>
+<li>
+<p>Run one of the following:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=nb>echo</span> <span class=s2>&#34;5.9&#34;</span> &gt; .nvmrc
+
+<span class=nb>echo</span> <span class=s2>&#34;lts/*&#34;</span> &gt; .nvmrc <span class=c1># to default to the latest LTS version</span>
+
+<span class=nb>echo</span> <span class=s2>&#34;node&#34;</span> &gt; .nvmrc <span class=c1># to default to the latest version</span>
+</code></pre></div></li>
+<li>
+<p>Start using that node version using the following command:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>nvm use
+</code></pre></div></li>
+<li>
+<p>(optional) You can configure auto-switching to the desired node version
+instead of having to type nvm use. This requires using
+<a href=https://github.com/wbyoung/avn>AVN (Automatic Version Switching for Node)</a>
+which works in conjunction with the .nvmrc file.</p>
+</li>
+</ol>
+</div>
+</div>
+</article>
+</main>
+<div class=feedback>
+<div class=container>
+<h3>Feedback</h3>
+<p>Submit feedback, ask questions, or just leave a comment with a
+<a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BConfiguring%20Node%20Version%20Manager%20%28NVM%29%20for%20OS%20X%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2018-01-16-configuring-nvm-for-osx.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2018%2f01%2f16%2fconfiguring-nvm-for-osx%2f">GitHub Issue</a></p>
+</div>
+</div>
+something something
+<footer>
+<div class=container>
+built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html><html lang=en>
+<head prefix="og: http://ogp.me/ns#">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
+<title>SharePoint 2010: Disable Feature on all Web Applications PowerShell &ndash; JonTheNerd</title>
+<meta name=color-scheme content="dark light">
+<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
+<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
+<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
+<link rel=stylesheet href=/assets/style.css>
+</head>
+<body>
+<header class=site-header>
+<div class=container>
+<h1>
+<a href=/>JonTheNerd</a>
+</h1>
+<nav>
+<ul>
+<li><a href=/about>About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<article class=single itemscope itemtype=http://schema.org/BlogPosting>
+<header>
+<h1 itemprop="name headline">
+<div class=container>SharePoint 2010: Disable Feature on all Web Applications PowerShell</div>
+</h1>
+<div class=post-meta>
+<div class=container>
+By Jon Badgett
+| <time datetime=" 2011-07-21" itemprop=datePublished>July 21, 2011</time>
+| Posted in
+<a href=/categories/powershell>PowerShell</a>, <a href=/categories/programming>Programming</a>, <a href=/categories/sharepoint>SharePoint</a>
+</div>
+</div>
+</header>
+<div itemprop=articleBody>
+<div class=container>
+<p>Because it&rsquo;s easier to copy+paste this later&mldr; This will disable a feature on
+all web applications in a farm. Very convenient for when you&rsquo;re removing a
+feature from a solution. [code lang=&ldquo;ps&rdquo;] Get-SPWebApplication | ForEach-Object
+{Disable-SPFeature "Solution.Name<em>FeatureName" -url $</em>.Url;} [/code]</p>
+</div>
+</div>
+</article>
+</main>
+<div class=feedback>
+<div class=container>
+<h3>Feedback</h3>
+<p>Submit feedback, ask questions, or just leave a comment with a
+<a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BSharePoint%202010%3a%20Disable%20Feature%20on%20all%20Web%20Applications%20PowerShell%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2011-07-21-sharepoint-2010-disable-feature-on-all-web-applications-powershell.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2011%2f07%2f21%2fsharepoint-2010-disable-feature-on-all-web-applications-powershell%2f">GitHub Issue</a></p>
+</div>
+</div>
+something something
+<footer>
+<div class=container>
+built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
+</div>
+</footer>
+</body>
+</html>

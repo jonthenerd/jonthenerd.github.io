@@ -1,0 +1,82 @@
+<!doctype html><html lang=en>
+<head prefix="og: http://ogp.me/ns#">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
+<title>K2 - Service Account Rights Issue &ndash; JonTheNerd</title>
+<meta name=color-scheme content="dark light">
+<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
+<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
+<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
+<link rel=stylesheet href=/assets/style.css>
+</head>
+<body>
+<header class=site-header>
+<div class=container>
+<h1>
+<a href=/>JonTheNerd</a>
+</h1>
+<nav>
+<ul>
+<li><a href=/about>About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<article class=single itemscope itemtype=http://schema.org/BlogPosting>
+<header>
+<h1 itemprop="name headline">
+<div class=container>K2 - Service Account Rights Issue</div>
+</h1>
+<div class=post-meta>
+<div class=container>
+By Jon Badgett
+| <time datetime=" 2016-03-31" itemprop=datePublished>March 31, 2016</time>
+| Posted in
+<a href=/categories/k2>K2</a>
+</div>
+</div>
+</header>
+<div itemprop=articleBody>
+<div class=container>
+<p>In two scenarios, errors wer observed when using K2 designer within
+SharePoint 2013.</p>
+<p>Working with K2 support, a resolution was found to this.</p>
+<p>First, when trying to call a sub-workflow, the following error was observed:</p>
+<blockquote>
+<p>Unable to retrieve a list of sub-workflows from the server</p>
+<p>User K2:[your service account here] has insufficient rights to perform action
+GetProcSets. Minimum of Export rights are required to perform this action.</p>
+</blockquote>
+<p>Second, when attempting to delete a workflow from within the
+SharePoint-integrated designer (after you click &ldquo;Application&rdquo; from the ribbon)
+and you have one or both of the checkboxes ticket, the following error appears:</p>
+<blockquote>
+<p>User K2:[your service account here] does not have Administrator rights.</p>
+</blockquote>
+<p>The issue found was that the service account used to run the application pool
+for the SmartForms designer did not have sufficient rights on the K2 server.
+This looks to be a bug/edge-case with the installer, as it was consistently
+present in multiple environments installed in the same fashion.</p>
+<p>The easy fix? Go to your K2 Workspace, and open the Server Rights area. Add the
+service account with Admin and Export rights. Done.</p>
+</div>
+</div>
+</article>
+</main>
+<div class=feedback>
+<div class=container>
+<h3>Feedback</h3>
+<p>Submit feedback, ask questions, or just leave a comment with a
+<a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BK2%20-%20Service%20Account%20Rights%20Issue%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2016-03-31-K2-service-account-rights-issue.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2016%2f03%2f31%2fk2-service-account-rights-issue%2f">GitHub Issue</a></p>
+</div>
+</div>
+something something
+<footer>
+<div class=container>
+built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
+</div>
+</footer>
+</body>
+</html>

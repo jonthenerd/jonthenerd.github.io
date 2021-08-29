@@ -1,0 +1,235 @@
+<!doctype html><html lang=en>
+<head prefix="og: http://ogp.me/ns#">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
+<title>JonTheNerd</title>
+<meta name=color-scheme content="dark light">
+<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
+<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
+<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
+<link rel=stylesheet href=/assets/style.css>
+<link rel=alternate type=application/rss+xml href=http://www.jonthenerd.com/feed.xml title=JonTheNerd>
+</head>
+<body>
+<header class=site-header>
+<div class=container>
+<h1>
+<a href=/>JonTheNerd</a>
+</h1>
+<nav>
+<ul>
+<li><a href=/about>About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<div class=homepage-content>
+<div class=container>
+</div>
+</div>
+<div class=post-list>
+<div class=container>
+<article>
+<h2><a href=/2021/08/28/hugo/>Hugo</a></h2>
+<div class=post-meta>
+<time datetime=2021-08-28 itemprop=datePublished>August 28, 2021</time>
+</div>
+<div class=summary>
+I decided to rebuild my blog atop Hugo, the &ldquo;world&rsquo;s fastest framework for building websites.&rdquo; I did this for a few reasons:
+GitHub has been diligent in reminding me that there are security vulnerabilities in the dependencies of my blog. I used jekyll for the static site building, a collection of npm packages for some glue-code in the build process, and based my theme on twitter bootstrap. All of this adds up to a lot of dependencies to keep up with, and I haven&rsquo;t been blogging for a while&mldr;
+</div>
+<div>
+<a href=/2021/08/28/hugo/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2018/05/04/rest-and-flow/>Microsoft Flow: Using the SharePoint REST API</a></h2>
+<div class=post-meta>
+<time datetime=2018-05-04 itemprop=datePublished>May 4, 2018</time>
+</div>
+<div class=summary>
+<p>This post will contain whatever handy information I come across for utilizing
+the SharePoint REST APIs with Microsoft Flow.</p>
+</div>
+<div>
+<a href=/2018/05/04/rest-and-flow/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2018/01/17/learning-spfx-pt-2/>SharePoint Framework: Extensions - Application Customizer</a></h2>
+<div class=post-meta>
+<time datetime=2018-01-17 itemprop=datePublished>January 17, 2018</time>
+</div>
+<div class=summary>
+<p>Next in this series on the SharePoint Framework are extensions.
+<a href=https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/overview-extensions>According to docs.microsoft.com, SPFx Extensions allow for the customization of multiple facets of the SharePoint experience</a>.
+I&rsquo;ll focus on differences I made while following the online tutorial and my
+observations on capabilities and impacts of SPFx Application Customizer
+extensions.</p>
+</div>
+<div>
+<a href=/2018/01/17/learning-spfx-pt-2/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2018/01/16/configuring-nvm-for-osx/>Configuring Node Version Manager (NVM) for OS X</a></h2>
+<div class=post-meta>
+<time datetime=2018-01-16 itemprop=datePublished>January 16, 2018</time>
+</div>
+<div class=summary>
+<p>So, you have multiple projects and one or more of them have dependencies (or
+just plain don&rsquo;t work) on certain versions of node? What to do?
+<a href=https://github.com/creationix/nvm>Node Version Manager (NVM) allows you to install and switch between them &ldquo;with ease&rdquo;</a>
+(quotes added as I&rsquo;m writing this blog post as I get it installed for the first
+time myself&mldr; lets see just how easy it is!).</p>
+</div>
+<div>
+<a href=/2018/01/16/configuring-nvm-for-osx/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2018/01/16/learning-spfx-pt-1/>SharePoint Framework: Getting Started</a></h2>
+<div class=post-meta>
+<time datetime=2018-01-16 itemprop=datePublished>January 16, 2018</time>
+</div>
+<div class=summary>
+<p>Today I decided that it was time I learned how to build
+<a href=https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview>SharePoint Framework (SPFx)</a>
+webparts. Easy enough right? Find the right tutorial online, follow
+instrucitons, hello world! Let&rsquo;s get started.</p>
+</div>
+<div>
+<a href=/2018/01/16/learning-spfx-pt-1/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2017/09/16/managed-props-and-config-cache/>SharePoint: Search Managed Properties missing after full crawl</a></h2>
+<div class=post-meta>
+<time datetime=2017-09-16 itemprop=datePublished>September 16, 2017</time>
+</div>
+<div class=summary>
+<p>Scenario:</p>
+<ul>
+<li>SharePoint 2013</li>
+<li>You&rsquo;ve created some site columns, added them to a content type, then added
+that content type to a list/library.</li>
+<li>You add some test data.</li>
+<li>Run a full crawl.</li>
+<li>Create managed properties, mapping them to the crawled properties.</li>
+<li>Run another full crawl (to populate the managed properties)</li>
+<li>Managed properties on search results are missing.</li>
+</ul>
+<p>What do you do now?</p>
+</div>
+<div>
+<a href=/2017/09/16/managed-props-and-config-cache/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2016/07/06/the-server-was-unable-to-save/>SharePoint: The server was unable to save the form at this time</a></h2>
+<div class=post-meta>
+<time datetime=2016-07-06 itemprop=datePublished>July 6, 2016</time>
+</div>
+<div class=summary>
+<p>We ran across an issue in a test environment where we were unable to add items
+to a list, or a document library. However, you could use Windows explorer view
+to upload a document.</p>
+<p>The specific error message seen was:</p>
+<pre><code>The server was unable to save the form at this time. Please try again.
+</code></pre>
+</div>
+<div>
+<a href=/2016/07/06/the-server-was-unable-to-save/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2016/04/04/muhimbi-pdf-converter-services-and-infopath-error/>Muhimbi PDF Converter Services & InfoPath Error</a></h2>
+<div class=post-meta>
+<time datetime=2016-04-04 itemprop=datePublished>April 4, 2016</time>
+</div>
+<div class=summary>
+<p>Ran across an error while proving out a new Muhimbi PDF Converter Services
+install. I haven&rsquo;t seen it&rsquo;s like anywhere online, but managed to find a
+resolution.</p>
+</div>
+<div>
+<a href=/2016/04/04/muhimbi-pdf-converter-services-and-infopath-error/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2016/03/31/k2-service-account-rights-issue/>K2 - Service Account Rights Issue</a></h2>
+<div class=post-meta>
+<time datetime=2016-03-31 itemprop=datePublished>March 31, 2016</time>
+</div>
+<div class=summary>
+<p>In two scenarios, errors wer observed when using K2 designer within
+SharePoint 2013.</p>
+<p>Working with K2 support, a resolution was found to this.</p>
+</div>
+<div>
+<a href=/2016/03/31/k2-service-account-rights-issue/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2014/11/22/cms-made-simple-hostgator/>CMS Made Simple & HostGator - Can't upload files</a></h2>
+<div class=post-meta>
+<time datetime=2014-11-22 itemprop=datePublished>November 22, 2014</time>
+</div>
+<div class=summary>
+</div>
+<div>
+<a href=/2014/11/22/cms-made-simple-hostgator/>Read More...</a>
+</div>
+</article>
+<nav class=pagination aria-label=Pagination>
+<ul>
+<li>
+<a href=/ aria-label="Current Page, Page
+                                1" aria-current=true>
+1
+</a>
+</li>
+<li>
+<a href=/page/2/>
+2
+</a>
+</li>
+<li>
+<a href=/page/3/>
+3
+</a>
+</li>
+<li>
+<a href=/page/4/>
+4
+</a>
+</li>
+<li>
+<a href=/page/5/>
+5
+</a>
+</li>
+<li class=next>
+<a href=/page/2/ aria-label=Next title=Next>
+<span aria-hidden=true>»</span>
+</a>
+</li>
+<li class=last>
+<a href=/page/8/ aria-label=Last title=Last>
+<span aria-hidden=true>»»</span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</main>
+<footer>
+<div class=container>
+built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html><html lang=en>
+<head prefix="og: http://ogp.me/ns#">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
+<title>Increasing the Wine font size &ndash; JonTheNerd</title>
+<meta name=color-scheme content="dark light">
+<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
+<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
+<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
+<link rel=stylesheet href=/assets/style.css>
+</head>
+<body>
+<header class=site-header>
+<div class=container>
+<h1>
+<a href=/>JonTheNerd</a>
+</h1>
+<nav>
+<ul>
+<li><a href=/about>About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<article class=single itemscope itemtype=http://schema.org/BlogPosting>
+<header>
+<h1 itemprop="name headline">
+<div class=container>Increasing the Wine font size</div>
+</h1>
+<div class=post-meta>
+<div class=container>
+By Jon Badgett
+| <time datetime=" 2007-02-04" itemprop=datePublished>February 4, 2007</time>
+| Posted in
+<a href=/categories/linux>Linux</a>, <a href=/categories/ubuntu>ubuntu</a>
+</div>
+</div>
+</header>
+<div itemprop=articleBody>
+<div class=container>
+<p>Thus far in using Ubuntu, I&rsquo;ve been able to use only Linux applications. I&rsquo;ll
+admit that some of them were just ports of their Windows or Mac OS X
+counterparts&mldr;but I never had to install wine (a compatibility layer for
+running Windows programs). Well you know that torrent app I recommended?
+kTorrent? It&rsquo;s crashed on me several times in the last couple days&mldr;and ate up
+every bit of memory the system had this morning. I went looking for a better
+alternative and my only choice was to use uTorrent under wine. No
+problem!Wine is only a synaptic click away. Running utorrent under
+it is a simple affair too. I found this tutorial
+very helpful:
+Using utorrent
+with wine - Ubuntu ForumsHowever, since my primary monitor is a
+32" LCD and I&rsquo;m at about an 8-10 foot distance from it - the font size needs to
+be increased. Under windows this is a simple task&mldr;but under Wine = not so
+much. I think this is something that NEEDS to be put into the wine configuration
+app. Anyway - here&rsquo;s how it&rsquo;s done.First - close any applications
+that are running under wine.To change the size of any menu font -
+you&rsquo;ll need to edit the win.ini under the following
+folder:/home/yourusername/.wine/Add
+the following information to the win.ini
+file:[Desktop]MenuFontSize=18You
+can change the 18 to whatever size you need - but that worked for me. Now we
+need to change font size of the rest of the application. To do so, use the
+terminal and launch wine&rsquo;s
+regedit:wine
+regeditYou&rsquo;ll want to browse to this
+value:HKEY_CURRENT_CONFIG\Software\Fonts\LogPixelsand
+change it to something larger. Make sure to change the selection to &ldquo;Decimal&rdquo;,
+as you probably don&rsquo;t natively speak hex. It&rsquo;s default in decimal is 96. I upped
+mine to 120 and it worked nicely.When you&rsquo;re done doing that, close
+out regedit and restart your wine application. Enjoy your larger font sizes and
+lack of squinting!Here&rsquo;s the best resource I found on this matter
+after a bit of
+searching:<a href=http://www.winehq.com/pipermail/wine-users/2005-April/017810.html>http://www.winehq.com/pipermail/wine-users/2005-April/017810.html</a></p>
+</div>
+</div>
+</article>
+</main>
+<div class=feedback>
+<div class=container>
+<h3>Feedback</h3>
+<p>Submit feedback, ask questions, or just leave a comment with a
+<a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BIncreasing%20the%20Wine%20font%20size%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2007-02-04-increasing-the-wine-font-size.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2007%2f02%2f04%2fincreasing-the-wine-font-size%2f">GitHub Issue</a></p>
+</div>
+</div>
+something something
+<footer>
+<div class=container>
+built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
+</div>
+</footer>
+</body>
+</html>

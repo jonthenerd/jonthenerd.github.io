@@ -1,0 +1,206 @@
+<!doctype html><html lang=en>
+<head prefix="og: http://ogp.me/ns#">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
+<title>JonTheNerd</title>
+<meta name=color-scheme content="dark light">
+<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
+<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
+<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
+<link rel=stylesheet href=/assets/style.css>
+<link rel=alternate type=application/rss+xml href=http://www.jonthenerd.com/feed.xml title=JonTheNerd>
+</head>
+<body>
+<header class=site-header>
+<div class=container>
+<h1>
+<a href=/>JonTheNerd</a>
+</h1>
+<nav>
+<ul>
+<li><a href=/about>About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<div class=homepage-content>
+<div class=container>
+</div>
+</div>
+<div class=post-list>
+<div class=container>
+<article>
+<h2><a href=/2011/10/28/sharepoint-2010-setting-custom-user-profile-properties-gotchas/>SharePoint 2010: Setting custom User Profile properties Gotchas</a></h2>
+<div class=post-meta>
+<time datetime=2011-10-28 itemprop=datePublished>October 28, 2011</time>
+</div>
+<div class=summary>
+What else do you need?
+Custom User Profile Properties (and several of the Out of Box ones) depend on a Managed Metadata Service Application being setup and associated with the application you&rsquo;re working with. This is fairly trivial to setup. Just remember that after you set it up via the UI, you&rsquo;ll need to start it on the &ldquo;Manage services on this server&rdquo; page, and then perform an IIS reset. Forgetting these will keep your Managed Metadata service from working.
+</div>
+<div>
+<a href=/2011/10/28/sharepoint-2010-setting-custom-user-profile-properties-gotchas/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2011/10/18/jons-general-sharepoint-2010-development-tips/>Jon's General SharePoint 2010 Development Tips</a></h2>
+<div class=post-meta>
+<time datetime=2011-10-18 itemprop=datePublished>October 18, 2011</time>
+</div>
+<div class=summary>
+In the time I&rsquo;ve been doing SharePoint development, and SharePoint 2010 development in particular, I&rsquo;ve tried to blog about the snags or neat stuff I&rsquo;ve come across. This post is for all those little pieces of knowledge that come from working with the platform that don&rsquo;t seem large enough for their own post. If you find it useful, let me know in the comments.
+</div>
+</article>
+<article>
+<h2><a href=/2011/09/14/sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly/>SharePoint 2010: The web application at ... could not be found. Verify that you have typed the URL correctly.</a></h2>
+<div class=post-meta>
+<time datetime=2011-09-14 itemprop=datePublished>September 14, 2011</time>
+</div>
+<div class=summary>
+|- and so on with the error message. Do these also fit your situation? 1) The error happens when running a console application 2) Using PowerShell works to access the SPSite, SPWeb, or SPWebApplication that you&rsquo;re accessing in your console application How do you fix this? Change your build platform target to x64 instead of x86. Also keep in mind that this is a per build configuration setting (so you have the setting for Debug and Release compile modes).
+</div>
+<div>
+<a href=/2011/09/14/sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2011/08/17/sharepoint-2010-add-a-file-to-the-root-of-your-site-using-powershell/>SharePoint 2010: Add a file to the root of your site using PowerShell</a></h2>
+<div class=post-meta>
+<time datetime=2011-08-17 itemprop=datePublished>August 17, 2011</time>
+</div>
+<div class=summary>
+This can be useful when you need a file to be right off the root of your Internet facing site - files like robots.txt, sitemap.xml, or the verification file for Google Webmaster tools. We&rsquo;ll take advantage of PowerShell&rsquo;s ability to use any .NET methods along with the Files collection on each SPWeb in SharePoint. $fileBytes = [system.io.file]::ReadAllBytes("c:\the\full\path\to\your\file.txt"); $site = Get-SPSite "http://yourdomain:portifneeded"; $site.RootWeb.Files.Add("file.txt", $fileBytes, $true); This will result in a file.txt located at &ldquo;http://yourdomain:portifneeded/file.
+</div>
+<div>
+<a href=/2011/08/17/sharepoint-2010-add-a-file-to-the-root-of-your-site-using-powershell/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2011/08/16/sharepoint-2010-findinglargestdoclibrary/>SharePoint 2010: Finding the largest document library in a site collection</a></h2>
+<div class=post-meta>
+<time datetime=2011-08-16 itemprop=datePublished>August 16, 2011</time>
+</div>
+<div class=summary>
+SharePoint 2007 came with a page (storman.aspx) dedicated to showing you how much space each of the lists in your site collection were taking up. SharePoint 2010 removed this page. Luckily, SharePoint 2010 SP1 added it back in. But what if you&rsquo;re still haven&rsquo;t updated to SP1 and you&rsquo;re getting warnings/errors about running out of space?
+Obviously - up the space so as to avoid additional noise from your users. Then - figure out which libraries are taking up the most space.
+</div>
+<div>
+<a href=/2011/08/16/sharepoint-2010-findinglargestdoclibrary/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/>SharePoint 2010: Unable to delete site/web after SP1</a></h2>
+<div class=post-meta>
+<time datetime=2011-08-11 itemprop=datePublished>August 11, 2011</time>
+</div>
+<div class=summary>
+<p>While doing some testing after upgrading my dev machine to SP1, I ran into two
+separate issues when trying to delete a web through the UI by using the &ldquo;Sites
+and Workspaces&rdquo; link in Site Settings. Deleting through powershell worked fine.</p>
+</div>
+<div>
+<a href=/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2011/07/21/sharepoint-2010-disable-feature-on-all-web-applications-powershell/>SharePoint 2010: Disable Feature on all Web Applications PowerShell</a></h2>
+<div class=post-meta>
+<time datetime=2011-07-21 itemprop=datePublished>July 21, 2011</time>
+</div>
+<div class=summary>
+Because it&rsquo;s easier to copy+paste this later&mldr; This will disable a feature on all web applications in a farm. Very convenient for when you&rsquo;re removing a feature from a solution. [code lang=&ldquo;ps&rdquo;] Get-SPWebApplication | ForEach-Object {Disable-SPFeature "Solution.NameFeatureName" -url $.Url;} [/code]
+</div>
+</article>
+<article>
+<h2><a href=/2011/07/06/sharepoint-2010-remove-existing-reusable-content-items-using-powershell/>SharePoint 2010: Remove existing reusable content items using PowerShell</a></h2>
+<div class=post-meta>
+<time datetime=2011-07-06 itemprop=datePublished>July 6, 2011</time>
+</div>
+<div class=summary>
+|- This same PowerShell could be used for any other list to remove all of the items. I just needed it to remove the OOB reusable content. [ps] $siteColTemp = Get-SPSite "http://yourSiteCollectionUrl"; $reusableContentList = $siteColTemp.RootWeb.Lists["Reusable Content"]; $reusableContentItems = $reusableContentList.Items; $reusableContentItemsCount = $reusableContentItems.Count; for($x=$reusableContentItemsCount-1;$x -ge 0; $x&ndash;){$reusableContentItems[$x].Delete();} [/ps]
+</div>
+</article>
+<article>
+<h2><a href=/2011/06/30/sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain/>SharePoint 2010 SP1 Upgrade Error "Unable to create a Service Connection Point in the current Active Directory domain."</a></h2>
+<div class=post-meta>
+<time datetime=2011-06-30 itemprop=datePublished>June 30, 2011</time>
+</div>
+<div class=summary>
+Full error: &ldquo;Unable to create a Service Connection Point in the current Active Directory domain. Verify that the SharePoint container exists in the current domain and that you have rights to write to it.&rdquo;
+After installing SP2010 SP1, PSConfig failed and the log had the above error. I found that the timer service was stopped and restarted it. Retried install - no error.
+</div>
+</article>
+<article>
+<h2><a href=/2011/06/11/time-moves-on-google-makes-my-extension-irrelevant/>Time moves on. Google makes my extension irrelevant</a></h2>
+<div class=post-meta>
+<time datetime=2011-06-11 itemprop=datePublished>June 11, 2011</time>
+</div>
+<div class=summary>
+|- And that&rsquo;s a good thing! This morning while working to improve my extension for Google Calendar, I noticed that Google had added the ability to print multiple weeks or months straight from the Google Calendar. So where does that leave my extension? Well&mldr; unpublished and deleted at this point. I don&rsquo;t see any reason to still make the extension available, maintain it, etc. if you can get the same or better experience straight from Google Calendar.
+</div>
+<div>
+<a href=/2011/06/11/time-moves-on-google-makes-my-extension-irrelevant/>Read More...</a>
+</div>
+</article>
+<nav class=pagination aria-label=Pagination>
+<ul>
+<li class=first>
+<a href=/ aria-label=First title=First>
+<span aria-hidden=true>««</span>
+</a>
+</li>
+<li class=previous>
+<a href=/page/2/ aria-label=Previous title=Previous>
+<span aria-hidden=true>«</span>
+</a>
+</li>
+<li>
+<a href=/>
+1
+</a>
+</li>
+<li>
+<a href=/page/2/>
+2
+</a>
+</li>
+<li>
+<a href=/page/3/ aria-label="Current Page, Page
+                                3" aria-current=true>
+3
+</a>
+</li>
+<li>
+<a href=/page/4/>
+4
+</a>
+</li>
+<li>
+<a href=/page/5/>
+5
+</a>
+</li>
+<li class=next>
+<a href=/page/4/ aria-label=Next title=Next>
+<span aria-hidden=true>»</span>
+</a>
+</li>
+<li class=last>
+<a href=/page/8/ aria-label=Last title=Last>
+<span aria-hidden=true>»»</span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</main>
+<footer>
+<div class=container>
+built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
+</div>
+</footer>
+</body>
+</html>

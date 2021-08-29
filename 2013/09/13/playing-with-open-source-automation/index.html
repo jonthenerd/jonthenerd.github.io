@@ -1,0 +1,99 @@
+<!doctype html><html lang=en>
+<head prefix="og: http://ogp.me/ns#">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
+<title>Playing with Open Source Automation &ndash; JonTheNerd</title>
+<meta name=color-scheme content="dark light">
+<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
+<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
+<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
+<link rel=stylesheet href=/assets/style.css>
+</head>
+<body>
+<header class=site-header>
+<div class=container>
+<h1>
+<a href=/>JonTheNerd</a>
+</h1>
+<nav>
+<ul>
+<li><a href=/about>About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<article class=single itemscope itemtype=http://schema.org/BlogPosting>
+<header>
+<h1 itemprop="name headline">
+<div class=container>Playing with Open Source Automation</div>
+</h1>
+<div class=post-meta>
+<div class=container>
+By Jon Badgett
+| <time datetime=" 2013-09-13" itemprop=datePublished>September 13, 2013</time>
+| Posted in
+<a href=/categories/programming>Programming</a>
+</div>
+</div>
+</header>
+<div itemprop=articleBody>
+<div class=container>
+<p>We&rsquo;re preparing to move into a new house and I&rsquo;ve discovered that I&rsquo;m interested
+in home automation. Well&mldr; not really home automation so much as the nerdy
+aspect of controlling physical things through code.</p>
+<p>This is a bit scary, as home automation can be quite expensive and if not done
+with an eye toward quality and usability can be very very frustrating.</p>
+<p>Oh well. I was Googling the subject and found several open source home
+automation controllers. One of those is
+Open Source Automation. It&rsquo;s
+.Net based and has a plugin system for extension. I&rsquo;m a .Net developer by day
+(and some evenings and weekends&mldr;) so I found it pretty interesting. All kinds
+of what-if&rsquo;s entered my brain:</p>
+<p>Step 1 Install MySQL - Done!</p>
+<p>Step 2 Install Open Source Automation&mldr;</p>
+<p>Running the Installer, I got the following message: &ldquo;There is a problem with
+this installer package&mldr;":</p>
+<p></p>
+<p>Looking at the log, this is what&rsquo;s occuring right when the error happens:</p>
+<p>Perusing the Open Source Automation forums, I found
+this
+post talking about the same issue with the installer. It indicates that
+restarting the MySQL service may resolve the issue. So I restarted the service
+and&mldr;. same error.</p>
+<p>The same post indicated that perhaps something else was running on port 8081 and
+to use tcpview to check it out. I used it - nothing&rsquo;s running on port 8081.</p>
+<p>I then found
+this
+post, which indicated that .Net 3.5 may be needed for the Web Server
+software to install. I&rsquo;m running Windows 8, so this isn&rsquo;t installed by default.
+Installed it. Ran the OSA installer&mldr; it worked! So yeah - .Net 3.5 is a
+pre-req that the installer doesn&rsquo;t check for.</p>
+<p>Step 3 - Get the Z-Wave USB dongle working.</p>
+<p>Reading OSA&rsquo;s wiki, I found that
+this
+particular (older) dongle, the Intermatic HA22,  isn&rsquo;t support by the Open-ZWave
+library. So much for that.</p>
+<p>Guess I&rsquo;ll have to wait until I get some hardware that works with OSA&mldr; or find
+some other software that might work with the Intermatic HA22. Off to Google for
+that :)</p>
+</div>
+</div>
+</article>
+</main>
+<div class=feedback>
+<div class=container>
+<h3>Feedback</h3>
+<p>Submit feedback, ask questions, or just leave a comment with a
+<a href="https://github.com/jonthenerd/jonthenerd.github.io/issues/new?title=&assignee=jonthenerd&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5BPlaying%20with%20Open%20Source%20Automation%5D(https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io/master/_posts%2f2013-09-13-playing-with-open-source-automation.md)%0A*%20Post%20URL%3A%20http%3a%2f%2fwww.jonthenerd.com%2f2013%2f09%2f13%2fplaying-with-open-source-automation%2f">GitHub Issue</a></p>
+</div>
+</div>
+something something
+<footer>
+<div class=container>
+built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
+</div>
+</footer>
+</body>
+</html>

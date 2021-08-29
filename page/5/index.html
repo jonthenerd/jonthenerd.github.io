@@ -1,0 +1,200 @@
+<!doctype html><html lang=en>
+<head prefix="og: http://ogp.me/ns#">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting.">
+<title>JonTheNerd</title>
+<meta name=color-scheme content="dark light">
+<script>window.matchMedia("(prefers-color-scheme: dark)").media==="not all"&&(document.documentElement.style.display="none",document.head.insertAdjacentHTML("beforeend",'<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'))</script>
+<link rel=stylesheet media="(prefers-color-scheme: light)" href=/assets/light.css>
+<link rel=stylesheet media="(prefers-color-scheme: dark)" href=/assets/dark.css>
+<link rel=stylesheet href=/assets/style.css>
+<link rel=alternate type=application/rss+xml href=http://www.jonthenerd.com/feed.xml title=JonTheNerd>
+</head>
+<body>
+<header class=site-header>
+<div class=container>
+<h1>
+<a href=/>JonTheNerd</a>
+</h1>
+<nav>
+<ul>
+<li><a href=/about>About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<div class=homepage-content>
+<div class=container>
+</div>
+</div>
+<div class=post-list>
+<div class=container>
+<article>
+<h2><a href=/2010/09/29/net-4-and-ftp/>.NET 4 and FTP</a></h2>
+<div class=post-meta>
+<time datetime=2010-09-29 itemprop=datePublished>September 29, 2010</time>
+</div>
+<div class=summary>
+It comes baked in. Yay!
+Update: Apparently seeing products that do FTP in .NET for years made me think this wasn&rsquo;t built in. It&rsquo;s been around since .NET 2.0&mldr; Another blogger has even created a helper class that encapsulates everything you want to do in .NET with FTP (and it works on mono!).
+</div>
+</article>
+<article>
+<h2><a href=/2010/09/22/asp-net-padding-oracle/>ASP.NET Padding Oracle</a></h2>
+<div class=post-meta>
+<time datetime=2010-09-22 itemprop=datePublished>September 22, 2010</time>
+</div>
+<div class=summary>
+I&rsquo;m doing research to better understand the padding oracle attack that was recently disclosed to affect ASP.NET and thought to provide a quick list of links that I&rsquo;ve found most helpful:
+Microsoft SharePoint Team Blog: Security Advisory 2416728 (Vulnerability in ASP.NET) and SharePoint Automated Padding Oracle Attacks with PadBuster How to check if your application is vulnerable to the ASP.NET Padding Oracle Vulnerability Duncan Smart&rsquo;s post on ASP.NET detailing how to check if your application masks the oracle Duncan Smart&rsquo;s blog entry on the matter (with link to a wsh script to use for testing) ASP.
+</div>
+<div>
+<a href=/2010/09/22/asp-net-padding-oracle/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2010/08/01/unreal-tournament-server-on-ubuntu-linux-10-04/>Unreal Tournament Server on Ubuntu Linux (10.04)</a></h2>
+<div class=post-meta>
+<time datetime=2010-08-01 itemprop=datePublished>August 1, 2010</time>
+</div>
+<div class=summary>
+I&rsquo;m putting together a server for some friends to play Unreal Tournament (yes, the original). I had heard this was doable on Linux, and I have a friend&rsquo;s old laptop here to play with. I&rsquo;ll be putting good links here that have helped me to get this working.I got it all setup in a VirtualBox VM, but need it on the separate machine. This old laptop has a broken screen and no hard drive&mldr;no problem!
+</div>
+<div>
+<a href=/2010/08/01/unreal-tournament-server-on-ubuntu-linux-10-04/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2010/07/10/dev-cheat-sheets/>Dev Cheat Sheets</a></h2>
+<div class=post-meta>
+<time datetime=2010-07-10 itemprop=datePublished>July 10, 2010</time>
+</div>
+<div class=summary>
+Found this sitevia downloadsquad. It has lots of condensed &ldquo;cheat sheets&rdquo; for different programming languages, tools, etc. that could be handy. I know I&rsquo;ll be using the built-in VS 2010 Code snippets for C#.
+</div>
+</article>
+<article>
+<h2><a href=/2010/06/13/gimp-how-to-make-fuzzy-border-transparent/>GIMP How to make fuzzy border transparent</a></h2>
+<div class=post-meta>
+<time datetime=2010-06-13 itemprop=datePublished>June 13, 2010</time>
+</div>
+<div class=summary>
+Do not use the &ldquo;Flatten Image&rdquo; option. A new layer will be created containing only the border (this layer will be the active layer). Perform &ldquo;Layer->Transparency->Alpha to Selection&rdquo; Perform &ldquo;Layer->Delete&rdquo;. (you don&rsquo;t need this layer any more) Perform &ldquo;Layer->Transparency->Add Alpha Channel&rdquo; (if possible) Perform &ldquo;Edit->Clear&rdquo; Note: the &ldquo;Layer&rdquo; commands are also available on the context menu accessed by right-clicking on the layer&rsquo;s thumbnail preview in the Layer Dialog.
+</div>
+</article>
+<article>
+<h2><a href=/2010/06/01/what-motivates-us/>What motivates us?</a></h2>
+<div class=post-meta>
+<time datetime=2010-06-01 itemprop=datePublished>June 1, 2010</time>
+</div>
+<div class=summary>
+It may surprise you.
+</div>
+</article>
+<article>
+<h2><a href=/2010/03/16/anonymous-users-and-aspx-pages-inside-the-_layouts-folder/>Anonymous users and aspx pages inside the _layouts folder</a></h2>
+<div class=post-meta>
+<time datetime=2010-03-16 itemprop=datePublished>March 16, 2010</time>
+</div>
+<div class=summary>
+I ran smack into an issue that was looking to be a serious problem yesterday. One of my development projects (SharePoint) is an anonymous access public-facing website. This site using built-in SharePoint web services and the download.aspx page in the _layouts directory to facilitate lookup of related documents and provide download capability. The issue? Anonymous users can&rsquo;t use any of the application pages in the _layouts folder. Lots of head scratching and some creative Google searches led me to the &ldquo;DotNetIdeas&rdquo; blog, specifically this post.
+</div>
+<div>
+<a href=/2010/03/16/anonymous-users-and-aspx-pages-inside-the-_layouts-folder/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2010/03/10/fastest-xml-editorviewer/>Fastest XML Editor/Viewer</a></h2>
+<div class=post-meta>
+<time datetime=2010-03-10 itemprop=datePublished>March 10, 2010</time>
+</div>
+<div class=summary>
+I use Visual Studio every day for just about all of my development tasks. However, I attempted to open a large xml file (> 20 megs) and Visual studio spiked up to 1.5 gigs of memory consumption and I couldn&rsquo;t do anything&mldr; My old standby notepad++ (great editor!) also hung on opening the file. A quick search yielded First Object&rsquo;s XML Editor. Worked great. Super fast.
+</div>
+</article>
+<article>
+<h2><a href=/2010/02/26/occasional-spexception-from-getlistitemdatawithcallback/>Occasional SPException from GetListItemDataWithCallback</a></h2>
+<div class=post-meta>
+<time datetime=2010-02-26 itemprop=datePublished>February 26, 2010</time>
+</div>
+<div class=summary>
+Wrote a new field control today (SharePoint) that queried a specific list in another site collection based on the value of a field from the current list item. This worked great each time I&rsquo;d test it out and add some additional functionality. When I finished the control, I did a little harder testing by hitting the refresh button in my browser over and over again. Randomly, my control wouldn&rsquo;t render. Other times it would be fine.
+</div>
+<div>
+<a href=/2010/02/26/occasional-spexception-from-getlistitemdatawithcallback/>Read More...</a>
+</div>
+</article>
+<article>
+<h2><a href=/2010/02/25/unable-to-delete-field-in-sharepoint-library/>Unable to delete field in SharePoint library</a></h2>
+<div class=post-meta>
+<time datetime=2010-02-25 itemprop=datePublished>February 25, 2010</time>
+</div>
+<div class=summary>
+Trying to delete a field in a SharePoint library and get the message &ldquo;Cannot complete this action. Pleast try again.&rdquo;? This drove me nuts, as even invoking the delete method via the object model gives this message. What I found to allow a delete was pushing down changes via the content type gallery in the site collection (if the field was ever a part of that content type). This can be found by going to the following:_ Site Settings_ Site Content Type Gallery_ Choose Content Type_ Advanced Settings_ Make sure radio button &ldquo;Update all content types inheriting from this type&rdquo; is checked_ Click OKI had several libraries with several fields that had this issue (all fields used to be a part of the content type but had since been orphaned due to changing the definition of the content type in the elements.
+</div>
+<div>
+<a href=/2010/02/25/unable-to-delete-field-in-sharepoint-library/>Read More...</a>
+</div>
+</article>
+<nav class=pagination aria-label=Pagination>
+<ul>
+<li class=first>
+<a href=/ aria-label=First title=First>
+<span aria-hidden=true>««</span>
+</a>
+</li>
+<li class=previous>
+<a href=/page/4/ aria-label=Previous title=Previous>
+<span aria-hidden=true>«</span>
+</a>
+</li>
+<li>
+<a href=/page/3/>
+3
+</a>
+</li>
+<li>
+<a href=/page/4/>
+4
+</a>
+</li>
+<li>
+<a href=/page/5/ aria-label="Current Page, Page
+                                5" aria-current=true>
+5
+</a>
+</li>
+<li>
+<a href=/page/6/>
+6
+</a>
+</li>
+<li>
+<a href=/page/7/>
+7
+</a>
+</li>
+<li class=next>
+<a href=/page/6/ aria-label=Next title=Next>
+<span aria-hidden=true>»</span>
+</a>
+</li>
+<li class=last>
+<a href=/page/8/ aria-label=Last title=Last>
+<span aria-hidden=true>»»</span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</main>
+<footer>
+<div class=container>
+built with <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/jonthenerd/jonthenerd.github.io>GitHub Pages</a> | <a href=/license>License</a>
+</div>
+</footer>
+</body>
+</html>
