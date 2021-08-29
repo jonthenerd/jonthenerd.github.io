@@ -1,4 +1,9 @@
-_site/
-.sass-cache/
-.jekyll-metadata
 node_modules
+public
+.cache
+static/assets/dark.css
+static/assets/dark.css.map
+static/assets/light.css
+static/assets/light.css.map
+static/assets/style.css
+static/assets/style.css.map

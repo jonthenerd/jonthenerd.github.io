@@ -1,0 +1,18 @@
+/* Theme Variables (dark on light) */
+:root {
+    --background-color: rgb(250, 250, 250);
+    --color: #000;
+
+    --brand-color: #616161;
+
+    --site-header-background-color: #e5e5e5;
+    --site-header-separator-color: #555;
+
+    --post-h1-background-color: #fff;
+    --post-meta-background-color: #036;
+    --post-meta-color: #fff;
+    --post-meta-a-color: #ffccb3;
+}
+
+/* Syntax */
+@import "./syntax-github";

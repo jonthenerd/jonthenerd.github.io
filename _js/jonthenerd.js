@@ -1,1 +1,0 @@
-/*! JonTheNerd | (c) JonTheNerd | BSD License */

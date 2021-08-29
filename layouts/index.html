@@ -1,0 +1,43 @@
+{{ define "main" }}
+    <!--
+<header class="homepage-header">
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.subtitle }}
+        <span class="subtitle">{{ . }}</span>
+    {{ end }}
+</header>
+-->
+
+    <div class="homepage-content">
+        <div class="container">
+            <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
+            {{ .Content }}
+        </div>
+    </div>
+    <div class="post-list">
+        <div class="container">
+            {{ $paginator := .Paginate (where (where .Site.Pages "Type" "posts") "IsPage" true) }}
+            {{ range $paginator.Pages }}
+                <article>
+                    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="{{ .Date | time.Format "2006-01-02" }}"
+                            itemprop="datePublished"
+                            >{{ .Date | time.Format ":date_long" }}</time
+                        >
+                    </div>
+                    <div class="summary">
+                        {{ .Summary }}
+                    </div>
+                    {{ if .Truncated }}
+                        <div>
+                            <a href="{{ .RelPermalink }}">Read More...</a>
+                        </div>
+                    {{ end }}
+                </article>
+            {{ end }}
+            {{ template "partials/pagination.html" . }}
+        </div>
+    </div>
+{{ end }}
