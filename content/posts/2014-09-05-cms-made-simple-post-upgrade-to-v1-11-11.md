@@ -3,8 +3,9 @@ title: CMS Made Simple - Post-Upgrade to v1.11.11
 date: "2014-09-05"
 author: Jon Badgett
 categories:
+    - SysAdmin
+tags:
     - CMS Made Simple
-    - Programming
 draft: false
 slug: cms-made-simple-post-upgrade-to-v1-11-11
 ---
@@ -17,7 +18,8 @@ screen after editing calendar events within CGCalendar.
 
 They looked like this:
 
-[code] Warning: Cannot modify header information - headers already sent by
+```
+Warning: Cannot modify header information - headers already sent by
 (output started at /home4/user/public_html/admin/moduleinterface.php:99) in
 /home4/user/public_html/include.php on line 96
 
@@ -39,14 +41,19 @@ started at /home4/user/public_html/admin/moduleinterface.php:99) in
 
 Warning: Cannot modify header information - headers already sent by (output
 started at /home4/user/public_html/admin/moduleinterface.php:99) in
-/home4/user/public_html/include.php on line 109 [/code]
+/home4/user/public_html/include.php on line 109
+```
 
-<strong>The Solution</strong> The solution I found was to change my
+## The Solution
+
+The solution I found was to change my
 Administration Theme preference from the older "NCleanGrey" to the newer
 "OneEleven". This option is under My Preferences -> My Account -> User
 Preferences.
 
-<strong>Tracing it down</strong> I'm fairly new to PHP, having developed C#
+## Tracing it down
+
+I'm fairly new to PHP, having developed C#
 primarily the last few years. However, I believe what's causing this is that
 within the moduleinterface.php file (line 99), it's calling a "ShowMessage"
 function that's supposed to exist within your preferred theme. The NCleanGrey

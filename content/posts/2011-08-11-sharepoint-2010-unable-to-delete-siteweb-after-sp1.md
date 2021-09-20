@@ -4,8 +4,9 @@ title: "SharePoint 2010: Unable to delete site/web after SP1"
 date: "2011-08-11"
 author: Jon Badgett
 categories:
+    - SysAdmin
+tags:
     - PowerShell
-    - Programming
     - SharePoint
 draft: false
 slug: sharepoint-2010-unable-to-delete-siteweb-after-sp1
@@ -17,8 +18,7 @@ and Workspaces" link in Site Settings. Deleting through powershell worked fine.
 
 <!--more-->
 
-<strong>Issue #1: Specified method is not
-supported<a href="http://social.msdn.microsoft.com/Forums/en-ZA/sharepoint2010general/thread/897f2c01-aebb-449d-bda9-2e6fda81a897?outputAs=rss" rel="nofollow"><img src="http://i2.social.s-msft.com/Forums/resources/images/trans.gif?cver=1864.923%0d%0a" alt="" /></a></strong>
+**Issue #1: Specified method is not supported**
 
 This specific error was occurring only on one of my web applications. I had just
 attached the database for this application to my existing SharePoint 2010 SP1
@@ -26,22 +26,25 @@ environment. The error will appear if the database for your web application
 needs to be updated.
 
 To check if your database needs to be updated, open Central Administration and
-navigate to "Upgrade and Migration" -&gt; "Review database status". All of your
+navigate to "Upgrade and Migration" > "Review database status". All of your
 databases should show a status of "No action required". If the application you
 are experiencing the error on is running in compatibility mode, you'll need to
 update it using PowerShell. To do this, first get the GUID ID of the database in
 question by running the following powershell and then copying the ID of the
 database you wish to upgrade:
 
-[code lang="ps"]Get-SPContentDatabase[/code]
+```posh
+Get-SPContentDatabase
+```
 
 Then run the following powershell to upgrade the database using the ID you just
 copied.
 
-[code lang="ps"]Upgrade-SPContentDatabase -Identity
-YourDatabaseIDGoesHere[/code]
+```posh
+Upgrade-SPContentDatabase -Identity YourDatabaseIDGoesHere
+```
 
-<strong>Issue #2: There is no Web named "/YourWebName"</strong>
+**Issue #2: There is no Web named "/YourWebName"**
 
 Once my above issue was resolved on the one misbehaving web application, I had
 consistent behavior across all web applications when trying to delete a web...
@@ -49,7 +52,7 @@ or so I thought. Turns out - if I create a web right off of the site collection
 (the RootWeb), then I can successfully delete it using the "Sites and
 Workspaces" page. Also - I can delete the web successfully if I navigate to the
 web I want to delete and then use the "Delete this Site" link. This behavior was
-consistent in a SharePoint 2010 SP1 environment <strong>and</strong> SharePoint
+consistent in a SharePoint 2010 SP1 environment **and** SharePoint
 2010 SP1 + June Cumulative Update. What's going on here?
 
 Time to open up Reflector. The offending code comes from the

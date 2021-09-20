@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SharePoint Framework: Getting Started</title>
+    <meta name="description" content="Today I decided that it was time I learned how to build SharePoint Framework (SPFx) webparts. Easy enough right? Find the right tutorial online, follow instr...">
+    <meta property="og:title" content="SharePoint Framework: Getting Started" />
+<meta property="og:description" content="Today I decided that it was time I learned how to build SharePoint Framework (SPFx) webparts. Easy enough right? Find the right tutorial online, follow instr..." />
+<meta property="og:site_name" content="JonTheNerd" />
+
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2018-01-16" />
+    
+    <meta property="article:author" content="https://www.facebook.com/jon.badgett.5" />
+    
+    
+    
+    <meta property="article:tag" content="SharePoint" />
+    
+    <meta property="article:tag" content="Programming" />
+    
+
+<meta property="og:url" content="http://localhost:4000/2018/01/16/learning-spfx-pt-1/" />
+    <link rel="stylesheet" href="/css/jonthenerd.min.css">
+    <link rel="stylesheet" href="/css/syntax.min.css">
+    <link rel="canonical" href="http://localhost:4000/2018/01/16/learning-spfx-pt-1/">
+    <link rel="alternate" type="application/rss+xml" title="JonTheNerd" href="http://localhost:4000/feed.xml">
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "name" : "Jon Badgett",
+  "url" : "http://localhost:4000",
+  "sameAs" : [
+    "https://www.facebook.com/jon.badgett.5",
+    "https://github.com/jonthenerd",
+    "https://www.linkedin.com/in/jon-badgett-825a326b",
+    "https://plus.google.com/+JonBadgett",
+    "https://twitter.com/jonthenerd"
+  ]
+}
+</script>
+  </head>
+  <body>
+    
+
+  <nav class="navbar navbar-default topnav">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jtn-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">JonTheNerd</a>
+        </div>
+
+        <div id="jtn-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="subnav">
+    <div class="container">
+      <span>browse by <a href="/categories">category</a></span> 
+    </div>
+  </div>
+ 
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="jumbotron">
+    <div class="container">
+      <h1 class="post-title" itemprop="name headline">SharePoint Framework: Getting Started</h1>
+    </div>
+  </header>
+  <div class="post-meta-bar">
+      <div class="container">
+          <time datetime="2018-01-16T00:00:00-06:00" itemprop="datePublished">Jan 16, 2018</time> 
+        
+         | Posted in  
+          
+
+
+
+    
+        
+        
+        <a href="/categories/sharepoint/">SharePoint</a>, 
+    
+        
+        
+        <a href="/categories/programming/">Programming</a>
+    
+
+         
+      </div>
+    </div>
+  <div class="container page-content">
+      <div itemprop="articleBody">
+        <p>Today I decided that it was time I learned how to build <a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview">SharePoint Framework (SPFx)</a> webparts. Easy enough right? Find the right tutorial online, follow instrucitons, hello world! Let’s get started.
+<!--more--></p>
+
+<p>First, you’ll need to <a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment">set up your SharePoint Framework development environment</a>. Then you’ll want to follow the tutorial to <a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part">build your first web part</a>.</p>
+
+<p>Of course, this all depends upon you having <a href="https://nodejs.org/en/">node js w/npm</a> installed and your code editor of choice ready to go.</p>
+
+<p>Seeing as I had the latest version of node and a code editor ready, I just started at the tutorials. Quickly ran into an issue though, where neither Safari or Chrome were able to connect to the workbench site running on localhost. Here’s the exact error from Safari:</p>
+
+<blockquote>
+  <p>Safari can’t open the page “https://localhost:4321/temp/workbench.html” because Safari can’t establish a secure connection to the server “localhost”.</p>
+</blockquote>
+
+<p><a href="https://github.com/SharePoint/sp-dev-docs/issues/1002">Issue #1002 on the sp-dev-docs repo</a> seems to describe what’s occurring here but no amount of setting the environment variable NODE_NO_HTTP2=1 would help me get past the error message.</p>
+
+<p>Reading back through <a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment">how to setup your SharePoint Framework development environment</a>, there is a note that says:</p>
+
+<blockquote>
+  <p>The SharePoint Framework build pipeline doesn’t currently support the LTS version of Node.js. Instead, download Node.js version 6.11.5. This installs npm 3.10.10. Note that if you have a v5.x version of npm, you need to downgrade to an older npm version by using the following command: npm install -g npm@3.</p>
+</blockquote>
+
+<p>A couple observations on this, as I’m writing this blog post as I try to get this all working:</p>
+<ul>
+  <li>Embracing the open source ecosystem and modern development tooling is great. Requiring that in order to use your framework you must be running a version of node.js that is 3 major versions behind current (9.4.0) and 2 major versions behind LTS (8.9.4) is <strong>lame</strong>. It means that most guides out there for how to quickly get started will only work if you’re just stepping into modern web dev <em>for the first time</em>… If you’ve been using node and NPM, etc. for a while you’re likely running much newer versions of these tools and they’re likely installed globally. It also makes it appear there is a lack of commitment to bringing development practices and patterns for SharePoint up to date and keeping it there.</li>
+  <li>Let’s hope that if we follow the instructions exactly things actually work. As it’s going to mean making some serious changes to the configuration of my dev box and going outside the 1, 2, 3 hello world box.</li>
+  <li>Maybe there’s some way to manage multiple versions of Node.js without struggling…</li>
+</ul>
+
+<p>At this point, I’ve got projects that use much later node and NPM versions. I can’t justify unintalling them just to have to do the same dance at a later point to get them reinstalled. What to do? Let’s look into <a href="https://github.com/creationix/nvm">Node Version Manager (NVM), which allows you to manage and switch between different Node versions “with ease”</a>. There’s also <a href="https://github.com/coreybutler/nvm-windows">nvm-windows for Windows users</a>. Interested in how to get this setup? Read my post on <a href="/2018/01/16/configuring-nvm-for-osx/">configuring NVM for Mac OS X</a>.</p>
+
+<p>Now that I’ve got NVM working and this project directory is using 6.11.5 … let’s continue on with the hello worlding.</p>
+
+<ol>
+  <li>Browse to the directory for the project in terminal.</li>
+  <li>Initialize the project with NPM (to get our package.json)
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm init
+</code></pre></div>    </div>
+  </li>
+  <li>Intall the npm package for the Yeoman SharePoint generator (locally).
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install @microsoft/generator-sharepoint <span class="nt">--save-dev</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Open our project using our code editor of choice (have you tried Visual Studio Code yet?)
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>code <span class="nb">.</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Notice that we’ve got our .nvmrc file, our package.json file, and a directory for node_modules. Things are looking good so far.</p>
+  </li>
+  <li>Let’s run the Yeoman generator now.
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yo @microsoft/sharepoint
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>We can’t follow the next instruction to just run gulp serve, as gulp isn’t installed globally (I’m not a fan of installing things globally as it makes projects harder to get going on new workstations or by new developers). As such, we need to change our package.json to handle running gulp for us.</p>
+
+    <p>We’re going to add a script to trust the dev cert and another to serve.</p>
+
+    <ol>
+      <li>Open your package.json</li>
+      <li>Change the scripts section to be the following:
+        <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="s2">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+ </span><span class="s2">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gulp bundle"</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"clean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gulp clean"</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gulp test"</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"trust-dev-cert"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gulp trust-dev-cert"</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"serve"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gulp serve"</span><span class="w">
+ </span><span class="p">},</span><span class="w">
+</span></code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+  <li>Trust the Dev Cert used by workbench
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run trust-dev-cert
+</code></pre></div>    </div>
+  </li>
+  <li>Fire up the workbench
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run serve
+</code></pre></div>    </div>
+  </li>
+  <li>Marvel at it working and don’t think about future version dependency conflicts :)</li>
+</ol>
+
+      </div>
+    <div class="comments">  
+    <div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+    this.page.url = "http://localhost:4000/2018/01/16/learning-spfx-pt-1/";
+    this.page.identifier = this.page.url;
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = '//jonthenerd.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</article>
+    
+    <div class="container">
+    <footer class="site-footer">
+        built with <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license/">License</a>
+    </footer>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1289131-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script src="/js/jonthenerd.min.js"></script>
+  </body>
+</html>

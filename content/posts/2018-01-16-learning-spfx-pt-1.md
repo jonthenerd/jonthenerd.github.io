@@ -3,8 +3,11 @@ title: "SharePoint Framework: Getting Started"
 date: "2018-01-16"
 author: Jon Badgett
 categories:
-    - SharePoint
     - Programming
+tags:
+    - SharePoint
+    - Node
+    - JavaScript
 draft: false
 slug: learning-spfx-pt-1
 ---

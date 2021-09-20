@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Increasing the Wine font size</title>
+    <meta name="description" content="Thus far in using Ubuntu, I’ve been able to use only Linux applications.  I’ll admit that some of them were just ports of their Windows or Mac OS X counterpa...">
+    <meta property="og:title" content="Increasing the Wine font size" />
+<meta property="og:description" content="Thus far in using Ubuntu, I’ve been able to use only Linux applications.  I’ll admit that some of them were just ports of their Windows or Mac OS X counterpa..." />
+<meta property="og:site_name" content="JonTheNerd" />
+
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2007-02-04" />
+    
+    <meta property="article:author" content="https://www.facebook.com/jon.badgett.5" />
+    
+    
+    
+    <meta property="article:tag" content="Linux" />
+    
+    <meta property="article:tag" content="ubuntu" />
+    
+
+<meta property="og:url" content="http://localhost:4000/2007/02/04/increasing-the-wine-font-size/" />
+    <link rel="stylesheet" href="/css/jonthenerd.min.css">
+    <link rel="stylesheet" href="/css/syntax.min.css">
+    <link rel="canonical" href="http://localhost:4000/2007/02/04/increasing-the-wine-font-size/">
+    <link rel="alternate" type="application/rss+xml" title="JonTheNerd" href="http://localhost:4000/feed.xml">
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "name" : "Jon Badgett",
+  "url" : "http://localhost:4000",
+  "sameAs" : [
+    "https://www.facebook.com/jon.badgett.5",
+    "https://github.com/jonthenerd",
+    "https://www.linkedin.com/in/jon-badgett-825a326b",
+    "https://plus.google.com/+JonBadgett",
+    "https://twitter.com/jonthenerd"
+  ]
+}
+</script>
+  </head>
+  <body>
+    
+
+  <nav class="navbar navbar-default topnav">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jtn-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">JonTheNerd</a>
+        </div>
+
+        <div id="jtn-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="subnav">
+    <div class="container">
+      <span>browse by <a href="/categories">category</a></span> 
+    </div>
+  </div>
+ 
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="jumbotron">
+    <div class="container">
+      <h1 class="post-title" itemprop="name headline">Increasing the Wine font size</h1>
+    </div>
+  </header>
+  <div class="post-meta-bar">
+      <div class="container">
+          <time datetime="2007-02-04T15:54:00-06:00" itemprop="datePublished">Feb 4, 2007</time> 
+        
+         | Posted in  
+          
+
+
+
+    
+        
+        
+        <a href="/categories/linux/">Linux</a>, 
+    
+        
+        
+        <a href="/categories/ubuntu/">ubuntu</a>
+    
+
+         
+      </div>
+    </div>
+  <div class="container page-content">
+      <div itemprop="articleBody">
+        <p>Thus far in using Ubuntu, I’ve been able to use only Linux applications.  I’ll admit that some of them were just ports of their Windows or Mac OS X counterparts…but I never had to install wine (a compatibility layer for running Windows programs).  Well you know that torrent app I recommended?  kTorrent?  It’s crashed on me several times in the last couple days…and ate up every bit of memory the system had this morning.  I went looking for a better alternative and my only choice was to use uTorrent under wine.  No problem!<br /><br />Wine is only a synaptic click away.  Running utorrent under it is a simple affair too.  I found this tutorial <span style="font-style: italic;">very </span>helpful: <a href="http://www.ubuntuforums.org/showthread.php?t=191161">Using utorrent with wine - Ubuntu Forums</a><br /><br />However, since my primary monitor is a 32” LCD and I’m at about an 8-10 foot distance from it - the font size needs to be increased.   Under windows this is a simple task…but under Wine = not so much.   I think this is something that NEEDS to be put into the wine configuration app.  Anyway - here’s how it’s done.<br /><br />First - close any applications that are running under wine.<br /><br />To change the size of any menu font - you’ll need to edit the win.ini under the following folder:<br /><br /><span style="color: rgb(0, 153, 0);">/home/yourusername/.wine/</span><br /><br />Add the following information to the win.ini file:<br /><span style="color: rgb(0, 153, 0);font-family:courier new;">[Desktop]</span><br /><span style="color: rgb(0, 153, 0);font-family:courier new;">MenuFontSize=18</span><br /><br />You can change the 18 to whatever size you need - but that worked for me.   Now we need to change font size of the rest of the application.  To do so, use the terminal and launch wine’s regedit:<br /><br /><span style="color: rgb(0, 153, 0);">wine regedit</span><br /><br />You’ll want to browse to this value:<br /><br /><span style="color: rgb(0, 153, 0);">HKEY_CURRENT_CONFIG\Software\Fonts\LogPixels</span><br /><br />and change it to something larger.  Make sure to change the selection to “Decimal”, as you probably don’t natively speak hex.  It’s default in decimal is 96.  I upped mine to 120 and it worked nicely.<br /><br />When you’re done doing that, close out regedit and restart your wine application.   Enjoy your larger font sizes and lack of squinting!<br /><br />Here’s the best resource I found on this matter after a bit of searching:<br /><a href="http://www.winehq.com/pipermail/wine-users/2005-April/017810.html">http://www.winehq.com/pipermail/wine-users/2005-April/017810.html</a></p>
+
+      </div>
+    <div class="comments">  
+    <div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+    this.page.url = "http://localhost:4000/2007/02/04/increasing-the-wine-font-size/";
+    this.page.identifier = this.page.url;
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = '//jonthenerd.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</article>
+    
+    <div class="container">
+    <footer class="site-footer">
+        built with <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license/">License</a>
+    </footer>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1289131-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script src="/js/jonthenerd.min.js"></script>
+  </body>
+</html>

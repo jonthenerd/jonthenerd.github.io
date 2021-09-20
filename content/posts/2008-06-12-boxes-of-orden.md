@@ -3,7 +3,9 @@ title: Boxes of Orden
 date: "2008-06-12"
 author: Jon Badgett
 categories:
-    - Fun
+    - Reading
+tags:
+    - Fantasy
 draft: false
 slug: boxes-of-orden
 ---

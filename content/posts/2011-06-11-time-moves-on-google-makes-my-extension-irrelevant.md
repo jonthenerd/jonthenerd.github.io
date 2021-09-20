@@ -23,7 +23,7 @@ longer free and available. The closest thing I can compare the emotion to is
 someone telling you your volunteer services are no longer needed (and they
 replaced you with some computer software). It's really quite an odd feeling.
 Don't understand me though, I'm very glad that Google put this in place. In
-fact - <strong>it's about time!</strong> As the extension is the only free
+fact - **it's about time!** As the extension is the only free
 project I've produced and supported, I feel a little empty without it. What a
 strange world this is... where developers feel attached to the code they've
 written and released for others' enjoyment. Guess I'll need to find something

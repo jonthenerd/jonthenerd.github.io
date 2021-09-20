@@ -4,6 +4,8 @@ date: "2014-02-09"
 author: Jon Badgett
 categories:
     - Cars
+tags:
+    - IS350
 draft: false
 slug: navigation-dvd-replacement-tools-lexus-is250is350
 ---

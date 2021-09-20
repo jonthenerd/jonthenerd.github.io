@@ -1,0 +1,17 @@
+{{ $tags := $.Site.Taxonomies.tags -}}
+{{ $maxSize := 7 -}}
+{{ $max := float (len (index $tags.ByCount 0).Pages) -}}
+{{ $min := float (len (index $tags.ByCount.Reverse 0).Pages) -}}
+{{ $spread := sub $max $min -}}
+
+{{ if ne (len $tags) 0 -}}
+<nav class="tag-cloud">
+    <ul>
+        {{ range $name, $tag := $tags -}}
+            {{ $tagCount := len $tag.Pages -}}
+            {{ $weight := math.Ceil (mul (div $tagCount $max) $maxSize) -}}
+        <li><a href="{{ "/tags/" | relURL }}{{ $name | urlize }}" data-weight="{{ $weight }}">{{ $name }} ({{ $tagCount }})</a></li>
+        {{ end -}}
+    </ul>
+</nav>
+{{ end }}

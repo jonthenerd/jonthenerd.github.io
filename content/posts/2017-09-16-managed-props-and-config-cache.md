@@ -3,6 +3,8 @@ title: "SharePoint: Search Managed Properties missing after full crawl"
 date: "2017-09-16"
 author: Jon Badgett
 categories:
+    - SysAdmin
+tags:
     - SharePoint
 draft: false
 slug: managed-props-and-config-cache

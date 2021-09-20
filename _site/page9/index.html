@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head prefix="og: http://ogp.me/ns#">
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>JonTheNerd</title>
+    <meta name="description" content="Jon Badgett's personal blog. Open Source projects, observations on life,  and other oddities that I find interesting.
+">
+    <meta property="og:title" content="JonTheNerd" />
+<meta property="og:description" content="Jon Badgett's personal blog. Open Source projects, observations on life,  and other oddities that I find interesting.
+" />
+<meta property="og:site_name" content="JonTheNerd" />
+
+    <meta property="og:type" content="website" />
+
+<meta property="og:url" content="http://localhost:4000/page9/" />
+    <link rel="stylesheet" href="/css/jonthenerd.min.css">
+    <link rel="stylesheet" href="/css/syntax.min.css">
+    <link rel="canonical" href="http://localhost:4000/page9/">
+    <link rel="alternate" type="application/rss+xml" title="JonTheNerd" href="http://localhost:4000/feed.xml">
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "name" : "Jon Badgett",
+  "url" : "http://localhost:4000",
+  "sameAs" : [
+    "https://www.facebook.com/jon.badgett.5",
+    "https://github.com/jonthenerd",
+    "https://www.linkedin.com/in/jon-badgett-825a326b",
+    "https://plus.google.com/+JonBadgett",
+    "https://twitter.com/jonthenerd"
+  ]
+}
+</script>
+  </head>
+  <body>
+    
+
+  <nav class="navbar navbar-default topnav">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jtn-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">JonTheNerd</a>
+        </div>
+
+        <div id="jtn-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="subnav">
+    <div class="container">
+      <span>browse by <a href="/categories">category</a></span> 
+    </div>
+  </div>
+ 
+    <div class="container">
+<div class="row">
+    <div class="col-lg-12">
+        
+            <!-- Paginated Posts -->
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2010/09/22/asp-net-padding-oracle/">
+                            ASP.NET Padding Oracle
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2010-09-22T16:19:00-05:00" itemprop="datePublished">Sep 22, 2010</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>I’m doing research to better understand the padding oracle attack that was recently disclosed to affect ASP.NET and thought to provide a quick list of links that I’ve found most helpful:</p>
+
+<ul>
+  <li><a href="http://blogs.msdn.com/b/sharepoint/archive/2010/09/21/security-advisory-2416728-vulnerability-in-asp-net-and-sharepoint.aspx">Microsoft SharePoint Team Blog: Security Advisory 2416728 (Vulnerability in ASP.NET) and SharePoint</a></li>
+  <li><a href="http://www.gdssecurity.com/l/b/2010/09/14/automated-padding-oracle-attacks-with-padbuster/">Automated Padding Oracle Attacks with PadBuster</a></li>
+  <li><a href="http://www.acunetix.com/blog/news/check-application-vulnerable-asp-net-padding-oracle-vulnerability/">How to check if your application is vulnerable to the ASP.NET Padding Oracle Vulnerability</a></li>
+  <li><a href="http://forums.asp.net/p/1604549/4090643.aspx">Duncan Smart’s post on ASP.NET detailing how to check if your application masks the oracle</a></li>
+  <li><a href="http://blog.dotsmart.net/2010/09/22/asp-net-padding-oracle-detector/">Duncan Smart’s blog entry on the matter (with link to a wsh script to use for testing)</a></li>
+  <li><a href="http://forums.asp.net/t/1604739.aspx">ASP.NET forum post dealing with classic ASP. Guess what - your ASP site may be vulnerable if you haven’t disabled some ASP.NET features</a></li>
+</ul>
+
+<p>The ASP Classic is the most unexpected bit to me, but makes perfect sense.</p>
+
+<p>Update:
+Patch your servers, as the padding oracle is <a href="http://blog.mindedsecurity.com/2010/10/breaking-net-encryption-with-or-without.html">no longer needed</a>. Thanks Matt!</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2010/09/22/asp-net-padding-oracle/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2010/08/01/unreal-tournament-server-on-ubuntu-linux-10-04/">
+                            Unreal Tournament Server on Ubuntu Linux (10.04)
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2010-08-01T14:59:00-05:00" itemprop="datePublished">Aug 1, 2010</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>I’m putting together a server for some friends to play Unreal Tournament (yes, the original). I had heard this was doable on Linux, and I have a friend’s old laptop here to play with. I’ll be putting good links here that have helped me to get this working.<br /><br />I got it all setup in a VirtualBox VM, but need it on the separate machine. This old laptop has a broken screen and no hard drive…no problem! It will be running headless anyway, and I’ve also got a 16GB flash drive. Ubuntu Lucid installs fine on a flash drive - the only recommendation being that you use ext2, as it’s not a journaling file system (it doesn’t write as much to the drive).<br /><br />Helpful links:<br /><a href="http://piotr.gabryjeluk.pl/dev:playing-unreal-tournament-on-ubuntu-lucid">Playing Unreal Tournament on Ubuntu Lucid</a><br /><a href="http://ut.congiman.com/settingup.html">Unreal Tournament Server Setup for Linux</a><br /><a href="http://www.liflg.org/?catid=6&amp;gameid=51">Loki Installers for Linux Gamers</a></p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2010/08/01/unreal-tournament-server-on-ubuntu-linux-10-04/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2010/07/10/dev-cheat-sheets/">
+                            Dev Cheat Sheets
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2010-07-10T10:44:00-05:00" itemprop="datePublished">Jul 10, 2010</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>Found <a href="http://devcheatsheet.com/">this site</a> via <a href="http://www.downloadsquad.com/2010/07/09/devcheatsheet-catalogs-over-1-600-cheat-sheets-for-developers-and-users/">downloadsquad</a>. It has lots of condensed “cheat sheets” for different programming languages, tools, etc. that could be handy. I know I’ll be using the <a href="http://john-sheehan.com/blog/cheatsheets/visual-studio-2010-csharp-snippets.htm">built-in VS 2010 Code snippets for C#</a>.</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2010/07/10/dev-cheat-sheets/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2010/06/13/gimp-how-to-make-fuzzy-border-transparent/">
+                            GIMP How to make fuzzy border transparent
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2010-06-13T19:02:00-05:00" itemprop="datePublished">Jun 13, 2010</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <ul>
+  <li>Do not use the “Flatten Image” option. A new layer will be created  containing only the border (this layer will be the active layer).</li>
+  <li>Perform  “Layer-&gt;Transparency-&gt;Alpha to Selection”</li>
+  <li>Perform  “Layer-&gt;Delete”. (you don’t need this layer any more)</li>
+  <li>Perform  “Layer-&gt;Transparency-&gt;Add Alpha Channel” (if possible)</li>
+  <li>Perform  “Edit-&gt;Clear”</li>
+  <li>Note: the “Layer” commands are also available  on the context menu accessed by right-clicking on the layer’s thumbnail  preview in the Layer Dialog.</li>
+</ul>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2010/06/13/gimp-how-to-make-fuzzy-border-transparent/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2010/06/01/what-motivates-us/">
+                            What motivates us?
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2010-06-01T10:06:00-05:00" itemprop="datePublished">Jun 1, 2010</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>It may surprise you.</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2010/06/01/what-motivates-us/">Read More &gt;</a>
+                </article>
+        
+            
+        
+
+            <!-- Pagination links -->
+            <div class="pagination">
+            
+                <a href="/page8" class="previous">Previous</a>
+            
+            <span class="page_number ">Page: 9 of 15</span>
+            
+                <a href="/page10" class="next">Next</a>
+            
+            </div>
+        <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+    </div>
+    
+</div>
+</div>
+    
+    <div class="container">
+    <footer class="site-footer">
+        built with <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license/">License</a>
+    </footer>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1289131-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script src="/js/jonthenerd.min.js"></script>
+  </body>
+</html>

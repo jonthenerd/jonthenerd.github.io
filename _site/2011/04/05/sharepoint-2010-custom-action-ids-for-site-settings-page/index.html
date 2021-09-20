@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SharePoint 2010 Custom Action IDs for Site Settings page</title>
+    <meta name="description" content="Since the MSDN documentation for Default Custom Action Loacations and IDs is unreliable (they look to have copy+pasted the information from the SharePoint 20...">
+    <meta property="og:title" content="SharePoint 2010 Custom Action IDs for Site Settings page" />
+<meta property="og:description" content="Since the MSDN documentation for Default Custom Action Loacations and IDs is unreliable (they look to have copy+pasted the information from the SharePoint 20..." />
+<meta property="og:site_name" content="JonTheNerd" />
+
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2011-04-05" />
+    
+    <meta property="article:author" content="https://www.facebook.com/jon.badgett.5" />
+    
+    
+    
+    <meta property="article:tag" content="SharePoint" />
+    
+    <meta property="article:tag" content="Programming" />
+    
+
+<meta property="og:url" content="http://localhost:4000/2011/04/05/sharepoint-2010-custom-action-ids-for-site-settings-page/" />
+    <link rel="stylesheet" href="/css/jonthenerd.min.css">
+    <link rel="stylesheet" href="/css/syntax.min.css">
+    <link rel="canonical" href="http://localhost:4000/2011/04/05/sharepoint-2010-custom-action-ids-for-site-settings-page/">
+    <link rel="alternate" type="application/rss+xml" title="JonTheNerd" href="http://localhost:4000/feed.xml">
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "name" : "Jon Badgett",
+  "url" : "http://localhost:4000",
+  "sameAs" : [
+    "https://www.facebook.com/jon.badgett.5",
+    "https://github.com/jonthenerd",
+    "https://www.linkedin.com/in/jon-badgett-825a326b",
+    "https://plus.google.com/+JonBadgett",
+    "https://twitter.com/jonthenerd"
+  ]
+}
+</script>
+  </head>
+  <body>
+    
+
+  <nav class="navbar navbar-default topnav">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jtn-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">JonTheNerd</a>
+        </div>
+
+        <div id="jtn-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="subnav">
+    <div class="container">
+      <span>browse by <a href="/categories">category</a></span> 
+    </div>
+  </div>
+ 
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="jumbotron">
+    <div class="container">
+      <h1 class="post-title" itemprop="name headline">SharePoint 2010 Custom Action IDs for Site Settings page</h1>
+    </div>
+  </header>
+  <div class="post-meta-bar">
+      <div class="container">
+          <time datetime="2011-04-05T16:09:00-05:00" itemprop="datePublished">Apr 5, 2011</time> 
+        
+         | Posted in  
+          
+
+
+
+    
+        
+        
+        <a href="/categories/sharepoint/">SharePoint</a>, 
+    
+        
+        
+        <a href="/categories/programming/">Programming</a>
+    
+
+         
+      </div>
+    </div>
+  <div class="container page-content">
+      <div itemprop="articleBody">
+        <p>Since the <a href="http://msdn.microsoft.com/en-us/library/bb802730.aspx">MSDN documentation for Default Custom Action Loacations and IDs </a>is unreliable (they look to have copy+pasted the information from the SharePoint 2007 documentation), our only sure bet is to browse the file system and find the custom action IDs and groups ourselves.</p>
+
+<p>I had need of this information today, and found the items from the site settings page located at:
+C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\14\TEMPLATE\FEATURES\SiteSettings\SiteSettings.xml</p>
+
+<p>For those looking specifically for it, here is the custom action for “Delete this site”:</p>
+
+<p>[xml]
+&lt;CustomAction
+        Id="DeleteWeb"
+        GroupId="SiteTasks"
+        Location="Microsoft.SharePoint.SiteSettings"
+        Rights="ManageWeb,BrowseUserInfo"
+        Sequence="40"
+        Title="$Resources:core,SiteSettings_DeleteWeb_Title;"
+        Description="$Resources:core,SiteSettings_DeleteThisSite_Tooltip;"&gt;
+        &lt;UrlAction
+            Url="_layouts/deleteweb.aspx" /&gt;
+    &lt;/CustomAction&gt;
+[/xml]</p>
+
+<p>If you’re looking for that custom action, you’re probably wanting to hide it. Here’s the xml you’ll need in your elements file:</p>
+
+<p>[xml]
+&lt;HideCustomAction
+    Id="HideDeleteWeb"
+    GroupId="SiteTasks"
+    HideActionId="DeleteWeb"
+    Location="Microsoft.SharePoint.SiteSettings"&gt;
+  &lt;/HideCustomAction&gt;
+[/xml]</p>
+
+      </div>
+    <div class="comments">  
+    <div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+    this.page.url = "http://localhost:4000/2011/04/05/sharepoint-2010-custom-action-ids-for-site-settings-page/";
+    this.page.identifier = this.page.url;
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = '//jonthenerd.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</article>
+    
+    <div class="container">
+    <footer class="site-footer">
+        built with <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license/">License</a>
+    </footer>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1289131-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script src="/js/jonthenerd.min.js"></script>
+  </body>
+</html>

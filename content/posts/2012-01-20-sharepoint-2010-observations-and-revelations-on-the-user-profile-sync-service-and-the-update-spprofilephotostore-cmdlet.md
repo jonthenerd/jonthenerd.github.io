@@ -5,6 +5,9 @@ title: >-
 date: "2012-01-20"
 author: Jon Badgett
 categories:
+    - Programming
+    - SysAdmin
+tags:
     - SharePoint
 draft: false
 slug: >-
@@ -17,15 +20,13 @@ and oddities with the SharePoint 2010 User Profile Service Application.
 If you're wanting to populate pictures into people's profiles, you'll be using
 the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or
 incremental - or your custom built one). This cmdlet is in
-the Microsoft.Office.Server.UserProfiles dll, specifically the
-Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore
+the `Microsoft.Office.Server.UserProfiles` dll, specifically the
+`Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore`
 class. Thanks to the goodness that is
 <a href="http://www.reflector.net/">Redgate Reflector</a> (a must have for any
 SP developer), we can get a more clear undertanding of what the cmdlet is doing.
 I've written some comments to help understand what's going on, as well as
 renamed some variables for the section I was more interested in understanding.
-You'll want to open the code in a new window (highlight on the top right of the
-code section), as some of the lines are quite long:
 
 ```csharp
 [Cmdlet("Update", "SPProfilePhotoStore")]

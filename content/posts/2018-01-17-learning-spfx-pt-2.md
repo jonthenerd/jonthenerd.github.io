@@ -3,8 +3,9 @@ title: "SharePoint Framework: Extensions - Application Customizer"
 date: "2018-01-17"
 author: Jon Badgett
 categories:
-    - SharePoint
     - Programming
+tags:
+    - SharePoint
 draft: false
 slug: learning-spfx-pt-2
 ---

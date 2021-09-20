@@ -4,7 +4,7 @@ date: "2011-10-18"
 author: Jon Badgett
 categories:
     - Programming
-    - Programming
+tags:
     - SharePoint
 draft: false
 slug: jons-general-sharepoint-2010-development-tips

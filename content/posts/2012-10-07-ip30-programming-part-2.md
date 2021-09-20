@@ -3,8 +3,9 @@ title: IP30 Programming - Part 2
 date: "2012-10-07"
 author: Jon Badgett
 categories:
-    - Android
     - Programming
+tags:
+    - Android
 draft: false
 slug: ip30-programming-part-2
 ---

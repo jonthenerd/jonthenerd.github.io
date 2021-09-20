@@ -4,6 +4,8 @@ date: "2007-01-26"
 author: Jon Badgett
 categories:
     - Blogging
+tags:
+    - CMS Made Simple
 draft: false
 slug: decided-it-was-time-to-start-a-blog
 ---

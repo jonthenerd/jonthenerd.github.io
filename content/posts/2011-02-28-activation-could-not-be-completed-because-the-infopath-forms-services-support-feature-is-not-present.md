@@ -5,8 +5,8 @@ title: >-
 date: "2011-02-28"
 author: Jon Badgett
 categories:
-    - Programming
-    - Programming
+    - SysAdmin
+tags:
     - SharePoint
 draft: false
 slug: >-
@@ -21,7 +21,7 @@ Got this error after migrating a SP2007 application to SP2010.
 > feature is not present.
 
 The feature it is complaining about is a hidden feature with displayname
-"IPFSSiteFeatures". This feature was already enabled on the migrated
+`IPFSSiteFeatures`. This feature was already enabled on the migrated
 application...but resolving the error was as simple as disabling and then
 re-enabling the feature. Here's the PowerShell to do that:
 

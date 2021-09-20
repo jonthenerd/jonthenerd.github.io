@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SharePoint Framework: Extensions - Application Customizer</title>
+    <meta name="description" content="Next in this series on the SharePoint Framework are extensions. According to docs.microsoft.com, SPFx Extensions allow for the customization of multiple face...">
+    <meta property="og:title" content="SharePoint Framework: Extensions - Application Customizer" />
+<meta property="og:description" content="Next in this series on the SharePoint Framework are extensions. According to docs.microsoft.com, SPFx Extensions allow for the customization of multiple face..." />
+<meta property="og:site_name" content="JonTheNerd" />
+
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2018-01-17" />
+    
+    <meta property="article:author" content="https://www.facebook.com/jon.badgett.5" />
+    
+    
+    
+    <meta property="article:tag" content="SharePoint" />
+    
+    <meta property="article:tag" content="Programming" />
+    
+
+<meta property="og:url" content="http://localhost:4000/2018/01/17/learning-spfx-pt-2/" />
+    <link rel="stylesheet" href="/css/jonthenerd.min.css">
+    <link rel="stylesheet" href="/css/syntax.min.css">
+    <link rel="canonical" href="http://localhost:4000/2018/01/17/learning-spfx-pt-2/">
+    <link rel="alternate" type="application/rss+xml" title="JonTheNerd" href="http://localhost:4000/feed.xml">
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "name" : "Jon Badgett",
+  "url" : "http://localhost:4000",
+  "sameAs" : [
+    "https://www.facebook.com/jon.badgett.5",
+    "https://github.com/jonthenerd",
+    "https://www.linkedin.com/in/jon-badgett-825a326b",
+    "https://plus.google.com/+JonBadgett",
+    "https://twitter.com/jonthenerd"
+  ]
+}
+</script>
+  </head>
+  <body>
+    
+
+  <nav class="navbar navbar-default topnav">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jtn-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">JonTheNerd</a>
+        </div>
+
+        <div id="jtn-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="subnav">
+    <div class="container">
+      <span>browse by <a href="/categories">category</a></span> 
+    </div>
+  </div>
+ 
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="jumbotron">
+    <div class="container">
+      <h1 class="post-title" itemprop="name headline">SharePoint Framework: Extensions - Application Customizer</h1>
+    </div>
+  </header>
+  <div class="post-meta-bar">
+      <div class="container">
+          <time datetime="2018-01-17T00:00:00-06:00" itemprop="datePublished">Jan 17, 2018</time> 
+        
+         | Posted in  
+          
+
+
+
+    
+        
+        
+        <a href="/categories/sharepoint/">SharePoint</a>, 
+    
+        
+        
+        <a href="/categories/programming/">Programming</a>
+    
+
+         
+      </div>
+    </div>
+  <div class="container page-content">
+      <div itemprop="articleBody">
+        <p>Next in this series on the SharePoint Framework are extensions. <a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/overview-extensions">According to docs.microsoft.com, SPFx Extensions allow for the customization of multiple facets of the SharePoint experience</a>. I’ll focus on differences I made while following the online tutorial and my observations on capabilities and impacts of SPFx Application Customizer extensions.
+<!--more--></p>
+
+<p>The best way to get started learning about these types of SharePoint customization is to read the relevant docs.mocrosoft.com documentation:</p>
+
+<ul>
+  <li><a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/overview-extensions">Overview of SharePoint Framework Extensions</a></li>
+  <li><a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/get-started/build-a-hello-world-extension">Build your first SharePoint Framework Extension (Hello World part 1)</a></li>
+</ul>
+
+<p>For the most part, the above instructions work just fine. However, there are a couple modifications that I made:</p>
+
+<ul>
+  <li>
+    <p>Use <a href="https://github.com/creationix/nvm">Node Version Manager</a> to ensure that you’re using the supported version of node and npm that go with the SharePoint Framework (node 6.11.5 at the time of this writing). <a href="/2018/01/16/configuring-nvm-for-osx">Here’s a post I wrote on how to set it up on MacOS</a>. This will avoid HTTP2/SSL issues when launching the workbench.</p>
+  </li>
+  <li>
+    <p>Modify the package.json scripts to include the necessary gulp commands such that you don’t have to have gulp installed globally. Here’s what that section should look like:</p>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="s2">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gulp bundle"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"clean"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gulp clean"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gulp test"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bundle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gulp bundle"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bundle:ship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gulp bundle --ship"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"package"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gulp package-solution"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"package:ship"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gulp package-solution --ship"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"trust-dev-cert"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gulp trust-dev-cert"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"serve:nobrowser"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gulp serve --nobrowser"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span></code></pre></div>    </div>
+    <p>You’ll then run the gulp commands listed in the tutorial using npm run &lt;scriptname&gt; :</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  npm run trust-dev-cert		<span class="c"># To trust the dev cert</span>
+  npm run serve:nobrowser		<span class="c"># To start hosting the extension without launching workbench	</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="observations-on-application-customizer-extensions">Observations on Application Customizer Extensions</h2>
+<p>Working through the online tutorials, I had a number of items I wanted clarification on that aren’t spelled out in the documentation that I’ve run across. Here are my notes.</p>
+
+<h3 id="which-placeholders-are-available">Which placeholders are available?</h3>
+
+<p>At the time of this wring, Top and Bottom.</p>
+
+<h3 id="how-do-these-different-placeholder-areas-appear-and-function-in-desktop-web-browsers-mobile-web-browsers-and-the-sharepoint-mobile-app">How do these different placeholder areas appear and function in desktop web browsers, mobile web browsers, and the SharePoint mobile app?</h3>
+
+<ul>
+  <li><strong>On a desktop web browser</strong>, these appear directly underneath the app launcher (and above the site icon) and attached to the bottom of the browser window (the main site area is then placed within a div that has a vertical scrollbar).</li>
+  <li><strong>On a mobile web browser</strong>, placement is the same as the desktop web browser. However, the behavior when scrolling is different. When scrolling down the page, the top placeholder content as well as the site title/global nav area scroll with the page and are removed from view. However, the content of the bottom placeholder is <em>always visible</em>.</li>
+  <li><strong>On the SharePoint mobile app (IOS tested, v3.7.0)</strong> The good news? the content of the top and bottom placeholder make an appearance. Now here’s what’s not so great:
+    <ul>
+      <li>The placement of the content within the Top placeholder is different. It now appears beneath the site title / global navigation area.</li>
+      <li>The bottom placeholder is not initially visible when loading a site within the app. After scrolling down a bit, the content of the bottom placeholder appears.</li>
+      <li>The SharePoint app doesn’t load the necessary css to alow the ms- classes to work (like ms-bgColor-themeDark ms-fontColor-white used in the HelloWorld Demo). This causes the background of the HelloWorld extension to appear transparent. I added hard coded background-color and color style values and these appeared fine in the application.</li>
+      <li>At least with the code used from the tutorial, the customizations only appeared for me on initial load of the application and site. If I browsed to something else and then came back to app, the content of the top and bottom placeholders was not present. I’m hopeful that this is just a bug with the HelloWorld code. <a href="https://github.com/SharePoint/sp-dev-docs/issues/1069">Issue #1069, SPFx Application Customizer, placeholder not re-rendering on page load</a> looks like it could be related, but the advised fix didn’t address the issue within the app. Either there’s something missing that’s needed to keep it working, or there is a bug with the mobile app.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="how-do-the-above-observations-affect-the-buildout-of-a-modern-intranet-on-o365">How do the above observations affect the buildout of a modern intranet on O365?</h3>
+
+<h4 id="on-global-navigation"><em>On Global Navigation</em></h4>
+
+<p>There is sample code available for creating an aplication customizer extension to add a mega menu at the top of pages. The thought being that you could deploy this customization to all of the sites you wanted to be a part of your intranet portal and you’d have consistent navigation.</p>
+
+<p>If you’re going to be using the SharePoint mobile app, and the above noted disappearing act has been fixed in either the sample code or the mobile app, the placement of the top element placeholder is different than that in mobile or desktop web browsers, which could cause confusion for users. <strong>As such, if usage of the SharePoint mobile app is desired, think critically about how the navigation would be displayed to end users in the app / web browsers to ensure it’s not confusing. If you can’t do this, avoid putting a menu here.</strong></p>
+
+<p>What I’d advise doing as an alternative to this involves Hub Sites (which aren’t released yet). They purport to allow for the establishment of consistent global navigation for all sites joined to the hub. You’d then use the left (current) navigation for within-site navigation purposes.</p>
+
+<h4 id="on-consistent-footers"><em>On Consistent Footers</em></h4>
+
+<p>In my mind, the bottom placeholder area has been where I wanted to put consistent footer information (a company logo, contact information for the page/site, social media links, etc.). This kind of thing tends to take up a decent amount of vertical space, which is ok because the user has to scroll to the bottom to see it anyway. It’s not in the way.</p>
+
+<p>With the current implementation though, significant caution is warranted. Would you want half of the screen real-estate occupied with the same footer information? No. As a user, I’d find it annoying if anything was attached to the bottom of my screen blocking valuable reading space, particularly if it appears page after page, throughout my entire usage of a site/app. <strong>Advice - don’t use the bottom placeholder to load your consistent footer.</strong></p>
+
+<p>What’s the alternative? Think of the places in your Intranet portal that <em>really</em> need a footer. You’ve got the main landing page and probably another handful of pages that see really high traffic. Outside of this, if you have some logic to display contact info for a given page, you might want that on additional pages but probably also want the ability for the information not to be shown if a page author opts out. So - build 1 or 2 SPFx WebParts for footer usage. One would be your <em>big footer</em> for your main landing page. The second you’d advise page authors use so they can show page contact information. If they want the info, they’ll add the WebPart. If they want to opt out, they’ll omit it.</p>
+
+<h4 id="what-do-we-use-these-placeholders-for-anyway"><em>What do we use these Placeholders for anyway?!</em></h4>
+<p>I think the big usage of the placeholders is for context-sensitive notifications, <em>not branding</em>.</p>
+
+<p>Let’s take our page footer example above. You could present a notification to a page author (while they’re authoring) advising them to add the footer WebPart (and allow them to dismiss the notification until their next browser session or something).</p>
+
+<p>Obviously, there are plenty of usages for notifications…</p>
+
+<p>In order to leverage O365 and avoid over-customization that causes upgrade <em>fun</em> down the road, it requires stepping back from our typical approaches (like adding mega menus and footers) and thinking about (1) what are we trying to have the user see or do, (2) when this is really necessary and when it’s not, and (3) how do we guide them to see the items or take the actions we want in the most supported fashion. In this way we’ll minimize our development costs, maximize our investment in the O365/SharePoint platform, and focus more on extracting business value than simply re-implementing the same old thing atop the latest SharePoint release.</p>
+
+
+      </div>
+    <div class="comments">  
+    <div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+    this.page.url = "http://localhost:4000/2018/01/17/learning-spfx-pt-2/";
+    this.page.identifier = this.page.url;
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = '//jonthenerd.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</article>
+    
+    <div class="container">
+    <footer class="site-footer">
+        built with <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license/">License</a>
+    </footer>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1289131-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script src="/js/jonthenerd.min.js"></script>
+  </body>
+</html>

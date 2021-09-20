@@ -5,8 +5,9 @@ title: >-
 date: "2012-10-05"
 author: Jon Badgett
 categories:
-    - Android
     - Programming
+tags:
+    - Android
 draft: false
 slug: >-
     communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android

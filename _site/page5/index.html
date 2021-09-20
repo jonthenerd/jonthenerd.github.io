@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head prefix="og: http://ogp.me/ns#">
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>JonTheNerd</title>
+    <meta name="description" content="Jon Badgett's personal blog. Open Source projects, observations on life,  and other oddities that I find interesting.
+">
+    <meta property="og:title" content="JonTheNerd" />
+<meta property="og:description" content="Jon Badgett's personal blog. Open Source projects, observations on life,  and other oddities that I find interesting.
+" />
+<meta property="og:site_name" content="JonTheNerd" />
+
+    <meta property="og:type" content="website" />
+
+<meta property="og:url" content="http://localhost:4000/page5/" />
+    <link rel="stylesheet" href="/css/jonthenerd.min.css">
+    <link rel="stylesheet" href="/css/syntax.min.css">
+    <link rel="canonical" href="http://localhost:4000/page5/">
+    <link rel="alternate" type="application/rss+xml" title="JonTheNerd" href="http://localhost:4000/feed.xml">
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "name" : "Jon Badgett",
+  "url" : "http://localhost:4000",
+  "sameAs" : [
+    "https://www.facebook.com/jon.badgett.5",
+    "https://github.com/jonthenerd",
+    "https://www.linkedin.com/in/jon-badgett-825a326b",
+    "https://plus.google.com/+JonBadgett",
+    "https://twitter.com/jonthenerd"
+  ]
+}
+</script>
+  </head>
+  <body>
+    
+
+  <nav class="navbar navbar-default topnav">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jtn-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">JonTheNerd</a>
+        </div>
+
+        <div id="jtn-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="subnav">
+    <div class="container">
+      <span>browse by <a href="/categories">category</a></span> 
+    </div>
+  </div>
+ 
+    <div class="container">
+<div class="row">
+    <div class="col-lg-12">
+        
+            <!-- Paginated Posts -->
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2011/10/18/jons-general-sharepoint-2010-development-tips/">
+                            Jon's General SharePoint 2010 Development Tips
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2011-10-18T09:11:00-05:00" itemprop="datePublished">Oct 18, 2011</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>In the time I’ve been doing SharePoint development, and SharePoint 2010 development in particular, I’ve tried to blog about the snags or neat stuff I’ve come across. This post is for all those little pieces of knowledge that come from working with the platform that don’t seem large enough for their own post. If you find it useful, let me know in the comments.</p>
+<h2>The Very Basics</h2>
+<p>The better understanding of the following resources you have as a SharePoint developer, the better. These are considered absolute must-knows.</p>
+<ul>
+	<li><a href="http://blogs.msdn.com/b/rogerla/archive/2008/02/12/sharepoint-2007-and-wss-3-0-dispose-patterns-by-example.aspx">Roger Lamb's "Dispose Patterns by Example"</a> - The SharePoint object model has many objects that must be disposed of, or else you'll end up with slow, unresponse, crashing web applications. Follow the examples and be mindful of the resource usage of your code.</li>
+	<li><a href="http://blogs.msdn.com/b/rogerla/archive/2009/11/30/sharepoint-2007-2010-do-not-dispose-guidance-spdisposecheck.aspx">Roger Lamb's "Do Not Dispose Guidance"</a> - Sometimes you <em>don't</em> want to dispose of the SharePoint object.</li>
+</ul>
+<h2>Deploying .WSP solution packages</h2>
+<p><strong><em>Don’t use Visual Studio 2010 to do this</em></strong>. ”But Jon! They built it to do that! Why shouldn’t I use it?” There are a few reasons why you shouldn’t use VS to do your deployment. Here are a few I’ve learned:</p>
+<ul>
+	<li><strong>You as a SharePoint developer need to be 100% comfortable with using PowerShell to do your deployments</strong>. You shouldn't be using stsadm anymore, and neither should your administrator(s). Learn the commandlets for every part of deployment through using them in your own development environment.</li>
+	<li><strong>Visual Studio 2010 out of the box wants to activate all of your features on every web application in the farm</strong>. This isn't how you'll treat your production environment, so don't do it in your dev environment. You can disable this behavior, but then using VS for your deployment doesn't net you much time savings.</li>
+	<li><strong>Bad things happen when developing content types and site columns</strong>. From my experience, Visual Studio keeps a connection to your application open to help you with developing content types and site columns - that's cool, but not always the best thing. Whenever you retract your solution, make some changes to content types or site columns and redeploy - you're very likely to end up with Visual Studio telling you that some of those content types and site columns already exist. You can either sort through getting rid of these through powershell/the UI and then continuing to use Visual Studio while trying to make it not have this behavior - or just use PowerShell for your solution/feature deployment and enablement. I chose PowerShell after 2 long days of fighting Visual Studio and haven't looked back (and haven't had the issue either!)</li>
+</ul>
+<h2>Debugging your deployed code</h2>
+<p>Deploying with PowerShell now? Good. You still need to debug your code. Here are some gotchas.</p>
+<ul>
+	<li><strong>How to attach the Visual Studio debugger manually:</strong> If you're new to SharePoint 2010 and don't know how to debug without letting Visual Studio 2010 manager your deployment - here are the steps to attach the debugger manually:</li>
+<ul>
+	<li>Build and Package your latest solution package using Visual Studio (I use Ctrl + Shit + B to build, and then click Package in the Build menu).</li>
+	<li>Deploy the solution package using PowerShell.</li>
+	<li>Attach the debugger by clicking the "Debug" menu and "Attach to Process". Next make sure the "Show processes from all users" and "Show processes in all sessions" are selected. If you're debugging something running in a web application, select all w3wp processes. If you're debugging feature activation, attach to your powershell process. If you are debugging a timer job, attach to the owstimer.exe process.</li>
+	<li>Set a breakpoint and debug as normal.</li>
+</ul>
+	<li><strong>Debugging Feature Receivers using PowerShell:</strong> PowerShell is really slick. It's not your normal commandline though. It acts like a .NET application. That means that the first time it loads a dll to run some code, it keeps it handy in memory and doesn't go and load that dll again. So - if you are testing a feature, checking your results, redeploying your code, and retesting...you're not going to get the results you want. Why? Because the first time you activated your feature and tested, PowerShell cached your code. It didn't reload it for your second test run. The solution? Close the PowerShell window and re-open. Repeat as necessary.</li>
+	<li><strong>Debugging Timer Jobs: </strong>This has the same caveat as debugging a feature receiver. OWSTimer will cache your dll the first time it runs any code from it. Need to change something in a timer job and retest? Deploy your solution and then restart the "SharePoint 2010 Timer" service in Server Manager. Reattach your debugger if necessary. Retest.</li>
+</ul>
+<h2>Writing Console Applications against the SharePoint Object Model</h2>
+<p>This is a really handy way of proving out some application logic, or when you need to provide a utility to your administrator(s) that would just be too complex and hairy to write using PowerShell.</p>
+<ul>
+	<li><strong>To use the SharePoint Object Model, your Console Application needs to be compiled for x64 processors</strong>. Go to your Project Properties, and under the Build tab change the "Platform Target" to x64. This setting is specific to the chosen build configuration (most likely "Debug" for your current app). So - if you change your build configuration to Release, you'll need to set the Platform Target to x64 again.</li>
+	<li><strong>Certain actions in the Object Model require that you have an HttpContext</strong> open to the web you're working with. I ran into this when working with the webpart manager for a web. Google should be able to help you with establishing an HttpContext from within your console application.</li>
+</ul>
+<h2>Provisioning the User Profile Service Application</h2>
+<ul>
+	<li>The instructions on MSDN indicate that the service account running this service app should be a local administrator. In my experience, this means the account must be <em>directly in the Administrators group.</em> It's not enough to have it in a security group that is then nested in the Administrators group. If you do this, it will be stuck on "starting".</li>
+</ul>
+<p>I’ll add to this as I come across little snippets of knowledge. Have a quick tip for SP2010 to share? Let me know.</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2011/10/18/jons-general-sharepoint-2010-development-tips/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2011/09/14/sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly/">
+                            SharePoint 2010: The web application at ... could not be found. Verify that you have typed the URL correctly.
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2011-09-14T16:30:00-05:00" itemprop="datePublished">Sep 14, 2011</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>and so on with the error message. Do these also fit your situation?
+1) The error happens when running a console application
+2) Using PowerShell works to access the SPSite, SPWeb, or SPWebApplication that you’re accessing in your console application</p>
+
+<p>How do you fix this?
+Change your build platform target to x64 instead of x86. Also keep in mind that this is a per build configuration setting (so you have the setting for Debug and Release compile modes).</p>
+
+<p>Why did I post this?
+Because every few months this bites me in some way. Normally for at least an hour at a time. It’s extremely confusing at first and a ‘doh moment when you figure it out.</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2011/09/14/sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2011/08/17/sharepoint-2010-add-a-file-to-the-root-of-your-site-using-powershell/">
+                            SharePoint 2010: Add a file to the root of your site using PowerShell
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2011-08-17T11:10:00-05:00" itemprop="datePublished">Aug 17, 2011</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>This can be useful when you need a file to be right off the root of your Internet facing site - files like robots.txt, sitemap.xml, or the verification file for Google Webmaster tools. We’ll take advantage of PowerShell’s ability to use any .NET methods along with the Files collection on each SPWeb in SharePoint.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$fileBytes = [system.io.file]::ReadAllBytes("c:\the\full\path\to\your\file.txt");
+$site = Get-SPSite "http://yourdomain:portifneeded";
+$site.RootWeb.Files.Add("file.txt", $fileBytes, $true);
+</code></pre></div></div>
+
+<p>This will result in a file.txt located at “http://yourdomain:portifneeded/file.txt”. Sweet!</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2011/08/17/sharepoint-2010-add-a-file-to-the-root-of-your-site-using-powershell/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2011/08/16/sharepoint-2010-findinglargestdoclibrary/">
+                            SharePoint 2010: Finding the largest document library in a site collection
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2011-08-16T16:01:00-05:00" itemprop="datePublished">Aug 16, 2011</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>SharePoint 2007 came with a page (storman.aspx) dedicated to showing you how much space each of the lists in your site collection were taking up. SharePoint 2010 removed this page. Luckily, SharePoint 2010 SP1 added it back in. But what if you’re still haven’t updated to SP1 and you’re getting warnings/errors about running out of space?</p>
+
+<p>Obviously - up the space so as to avoid additional noise from your users. Then - figure out which libraries are taking up the most space. This can be done by using the (now obsolete - but working) <a href="http://msdn.microsoft.com/en-us/library/microsoft.sharepoint.spsite.storagemanagementinformation.aspx">StorageManagementInformation method off of SPSite</a>. You can write some C# to use it, or you can use PowerShell.</p>
+
+<p>The required arguments for this method (listed below) can be found by looking at the above MSDN link. I’ll also include the potential values that can be found by using Reflector to look at the Microsoft.SharePoint dll:</p>
+<ol>
+	<li><strong>ltVar: </strong>What kind of storage management information to display
+<ul>
+	<li>List = 1</li>
+	<li>DocumentLibrary = 2</li>
+	<li>Document = 3</li>
+</ul>
+</li>
+	<li><strong>sordVar: </strong>the direction in which the items are to be sorted
+<ul>
+	<li>Increasing = 0x10</li>
+	<li>Decreasing = 0x11</li>
+</ul>
+</li>
+	<li><strong>soVar</strong>: whether the items are sorted by size or by date
+<ul>
+	<li>Size=0</li>
+	<li>Date = 1</li>
+</ul>
+</li>
+	<li><strong>nMaxResults</strong>: the number of results to return</li>
+</ol>
+
+<p>So if you want to find the top 5 largest document libraries in a specific site collection, here’s the PowerShell:
+[code lang=”ps”]
+$site = Get-SPSite "http://yoursitecollection:portifneeded";
+$dataTable = $site.StorageManagementInformation(2,0x11,0,5);
+$dataTable | Select *
+[/code]</p>
+
+<p>This is very helpful if you aren’t yet on SP2010 SP1. A note though - the method is marked as obselete with this description “SPSite.StorageManagementInformation is expensive; avoid using it.”. There’s no further explanation on what is being spooled up to execute the method or why it was OK in SP2007 but not SP2010. So I’d consider this OK to use if you have to…but not in some kind of recurring scheduled script. Your mileage may vary, I’m not responsible for what happens to your farm, etc. etc.</p>
+
+<p>Hope you found this useful. Let me know!</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2011/08/16/sharepoint-2010-findinglargestdoclibrary/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/">
+                            SharePoint 2010: Unable to delete site/web after SP1
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2011-08-11T10:32:00-05:00" itemprop="datePublished">Aug 11, 2011</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>While doing some testing after upgrading my dev machine to SP1, I ran into two separate issues when trying to delete a web through the UI by using the “Sites and Workspaces” link in Site Settings. Deleting through powershell worked fine.</p>
+
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/">Read More &gt;</a>
+                </article>
+        
+            
+        
+
+            <!-- Pagination links -->
+            <div class="pagination">
+            
+                <a href="/page4" class="previous">Previous</a>
+            
+            <span class="page_number ">Page: 5 of 15</span>
+            
+                <a href="/page6" class="next">Next</a>
+            
+            </div>
+        <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+    </div>
+    
+</div>
+</div>
+    
+    <div class="container">
+    <footer class="site-footer">
+        built with <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license/">License</a>
+    </footer>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1289131-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script src="/js/jonthenerd.min.js"></script>
+  </body>
+</html>

@@ -4,6 +4,7 @@ date: "2012-01-04"
 author: Jon Badgett
 categories:
     - Programming
+tags:
     - SharePoint
 draft: false
 slug: sharepoint-2010-ribbon-customactions
