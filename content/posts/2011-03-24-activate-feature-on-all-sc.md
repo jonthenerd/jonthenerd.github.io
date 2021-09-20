@@ -3,7 +3,8 @@ title: Activate Feature on all Site Collections in a Web Application
 date: "2011-03-24"
 author: Jon Badgett
 categories:
-    - Programming
+    - SysAdmin
+tags:
     - SharePoint
 draft: false
 slug: activate-feature-on-all-sc
@@ -11,7 +12,6 @@ slug: activate-feature-on-all-sc
 
 This is pretty easy using powerhell with SharePoint 2010:
 
-[powershell]Get-SPWebApplication
-&quot;http://WebApplicationUrl:PortIfNeeded&quot; | Get-SPSite |
-ForEach-Object{Enable-SPFeature &quot;Solution.Name*FeatureName&quot; -url
-$*.Url}[/powershell]
+```powershell
+Get-SPWebApplication "http://WebApplicationUrl:PortIfNeeded" | Get-SPSite | ForEach-Object{Enable-SPFeature "Solution.Name.FeatureName" -url $_.Url}
+```

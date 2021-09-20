@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully with Android</title>
+    <meta name="description" content="I’m starting work on a project for my MBA program that involves using a mobile RFID reader with an Android device.">
+    <meta property="og:title" content="Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully with Android" />
+<meta property="og:description" content="I’m starting work on a project for my MBA program that involves using a mobile RFID reader with an Android device." />
+<meta property="og:site_name" content="JonTheNerd" />
+
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2012-10-05" />
+    
+    <meta property="article:author" content="https://www.facebook.com/jon.badgett.5" />
+    
+    
+    
+    <meta property="article:tag" content="Android" />
+    
+    <meta property="article:tag" content="Programming" />
+    
+
+<meta property="og:url" content="http://localhost:4000/2012/10/05/communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android/" />
+    <link rel="stylesheet" href="/css/jonthenerd.min.css">
+    <link rel="stylesheet" href="/css/syntax.min.css">
+    <link rel="canonical" href="http://localhost:4000/2012/10/05/communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android/">
+    <link rel="alternate" type="application/rss+xml" title="JonTheNerd" href="http://localhost:4000/feed.xml">
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "name" : "Jon Badgett",
+  "url" : "http://localhost:4000",
+  "sameAs" : [
+    "https://www.facebook.com/jon.badgett.5",
+    "https://github.com/jonthenerd",
+    "https://www.linkedin.com/in/jon-badgett-825a326b",
+    "https://plus.google.com/+JonBadgett",
+    "https://twitter.com/jonthenerd"
+  ]
+}
+</script>
+  </head>
+  <body>
+    
+
+  <nav class="navbar navbar-default topnav">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jtn-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">JonTheNerd</a>
+        </div>
+
+        <div id="jtn-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="subnav">
+    <div class="container">
+      <span>browse by <a href="/categories">category</a></span> 
+    </div>
+  </div>
+ 
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="jumbotron">
+    <div class="container">
+      <h1 class="post-title" itemprop="name headline">Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully with Android</h1>
+    </div>
+  </header>
+  <div class="post-meta-bar">
+      <div class="container">
+          <time datetime="2012-10-05T17:50:00-05:00" itemprop="datePublished">Oct 5, 2012</time> 
+        
+         | Posted in  
+          
+
+
+
+    
+        
+        
+        <a href="/categories/android/">Android</a>, 
+    
+        
+        
+        <a href="/categories/programming/">Programming</a>
+    
+
+         
+      </div>
+    </div>
+  <div class="container page-content">
+      <div itemprop="articleBody">
+        <p>I’m starting work on a project for my MBA program that involves using a mobile RFID reader with an Android device.
+<!--more--></p>
+
+<p>I’ve purchased a Nexus 7 for the project, and the school has loaned me an <a href="http://www.intermec.com/products/ip30a/index.aspx">Intermec IP30 RFID reader</a>. I’m going to detail my steps in getting this going here.</p>
+<h2>10/5/2012</h2>
+<p>Acquired the IP30 from my university. This IP30 is attached to the Intermec CN3 handheld computer, which is running some old version of Windows Mobile. I’ve confirmed that the CN3 can actually communicate with the IP30 and read tags - yay! I don’t plan on using the CN3, but it’s a nice reference for how the communication is supposed to work.</p>
+
+<p>The IP30 is communicated to from the CN3 by bluetooth. Intermec offers some libraries for C# development, but I won’t be using them as this will be an Android application. I’ll be using Xamarin’s Mono for Android (C#), but the Intermec assembly uses some Windows CE libraries so it’s no help. Luckily, it looks like the IP30 works with Intermec’s “Basic Reader Interface” or BRI. This is an ASCII-based protocol over serial/bluetooth. They even have<a href="http://epsfiles.intermec.com/eps_files/eps_man/937-000.pdf"> a handy doc</a> on all the relevant commands and how to structure your app if going straight against BRI.</p>
+
+<p>At this point, my goal is to communicate with the IP30 using a hyperterminal on my Windows 7 box. I wore the battery down on the IP30 trying to use PUTTY to for communication and couldn’t manage to get it to respond to any command. I believe that I just wasn’t sending the necessary CRLF at the end of each command for the IP30 to respond, so I’ve downloaded a different hyperterminal - <a href="https://sites.google.com/site/terminalbpp/">Bray++’s Terminal</a>. Whenever the battery charges up for the IP30, I’ll start whittling at it again :)</p>
+
+<p>Later…</p>
+
+<p>Couldn’t get Bray’s Terminal to connect to the IP30. It would cause Windows to beep, then I’d not be able to connect to the IP30 with anything (including Putty) until I reset the connection by pulling the battery out of the IP30 and putting it back in.</p>
+
+<p>I downloaded Tera Term and have success! It was indeed the newline setting for transmission. I had to change this setting in the Terminal setup and also enable local echo so I could see what I was typing…</p>
+
+<p>Luckily in my searching for IP30 related posts, I ran across <a href="http://community.intermec.com/t5/General-Development-Developer/IP30-Serial-Connection-configuration/td-p/18394">a page on Intermec’s site where another developer was trying to do what I’m doing through HyperTerminal and had an issue</a>. Issuing FACDFLT4 (which is issued in the BRI manual I referenced earlier) reset the device to factory settings - so I should be good to go!</p>
+
+<p>To be continued…</p>
+
+      </div>
+    <div class="comments">  
+    <div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+    this.page.url = "http://localhost:4000/2012/10/05/communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android/";
+    this.page.identifier = this.page.url;
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = '//jonthenerd.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</article>
+    
+    <div class="container">
+    <footer class="site-footer">
+        built with <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license/">License</a>
+    </footer>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1289131-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script src="/js/jonthenerd.min.js"></script>
+  </body>
+</html>

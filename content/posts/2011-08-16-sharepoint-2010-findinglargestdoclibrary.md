@@ -3,8 +3,10 @@ title: "SharePoint 2010: Finding the largest document library in a site collecti
 date: "2011-08-16"
 author: Jon Badgett
 categories:
-    - PowerShell
+    - SysAdmin
     - Programming
+tags:
+    - PowerShell
     - SharePoint
 draft: false
 slug: sharepoint-2010-findinglargestdoclibrary
@@ -19,8 +21,8 @@ running out of space?
 Obviously - up the space so as to avoid additional noise from your users. Then -
 figure out which libraries are taking up the most space. This can be done by
 using the (now obsolete - but working)
-<a href="http://msdn.microsoft.com/en-us/library/microsoft.sharepoint.spsite.storagemanagementinformation.aspx">StorageManagementInformation
-method off of SPSite</a>. You can write some C# to use it, or you can use
+[StorageManagementInformation
+method off of SPSite](http://msdn.microsoft.com/en-us/library/microsoft.sharepoint.spsite.storagemanagementinformation.aspx). You can write some C# to use it, or you can use
 PowerShell.
 
 The required arguments for this method (listed below) can be found by looking at
@@ -51,11 +53,13 @@ using Reflector to look at the Microsoft.SharePoint dll:
 </ol>
 
 So if you want to find the top 5 largest document libraries in a specific site
-collection, here's the PowerShell: [code lang="ps"]
-$site = Get-SPSite &quot;http://yoursitecollection:portifneeded&quot;;
-$dataTable
-= $site.StorageManagementInformation(2,0x11,0,5);
-$dataTable | Select \* [/code]
+collection, here's the PowerShell:
+
+```posh
+$site = Get-SPSite "http://yoursitecollection:portifneeded";
+$dataTable = $site.StorageManagementInformation(2,0x11,0,5);
+$dataTable | Select *
+```
 
 This is very helpful if you aren't yet on SP2010 SP1. A note though - the method
 is marked as obselete with this description "SPSite.StorageManagementInformation

@@ -4,6 +4,9 @@ date: "2018-01-16"
 author: Jon Badgett
 categories:
     - Programming
+tags:
+    - Node
+    - JavaScript
 draft: false
 slug: configuring-nvm-for-osx
 ---

@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JonTheNerd</title>
+    <description>Jon Badgett's personal blog. Open Source projects, observations on life,  and other oddities that I find interesting.
+</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 04 May 2018 17:07:23 -0500</pubDate>
+    <lastBuildDate>Fri, 04 May 2018 17:07:23 -0500</lastBuildDate>
+    <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Microsoft Flow: Using the SharePoint REST API</title>
+        <description>&lt;p&gt;This post will contain whatever handy information I come across for utilizing the SharePoint REST APIs with Microsoft Flow.
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;Why would you want to do this? Because there aren’t enough actions to accomplish all the things you’d want to do with SharePoint via Flow.&lt;/p&gt;
+
+&lt;p&gt;The first section of this guide comes from combining a few different blog posts, but I found &lt;a href=&quot;https://blogs.u2u.be/u2u/post/calling-the-sharepoint-online-api-from-within-microsoft-flow&quot;&gt;Calling the SharePoint Online API from within Microsoft Flow by ROBRECHT-VAN-CAENEGEM&lt;/a&gt; to be the most useful. It’s got pictures!&lt;/p&gt;
+
+&lt;h1 id=&quot;how-does-this-work&quot;&gt;How does this work?&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Microsoft Flow can send generic HTTP requests, with custom headers, body, etc.&lt;/li&gt;
+  &lt;li&gt;For Flow to authenticate to SharePoint during the REST calls, we’ll make use of the access tokens typically used for SharePoint Addins/Apps&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;intial-setup&quot;&gt;Intial Setup&lt;/h1&gt;
+&lt;p&gt;We’re going to need four pieces of data:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;CLIENTID&lt;/strong&gt;: Unique id assigned to your add-in registration&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;CLIENTSECRET&lt;/strong&gt;: Secret value used by your add-in registration&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;REALM&lt;/strong&gt;: This is the unique id assigned to your SharePoint Online tenant.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;TENANT&lt;/strong&gt;: The hostname of your tenant (e.g. example.sharepoint.com)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;obtain-the-clientid-and-clientsecret-values&quot;&gt;Obtain the CLIENTID and CLIENTSECRET values&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;On the SharePoint site that you need to communicate with, navigate to AppRegNew page
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;your site's URL&amp;gt;/_layouts/15/appregnew.aspx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Fill in the information.
+    &lt;ul&gt;
+      &lt;li&gt;Client Id: «Generate It!»&lt;/li&gt;
+      &lt;li&gt;Client Secret: «Generate It!»&lt;/li&gt;
+      &lt;li&gt;Title: «Project Name Flow»&lt;/li&gt;
+      &lt;li&gt;App Domain: localhost&lt;/li&gt;
+      &lt;li&gt;Redirect URI: https:/localhost&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Store the Client Id and Secret. We’re going to need it for the next step.&lt;/li&gt;
+  &lt;li&gt;Click the &lt;em&gt;Create&lt;/em&gt; button.&lt;/li&gt;
+  &lt;li&gt;Navigate to the AppInv page
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;your site's URL&amp;gt;/_layouts/15/appinv.aspx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Put the &lt;em&gt;Client Id&lt;/em&gt; into the &lt;em&gt;App Id&lt;/em&gt; text box and look it up.&lt;/li&gt;
+  &lt;li&gt;Paste the following XML into the &lt;em&gt;Permission Request XML&lt;/em&gt; box (&lt;a href=&quot;https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/add-in-permissions-in-sharepoint&quot;&gt;modify as needed for what scope and right you need&lt;/a&gt;):
+    &lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;AppPermissionRequests&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;AllowAppOnlyPolicy=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;AppPermissionRequest&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Scope=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://sharepoint/content/sitecollection&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Right=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FullControl&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/AppPermissionRequests&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Click the &lt;em&gt;Create&lt;/em&gt; button.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;obtain-the-realm-value&quot;&gt;Obtain the REALM value&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;On the SharePoint site that you just finished app registration on, navigate to the AppPrincipals page
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/_layouts/15/AppPrincipals.aspx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;You should see your recently registered app principle along with an App Identifier. The last section of the App Identifier, after the @, is the REALM value.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;setup-authentication-in-flow&quot;&gt;Setup Authentication in Flow&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;In your created flow, directly after the trigger, do the following:&lt;/li&gt;
+  &lt;li&gt;Create a new &lt;strong&gt;Parse JSON&lt;/strong&gt; action, renamed to &lt;em&gt;Authentication Values&lt;/em&gt;, filling in your own values and using the below schema.
+    &lt;ul&gt;
+      &lt;li&gt;Content:
+        &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;realm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{REALM}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;clientId&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{CLIENTID}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;clientSecret&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{CLIENTSECRET}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;principal&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;00000003-0000-0ff1-ce00-000000000000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tenant&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{TENANT}&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Schema:
+        &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;object&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;realm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;string&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;clientId&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;string&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;clientSecret&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;string&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;principal&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;string&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tenant&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;string&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Create a new &lt;strong&gt;Initialize variable&lt;/strong&gt; action, renamed to Initialize AccessTokenBody, with the following values:
+    &lt;ul&gt;
+      &lt;li&gt;Name: &lt;code class=&quot;highlighter-rouge&quot;&gt;AccessTokenBody&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Type: String&lt;/li&gt;
+      &lt;li&gt;Value:
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;concat('grant_type=client_credentials&amp;amp;client_id=', body('Authentication_Values')?['clientId'], '@', body('Authentication_Values')?['realm'], '&amp;amp;client_secret=', body('Authentication_Values')?['clientSecret'], '&amp;amp;resource=', body('Authentication_Values')?['principal'], '/', body('Authentication_Values')?['tenant'], '@', body('Authentication_Values')?['realm'])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Create a new &lt;strong&gt;HTTP - HTTP&lt;/strong&gt; action.&lt;/li&gt;
+  &lt;li&gt;Rename it &lt;em&gt;Get Access Token&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Fill in the values:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Method&lt;/strong&gt;: POST&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Uri&lt;/strong&gt;:  &lt;code class=&quot;highlighter-rouge&quot;&gt;https://accounts.accesscontrol.windows.net/@{body('Authentication_Values')?['realm']}/tokens/oauth/2&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Headers&lt;/strong&gt;:
+        &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;application/x-www-form-urlencoded&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Body&lt;/strong&gt;: the &lt;em&gt;AccessTokenBody&lt;/em&gt; variable&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Add a new &lt;strong&gt;Parse JSON&lt;/strong&gt; action and rename it &lt;strong&gt;Parse Access Token&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Content should be set to the Body parameter from the previuos step. Schema should be set to the following:
+    &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;object&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+         &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;token_type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;string&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+         &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;access_token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;string&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;With this setup, you should be able to test your FLOW and not have it error. You can also check and see the token_type and access_token being parsed. Note that the most tricky part of this is getting the Body variable of step 6 setup correctly. Note that my value depends upon you having renamed the steps as I instructed to work.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;You’re now ready to start using SharePoint REST APIs in Flow!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;helpful-snippets&quot;&gt;Helpful Snippets&lt;/h1&gt;
+&lt;p&gt;This section will be a hodge podge of useful snippets I plan to continue adding to.&lt;/p&gt;
+
+&lt;h2 id=&quot;general&quot;&gt;General&lt;/h2&gt;
+&lt;h3 id=&quot;headers&quot;&gt;Headers&lt;/h3&gt;
+&lt;p&gt;It’s easiest to paste in the headers values of &lt;strong&gt;HTTP - HTTP&lt;/strong&gt; actions if it’s in text mode. Here’s what’s needed (adjust the name of the action where mine says &lt;strong&gt;Parse Access Token&lt;/strong&gt; to match the name of your action that parses the access tokens)&lt;/p&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Authorization&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@{body('Parse Access Token')?['token_type']} @{body('Parse Access Token')?['access_token']}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Accept&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;application/json;odata=verbose&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;application/json;odata=verbose&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;groups-and-permissions&quot;&gt;Groups and Permissions&lt;/h2&gt;
+&lt;h3 id=&quot;set-the-owner-of-a-sharepoint-group-to-another-sharepoint-group&quot;&gt;Set the Owner of a SharePoint Group to another SharePoint Group&lt;/h3&gt;
+&lt;p&gt;So, this apparently has been broken via typical REST API method calls for quite some time. There is a working alternative though - manually construct the call that the CSOM library would have made. The best resource I found for this is &lt;a href=&quot;http://www.jrjlee.com/2014/01/custom-workflow-activity-for-setting.html&quot;&gt;Jason Lee’s blog post: Custom Workflow Activity for Setting a SharePoint Group Owner&lt;/a&gt;, which is specifically talking about doing this within a SharePoint 2013 model workflow. We’ll modify it slightly.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Start with your standard &lt;strong&gt;HTTP - HTTP&lt;/strong&gt; action.&lt;/li&gt;
+  &lt;li&gt;Method = POST&lt;/li&gt;
+  &lt;li&gt;Uri (adjust values for your environment) = &lt;code class=&quot;highlighter-rouge&quot;&gt;https://{TENANT}/{SPSITE_URL}/_vti_bin/client.svc/ProcessQuery&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Headers are slightly different than the Headers helpful snippet.
+    &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Authorization&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@{body('Parse Access Token')?['token_type']} @{body('Parse Access Token')?['access_token']}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Accept&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;application/json;odata=verbose&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;text/xml&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Body gets fun. You’ve got a few values to substitute.
+    &lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Request&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;AddExpandoFieldTypeSuffix=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;SchemaVersion=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;15.0.0.0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;LibraryVersion=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;15.0.0.0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ApplicationName=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{YOUR_APP}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.microsoft.com/sharepoint/clientquery/2009&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Actions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;SetProperty&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ObjectPathId=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Owner&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;Parameter&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ObjectPathId=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/SetProperty&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Method&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Update&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;4&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ObjectPathId=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Actions&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;ObjectPaths&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Identity&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;740c6a0b-85e2-48a0-a494-e0f1759d4aa7:site:{SPSITE_ID}:g:{TARGET_GROUP_ID}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;Identity&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;740c6a0b-85e2-48a0-a494-e0f1759d4aa7:site:{SPSITE_ID}:g:{NEW_OWNER_GROUP_ID}&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ObjectPaths&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Request&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;YOUR_APP = Identity your app. This isn’t really that important.&lt;/li&gt;
+      &lt;li&gt;SPSITE_ID = this is the GUID of the site collection you’re working with. Don’t include the curly braces.&lt;/li&gt;
+      &lt;li&gt;TARGET_GROUP_ID = this is the integer of the group that needs an ownership change&lt;/li&gt;
+      &lt;li&gt;NEW_OWNER_GROUP_ID = this is the integer of the group that will be the owner&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;schemas&quot;&gt;Schemas&lt;/h2&gt;
+&lt;p&gt;These are some helpful schemas to paste in to get values back from REST calls.&lt;/p&gt;
+
+&lt;h3 id=&quot;get-role-definition-or-group-id&quot;&gt;Get Role Definition or Group Id&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Example URLs:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; https://{TENANT}/{SPSITE_URL}/_api/web/roledefinitions/getbyname('Contribute')/id
+ https://{TENANT}/{SPSITE_URL}/_api/web/sitegroups/getbyname('Some%20Group')/id
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Schema:
+    &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;object&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+         &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;d&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+             &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;object&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+             &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                 &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;number&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+             &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+         &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;get-list-or-library-id&quot;&gt;Get List or Library Id&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Schema:
+    &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;object&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+         &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;d&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+             &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;object&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+             &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                 &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;string&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+             &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+         &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 04 May 2018 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2018/05/04/rest-and-flow/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/05/04/rest-and-flow/</guid>
+        
+        
+        <category>SharePoint</category>
+        
+        <category>Programming</category>
+        
+      </item>
+    
+      <item>
+        <title>SharePoint Framework: Extensions - Application Customizer</title>
+        <description>&lt;p&gt;Next in this series on the SharePoint Framework are extensions. &lt;a href=&quot;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/overview-extensions&quot;&gt;According to docs.microsoft.com, SPFx Extensions allow for the customization of multiple facets of the SharePoint experience&lt;/a&gt;. I’ll focus on differences I made while following the online tutorial and my observations on capabilities and impacts of SPFx Application Customizer extensions.
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;The best way to get started learning about these types of SharePoint customization is to read the relevant docs.mocrosoft.com documentation:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/overview-extensions&quot;&gt;Overview of SharePoint Framework Extensions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/extensions/get-started/build-a-hello-world-extension&quot;&gt;Build your first SharePoint Framework Extension (Hello World part 1)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For the most part, the above instructions work just fine. However, there are a couple modifications that I made:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use &lt;a href=&quot;https://github.com/creationix/nvm&quot;&gt;Node Version Manager&lt;/a&gt; to ensure that you’re using the supported version of node and npm that go with the SharePoint Framework (node 6.11.5 at the time of this writing). &lt;a href=&quot;/2018/01/16/configuring-nvm-for-osx&quot;&gt;Here’s a post I wrote on how to set it up on MacOS&lt;/a&gt;. This will avoid HTTP2/SSL issues when launching the workbench.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Modify the package.json scripts to include the necessary gulp commands such that you don’t have to have gulp installed globally. Here’s what that section should look like:&lt;/p&gt;
+
+    &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;build&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gulp bundle&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;clean&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gulp clean&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gulp test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;bundle&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gulp bundle&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;bundle:ship&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gulp bundle --ship&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;package&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gulp package-solution&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;package:ship&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gulp package-solution --ship&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;trust-dev-cert&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gulp trust-dev-cert&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;serve:nobrowser&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gulp serve --nobrowser&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;You’ll then run the gulp commands listed in the tutorial using npm run &amp;lt;scriptname&amp;gt; :&lt;/p&gt;
+
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  npm run trust-dev-cert		&lt;span class=&quot;c&quot;&gt;# To trust the dev cert&lt;/span&gt;
+  npm run serve:nobrowser		&lt;span class=&quot;c&quot;&gt;# To start hosting the extension without launching workbench	&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;observations-on-application-customizer-extensions&quot;&gt;Observations on Application Customizer Extensions&lt;/h2&gt;
+&lt;p&gt;Working through the online tutorials, I had a number of items I wanted clarification on that aren’t spelled out in the documentation that I’ve run across. Here are my notes.&lt;/p&gt;
+
+&lt;h3 id=&quot;which-placeholders-are-available&quot;&gt;Which placeholders are available?&lt;/h3&gt;
+
+&lt;p&gt;At the time of this wring, Top and Bottom.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-do-these-different-placeholder-areas-appear-and-function-in-desktop-web-browsers-mobile-web-browsers-and-the-sharepoint-mobile-app&quot;&gt;How do these different placeholder areas appear and function in desktop web browsers, mobile web browsers, and the SharePoint mobile app?&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;On a desktop web browser&lt;/strong&gt;, these appear directly underneath the app launcher (and above the site icon) and attached to the bottom of the browser window (the main site area is then placed within a div that has a vertical scrollbar).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;On a mobile web browser&lt;/strong&gt;, placement is the same as the desktop web browser. However, the behavior when scrolling is different. When scrolling down the page, the top placeholder content as well as the site title/global nav area scroll with the page and are removed from view. However, the content of the bottom placeholder is &lt;em&gt;always visible&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;On the SharePoint mobile app (IOS tested, v3.7.0)&lt;/strong&gt; The good news? the content of the top and bottom placeholder make an appearance. Now here’s what’s not so great:
+    &lt;ul&gt;
+      &lt;li&gt;The placement of the content within the Top placeholder is different. It now appears beneath the site title / global navigation area.&lt;/li&gt;
+      &lt;li&gt;The bottom placeholder is not initially visible when loading a site within the app. After scrolling down a bit, the content of the bottom placeholder appears.&lt;/li&gt;
+      &lt;li&gt;The SharePoint app doesn’t load the necessary css to alow the ms- classes to work (like ms-bgColor-themeDark ms-fontColor-white used in the HelloWorld Demo). This causes the background of the HelloWorld extension to appear transparent. I added hard coded background-color and color style values and these appeared fine in the application.&lt;/li&gt;
+      &lt;li&gt;At least with the code used from the tutorial, the customizations only appeared for me on initial load of the application and site. If I browsed to something else and then came back to app, the content of the top and bottom placeholders was not present. I’m hopeful that this is just a bug with the HelloWorld code. &lt;a href=&quot;https://github.com/SharePoint/sp-dev-docs/issues/1069&quot;&gt;Issue #1069, SPFx Application Customizer, placeholder not re-rendering on page load&lt;/a&gt; looks like it could be related, but the advised fix didn’t address the issue within the app. Either there’s something missing that’s needed to keep it working, or there is a bug with the mobile app.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;how-do-the-above-observations-affect-the-buildout-of-a-modern-intranet-on-o365&quot;&gt;How do the above observations affect the buildout of a modern intranet on O365?&lt;/h3&gt;
+
+&lt;h4 id=&quot;on-global-navigation&quot;&gt;&lt;em&gt;On Global Navigation&lt;/em&gt;&lt;/h4&gt;
+
+&lt;p&gt;There is sample code available for creating an aplication customizer extension to add a mega menu at the top of pages. The thought being that you could deploy this customization to all of the sites you wanted to be a part of your intranet portal and you’d have consistent navigation.&lt;/p&gt;
+
+&lt;p&gt;If you’re going to be using the SharePoint mobile app, and the above noted disappearing act has been fixed in either the sample code or the mobile app, the placement of the top element placeholder is different than that in mobile or desktop web browsers, which could cause confusion for users. &lt;strong&gt;As such, if usage of the SharePoint mobile app is desired, think critically about how the navigation would be displayed to end users in the app / web browsers to ensure it’s not confusing. If you can’t do this, avoid putting a menu here.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;What I’d advise doing as an alternative to this involves Hub Sites (which aren’t released yet). They purport to allow for the establishment of consistent global navigation for all sites joined to the hub. You’d then use the left (current) navigation for within-site navigation purposes.&lt;/p&gt;
+
+&lt;h4 id=&quot;on-consistent-footers&quot;&gt;&lt;em&gt;On Consistent Footers&lt;/em&gt;&lt;/h4&gt;
+
+&lt;p&gt;In my mind, the bottom placeholder area has been where I wanted to put consistent footer information (a company logo, contact information for the page/site, social media links, etc.). This kind of thing tends to take up a decent amount of vertical space, which is ok because the user has to scroll to the bottom to see it anyway. It’s not in the way.&lt;/p&gt;
+
+&lt;p&gt;With the current implementation though, significant caution is warranted. Would you want half of the screen real-estate occupied with the same footer information? No. As a user, I’d find it annoying if anything was attached to the bottom of my screen blocking valuable reading space, particularly if it appears page after page, throughout my entire usage of a site/app. &lt;strong&gt;Advice - don’t use the bottom placeholder to load your consistent footer.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;What’s the alternative? Think of the places in your Intranet portal that &lt;em&gt;really&lt;/em&gt; need a footer. You’ve got the main landing page and probably another handful of pages that see really high traffic. Outside of this, if you have some logic to display contact info for a given page, you might want that on additional pages but probably also want the ability for the information not to be shown if a page author opts out. So - build 1 or 2 SPFx WebParts for footer usage. One would be your &lt;em&gt;big footer&lt;/em&gt; for your main landing page. The second you’d advise page authors use so they can show page contact information. If they want the info, they’ll add the WebPart. If they want to opt out, they’ll omit it.&lt;/p&gt;
+
+&lt;h4 id=&quot;what-do-we-use-these-placeholders-for-anyway&quot;&gt;&lt;em&gt;What do we use these Placeholders for anyway?!&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;I think the big usage of the placeholders is for context-sensitive notifications, &lt;em&gt;not branding&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s take our page footer example above. You could present a notification to a page author (while they’re authoring) advising them to add the footer WebPart (and allow them to dismiss the notification until their next browser session or something).&lt;/p&gt;
+
+&lt;p&gt;Obviously, there are plenty of usages for notifications…&lt;/p&gt;
+
+&lt;p&gt;In order to leverage O365 and avoid over-customization that causes upgrade &lt;em&gt;fun&lt;/em&gt; down the road, it requires stepping back from our typical approaches (like adding mega menus and footers) and thinking about (1) what are we trying to have the user see or do, (2) when this is really necessary and when it’s not, and (3) how do we guide them to see the items or take the actions we want in the most supported fashion. In this way we’ll minimize our development costs, maximize our investment in the O365/SharePoint platform, and focus more on extracting business value than simply re-implementing the same old thing atop the latest SharePoint release.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 17 Jan 2018 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/2018/01/17/learning-spfx-pt-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/17/learning-spfx-pt-2/</guid>
+        
+        
+        <category>SharePoint</category>
+        
+        <category>Programming</category>
+        
+      </item>
+    
+      <item>
+        <title>SharePoint Framework: Getting Started</title>
+        <description>&lt;p&gt;Today I decided that it was time I learned how to build &lt;a href=&quot;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview&quot;&gt;SharePoint Framework (SPFx)&lt;/a&gt; webparts. Easy enough right? Find the right tutorial online, follow instrucitons, hello world! Let’s get started.
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;First, you’ll need to &lt;a href=&quot;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment&quot;&gt;set up your SharePoint Framework development environment&lt;/a&gt;. Then you’ll want to follow the tutorial to &lt;a href=&quot;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part&quot;&gt;build your first web part&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Of course, this all depends upon you having &lt;a href=&quot;https://nodejs.org/en/&quot;&gt;node js w/npm&lt;/a&gt; installed and your code editor of choice ready to go.&lt;/p&gt;
+
+&lt;p&gt;Seeing as I had the latest version of node and a code editor ready, I just started at the tutorials. Quickly ran into an issue though, where neither Safari or Chrome were able to connect to the workbench site running on localhost. Here’s the exact error from Safari:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Safari can’t open the page “https://localhost:4321/temp/workbench.html” because Safari can’t establish a secure connection to the server “localhost”.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/SharePoint/sp-dev-docs/issues/1002&quot;&gt;Issue #1002 on the sp-dev-docs repo&lt;/a&gt; seems to describe what’s occurring here but no amount of setting the environment variable NODE_NO_HTTP2=1 would help me get past the error message.&lt;/p&gt;
+
+&lt;p&gt;Reading back through &lt;a href=&quot;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment&quot;&gt;how to setup your SharePoint Framework development environment&lt;/a&gt;, there is a note that says:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The SharePoint Framework build pipeline doesn’t currently support the LTS version of Node.js. Instead, download Node.js version 6.11.5. This installs npm 3.10.10. Note that if you have a v5.x version of npm, you need to downgrade to an older npm version by using the following command: npm install -g npm@3.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A couple observations on this, as I’m writing this blog post as I try to get this all working:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Embracing the open source ecosystem and modern development tooling is great. Requiring that in order to use your framework you must be running a version of node.js that is 3 major versions behind current (9.4.0) and 2 major versions behind LTS (8.9.4) is &lt;strong&gt;lame&lt;/strong&gt;. It means that most guides out there for how to quickly get started will only work if you’re just stepping into modern web dev &lt;em&gt;for the first time&lt;/em&gt;… If you’ve been using node and NPM, etc. for a while you’re likely running much newer versions of these tools and they’re likely installed globally. It also makes it appear there is a lack of commitment to bringing development practices and patterns for SharePoint up to date and keeping it there.&lt;/li&gt;
+  &lt;li&gt;Let’s hope that if we follow the instructions exactly things actually work. As it’s going to mean making some serious changes to the configuration of my dev box and going outside the 1, 2, 3 hello world box.&lt;/li&gt;
+  &lt;li&gt;Maybe there’s some way to manage multiple versions of Node.js without struggling…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;At this point, I’ve got projects that use much later node and NPM versions. I can’t justify unintalling them just to have to do the same dance at a later point to get them reinstalled. What to do? Let’s look into &lt;a href=&quot;https://github.com/creationix/nvm&quot;&gt;Node Version Manager (NVM), which allows you to manage and switch between different Node versions “with ease”&lt;/a&gt;. There’s also &lt;a href=&quot;https://github.com/coreybutler/nvm-windows&quot;&gt;nvm-windows for Windows users&lt;/a&gt;. Interested in how to get this setup? Read my post on &lt;a href=&quot;/2018/01/16/configuring-nvm-for-osx/&quot;&gt;configuring NVM for Mac OS X&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now that I’ve got NVM working and this project directory is using 6.11.5 … let’s continue on with the hello worlding.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Browse to the directory for the project in terminal.&lt;/li&gt;
+  &lt;li&gt;Initialize the project with NPM (to get our package.json)
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Intall the npm package for the Yeoman SharePoint generator (locally).
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install @microsoft/generator-sharepoint &lt;span class=&quot;nt&quot;&gt;--save-dev&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Open our project using our code editor of choice (have you tried Visual Studio Code yet?)
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;code &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Notice that we’ve got our .nvmrc file, our package.json file, and a directory for node_modules. Things are looking good so far.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Let’s run the Yeoman generator now.
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yo @microsoft/sharepoint
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;We can’t follow the next instruction to just run gulp serve, as gulp isn’t installed globally (I’m not a fan of installing things globally as it makes projects harder to get going on new workstations or by new developers). As such, we need to change our package.json to handle running gulp for us.&lt;/p&gt;
+
+    &lt;p&gt;We’re going to add a script to trust the dev cert and another to serve.&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;Open your package.json&lt;/li&gt;
+      &lt;li&gt;Change the scripts section to be the following:
+        &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;build&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gulp bundle&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;clean&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gulp clean&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gulp test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;trust-dev-cert&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gulp trust-dev-cert&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;serve&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gulp serve&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Trust the Dev Cert used by workbench
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm run trust-dev-cert
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Fire up the workbench
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm run serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Marvel at it working and don’t think about future version dependency conflicts :)&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Tue, 16 Jan 2018 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/2018/01/16/learning-spfx-pt-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/16/learning-spfx-pt-1/</guid>
+        
+        
+        <category>SharePoint</category>
+        
+        <category>Programming</category>
+        
+      </item>
+    
+      <item>
+        <title>Configuring Node Version Manager (NVM) for OS X</title>
+        <description>&lt;p&gt;So, you have multiple projects and one or more of them have dependencies (or just plain don’t work) on certain versions of node? What to do? &lt;a href=&quot;https://github.com/creationix/nvm&quot;&gt;Node Version Manager (NVM) allows you to install and switch between them “with ease”&lt;/a&gt; (quotes added as I’m writing this blog post as I get it installed for the first time myself… lets see just how easy it is!).
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;before-you-install---uninstall-node&quot;&gt;Before You Install - Uninstall Node!&lt;/h2&gt;
+&lt;p&gt;Although it’s optional to remove previous node installations, it’s recommended. There’s a &lt;a href=&quot;https://stackoverflow.com/questions/11177954/how-do-i-completely-uninstall-node-js-and-reinstall-from-beginning-mac-os-x&quot;&gt;great post on Stack Overflow that describes how to remove nodejs manually and for this that used brew to originally install node&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;ensure-you-have-the-xcode-command-line-tools&quot;&gt;Ensure you have the Xcode command line tools.&lt;/h2&gt;
+&lt;p&gt;The Xcode command line tools (which you may already have for other reasons) are required. The easiest way to install them is to run the following in the terminal:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xcode-select &lt;span class=&quot;nt&quot;&gt;--install&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;run-the-nvm-install-script&quot;&gt;Run the NVM Install Script&lt;/h2&gt;
+&lt;p&gt;You can either use cURL or Wget to install NVM. To test if you have either, just type curl or wget into a terminal window and hit return. If you get some kind of response that isn’t an error, you know which to use. Otherwise, you can install wget via brew:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install wget
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then you’ll want to run the latest install script mentioned on the &lt;a href=&quot;https://github.com/creationix/nvm&quot;&gt;NVM repo&lt;/a&gt;. &lt;strong&gt;Go there and copy+paste into your terminal window&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;After it installs, you ought to be able to open a fresh terminal window and type in &lt;strong&gt;nvm&lt;/strong&gt; and see some kind of output, but not this:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm
+&lt;span class=&quot;nt&quot;&gt;-bash&lt;/span&gt;: nvm: &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;not found
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you got that, it means that your shell isn’t configured to use nvm. What I found after investigating is that NVM had added references to itself to the .bashrc file directly in my home directory. You can see this by typing the following in a terminal:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;open &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;However, it hadn’t added itself to the .bash_profile file.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;open &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A kind user on Stack Exchange explains that &lt;a href=&quot;https://apple.stackexchange.com/questions/51036/what-is-the-difference-between-bash-profile-and-bashrc&quot;&gt;on OS X, every time terminal is run it considers it a &lt;em&gt;login terminal&lt;/em&gt; which uses the .bash_profile file and not the .bashrc file&lt;/a&gt;. An easy fix for this though is to just consolidate all of the customizations to the terminal load process into the .bashrc file.&lt;/p&gt;
+
+&lt;p&gt;Add the following to your .bash_profile and move its contents into .bashrc.&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.bashrc &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+        &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.bashrc
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Fire up a fresh terminal and run the following, which should output &lt;strong&gt;nvm&lt;/strong&gt; if the install was successful.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; nvm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;install-node-versions&quot;&gt;Install Node Versions&lt;/h2&gt;
+&lt;p&gt;We’ve got NVM, now let’s install the versions of node we want to use across ourprojects.&lt;/p&gt;
+
+&lt;h4 id=&quot;latest-node&quot;&gt;Latest node&lt;/h4&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nvm install node
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;specific-version-of-node&quot;&gt;Specific version of Node&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment&quot;&gt;Version 6.11.5 of node.js is required for SharePoint Framework development&lt;/a&gt; as of this writing.&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nvm install 6.11.5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that you can list all available installed node versions using the following commandline:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nvm &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;configure-your-project-to-use-a-specific-version&quot;&gt;Configure your project to use a specific version&lt;/h2&gt;
+&lt;p&gt;For this, we’re going to place a .nvmrc into the root of each project that utilizes node which indicates which version to use.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Get to the target directory&lt;/li&gt;
+  &lt;li&gt;Run one of the following:
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;5.9&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; .nvmrc
+
+ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;lts/*&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; .nvmrc &lt;span class=&quot;c&quot;&gt;# to default to the latest LTS version&lt;/span&gt;
+
+ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;node&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; .nvmrc &lt;span class=&quot;c&quot;&gt;# to default to the latest version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Start using that node version using the following command:
+    &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; nvm use
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;(optional) You can configure auto-switching to the desired node version instead of having to type nvm use. This requires using &lt;a href=&quot;https://github.com/wbyoung/avn&quot;&gt;AVN (Automatic Version Switching for Node)&lt;/a&gt; which works in conjunction with the .nvmrc file.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Tue, 16 Jan 2018 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/2018/01/16/configuring-nvm-for-osx/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/16/configuring-nvm-for-osx/</guid>
+        
+        
+        <category>Programming</category>
+        
+      </item>
+    
+      <item>
+        <title>SharePoint: Search Managed Properties missing after full crawl</title>
+        <description>&lt;p&gt;Scenario:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SharePoint 2013&lt;/li&gt;
+  &lt;li&gt;You’ve created some site columns, added them to a content type, then added that content type to a list/library.&lt;/li&gt;
+  &lt;li&gt;You add some test data.&lt;/li&gt;
+  &lt;li&gt;Run a full crawl.&lt;/li&gt;
+  &lt;li&gt;Create managed properties, mapping them to the crawled properties.&lt;/li&gt;
+  &lt;li&gt;Run another full crawl (to populate the managed properties)&lt;/li&gt;
+  &lt;li&gt;Managed properties on search results are missing.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What do you do now?
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Run another full crawl and check again.&lt;/li&gt;
+  &lt;li&gt;Wonder why it’s still not working.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What else has worked for me? Clear the SharePoint Config Cache. This is referenced in a &lt;a href=&quot;https://sharepoint.stackexchange.com/questions/122486/new-managed-properties-dont-contain-values&quot;&gt;Stack Overflow Question&lt;/a&gt; and it references a &lt;a href=&quot;https://blogs.technet.microsoft.com/sp/?p=373&quot;&gt;Technet article&lt;/a&gt;. However, the SO question is out of date with the article and the article has some incorrect quotes, making copy+paste fail. Here’s the technet article code cleaned up a bit.&lt;/p&gt;
+
+&lt;p&gt;After clearing the config cache, run a full crawl. I’ve had success in this allowing Managed Properties to be populated with data and present when the above steps didn’t work.&lt;/p&gt;
+
+&lt;div class=&quot;language-powershell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Add-PSSnapin -Name Microsoft.SharePoint.PowerShell -ErrorAction SilentlyContinue;
+
+&lt;span class=&quot;nb&quot;&gt;write-host&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;CLEAR CONFIG CACHE ON FARM&quot;&lt;/span&gt; -F Green;
+
+&lt;span class=&quot;nv&quot;&gt;$servers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; get-spserver | ?&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_&lt;/span&gt;.role -eq &lt;span class=&quot;s2&quot;&gt;&quot;Application&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$server&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$servers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$servername&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$server&lt;/span&gt;.Address;
+    &lt;span class=&quot;nb&quot;&gt;write-host&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Stop Timer Service on server &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$servername&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; -F Yellow;
+    &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Get-WmiObject &lt;/span&gt;Win32_Service -filter &lt;span class=&quot;s2&quot;&gt;&quot;name='SPTimerV4'&quot;&lt;/span&gt; -ComputerName &lt;span class=&quot;nv&quot;&gt;$servername&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.stopservice&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; | Out-Null;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$server&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$servers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$servername&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$server&lt;/span&gt;.Address;
+    &lt;span class=&quot;nv&quot;&gt;$folders&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Get-ChildItem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;\\&quot;&lt;/span&gt; + &lt;span class=&quot;nv&quot;&gt;$servername&lt;/span&gt; + &lt;span class=&quot;s2&quot;&gt;&quot;\C&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;ProgramData\Microsoft\SharePoint\Config&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;;
+
+    &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$folder&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$folders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;$items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Get-ChildItem&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$folder&lt;/span&gt;.FullName -Recurse;
+        &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$items&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$item&lt;/span&gt;.Name.ToLower&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; -eq &lt;span class=&quot;s2&quot;&gt;&quot;cache.ini&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nv&quot;&gt;$cachefolder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$folder&lt;/span&gt;.FullName;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;write-host&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Found CacheFolder on Server &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$servername&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; = &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$cachefolder&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; -F Yellow;
+    &lt;span class=&quot;nv&quot;&gt;$cachefolderitems&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Get-ChildItem&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$cachefolder&lt;/span&gt; -Recurse;
+
+    &lt;span class=&quot;nb&quot;&gt;write-host&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Delete all XMQL Files inside this CacheFolder&quot;&lt;/span&gt; -F Yellow;
+    &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$cachefolderitem&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$cachefolderitems&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$cachefolderitem&lt;/span&gt; -like &lt;span class=&quot;s2&quot;&gt;&quot;*.xml&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;            
+            &lt;span class=&quot;nv&quot;&gt;$cachefolderitem&lt;/span&gt;.Delete&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Get-Content&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$cachefolder&lt;/span&gt;\cache.ini;
+    &lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1;
+    &lt;span class=&quot;nb&quot;&gt;write-host&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Creating a new Cache.ini File on server &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$servername&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; -F Yellow;
+    &lt;span class=&quot;nb&quot;&gt;Set-Content&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$a&lt;/span&gt; -Path &lt;span class=&quot;nv&quot;&gt;$cachefolder&lt;/span&gt;\cache.ini;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$server&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$servers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$servername&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$server&lt;/span&gt;.Address;
+    &lt;span class=&quot;nb&quot;&gt;write-host&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;START Timer Service on server &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$servername&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; -F Yellow;
+    &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Get-WmiObject &lt;/span&gt;Win32_Service -filter &lt;span class=&quot;s2&quot;&gt;&quot;name='SPTimerV4'&quot;&lt;/span&gt; -ComputerName &lt;span class=&quot;nv&quot;&gt;$servername&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.startservice&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; | Out-Null;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Sat, 16 Sep 2017 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2017/09/16/managed-props-and-config-cache/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/09/16/managed-props-and-config-cache/</guid>
+        
+        
+        <category>SharePoint</category>
+        
+      </item>
+    
+      <item>
+        <title>SharePoint: The server was unable to save the form at this time</title>
+        <description>&lt;p&gt;We ran across an issue in a test environment where we were unable to add items to a list, or a document
+library. However, you could use Windows explorer view to upload a document.&lt;/p&gt;
+
+&lt;p&gt;The specific error message seen was:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;The server was unable to save the form at this time. Please try again.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;Looking in the ULS log, there were odd messages dealing with authentication that seemed
+to indicate that the Javascript CSOM was unable to process my request due to conversion of Windows to Claims…
+but we’re using Kerberos. What’s up?&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Claims Windows Sign-In: Redirecting successfully signed-in user '&amp;lt;user here&amp;gt;' for request url 'https://your-sharepoint/_windows/default.aspx?ReturnUrl=/_vti.bin/client.svc/ProcessQuery'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There are several claimed ways to fix this error. They range from restarting your server to 
+enabling anonymous access (why anyone would resort to this is beyond me). Luckily, I found 
+a voice of sanity - &lt;a href=&quot;http://blog.isrichtig.de/Lists/Beitraege/Post.aspx?ID=128&quot;&gt;Volker @ isrichtig.de’s blog post “
+ERROR on Newform.aspx in some Lists”&lt;/a&gt;. 
+Here are his steps, which worked in our case as well:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Open the SharePoint Central Administration Web site, click Application Management.&lt;/li&gt;
+  &lt;li&gt;On the Application Management page, in the SharePoint Web Application Management section, click Web application list.&lt;/li&gt;
+  &lt;li&gt;On the Web Application List page, select your Web application.&lt;/li&gt;
+  &lt;li&gt;Select Authentication providers from the ribbon.&lt;/li&gt;
+  &lt;li&gt;Click Default.&lt;/li&gt;
+  &lt;li&gt;Click Ok to save the provider again.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Effectively, it looks like this resets your authentication settings for a particular zone 
+to what they’re believed to be in the configuration database. Why this got broke, I’m not sure, but this 
+was an easy fix that was only enforcing the known settings anyway.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 06 Jul 2016 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2016/07/06/The-server-was-unable-to-save/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/07/06/The-server-was-unable-to-save/</guid>
+        
+        
+        <category>SharePoint</category>
+        
+      </item>
+    
+      <item>
+        <title>Muhimbi PDF Converter Services &amp; InfoPath Error</title>
+        <description>&lt;p&gt;Ran across an error while proving out a new Muhimbi PDF Converter Services install. I haven’t 
+seen it’s like anywhere online, but managed to find a resolution.
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;This is most easily demonstrated if you’re running the Muhimbi Document Converter Diagnostics 
+tool from the server performing conversions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Author a new InfoPath form template and save it to C:\TEMP as form1.xsn&lt;/li&gt;
+  &lt;li&gt;Fill out an instance of the form and save it to C:\TEMP as form1.xml&lt;/li&gt;
+  &lt;li&gt;Use the diagnostics tool to attempt a conversion of the xml file.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here’s the error:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;FaultException occurred: ExceptionType: Unknown
+System.ServiceModel.FaultException`1[TestHarness.DocumentConverterService.WebServiceFaultException]:
+Muhimbi.DocumentConverter.WebService.Data.WebServiceInternalException: Exception of type 
+‘Muhimbi.DocumentConverter.WebService.Data.WebServiceInternalException’ was thrown. - Details: 
+“Access is denied.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;However, all other conversions attempted were successful (tested Word and PowerPoint). What’s going on here?&lt;/p&gt;
+
+&lt;p&gt;For grins, I removed the additional Authentication settings I had applied in the configuration file for converter services. Low and behold, 
+the InfoPath conversions started working. I added the authentication settings back, and I got the same results as before…&lt;/p&gt;
+
+&lt;p&gt;The fix? You must add the account used to run the Muhimbi service to the group you created that should be allowed to perform 
+conversions. My bet is there is some logic where the service calls itself through the port exposed, and there the 
+WCF service checks permissions and calls Access Denied.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 04 Apr 2016 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2016/04/04/Muhimbi-PDF-Converter-Services-and-InfoPath-Error/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/04/04/Muhimbi-PDF-Converter-Services-and-InfoPath-Error/</guid>
+        
+        
+        <category>Muhimbi PDF Converter Services</category>
+        
+      </item>
+    
+      <item>
+        <title>K2 - Service Account Rights Issue</title>
+        <description>&lt;p&gt;In two scenarios, errors wer observed when using K2 designer within SharePoint 2013.&lt;/p&gt;
+
+&lt;p&gt;Working with K2 support, a resolution was found to this.&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;p&gt;First, when trying to call a sub-workflow, the following error was observed:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Unable to retrieve a list of sub-workflows from the server&lt;/p&gt;
+
+  &lt;p&gt;User K2:[your service account here] has insufficient rights to perform
+action GetProcSets. Minimum of Export rights are required to perform this action.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Second, when attempting to delete a workflow from within the SharePoint-integrated 
+designer (after you click “Application” from the ribbon) and you have one or both of 
+the checkboxes ticket, the following error appears:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;User K2:[your service account here] does not have Administrator rights.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The issue found was that the service account used to run the application pool for the 
+SmartForms designer did not have sufficient rights on the K2 server. This looks to be 
+a bug/edge-case with the installer, as it was consistently present in multiple environments installed
+in the same fashion.&lt;/p&gt;
+
+&lt;p&gt;The easy fix? Go to your K2 Workspace, and open the Server Rights area. Add the service account
+with Admin and Export rights. Done.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 31 Mar 2016 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2016/03/31/K2-service-account-rights-issue/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/03/31/K2-service-account-rights-issue/</guid>
+        
+        
+        <category>K2</category>
+        
+      </item>
+    
+      <item>
+        <title>CMS Made Simple &amp; HostGator - Can't upload files</title>
+        <description>&lt;!--more--&gt;
+
+&lt;p&gt;I administer a CMS Made Simple site that runs on HostGator. I got a report from a user that they couldn’t upload any files. Strange! I checked it out, and neither could I (through the web interface). I could upload a file straight to the /uploads directory, but I couldn’t delete the file. It would complain about my actions being limited to the uploads folder… so it thought I wasn’t in it?&lt;/p&gt;
+
+&lt;p&gt;Logged into HostGator’s cPanel and found that my root path had changed from /home to /home4 … no notice from HostGator about this, it just changed.&lt;/p&gt;
+
+&lt;p&gt;Changed the config.php of the CMS Made Simple site to have /home4 wherever /home was before - all is working now.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 22 Nov 2014 21:15:00 -0600</pubDate>
+        <link>http://localhost:4000/2014/11/22/cms-made-simple-hostgator/</link>
+        <guid isPermaLink="true">http://localhost:4000/2014/11/22/cms-made-simple-hostgator/</guid>
+        
+        
+        <category>CMS Made Simple</category>
+        
+      </item>
+    
+      <item>
+        <title>CMS Made Simple - Post-Upgrade to v1.11.11</title>
+        <description>&lt;p&gt;After finishing an upgrade of another site’s CMS Made Simple to version 1.11.11, I found that in certain areas I was seeing warning messages at the top of the screen after editing calendar events within CGCalendar.&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;p&gt;They looked like this:&lt;/p&gt;
+
+&lt;p&gt;[code]
+Warning: Cannot modify header information - headers already sent by (output started at /home4/user/public_html/admin/moduleinterface.php:99) in /home4/user/public_html/include.php on line 96&lt;/p&gt;
+
+&lt;p&gt;Warning: Cannot modify header information - headers already sent by (output started at /home4/user/public_html/admin/moduleinterface.php:99) in /home4/user/public_html/include.php on line 99&lt;/p&gt;
+
+&lt;p&gt;Warning: Cannot modify header information - headers already sent by (output started at /home4/user/public_html/admin/moduleinterface.php:99) in /home4/user/public_html/include.php on line 102&lt;/p&gt;
+
+&lt;p&gt;Warning: Cannot modify header information - headers already sent by (output started at /home4/user/public_html/admin/moduleinterface.php:99) in /home4/user/public_html/include.php on line 103&lt;/p&gt;
+
+&lt;p&gt;Warning: Cannot modify header information - headers already sent by (output started at /home4/user/public_html/admin/moduleinterface.php:99) in /home4/user/public_html/include.php on line 106&lt;/p&gt;
+
+&lt;p&gt;Warning: Cannot modify header information - headers already sent by (output started at /home4/user/public_html/admin/moduleinterface.php:99) in /home4/user/public_html/include.php on line 109
+[/code]&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Solution&lt;/strong&gt;
+The solution I found was to change my Administration Theme preference from the older “NCleanGrey” to the newer “OneEleven”. This option is under My Preferences -&amp;gt; My Account -&amp;gt; User Preferences.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tracing it down&lt;/strong&gt;
+I’m fairly new to PHP, having developed C# primarily the last few years. However, I believe what’s causing this is that within the moduleinterface.php file (line 99), it’s calling a “ShowMessage” function that’s supposed to exist within your preferred theme. The NCleanGrey theme has no such function, while the newer OneEleven theme does. Why this lack of a function causes it to yield these particular error messages, I have no idea. I’m trying to post a bug report on this, so perhaps it can be fixed in the next version of CMSMS. Until then, I’d suggest just using the new theme.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 05 Sep 2014 21:08:00 -0500</pubDate>
+        <link>http://localhost:4000/2014/09/05/cms-made-simple-post-upgrade-to-v1-11-11/</link>
+        <guid isPermaLink="true">http://localhost:4000/2014/09/05/cms-made-simple-post-upgrade-to-v1-11-11/</guid>
+        
+        
+        <category>CMS Made Simple</category>
+        
+        <category>Programming</category>
+        
+      </item>
+    
+  </channel>
+</rss>

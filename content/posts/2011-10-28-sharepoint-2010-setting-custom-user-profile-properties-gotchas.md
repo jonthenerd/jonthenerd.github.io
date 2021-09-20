@@ -4,6 +4,7 @@ date: "2011-10-28"
 author: Jon Badgett
 categories:
     - Programming
+tags:
     - SharePoint
 draft: false
 slug: sharepoint-2010-setting-custom-user-profile-properties-gotchas

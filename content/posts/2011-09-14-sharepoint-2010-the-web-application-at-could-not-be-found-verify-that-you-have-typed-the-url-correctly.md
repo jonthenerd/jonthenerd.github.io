@@ -6,6 +6,7 @@ date: "2011-09-14"
 author: Jon Badgett
 categories:
     - Programming
+tags:
     - SharePoint
 draft: false
 slug: >-

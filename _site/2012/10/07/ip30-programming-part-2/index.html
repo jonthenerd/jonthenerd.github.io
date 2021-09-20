@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>IP30 Programming - Part 2</title>
+    <meta name="description" content="">
+    <meta property="og:title" content="IP30 Programming - Part 2" />
+<meta property="og:description" content="" />
+<meta property="og:site_name" content="JonTheNerd" />
+
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2012-10-07" />
+    
+    <meta property="article:author" content="https://www.facebook.com/jon.badgett.5" />
+    
+    
+    
+    <meta property="article:tag" content="Android" />
+    
+    <meta property="article:tag" content="Programming" />
+    
+
+<meta property="og:url" content="http://localhost:4000/2012/10/07/ip30-programming-part-2/" />
+    <link rel="stylesheet" href="/css/jonthenerd.min.css">
+    <link rel="stylesheet" href="/css/syntax.min.css">
+    <link rel="canonical" href="http://localhost:4000/2012/10/07/ip30-programming-part-2/">
+    <link rel="alternate" type="application/rss+xml" title="JonTheNerd" href="http://localhost:4000/feed.xml">
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "name" : "Jon Badgett",
+  "url" : "http://localhost:4000",
+  "sameAs" : [
+    "https://www.facebook.com/jon.badgett.5",
+    "https://github.com/jonthenerd",
+    "https://www.linkedin.com/in/jon-badgett-825a326b",
+    "https://plus.google.com/+JonBadgett",
+    "https://twitter.com/jonthenerd"
+  ]
+}
+</script>
+  </head>
+  <body>
+    
+
+  <nav class="navbar navbar-default topnav">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jtn-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">JonTheNerd</a>
+        </div>
+
+        <div id="jtn-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="subnav">
+    <div class="container">
+      <span>browse by <a href="/categories">category</a></span> 
+    </div>
+  </div>
+ 
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="jumbotron">
+    <div class="container">
+      <h1 class="post-title" itemprop="name headline">IP30 Programming - Part 2</h1>
+    </div>
+  </header>
+  <div class="post-meta-bar">
+      <div class="container">
+          <time datetime="2012-10-07T15:12:00-05:00" itemprop="datePublished">Oct 7, 2012</time> 
+        
+         | Posted in  
+          
+
+
+
+    
+        
+        
+        <a href="/categories/android/">Android</a>, 
+    
+        
+        
+        <a href="/categories/programming/">Programming</a>
+    
+
+         
+      </div>
+    </div>
+  <div class="container page-content">
+      <div itemprop="articleBody">
+        <!--more-->
+<p>The batteries on the IP30 and CN3 are fully charged and ready for some tinkering.</p>
+<h2>Upgrading the Firmware from 3.01 to 3.16</h2>
+<p>I looked into upgrading the firmware on the IP30 and it looks to require a MiniSD card. MiniSD is the never-mentioned step brother of SD and MicroSD… meaning stores don’t carry it anymore. I’ve got a MiniSD card and reader on order from Amazon… so updating the IP30 will have to wait.</p>
+<h2>Available Commands</h2>
+<p>To receive the available commands on the IP30, the HELP command can be issued.</p>
+
+<h2>Reading Tags</h2>
+<p>Issuing a READ command causes the IP30 to read all tags in the vicinity and report them back in one shot. Tested and this works. Turns out the 8 tags that I have for testing all have the same ID… not optimal but it will work for now.</p>
+<h2>Next</h2>
+<p>This is probably it for testing the IP30 with Windows and Tera Term. I’m going to activate my license to Xamarin (have to purchase just to deploy to the device…wish they had some better pricing for education) and get to programming.</p>
+
+      </div>
+    <div class="comments">  
+    <div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+    this.page.url = "http://localhost:4000/2012/10/07/ip30-programming-part-2/";
+    this.page.identifier = this.page.url;
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = '//jonthenerd.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</article>
+    
+    <div class="container">
+    <footer class="site-footer">
+        built with <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license/">License</a>
+    </footer>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1289131-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script src="/js/jonthenerd.min.js"></script>
+  </body>
+</html>

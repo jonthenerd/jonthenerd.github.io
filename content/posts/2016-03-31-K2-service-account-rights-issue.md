@@ -3,6 +3,8 @@ title: K2 - Service Account Rights Issue
 date: "2016-03-31"
 author: Jon Badgett
 categories:
+    - SysAdmin
+tags:
     - K2
 draft: false
 slug: K2-service-account-rights-issue

@@ -5,6 +5,8 @@ title: >-
 date: "2013-01-22"
 author: Jon Badgett
 categories:
+    - SysAdmin
+tags:
     - SharePoint
 draft: false
 slug: >-

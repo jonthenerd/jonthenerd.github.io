@@ -19,7 +19,10 @@
                 {{ if .Params.categories }}
                     | Posted in
                     {{ range $index, $category := .Params.categories }}{{ if gt $index 0 }}, {{ end }}<a href="/categories/{{ . | urlize }}">{{ . }}</a>{{ end }}
-
+                {{ end }}
+                {{ if .Params.tags }}
+                    | Tagged with
+                    {{ range $index, $tag := .Params.tags }}{{ if gt $index 0 }}, {{ end }}<a href="/tags/{{ . | urlize }}">{{ . }}</a>{{ end }}
                 {{ end }}
             </div>
         </div>

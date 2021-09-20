@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SharePoint 2010: Unable to delete site/web after SP1</title>
+    <meta name="description" content="While doing some testing after upgrading my dev machine to SP1, I ran into two separate issues when trying to delete a web through the UI by using the “Sites...">
+    <meta property="og:title" content="SharePoint 2010: Unable to delete site/web after SP1" />
+<meta property="og:description" content="While doing some testing after upgrading my dev machine to SP1, I ran into two separate issues when trying to delete a web through the UI by using the “Sites..." />
+<meta property="og:site_name" content="JonTheNerd" />
+
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2011-08-11" />
+    
+    <meta property="article:author" content="https://www.facebook.com/jon.badgett.5" />
+    
+    
+    
+    <meta property="article:tag" content="PowerShell" />
+    
+    <meta property="article:tag" content="Programming" />
+    
+    <meta property="article:tag" content="SharePoint" />
+    
+
+<meta property="og:url" content="http://localhost:4000/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/" />
+    <link rel="stylesheet" href="/css/jonthenerd.min.css">
+    <link rel="stylesheet" href="/css/syntax.min.css">
+    <link rel="canonical" href="http://localhost:4000/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/">
+    <link rel="alternate" type="application/rss+xml" title="JonTheNerd" href="http://localhost:4000/feed.xml">
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "name" : "Jon Badgett",
+  "url" : "http://localhost:4000",
+  "sameAs" : [
+    "https://www.facebook.com/jon.badgett.5",
+    "https://github.com/jonthenerd",
+    "https://www.linkedin.com/in/jon-badgett-825a326b",
+    "https://plus.google.com/+JonBadgett",
+    "https://twitter.com/jonthenerd"
+  ]
+}
+</script>
+  </head>
+  <body>
+    
+
+  <nav class="navbar navbar-default topnav">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jtn-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">JonTheNerd</a>
+        </div>
+
+        <div id="jtn-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="subnav">
+    <div class="container">
+      <span>browse by <a href="/categories">category</a></span> 
+    </div>
+  </div>
+ 
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="jumbotron">
+    <div class="container">
+      <h1 class="post-title" itemprop="name headline">SharePoint 2010: Unable to delete site/web after SP1</h1>
+    </div>
+  </header>
+  <div class="post-meta-bar">
+      <div class="container">
+          <time datetime="2011-08-11T10:32:00-05:00" itemprop="datePublished">Aug 11, 2011</time> 
+        
+         | Posted in  
+          
+
+
+
+    
+        
+        
+        <a href="/categories/powershell/">PowerShell</a>, 
+    
+        
+        
+        <a href="/categories/programming/">Programming</a>, 
+    
+        
+        
+        <a href="/categories/sharepoint/">SharePoint</a>
+    
+
+         
+      </div>
+    </div>
+  <div class="container page-content">
+      <div itemprop="articleBody">
+        <p>While doing some testing after upgrading my dev machine to SP1, I ran into two separate issues when trying to delete a web through the UI by using the “Sites and Workspaces” link in Site Settings. Deleting through powershell worked fine.</p>
+
+<!--more-->
+
+<p><strong>Issue #1: Specified method is not supported<a href="http://social.msdn.microsoft.com/Forums/en-ZA/sharepoint2010general/thread/897f2c01-aebb-449d-bda9-2e6fda81a897?outputAs=rss" rel="nofollow"><img src="http://i2.social.s-msft.com/Forums/resources/images/trans.gif?cver=1864.923%0d%0a" alt="" /></a></strong></p>
+
+<p>This specific error was occurring only on one of my web applications. I had just attached the database for this application to my existing SharePoint 2010 SP1 environment. The error will appear if the database for your web application needs to be updated.</p>
+
+<p>To check if your database needs to be updated, open Central Administration and navigate to “Upgrade and Migration” -&gt; “Review database status”. All of your databases should show a status of “No action required”. If the application you are experiencing the error on is running in compatibility mode, you’ll need to update it using PowerShell. To do this, first get the GUID ID of the database in question by running the following powershell and then copying the ID of the database you wish to upgrade:</p>
+
+<p>[code lang=”ps”]Get-SPContentDatabase[/code]</p>
+
+<p>Then run the following powershell to upgrade the database using the ID you just copied.</p>
+
+<p>[code lang=”ps”]Upgrade-SPContentDatabase -Identity YourDatabaseIDGoesHere[/code]</p>
+
+<p><strong>Issue #2: There is no Web named “/YourWebName”</strong></p>
+
+<p>Once my above issue was resolved on the one misbehaving web application, I had consistent behavior across all web applications when trying to delete a web… or so I thought. Turns out - if I create a web right off of the site collection (the RootWeb), then I can successfully delete it using the “Sites and Workspaces” page. Also - I can delete the web successfully if I navigate to the web I want to delete and then use the “Delete this Site” link. This behavior was consistent in a SharePoint 2010 SP1 environment <strong>and</strong> SharePoint 2010 SP1 + June Cumulative Update. What’s going on here?</p>
+
+<p>Time to open up Reflector. The offending code comes from the Microsoft.SharePoint.ApplicationPages dll located in the virtual directory/_app_bin of your web application. Specifically, the DeleteWebPage class.</p>
+
+<p>The offending line, using the OpenWeb function, gets passed “/DeleteMe” if your web’s name is “DeleteMe”. This will work fine if the web’s url starting from the site collection is “/DeleteMe”. But if your web is a subweb of a subweb (e.g. http://yoursite/someweb/DeleteMe) then it will fail and throw the exception. This looks to be a bug in SP1 and June CU… so we’ll have to wait for MS to fix the issue before we can go this route to delete a web. Instead - use PowerShell to delete the web or navigate to the web you wish to delete and use the “Delete this Site” link.</p>
+
+      </div>
+    <div class="comments">  
+    <div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+    this.page.url = "http://localhost:4000/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/";
+    this.page.identifier = this.page.url;
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = '//jonthenerd.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</article>
+    
+    <div class="container">
+    <footer class="site-footer">
+        built with <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license/">License</a>
+    </footer>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1289131-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script src="/js/jonthenerd.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CMS Made Simple - Post-Upgrade to v1.11.11</title>
+    <meta name="description" content="After finishing an upgrade of another site’s CMS Made Simple to version 1.11.11, I found that in certain areas I was seeing warning messages at the top of th...">
+    <meta property="og:title" content="CMS Made Simple - Post-Upgrade to v1.11.11" />
+<meta property="og:description" content="After finishing an upgrade of another site’s CMS Made Simple to version 1.11.11, I found that in certain areas I was seeing warning messages at the top of th..." />
+<meta property="og:site_name" content="JonTheNerd" />
+
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2014-09-05" />
+    
+    <meta property="article:author" content="https://www.facebook.com/jon.badgett.5" />
+    
+    
+    
+    <meta property="article:tag" content="CMS Made Simple" />
+    
+    <meta property="article:tag" content="Programming" />
+    
+
+<meta property="og:url" content="http://localhost:4000/2014/09/05/cms-made-simple-post-upgrade-to-v1-11-11/" />
+    <link rel="stylesheet" href="/css/jonthenerd.min.css">
+    <link rel="stylesheet" href="/css/syntax.min.css">
+    <link rel="canonical" href="http://localhost:4000/2014/09/05/cms-made-simple-post-upgrade-to-v1-11-11/">
+    <link rel="alternate" type="application/rss+xml" title="JonTheNerd" href="http://localhost:4000/feed.xml">
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "name" : "Jon Badgett",
+  "url" : "http://localhost:4000",
+  "sameAs" : [
+    "https://www.facebook.com/jon.badgett.5",
+    "https://github.com/jonthenerd",
+    "https://www.linkedin.com/in/jon-badgett-825a326b",
+    "https://plus.google.com/+JonBadgett",
+    "https://twitter.com/jonthenerd"
+  ]
+}
+</script>
+  </head>
+  <body>
+    
+
+  <nav class="navbar navbar-default topnav">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jtn-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">JonTheNerd</a>
+        </div>
+
+        <div id="jtn-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="subnav">
+    <div class="container">
+      <span>browse by <a href="/categories">category</a></span> 
+    </div>
+  </div>
+ 
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="jumbotron">
+    <div class="container">
+      <h1 class="post-title" itemprop="name headline">CMS Made Simple - Post-Upgrade to v1.11.11</h1>
+    </div>
+  </header>
+  <div class="post-meta-bar">
+      <div class="container">
+          <time datetime="2014-09-05T21:08:00-05:00" itemprop="datePublished">Sep 5, 2014</time> 
+        
+         | Posted in  
+          
+
+
+
+    
+        
+        
+        <a href="/categories/cmsmadesimple/">CMS Made Simple</a>, 
+    
+        
+        
+        <a href="/categories/programming/">Programming</a>
+    
+
+         
+      </div>
+    </div>
+  <div class="container page-content">
+      <div itemprop="articleBody">
+        <p>After finishing an upgrade of another site’s CMS Made Simple to version 1.11.11, I found that in certain areas I was seeing warning messages at the top of the screen after editing calendar events within CGCalendar.</p>
+
+<!--more-->
+<p>They looked like this:</p>
+
+<p>[code]
+Warning: Cannot modify header information - headers already sent by (output started at /home4/user/public_html/admin/moduleinterface.php:99) in /home4/user/public_html/include.php on line 96</p>
+
+<p>Warning: Cannot modify header information - headers already sent by (output started at /home4/user/public_html/admin/moduleinterface.php:99) in /home4/user/public_html/include.php on line 99</p>
+
+<p>Warning: Cannot modify header information - headers already sent by (output started at /home4/user/public_html/admin/moduleinterface.php:99) in /home4/user/public_html/include.php on line 102</p>
+
+<p>Warning: Cannot modify header information - headers already sent by (output started at /home4/user/public_html/admin/moduleinterface.php:99) in /home4/user/public_html/include.php on line 103</p>
+
+<p>Warning: Cannot modify header information - headers already sent by (output started at /home4/user/public_html/admin/moduleinterface.php:99) in /home4/user/public_html/include.php on line 106</p>
+
+<p>Warning: Cannot modify header information - headers already sent by (output started at /home4/user/public_html/admin/moduleinterface.php:99) in /home4/user/public_html/include.php on line 109
+[/code]</p>
+
+<p><strong>The Solution</strong>
+The solution I found was to change my Administration Theme preference from the older “NCleanGrey” to the newer “OneEleven”. This option is under My Preferences -&gt; My Account -&gt; User Preferences.</p>
+
+<p><strong>Tracing it down</strong>
+I’m fairly new to PHP, having developed C# primarily the last few years. However, I believe what’s causing this is that within the moduleinterface.php file (line 99), it’s calling a “ShowMessage” function that’s supposed to exist within your preferred theme. The NCleanGrey theme has no such function, while the newer OneEleven theme does. Why this lack of a function causes it to yield these particular error messages, I have no idea. I’m trying to post a bug report on this, so perhaps it can be fixed in the next version of CMSMS. Until then, I’d suggest just using the new theme.</p>
+
+      </div>
+    <div class="comments">  
+    <div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+    this.page.url = "http://localhost:4000/2014/09/05/cms-made-simple-post-upgrade-to-v1-11-11/";
+    this.page.identifier = this.page.url;
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = '//jonthenerd.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</article>
+    
+    <div class="container">
+    <footer class="site-footer">
+        built with <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license/">License</a>
+    </footer>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1289131-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script src="/js/jonthenerd.min.js"></script>
+  </body>
+</html>

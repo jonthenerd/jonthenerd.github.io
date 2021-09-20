@@ -3,8 +3,12 @@ title: ASP.NET Padding Oracle
 date: "2010-09-22"
 author: Jon Badgett
 categories:
-    - ASP.NET
+    - SysAdmin
     - Programming
+    - Security
+tags:
+    - ASP.NET
+    - Padding Oracle
 draft: false
 slug: asp-net-padding-oracle
 ---

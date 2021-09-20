@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head prefix="og: http://ogp.me/ns#">
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>JonTheNerd</title>
+    <meta name="description" content="Jon Badgett's personal blog. Open Source projects, observations on life,  and other oddities that I find interesting.
+">
+    <meta property="og:title" content="JonTheNerd" />
+<meta property="og:description" content="Jon Badgett's personal blog. Open Source projects, observations on life,  and other oddities that I find interesting.
+" />
+<meta property="og:site_name" content="JonTheNerd" />
+
+    <meta property="og:type" content="website" />
+
+<meta property="og:url" content="http://localhost:4000/page4/" />
+    <link rel="stylesheet" href="/css/jonthenerd.min.css">
+    <link rel="stylesheet" href="/css/syntax.min.css">
+    <link rel="canonical" href="http://localhost:4000/page4/">
+    <link rel="alternate" type="application/rss+xml" title="JonTheNerd" href="http://localhost:4000/feed.xml">
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "name" : "Jon Badgett",
+  "url" : "http://localhost:4000",
+  "sameAs" : [
+    "https://www.facebook.com/jon.badgett.5",
+    "https://github.com/jonthenerd",
+    "https://www.linkedin.com/in/jon-badgett-825a326b",
+    "https://plus.google.com/+JonBadgett",
+    "https://twitter.com/jonthenerd"
+  ]
+}
+</script>
+  </head>
+  <body>
+    
+
+  <nav class="navbar navbar-default topnav">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jtn-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">JonTheNerd</a>
+        </div>
+
+        <div id="jtn-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="subnav">
+    <div class="container">
+      <span>browse by <a href="/categories">category</a></span> 
+    </div>
+  </div>
+ 
+    <div class="container">
+<div class="row">
+    <div class="col-lg-12">
+        
+            <!-- Paginated Posts -->
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2012/10/05/communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android/">
+                            Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully with Android
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2012-10-05T17:50:00-05:00" itemprop="datePublished">Oct 5, 2012</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>I’m starting work on a project for my MBA program that involves using a mobile RFID reader with an Android device.</p>
+
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2012/10/05/communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/">
+                            SharePoint 2010: Observations and Revelations on the User Profile Sync Service and the Update-SPProfilePhotoStore cmdlet
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2012-01-20T13:46:00-06:00" itemprop="datePublished">Jan 20, 2012</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>These are my notes while trying to diagnose and better understnad some issues and oddities with the SharePoint 2010 User Profile Service Application.</p>
+
+<p>If you’re wanting to populate pictures into people’s profiles, you’ll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is <a href="http://www.reflector.net/">Redgate Reflector</a> (a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing. I’ve written some comments to help understand what’s going on, as well as renamed some variables for the section I was more interested in understanding. You’ll want to open the code in a new window (highlight on the top right of the code section), as some of the lines are quite long:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">[Cmdlet("Update", "SPProfilePhotoStore")]</span>
+<span class="k">internal</span> <span class="k">sealed</span> <span class="k">class</span> <span class="nc">SPCmdletUserProfilePhotoStore</span> <span class="p">:</span> <span class="n">SPCmdlet</span>
+<span class="p">{</span>
+    <span class="c1">// Fields</span>
+    <span class="k">private</span> <span class="kt">bool</span><span class="p">?</span> <span class="n">m_createThumbnailsForImportedPhotos</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">bool</span><span class="p">?</span> <span class="n">m_noDelete</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">SPFolder</span> <span class="n">m_profilePicFolder</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">SPSitePipeBind</span> <span class="n">m_SiteMySiteHost</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">UserProfileManager</span> <span class="n">m_userProfileManager</span><span class="p">;</span>
+
+    <span class="c1">// Constructor</span>
+    <span class="k">public</span> <span class="nf">SPCmdletUserProfilePhotoStore</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">m_createThumbnailsForImportedPhotos</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">m_noDelete</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Methods</span>
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">InternalProcessRecord</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Run the below section if -CreateThumbnailsForImportedPhotos has NOT been specified.</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="k">this</span><span class="p">.</span><span class="n">m_createThumbnailsForImportedPhotos</span><span class="p">.</span><span class="n">HasValue</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// Enumerate through all UserProfiles</span>
+            <span class="k">foreach</span> <span class="p">(</span><span class="n">UserProfile</span> <span class="n">profile</span> <span class="k">in</span> <span class="k">this</span><span class="p">.</span><span class="n">m_userProfileManager</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">try</span>
+                <span class="p">{</span>
+                    <span class="c1">// Get the PictureURL property of the user profile</span>
+                    <span class="kt">object</span> <span class="n">obj2</span> <span class="p">=</span> <span class="n">profile</span><span class="p">[</span><span class="s">"PictureURL"</span><span class="p">].</span><span class="n">Value</span><span class="p">;</span>
+                    <span class="k">if</span> <span class="p">((</span><span class="n">obj2</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">((</span><span class="kt">string</span><span class="p">)</span> <span class="n">obj2</span><span class="p">))</span>
+                    <span class="p">{</span>
+                        <span class="c1">// This user has a PictureURL property. Get the path</span>
+                        <span class="kt">string</span> <span class="n">path</span> <span class="p">=</span> <span class="n">profile</span><span class="p">[</span><span class="s">"PictureURL"</span><span class="p">].</span><span class="n">Value</span><span class="p">.</span><span class="nf">ToString</span><span class="p">();</span>
+                        <span class="kt">string</span> <span class="n">format</span> <span class="p">=</span> <span class="n">StringResourceManager</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"Powershell_MovePictures_GenericError_Text"</span><span class="p">);</span>
+                        <span class="n">format</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="n">CultureInfo</span><span class="p">.</span><span class="n">InvariantCulture</span><span class="p">,</span> <span class="n">format</span><span class="p">,</span> <span class="k">new</span> <span class="kt">object</span><span class="p">[]</span> <span class="p">{</span> <span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="n">profile</span><span class="p">[</span><span class="s">"AccountName"</span><span class="p">].</span><span class="n">Value</span> <span class="p">});</span>
+
+                        <span class="c1">// If the PictureURL property has a link to the medium thumbnail, don't process further.</span>
+                        <span class="k">if</span> <span class="p">(!</span><span class="n">Path</span><span class="p">.</span><span class="nf">GetFileNameWithoutExtension</span><span class="p">(</span><span class="n">path</span><span class="p">).</span><span class="nf">EndsWith</span><span class="p">(</span><span class="s">"_MThumb"</span><span class="p">,</span> <span class="n">StringComparison</span><span class="p">.</span><span class="n">Ordinal</span><span class="p">))</span>
+                        <span class="p">{</span>
+                            <span class="kt">bool</span> <span class="n">flag</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+                            <span class="kt">byte</span><span class="p">[]</span> <span class="n">buffer</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+                            <span class="k">try</span>
+                            <span class="p">{</span>
+                                <span class="k">using</span> <span class="p">(</span><span class="n">SPSite</span> <span class="n">site</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SPSite</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+                                <span class="p">{</span>
+                                    <span class="k">using</span> <span class="p">(</span><span class="n">SPWeb</span> <span class="n">web</span> <span class="p">=</span> <span class="n">site</span><span class="p">.</span><span class="n">RootWeb</span><span class="p">)</span>
+                                    <span class="p">{</span>
+                                        <span class="c1">// Try and get a reference to the file specified. This can be in SharePoint somewhere on on another webserver.</span>
+                                        <span class="n">SPFile</span> <span class="n">file</span> <span class="p">=</span> <span class="n">web</span><span class="p">.</span><span class="nf">GetFile</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+                                        <span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="n">Exists</span><span class="p">)</span>
+                                        <span class="p">{</span>
+                                            <span class="k">try</span>
+                                            <span class="p">{</span>
+                                                <span class="n">buffer</span> <span class="p">=</span> <span class="n">file</span><span class="p">.</span><span class="nf">OpenBinary</span><span class="p">();</span>
+                                            <span class="p">}</span>
+                                            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+                                            <span class="p">{</span>
+                                                <span class="k">base</span><span class="p">.</span><span class="nf">WriteError</span><span class="p">(</span><span class="k">new</span> <span class="nf">SPException</span><span class="p">(</span><span class="n">format</span> <span class="p">+</span> <span class="n">exception</span><span class="p">.</span><span class="nf">ToString</span><span class="p">()),</span> <span class="n">ErrorCategory</span><span class="p">.</span><span class="n">WriteError</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+                                                <span class="n">buffer</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+                                            <span class="p">}</span>
+                                        <span class="p">}</span>
+                                        <span class="k">else</span>
+                                        <span class="p">{</span>
+                                            <span class="c1">// The file doesn't exist. Write an error.</span>
+                                            <span class="kt">string</span> <span class="n">str4</span> <span class="p">=</span> <span class="n">StringResourceManager</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"Powershell_MovePictures_FileNotFound_Text"</span><span class="p">);</span>
+                                            <span class="n">str4</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="n">CultureInfo</span><span class="p">.</span><span class="n">CurrentCulture</span><span class="p">,</span> <span class="n">str4</span><span class="p">,</span> <span class="k">new</span> <span class="kt">object</span><span class="p">[]</span> <span class="p">{</span> <span class="n">path</span> <span class="p">});</span>
+                                            <span class="k">base</span><span class="p">.</span><span class="nf">WriteError</span><span class="p">(</span><span class="k">new</span> <span class="nf">FileNotFoundException</span><span class="p">(</span><span class="n">format</span> <span class="p">+</span> <span class="n">str4</span><span class="p">),</span> <span class="n">ErrorCategory</span><span class="p">.</span><span class="n">WriteError</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+                                        <span class="p">}</span>
+                                    <span class="p">}</span>
+                                <span class="p">}</span>
+                            <span class="p">}</span>
+                            <span class="k">catch</span> <span class="p">(</span><span class="n">FileNotFoundException</span><span class="p">)</span>
+                            <span class="p">{</span>
+                                <span class="c1">// File wasn't found using Object Model. Maybe it's on another webserver. Try and open the file using a WebClient instead of the Object Model</span>
+                                <span class="k">try</span>
+                                <span class="p">{</span>
+                                    <span class="n">WebClient</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">WebClient</span><span class="p">();</span>
+                                    <span class="n">CredentialCache</span> <span class="n">cache</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">CredentialCache</span><span class="p">();</span>
+                                    <span class="n">cache</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="s">"Ntlm"</span><span class="p">,</span> <span class="n">CredentialCache</span><span class="p">.</span><span class="n">DefaultNetworkCredentials</span><span class="p">);</span>
+                                    <span class="n">client</span><span class="p">.</span><span class="n">Credentials</span> <span class="p">=</span> <span class="n">cache</span><span class="p">;</span>
+                                    <span class="n">buffer</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">DownloadData</span><span class="p">(</span><span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="n">path</span><span class="p">));</span>
+                                <span class="p">}</span>
+                                <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception2</span><span class="p">)</span>
+                                <span class="p">{</span>
+                                    <span class="k">base</span><span class="p">.</span><span class="nf">WriteError</span><span class="p">(</span><span class="k">new</span> <span class="nf">SPException</span><span class="p">(</span><span class="n">format</span> <span class="p">+</span> <span class="n">exception2</span><span class="p">.</span><span class="nf">ToString</span><span class="p">()),</span> <span class="n">ErrorCategory</span><span class="p">.</span><span class="n">WriteError</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+                                    <span class="n">buffer</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+                                <span class="p">}</span>
+                            <span class="p">}</span>
+                            <span class="kt">string</span> <span class="n">str5</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+                            <span class="c1">// Did we read the file into memory?</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="n">buffer</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+                            <span class="p">{</span>
+                                <span class="kt">string</span> <span class="n">str7</span> <span class="p">=</span> <span class="n">UrlUtility</span><span class="p">.</span><span class="nf">ConvertToLegalFileName</span><span class="p">(</span><span class="n">profile</span><span class="p">[</span><span class="s">"AccountName"</span><span class="p">].</span><span class="n">Value</span><span class="p">.</span><span class="nf">ToString</span><span class="p">(),</span> <span class="sc">'_'</span><span class="p">);</span>
+                                <span class="kt">string</span> <span class="n">str8</span> <span class="p">=</span> <span class="s">".jpg"</span><span class="p">;</span>
+                                <span class="k">try</span>
+                                <span class="p">{</span>
+                                    <span class="k">using</span> <span class="p">(</span><span class="n">MemoryStream</span> <span class="n">stream</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MemoryStream</span><span class="p">(</span><span class="n">buffer</span><span class="p">))</span>
+                                    <span class="p">{</span>
+                                        <span class="k">using</span> <span class="p">(</span><span class="n">Bitmap</span> <span class="n">bitmap</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Bitmap</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="k">true</span><span class="p">))</span>
+                                        <span class="p">{</span>
+                                            <span class="c1">// Create a large thumbnail</span>
+                                            <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="nf">CreateThumbnail</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="n">LargeThumbnailSize</span><span class="p">,</span> <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="n">LargeThumbnailSize</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">m_profilePicFolder</span><span class="p">,</span> <span class="n">str7</span> <span class="p">+</span> <span class="s">"_LThumb"</span> <span class="p">+</span> <span class="n">str8</span><span class="p">);</span>
+                                            <span class="c1">// Create a medium thumbnail</span>
+                                            <span class="n">SPFile</span> <span class="n">file2</span> <span class="p">=</span> <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="nf">CreateThumbnail</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="n">MediumThumbnailSize</span><span class="p">,</span> <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="n">MediumThumbnailSize</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">m_profilePicFolder</span><span class="p">,</span> <span class="n">str7</span> <span class="p">+</span> <span class="s">"_MThumb"</span> <span class="p">+</span> <span class="n">str8</span><span class="p">);</span>
+                                            <span class="c1">// Create a small thumbnail</span>
+                                            <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="nf">CreateThumbnail</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="n">SmallThumbnailSize</span><span class="p">,</span> <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="n">SmallThumbnailSize</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">m_profilePicFolder</span><span class="p">,</span> <span class="n">str7</span> <span class="p">+</span> <span class="s">"_SThumb"</span> <span class="p">+</span> <span class="n">str8</span><span class="p">);</span>
+                                            <span class="c1">// Get a URL to the Medium Size Thumbnail</span>
+                                            <span class="n">str5</span> <span class="p">=</span> <span class="n">UrlUtility</span><span class="p">.</span><span class="nf">EnsureTrailingSlash</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">m_userProfileManager</span><span class="p">.</span><span class="n">MySiteHostUrl</span><span class="p">)</span> <span class="p">+</span> <span class="n">file2</span><span class="p">.</span><span class="n">Url</span><span class="p">;</span>
+                                        <span class="p">}</span>
+                                    <span class="p">}</span>
+                                <span class="p">}</span>
+                                <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception3</span><span class="p">)</span>
+                                <span class="p">{</span>
+                                    <span class="k">base</span><span class="p">.</span><span class="nf">WriteError</span><span class="p">(</span><span class="k">new</span> <span class="nf">SPException</span><span class="p">(</span><span class="n">format</span> <span class="p">+</span> <span class="n">exception3</span><span class="p">.</span><span class="nf">ToString</span><span class="p">()),</span> <span class="n">ErrorCategory</span><span class="p">.</span><span class="n">WriteError</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+                                    <span class="n">flag</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+                                <span class="p">}</span>
+                            <span class="p">}</span>
+                            <span class="c1">// If the URL to the medium thumbnail isn't null and we successfully created the thumbnails...</span>
+                            <span class="k">if</span> <span class="p">((</span><span class="n">str5</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="n">flag</span><span class="p">)</span>
+                            <span class="p">{</span>
+                                <span class="c1">// Set the PictureURL value</span>
+                                <span class="n">profile</span><span class="p">[</span><span class="s">"PictureURL"</span><span class="p">].</span><span class="n">Value</span> <span class="p">=</span> <span class="n">str5</span><span class="p">;</span>
+                                <span class="n">profile</span><span class="p">.</span><span class="nf">Commit</span><span class="p">();</span>
+                                <span class="c1">// Write to the log (verbose) that we set the Picture up.</span>
+                                <span class="kt">string</span> <span class="n">str9</span> <span class="p">=</span> <span class="n">StringResourceManager</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"Powershell_MovePictures_PhotoMoved_Text"</span><span class="p">);</span>
+                                <span class="n">str9</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="n">CultureInfo</span><span class="p">.</span><span class="n">InvariantCulture</span><span class="p">,</span> <span class="n">str9</span><span class="p">,</span> <span class="k">new</span> <span class="kt">object</span><span class="p">[]</span> <span class="p">{</span> <span class="n">profile</span><span class="p">[</span><span class="s">"AccountName"</span><span class="p">].</span><span class="nf">ToString</span><span class="p">(),</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="nf">ToLongTimeString</span><span class="p">()</span> <span class="p">});</span>
+                                <span class="k">base</span><span class="p">.</span><span class="nf">WriteVerbose</span><span class="p">(</span><span class="n">str9</span><span class="p">);</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception4</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="kt">string</span> <span class="n">str10</span> <span class="p">=</span> <span class="n">StringResourceManager</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"Powershell_MovePictures_GenericError_Text"</span><span class="p">);</span>
+                    <span class="n">str10</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="n">CultureInfo</span><span class="p">.</span><span class="n">InvariantCulture</span><span class="p">,</span> <span class="n">str10</span><span class="p">,</span> <span class="k">new</span> <span class="kt">object</span><span class="p">[]</span> <span class="p">{</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">,</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="n">profile</span><span class="p">[</span><span class="s">"AccountName"</span><span class="p">].</span><span class="n">Value</span> <span class="p">});</span>
+                    <span class="k">base</span><span class="p">.</span><span class="nf">WriteError</span><span class="p">(</span><span class="k">new</span> <span class="nf">SPException</span><span class="p">(</span><span class="n">str10</span> <span class="p">+</span> <span class="n">exception4</span><span class="p">.</span><span class="nf">ToString</span><span class="p">()),</span> <span class="n">ErrorCategory</span><span class="p">.</span><span class="n">WriteError</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="c1">// Run the below section if -CreateThumbnailsForImported has been specified</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="c1">// Get the MySiteHost Site Collection</span>
+            <span class="k">using</span> <span class="p">(</span><span class="n">SPSite</span> <span class="n">site2</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SPSite</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">m_userProfileManager</span><span class="p">.</span><span class="n">MySiteHostUrl</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="c1">// Access the MySiteHost RootWeb</span>
+                <span class="k">using</span> <span class="p">(</span><span class="n">SPWeb</span> <span class="n">web2</span> <span class="p">=</span> <span class="n">site2</span><span class="p">.</span><span class="n">RootWeb</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="c1">// Get the PhotoListURL</span>
+                    <span class="kt">string</span> <span class="n">importPhotoListUrl</span> <span class="p">=</span> <span class="n">UserProfileGlobal</span><span class="p">.</span><span class="nf">GetImportPhotoListUrl</span><span class="p">(</span><span class="n">ProfileType</span><span class="p">.</span><span class="n">User</span><span class="p">)</span> <span class="p">+</span> <span class="s">"/"</span> <span class="p">+</span> <span class="n">UserProfileGlobal</span><span class="p">.</span><span class="nf">GetImportPhotoFolderName</span><span class="p">(</span><span class="n">web2</span><span class="p">.</span><span class="n">Locale</span><span class="p">)</span> <span class="p">+</span> <span class="s">"/"</span><span class="p">;</span>
+                    <span class="c1">// Enumerate through all UserProfiles</span>
+                    <span class="k">foreach</span> <span class="p">(</span><span class="n">UserProfile</span> <span class="n">profile2</span> <span class="k">in</span> <span class="k">this</span><span class="p">.</span><span class="n">m_userProfileManager</span><span class="p">)</span>
+                    <span class="p">{</span>
+                        <span class="c1">// Get the filename of the photo, then the url to the photo, and finally the file itself</span>
+                        <span class="c1">// This is a combination of the UserProfileManager PartitionID (internal property) and the RecordId of the profile. This is the temporary picture file.</span>
+                        <span class="kt">string</span> <span class="n">importPhotoFilename</span> <span class="p">=</span> <span class="n">UserProfileGlobal</span><span class="p">.</span><span class="nf">GetImportPhotoFilename</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">m_userProfileManager</span><span class="p">,</span> <span class="n">profile2</span><span class="p">.</span><span class="n">RecordId</span><span class="p">);</span>
+                        <span class="kt">string</span> <span class="n">importPhotoFilenameWithListUrl</span> <span class="p">=</span> <span class="n">importPhotoListUrl</span> <span class="p">+</span> <span class="n">importPhotoFilename</span><span class="p">;</span>
+                        <span class="n">SPFile</span> <span class="n">file3</span> <span class="p">=</span> <span class="n">web2</span><span class="p">.</span><span class="nf">GetFile</span><span class="p">(</span><span class="n">importPhotoFilenameWithListUrl</span><span class="p">);</span>
+
+                        <span class="c1">// If the file exists, run below.</span>
+                        <span class="k">if</span> <span class="p">((</span><span class="n">file3</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="n">file3</span><span class="p">.</span><span class="n">Exists</span><span class="p">)</span>
+                        <span class="p">{</span>
+                            <span class="c1">// Format an error message in case we need it later.</span>
+                            <span class="kt">string</span> <span class="n">str15</span> <span class="p">=</span> <span class="n">StringResourceManager</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"Powershell_MovePictures_GenericError_Text"</span><span class="p">);</span>
+                            <span class="n">str15</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="n">CultureInfo</span><span class="p">.</span><span class="n">InvariantCulture</span><span class="p">,</span> <span class="n">str15</span><span class="p">,</span> <span class="k">new</span> <span class="kt">object</span><span class="p">[]</span> <span class="p">{</span> <span class="n">file3</span><span class="p">.</span><span class="nf">ToString</span><span class="p">(),</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="n">profile2</span><span class="p">[</span><span class="s">"AccountName"</span><span class="p">].</span><span class="n">Value</span> <span class="p">});</span>
+
+                            <span class="c1">// Try opening the file and reading it into memory</span>
+                            <span class="kt">byte</span><span class="p">[]</span> <span class="n">buffer2</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+                            <span class="k">try</span>
+                            <span class="p">{</span>
+                                <span class="n">buffer2</span> <span class="p">=</span> <span class="n">file3</span><span class="p">.</span><span class="nf">OpenBinary</span><span class="p">();</span>
+                            <span class="p">}</span>
+                            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception5</span><span class="p">)</span>
+                            <span class="p">{</span>
+                                <span class="c1">// There was an exeption reading the picture file into memory. Write this error to a log, then set the buffer to null</span>
+                                <span class="k">base</span><span class="p">.</span><span class="nf">WriteError</span><span class="p">(</span><span class="k">new</span> <span class="nf">SPException</span><span class="p">(</span><span class="n">str15</span> <span class="p">+</span> <span class="n">exception5</span><span class="p">.</span><span class="nf">ToString</span><span class="p">()),</span> <span class="n">ErrorCategory</span><span class="p">.</span><span class="n">WriteError</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+                                <span class="n">buffer2</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+                            <span class="p">}</span>
+
+                            <span class="c1">// Check and see if we were able to read the file into memory successfully. Run below if we could.</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="n">buffer2</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+                            <span class="p">{</span>
+                                <span class="c1">// We've got the temporary file in memory. Determine what we should rename it</span>
+                                <span class="kt">string</span> <span class="n">str17</span> <span class="p">=</span> <span class="n">profile2</span><span class="p">[</span><span class="s">"AccountName"</span><span class="p">].</span><span class="n">Value</span><span class="p">.</span><span class="nf">ToString</span><span class="p">().</span><span class="nf">Replace</span><span class="p">(</span><span class="s">@"\"</span><span class="p">,</span> <span class="s">"_"</span><span class="p">);</span>
+                                <span class="kt">string</span> <span class="n">str18</span> <span class="p">=</span> <span class="s">".jpg"</span><span class="p">;</span>
+                                <span class="kt">string</span> <span class="n">mediumThumbnailURL</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+                                <span class="kt">bool</span> <span class="n">createThumbnailsSuccess</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+                                <span class="k">try</span>
+                                <span class="p">{</span>
+                                    <span class="k">using</span> <span class="p">(</span><span class="n">MemoryStream</span> <span class="n">stream2</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MemoryStream</span><span class="p">(</span><span class="n">buffer2</span><span class="p">))</span>
+                                    <span class="p">{</span>
+                                        <span class="k">using</span> <span class="p">(</span><span class="n">Bitmap</span> <span class="n">bitmap2</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Bitmap</span><span class="p">(</span><span class="n">stream2</span><span class="p">,</span> <span class="k">true</span><span class="p">))</span>
+                                        <span class="p">{</span>
+                                            <span class="c1">// Create a Thumbnail - large size</span>
+                                            <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="nf">CreateThumbnail</span><span class="p">(</span><span class="n">bitmap2</span><span class="p">,</span> <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="n">LargeThumbnailSize</span><span class="p">,</span> <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="n">LargeThumbnailSize</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">m_profilePicFolder</span><span class="p">,</span> <span class="n">str17</span> <span class="p">+</span> <span class="s">"_LThumb"</span> <span class="p">+</span> <span class="n">str18</span><span class="p">);</span>
+                                            <span class="c1">// Create a Thumbanil - medium size, and get a reference to the file it creates</span>
+                                            <span class="n">SPFile</span> <span class="n">file4</span> <span class="p">=</span> <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="nf">CreateThumbnail</span><span class="p">(</span><span class="n">bitmap2</span><span class="p">,</span> <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="n">MediumThumbnailSize</span><span class="p">,</span> <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="n">MediumThumbnailSize</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">m_profilePicFolder</span><span class="p">,</span> <span class="n">str17</span> <span class="p">+</span> <span class="s">"_MThumb"</span> <span class="p">+</span> <span class="n">str18</span><span class="p">);</span>
+                                            <span class="c1">// Create a Thumbnail - small size</span>
+                                            <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="nf">CreateThumbnail</span><span class="p">(</span><span class="n">bitmap2</span><span class="p">,</span> <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="n">SmallThumbnailSize</span><span class="p">,</span> <span class="n">UserProfilePhotos</span><span class="p">.</span><span class="n">SmallThumbnailSize</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">m_profilePicFolder</span><span class="p">,</span> <span class="n">str17</span> <span class="p">+</span> <span class="s">"_SThumb"</span> <span class="p">+</span> <span class="n">str18</span><span class="p">);</span>
+                                            <span class="c1">// Build a URL that points to the medium size thumbnail</span>
+                                            <span class="n">mediumThumbnailURL</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">m_userProfileManager</span><span class="p">.</span><span class="n">MySiteHostUrl</span> <span class="p">+</span> <span class="n">file4</span><span class="p">.</span><span class="n">Url</span><span class="p">;</span>
+                                        <span class="p">}</span>
+                                    <span class="p">}</span>
+                                <span class="p">}</span>
+                                <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception6</span><span class="p">)</span>
+                                <span class="p">{</span>
+                                    <span class="k">base</span><span class="p">.</span><span class="nf">WriteError</span><span class="p">(</span><span class="k">new</span> <span class="nf">SPException</span><span class="p">(</span><span class="n">str15</span> <span class="p">+</span> <span class="n">exception6</span><span class="p">.</span><span class="nf">ToString</span><span class="p">()),</span> <span class="n">ErrorCategory</span><span class="p">.</span><span class="n">WriteError</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+                                    <span class="n">createThumbnailsSuccess</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+                                <span class="p">}</span>
+                                <span class="c1">// Have we successfully created the thumbnails and have a path to the medium thumbnail?</span>
+                                <span class="k">if</span> <span class="p">(</span><span class="n">createThumbnailsSuccess</span> <span class="p">&amp;&amp;</span> <span class="p">(</span><span class="n">mediumThumbnailURL</span> <span class="p">!=</span> <span class="k">null</span><span class="p">))</span>
+                                <span class="p">{</span>
+                                    <span class="c1">// Set the PictureURL property</span>
+                                    <span class="n">profile2</span><span class="p">[</span><span class="s">"PictureURL"</span><span class="p">].</span><span class="n">Value</span> <span class="p">=</span> <span class="n">mediumThumbnailURL</span><span class="p">;</span>
+                                    <span class="n">profile2</span><span class="p">.</span><span class="nf">Commit</span><span class="p">();</span>
+                                    <span class="c1">// If -NoDelete wasn't specified, then delete the image with the Guid_ID pattern for this user profile.</span>
+                                    <span class="k">if</span> <span class="p">(!</span><span class="k">this</span><span class="p">.</span><span class="n">m_noDelete</span><span class="p">.</span><span class="n">HasValue</span> <span class="p">||</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">m_noDelete</span> <span class="p">==</span> <span class="k">false</span><span class="p">))</span>
+                                    <span class="p">{</span>
+                                        <span class="n">file3</span><span class="p">.</span><span class="nf">Delete</span><span class="p">();</span>
+                                    <span class="p">}</span>
+                                <span class="p">}</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">InternalValidate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">SPSite</span> <span class="n">site</span> <span class="p">=</span> <span class="k">this</span><span class="p">.</span><span class="n">MySiteHostLocation</span><span class="p">.</span><span class="nf">Read</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">site</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">string</span> <span class="n">message</span> <span class="p">=</span> <span class="n">StringResourceManager</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"Powershell_MovePictures_NullMySiteHost_Text"</span><span class="p">);</span>
+            <span class="k">base</span><span class="p">.</span><span class="nf">ThrowTerminatingError</span><span class="p">(</span><span class="k">new</span> <span class="nf">ArgumentException</span><span class="p">(</span><span class="n">message</span><span class="p">),</span> <span class="n">ErrorCategory</span><span class="p">.</span><span class="n">InvalidArgument</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">SPServiceContext</span> <span class="n">serviceContext</span> <span class="p">=</span> <span class="n">SPServiceContext</span><span class="p">.</span><span class="nf">GetContext</span><span class="p">(</span><span class="n">site</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">serviceContext</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">string</span> <span class="n">str2</span> <span class="p">=</span> <span class="n">StringResourceManager</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"Powershell_MovePictures_ServerContextNotFound_Text"</span><span class="p">);</span>
+            <span class="k">base</span><span class="p">.</span><span class="nf">ThrowTerminatingError</span><span class="p">(</span><span class="k">new</span> <span class="nf">ArgumentException</span><span class="p">(</span><span class="n">str2</span><span class="p">),</span> <span class="n">ErrorCategory</span><span class="p">.</span><span class="n">ObjectNotFound</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">m_userProfileManager</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">UserProfileManager</span><span class="p">(</span><span class="n">serviceContext</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">m_userProfileManager</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">string</span> <span class="n">str3</span> <span class="p">=</span> <span class="n">StringResourceManager</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"Powershell_MovePictures_ProfManagerNotFound_Text"</span><span class="p">);</span>
+            <span class="k">base</span><span class="p">.</span><span class="nf">ThrowTerminatingError</span><span class="p">(</span><span class="k">new</span> <span class="nf">ArgumentException</span><span class="p">(</span><span class="n">str3</span><span class="p">),</span> <span class="n">ErrorCategory</span><span class="p">.</span><span class="n">ObjectNotFound</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="k">this</span><span class="p">.</span><span class="n">m_userProfileManager</span><span class="p">.</span><span class="n">IsProfileAdmin</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">string</span> <span class="n">str4</span> <span class="p">=</span> <span class="n">StringResourceManager</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="s">"Powershell_MovePictures_NotProfileAdmin_Text"</span><span class="p">);</span>
+            <span class="k">base</span><span class="p">.</span><span class="nf">ThrowTerminatingError</span><span class="p">(</span><span class="k">new</span> <span class="nf">ArgumentException</span><span class="p">(</span><span class="n">str4</span><span class="p">),</span> <span class="n">ErrorCategory</span><span class="p">.</span><span class="n">InvalidOperation</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">m_profilePicFolder</span> <span class="p">=</span> <span class="n">UserProfileGlobal</span><span class="p">.</span><span class="nf">GetOrCreatePictureFolder</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">m_userProfileManager</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">base</span><span class="p">.</span><span class="nf">ThrowTerminatingError</span><span class="p">(</span><span class="n">exception</span><span class="p">,</span> <span class="n">ErrorCategory</span><span class="p">.</span><span class="n">ObjectNotFound</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Properties</span>
+    <span class="p">[</span><span class="nf">Parameter</span><span class="p">(</span><span class="n">Mandatory</span><span class="p">=</span><span class="k">false</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="n">CreateThumbnailsForImportedPhotos</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">m_createThumbnailsForImportedPhotos</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">set</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">m_createThumbnailsForImportedPhotos</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">bool</span><span class="p">?(</span><span class="k">value</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">ValidateNotNull</span><span class="p">,</span> <span class="nf">Parameter</span><span class="p">(</span><span class="n">Mandatory</span><span class="p">=</span><span class="k">true</span><span class="p">,</span> <span class="n">ValueFromPipeline</span><span class="p">=</span><span class="k">true</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">SPSitePipeBind</span> <span class="n">MySiteHostLocation</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">m_SiteMySiteHost</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">set</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">m_SiteMySiteHost</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="nf">Parameter</span><span class="p">(</span><span class="n">Mandatory</span><span class="p">=</span><span class="k">false</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="n">NoDelete</span>
+    <span class="p">{</span>
+        <span class="k">get</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">m_noDelete</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">set</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">m_noDelete</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">bool</span><span class="p">?(</span><span class="k">value</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>From this we gather that the command has two modes depending on whether the -CreateThumbnailsForImportedPhotos flag is specified.</p>
+
+<p><strong>CreateThumbnailsForImportedPhotos specified</strong></p>
+
+<p>This mode appears intended for those who are importing their pictures from Active Directory (or other source) as a raw picture (Octet String for AD) in bytes.</p>
+
+<p><strong>CreateThumbnailsForImportedPhotos not specified</strong></p>
+
+<p>This mode appears intended for the use cases where the PictureURL property has been prepopulated with a URL that either points to an image in SharePoint or an image available on another web server. This mode still will create thumbnails for you, but it doesn’t look for the temporary pictures in the form {GUID}_ID to make the thumbnails from - it will try and access the picture located at the URL specified in the PictureURL property.</p>
+
+<p>So - if you’re importing your pictures from Active Directory and a user removes their picture from the directory, there is no means in the powershell (or observed from the import process) to take care of removing the picture from SharePoint.</p>
+
+<p>I’ll post more as more is learned. There doesn’t seem to be much information on some of these things.</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2012/01/04/sharepoint-2010-ribbon-customactions/">
+                            SharePoint 2010: Ribbon CustomActions
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2012-01-04T14:21:00-06:00" itemprop="datePublished">Jan 4, 2012</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>Developing a CustomAction for the Ribbon and SharePoint 2010? If you’re like me - you follow some instructions online, deploy it once to verify it works, then change as needed and redeploy. One catch though - the data needed for the ribbon custom action to work is fetched by the browser and CACHED! So you won’t see your changes…until you clear your cache. Stupid but true. You’re welcome.</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2012/01/04/sharepoint-2010-ribbon-customactions/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2011/12/01/hands-down-the-best-blog-post-on-helpful-utility-programs-ever/">
+                            Hands down, the best blog post on helpful utility programs ever.
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2011-12-01T08:14:00-06:00" itemprop="datePublished">Dec 1, 2011</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>If you’re a developer, or an admistrator, or just command your home machine with extreme prejudice - you need to read <a href="http://www.hanselman.com/blog/ScottHanselmans2011UltimateDeveloperAndPowerUsersToolListForWindows.aspx">Scott Hanselman’s 2011 Ultimate Developer and Power Users Tool List for Windows</a>. Lots of good utilities to be found there. Some may even change your life…</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2011/12/01/hands-down-the-best-blog-post-on-helpful-utility-programs-ever/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2011/10/28/sharepoint-2010-setting-custom-user-profile-properties-gotchas/">
+                            SharePoint 2010: Setting custom User Profile properties Gotchas
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2011-10-28T16:18:00-05:00" itemprop="datePublished">Oct 28, 2011</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <h2>The Goal</h2>
+<p>The goal is to create a custom User Profile property and then set and retrieve its value using C#.</p>
+<h2>The resources</h2>
+<p>Here’s the best resources on the net for creating, modifying, etc.</p>
+<ul>
+	<li>Peter Holpar's <a href="http://pholpar.wordpress.com/2010/03/17/creating-profile-properties-and-sections-the-sharepoint-2010-way-part-2-the-code/">Creating profile properties and sections the SharePoint 2010 way - part 2, the code</a></li>
+	<li>MSDN's <a href="http://msdn.microsoft.com/en-us/library/ms518939(v=office.14).aspx">How to: Modify User Profile Data</a></li>
+</ul>
+<h2>The Gotchas</h2>
+<p>Using the above resources, you can piece together how to programatically create custom user profile properties (and sections), set their value(s), and get their value(s). As a developer, you’ve probably only configured enough of your dev farm to get done what you need to do…which isn’t nearly enough to set the values on a custom user profile property.</p>
+
+<p>What else do you need?</p>
+
+<p>Custom User Profile Properties (and several of the Out of Box ones) depend on a Managed Metadata Service Application being setup and associated with the application you’re working with. This is fairly trivial to setup. Just remember that after you set it up via the UI, you’ll need to start it on the “Manage services on this server” page, and then perform an IIS reset. Forgetting these will keep your Managed Metadata service from working.</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2011/10/28/sharepoint-2010-setting-custom-user-profile-properties-gotchas/">Read More &gt;</a>
+                </article>
+        
+            
+        
+
+            <!-- Pagination links -->
+            <div class="pagination">
+            
+                <a href="/page3" class="previous">Previous</a>
+            
+            <span class="page_number ">Page: 4 of 15</span>
+            
+                <a href="/page5" class="next">Next</a>
+            
+            </div>
+        <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+    </div>
+    
+</div>
+</div>
+    
+    <div class="container">
+    <footer class="site-footer">
+        built with <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license/">License</a>
+    </footer>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1289131-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script src="/js/jonthenerd.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SharePoint: The server was unable to save the form at this time</title>
+    <meta name="description" content="We ran across an issue in a test environment where we were unable to add items to a list, or a documentlibrary. However, you could use Windows explorer view ...">
+    <meta property="og:title" content="SharePoint: The server was unable to save the form at this time" />
+<meta property="og:description" content="We ran across an issue in a test environment where we were unable to add items to a list, or a documentlibrary. However, you could use Windows explorer view ..." />
+<meta property="og:site_name" content="JonTheNerd" />
+
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2016-07-06" />
+    
+    <meta property="article:author" content="https://www.facebook.com/jon.badgett.5" />
+    
+    
+    
+    <meta property="article:tag" content="SharePoint" />
+    
+
+<meta property="og:url" content="http://localhost:4000/2016/07/06/The-server-was-unable-to-save/" />
+    <link rel="stylesheet" href="/css/jonthenerd.min.css">
+    <link rel="stylesheet" href="/css/syntax.min.css">
+    <link rel="canonical" href="http://localhost:4000/2016/07/06/The-server-was-unable-to-save/">
+    <link rel="alternate" type="application/rss+xml" title="JonTheNerd" href="http://localhost:4000/feed.xml">
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "name" : "Jon Badgett",
+  "url" : "http://localhost:4000",
+  "sameAs" : [
+    "https://www.facebook.com/jon.badgett.5",
+    "https://github.com/jonthenerd",
+    "https://www.linkedin.com/in/jon-badgett-825a326b",
+    "https://plus.google.com/+JonBadgett",
+    "https://twitter.com/jonthenerd"
+  ]
+}
+</script>
+  </head>
+  <body>
+    
+
+  <nav class="navbar navbar-default topnav">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jtn-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">JonTheNerd</a>
+        </div>
+
+        <div id="jtn-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="subnav">
+    <div class="container">
+      <span>browse by <a href="/categories">category</a></span> 
+    </div>
+  </div>
+ 
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="jumbotron">
+    <div class="container">
+      <h1 class="post-title" itemprop="name headline">SharePoint: The server was unable to save the form at this time</h1>
+    </div>
+  </header>
+  <div class="post-meta-bar">
+      <div class="container">
+          <time datetime="2016-07-06T00:00:00-05:00" itemprop="datePublished">Jul 6, 2016</time> 
+        
+         | Posted in  
+          
+
+
+
+    
+        
+        
+        <a href="/categories/sharepoint/">SharePoint</a>
+    
+
+         
+      </div>
+    </div>
+  <div class="container page-content">
+      <div itemprop="articleBody">
+        <p>We ran across an issue in a test environment where we were unable to add items to a list, or a document
+library. However, you could use Windows explorer view to upload a document.</p>
+
+<p>The specific error message seen was:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The server was unable to save the form at this time. Please try again.
+</code></pre></div></div>
+<!--more-->
+
+<p>Looking in the ULS log, there were odd messages dealing with authentication that seemed
+to indicate that the Javascript CSOM was unable to process my request due to conversion of Windows to Claims…
+but we’re using Kerberos. What’s up?</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Claims Windows Sign-In: Redirecting successfully signed-in user '&lt;user here&gt;' for request url 'https://your-sharepoint/_windows/default.aspx?ReturnUrl=/_vti.bin/client.svc/ProcessQuery'
+</code></pre></div></div>
+
+<p>There are several claimed ways to fix this error. They range from restarting your server to 
+enabling anonymous access (why anyone would resort to this is beyond me). Luckily, I found 
+a voice of sanity - <a href="http://blog.isrichtig.de/Lists/Beitraege/Post.aspx?ID=128">Volker @ isrichtig.de’s blog post “
+ERROR on Newform.aspx in some Lists”</a>. 
+Here are his steps, which worked in our case as well:</p>
+
+<ul>
+  <li>Open the SharePoint Central Administration Web site, click Application Management.</li>
+  <li>On the Application Management page, in the SharePoint Web Application Management section, click Web application list.</li>
+  <li>On the Web Application List page, select your Web application.</li>
+  <li>Select Authentication providers from the ribbon.</li>
+  <li>Click Default.</li>
+  <li>Click Ok to save the provider again.</li>
+</ul>
+
+<p>Effectively, it looks like this resets your authentication settings for a particular zone 
+to what they’re believed to be in the configuration database. Why this got broke, I’m not sure, but this 
+was an easy fix that was only enforcing the known settings anyway.</p>
+
+      </div>
+    <div class="comments">  
+    <div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+    this.page.url = "http://localhost:4000/2016/07/06/The-server-was-unable-to-save/";
+    this.page.identifier = this.page.url;
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = '//jonthenerd.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</article>
+    
+    <div class="container">
+    <footer class="site-footer">
+        built with <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license/">License</a>
+    </footer>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1289131-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script src="/js/jonthenerd.min.js"></script>
+  </body>
+</html>

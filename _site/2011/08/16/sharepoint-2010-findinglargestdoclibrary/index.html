@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SharePoint 2010: Finding the largest document library in a site collection</title>
+    <meta name="description" content="SharePoint 2007 came with a page (storman.aspx) dedicated to showing you how much space each of the lists in your site collection were taking up. SharePoint ...">
+    <meta property="og:title" content="SharePoint 2010: Finding the largest document library in a site collection" />
+<meta property="og:description" content="SharePoint 2007 came with a page (storman.aspx) dedicated to showing you how much space each of the lists in your site collection were taking up. SharePoint ..." />
+<meta property="og:site_name" content="JonTheNerd" />
+
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2011-08-16" />
+    
+    <meta property="article:author" content="https://www.facebook.com/jon.badgett.5" />
+    
+    
+    
+    <meta property="article:tag" content="PowerShell" />
+    
+    <meta property="article:tag" content="Programming" />
+    
+    <meta property="article:tag" content="SharePoint" />
+    
+
+<meta property="og:url" content="http://localhost:4000/2011/08/16/sharepoint-2010-findinglargestdoclibrary/" />
+    <link rel="stylesheet" href="/css/jonthenerd.min.css">
+    <link rel="stylesheet" href="/css/syntax.min.css">
+    <link rel="canonical" href="http://localhost:4000/2011/08/16/sharepoint-2010-findinglargestdoclibrary/">
+    <link rel="alternate" type="application/rss+xml" title="JonTheNerd" href="http://localhost:4000/feed.xml">
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "name" : "Jon Badgett",
+  "url" : "http://localhost:4000",
+  "sameAs" : [
+    "https://www.facebook.com/jon.badgett.5",
+    "https://github.com/jonthenerd",
+    "https://www.linkedin.com/in/jon-badgett-825a326b",
+    "https://plus.google.com/+JonBadgett",
+    "https://twitter.com/jonthenerd"
+  ]
+}
+</script>
+  </head>
+  <body>
+    
+
+  <nav class="navbar navbar-default topnav">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jtn-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">JonTheNerd</a>
+        </div>
+
+        <div id="jtn-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="subnav">
+    <div class="container">
+      <span>browse by <a href="/categories">category</a></span> 
+    </div>
+  </div>
+ 
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="jumbotron">
+    <div class="container">
+      <h1 class="post-title" itemprop="name headline">SharePoint 2010: Finding the largest document library in a site collection</h1>
+    </div>
+  </header>
+  <div class="post-meta-bar">
+      <div class="container">
+          <time datetime="2011-08-16T16:01:00-05:00" itemprop="datePublished">Aug 16, 2011</time> 
+        
+         | Posted in  
+          
+
+
+
+    
+        
+        
+        <a href="/categories/powershell/">PowerShell</a>, 
+    
+        
+        
+        <a href="/categories/programming/">Programming</a>, 
+    
+        
+        
+        <a href="/categories/sharepoint/">SharePoint</a>
+    
+
+         
+      </div>
+    </div>
+  <div class="container page-content">
+      <div itemprop="articleBody">
+        <p>SharePoint 2007 came with a page (storman.aspx) dedicated to showing you how much space each of the lists in your site collection were taking up. SharePoint 2010 removed this page. Luckily, SharePoint 2010 SP1 added it back in. But what if you’re still haven’t updated to SP1 and you’re getting warnings/errors about running out of space?</p>
+
+<p>Obviously - up the space so as to avoid additional noise from your users. Then - figure out which libraries are taking up the most space. This can be done by using the (now obsolete - but working) <a href="http://msdn.microsoft.com/en-us/library/microsoft.sharepoint.spsite.storagemanagementinformation.aspx">StorageManagementInformation method off of SPSite</a>. You can write some C# to use it, or you can use PowerShell.</p>
+
+<p>The required arguments for this method (listed below) can be found by looking at the above MSDN link. I’ll also include the potential values that can be found by using Reflector to look at the Microsoft.SharePoint dll:</p>
+<ol>
+	<li><strong>ltVar: </strong>What kind of storage management information to display
+<ul>
+	<li>List = 1</li>
+	<li>DocumentLibrary = 2</li>
+	<li>Document = 3</li>
+</ul>
+</li>
+	<li><strong>sordVar: </strong>the direction in which the items are to be sorted
+<ul>
+	<li>Increasing = 0x10</li>
+	<li>Decreasing = 0x11</li>
+</ul>
+</li>
+	<li><strong>soVar</strong>: whether the items are sorted by size or by date
+<ul>
+	<li>Size=0</li>
+	<li>Date = 1</li>
+</ul>
+</li>
+	<li><strong>nMaxResults</strong>: the number of results to return</li>
+</ol>
+
+<p>So if you want to find the top 5 largest document libraries in a specific site collection, here’s the PowerShell:
+[code lang=”ps”]
+$site = Get-SPSite "http://yoursitecollection:portifneeded";
+$dataTable = $site.StorageManagementInformation(2,0x11,0,5);
+$dataTable | Select *
+[/code]</p>
+
+<p>This is very helpful if you aren’t yet on SP2010 SP1. A note though - the method is marked as obselete with this description “SPSite.StorageManagementInformation is expensive; avoid using it.”. There’s no further explanation on what is being spooled up to execute the method or why it was OK in SP2007 but not SP2010. So I’d consider this OK to use if you have to…but not in some kind of recurring scheduled script. Your mileage may vary, I’m not responsible for what happens to your farm, etc. etc.</p>
+
+<p>Hope you found this useful. Let me know!</p>
+
+      </div>
+    <div class="comments">  
+    <div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+    this.page.url = "http://localhost:4000/2011/08/16/sharepoint-2010-findinglargestdoclibrary/";
+    this.page.identifier = this.page.url;
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = '//jonthenerd.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+</article>
+    
+    <div class="container">
+    <footer class="site-footer">
+        built with <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license/">License</a>
+    </footer>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1289131-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script src="/js/jonthenerd.min.js"></script>
+  </body>
+</html>

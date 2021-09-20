@@ -9,13 +9,17 @@
 -->
 
     <div class="homepage-content">
+
         <div class="container">
             <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
             {{ .Content }}
         </div>
     </div>
-    <div class="post-list">
-        <div class="container">
+    <div class="container">
+        <div style="float:right">
+            {{ template "partials/tag-cloud.html" . }}
+        </div>
+        <div class="post-list">
             {{ $paginator := .Paginate (where (where .Site.Pages "Type" "posts") "IsPage" true) }}
             {{ range $paginator.Pages }}
                 <article>

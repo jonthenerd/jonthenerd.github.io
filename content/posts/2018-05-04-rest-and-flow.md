@@ -3,8 +3,9 @@ title: "Microsoft Flow: Using the SharePoint REST API"
 date: "2018-05-04"
 author: Jon Badgett
 categories:
-    - SharePoint
     - Programming
+tags:
+    - SharePoint
 draft: false
 slug: rest-and-flow
 ---

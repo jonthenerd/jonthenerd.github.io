@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head prefix="og: http://ogp.me/ns#">
+  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>JonTheNerd</title>
+    <meta name="description" content="Jon Badgett's personal blog. Open Source projects, observations on life,  and other oddities that I find interesting.
+">
+    <meta property="og:title" content="JonTheNerd" />
+<meta property="og:description" content="Jon Badgett's personal blog. Open Source projects, observations on life,  and other oddities that I find interesting.
+" />
+<meta property="og:site_name" content="JonTheNerd" />
+
+    <meta property="og:type" content="website" />
+
+<meta property="og:url" content="http://localhost:4000/page6/" />
+    <link rel="stylesheet" href="/css/jonthenerd.min.css">
+    <link rel="stylesheet" href="/css/syntax.min.css">
+    <link rel="canonical" href="http://localhost:4000/page6/">
+    <link rel="alternate" type="application/rss+xml" title="JonTheNerd" href="http://localhost:4000/feed.xml">
+    <script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Person",
+  "name" : "Jon Badgett",
+  "url" : "http://localhost:4000",
+  "sameAs" : [
+    "https://www.facebook.com/jon.badgett.5",
+    "https://github.com/jonthenerd",
+    "https://www.linkedin.com/in/jon-badgett-825a326b",
+    "https://plus.google.com/+JonBadgett",
+    "https://twitter.com/jonthenerd"
+  ]
+}
+</script>
+  </head>
+  <body>
+    
+
+  <nav class="navbar navbar-default topnav">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jtn-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">JonTheNerd</a>
+        </div>
+
+        <div id="jtn-nav" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <div class="subnav">
+    <div class="container">
+      <span>browse by <a href="/categories">category</a></span> 
+    </div>
+  </div>
+ 
+    <div class="container">
+<div class="row">
+    <div class="col-lg-12">
+        
+            <!-- Paginated Posts -->
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2011/07/21/sharepoint-2010-disable-feature-on-all-web-applications-powershell/">
+                            SharePoint 2010: Disable Feature on all Web Applications PowerShell
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2011-07-21T13:42:00-05:00" itemprop="datePublished">Jul 21, 2011</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>Because it’s easier to copy+paste this later… This will disable a feature on all web applications in a farm. Very convenient for when you’re removing a feature from a solution.</p>
+
+<p>[code lang=”ps”]
+Get-SPWebApplication | ForEach-Object {Disable-SPFeature "Solution.Name_FeatureName" -url $_.Url;}
+[/code]</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2011/07/21/sharepoint-2010-disable-feature-on-all-web-applications-powershell/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2011/07/06/sharepoint-2010-remove-existing-reusable-content-items-using-powershell/">
+                            SharePoint 2010: Remove existing reusable content items using PowerShell
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2011-07-06T16:01:00-05:00" itemprop="datePublished">Jul 6, 2011</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>This same PowerShell could be used for any other list to remove all of the items. I just needed it to remove the OOB reusable content.</p>
+
+<p>[ps]
+$siteColTemp = Get-SPSite "http://yourSiteCollectionUrl";
+$reusableContentList = $siteColTemp.RootWeb.Lists["Reusable Content"];
+$reusableContentItems = $reusableContentList.Items;
+$reusableContentItemsCount = $reusableContentItems.Count;
+for($x=$reusableContentItemsCount-1;$x -ge 0; $x–){$reusableContentItems[$x].Delete();}
+[/ps]</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2011/07/06/sharepoint-2010-remove-existing-reusable-content-items-using-powershell/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2011/06/30/sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain/">
+                            SharePoint 2010 SP1 Upgrade Error "Unable to create a Service Connection Point in the current Active Directory domain."
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2011-06-30T10:23:00-05:00" itemprop="datePublished">Jun 30, 2011</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>Full error: “Unable to create a Service Connection Point in the current Active Directory domain. Verify that the SharePoint container exists in the current domain and that you have rights to write to it.”</p>
+
+<p>After installing SP2010 SP1, PSConfig failed and the log had the above error. I found that the timer service was stopped and restarted it. Retried install - no error.</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2011/06/30/sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2011/06/11/time-moves-on-google-makes-my-extension-irrelevant/">
+                            Time moves on. Google makes my extension irrelevant
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2011-06-11T10:32:00-05:00" itemprop="datePublished">Jun 11, 2011</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>And that’s a good thing! This morning while working to improve my extension for Google Calendar, I noticed that Google had added the ability to print multiple weeks or months straight from the Google Calendar.</p>
+
+<p>So where does that leave my extension? Well… unpublished and deleted at this point. I don’t see any reason to still make the extension available, maintain it, etc. if you can get the same or better experience straight from Google Calendar.</p>
+
+<p>I knew this would happen at some point. Heck - I was using Google’s own url to generate the printable calendar with a different date range than they were feeding in. A large part of me is glad that Google finally got around to putting this functionality in.</p>
+
+<p>I’m experiencing a different subset of emotion though. It’s a new thing for me. A personal project of mine is no longer needed and is no longer free and available. The closest thing I can compare the emotion to is someone telling you your volunteer services are no longer needed (and they replaced you with some computer software). It’s really quite an odd feeling. Don’t understand me though, I’m very glad that Google put this in place. In fact - <strong>it’s about time!</strong></p>
+
+<p>As the extension is the only free project I’ve produced and supported, I feel a little empty without it. What a strange world this is… where developers feel attached to the code they’ve written and released for others’ enjoyment. Guess I’ll need to find something else to build and give away!</p>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2011/06/11/time-moves-on-google-makes-my-extension-irrelevant/">Read More &gt;</a>
+                </article>
+        
+            
+        
+                <article>
+                    <h2 class="post-heading">
+                        <a href="/2011/04/19/easy-sharepoint-2010-warmup-script-using-powershell/">
+                            Easy SharePoint 2010 warmup Script using PowerShell
+                        </a>
+                    </h2>
+                    <p class="post-meta">
+                        <time datetime="2011-04-19T14:17:00-05:00" itemprop="datePublished">Apr 19, 2011</time>
+                    </p>
+                    
+                        <div class="post-excerpt">
+                            <p>This idea comes from <a href="http://kirkhofer.wordpress.com/2008/10/18/sharepoint-warm-up-script/">Kirk Hofer’s blog</a>, but modfied to use the SharePoint 2010 powershell commandlets and not care about specifying credentials in the script. I figured most people would just keep using the credentials specified in their scheduled task.</p>
+
+<p>The script loads the SharePoint plugin, enumerates the zones, and sends a request to each one.</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Add-PSSnapin Microsoft.SharePoint.PowerShell;
+
+<span class="k">function </span>Get-WebPage<span class="o">([</span><span class="kt">string</span><span class="o">]</span><span class="nv">$url</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="nv">$wc</span> <span class="o">=</span> <span class="nb">new-object </span>net.webclient;
+    <span class="nv">$wc</span>.credentials <span class="o">=</span> <span class="o">[</span>System.Net.CredentialCache]::DefaultCredentials;
+    <span class="nv">$pageContents</span> <span class="o">=</span> <span class="nv">$wc</span>.DownloadString<span class="o">(</span><span class="nv">$url</span><span class="o">)</span>;
+    <span class="nv">$wc</span>.Dispose<span class="o">()</span>;
+    <span class="k">return</span> <span class="nv">$pageContents</span>;
+<span class="o">}</span>
+
+Get-SPAlternateUrl -Zone Default | <span class="k">foreach</span>-object <span class="o">{</span>
+    <span class="nb">write-host</span> <span class="nv">$_</span>.IncomingUrl;
+    <span class="nv">$html</span> <span class="o">=</span> Get-WebPage -url <span class="nv">$_</span>.IncomingUrl;
+<span class="o">}</span>
+</code></pre></div></div>
+
+                        </div>
+                    
+                    <a class="btn btn-sm btn-primary" href="/2011/04/19/easy-sharepoint-2010-warmup-script-using-powershell/">Read More &gt;</a>
+                </article>
+        
+            
+        
+
+            <!-- Pagination links -->
+            <div class="pagination">
+            
+                <a href="/page5" class="previous">Previous</a>
+            
+            <span class="page_number ">Page: 6 of 15</span>
+            
+                <a href="/page7" class="next">Next</a>
+            
+            </div>
+        <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+    </div>
+    
+</div>
+</div>
+    
+    <div class="container">
+    <footer class="site-footer">
+        built with <a href="http://jekyllrb.com/">Jekyll</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license/">License</a>
+    </footer>
+</div>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1289131-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script src="/js/jonthenerd.min.js"></script>
+  </body>
+</html>

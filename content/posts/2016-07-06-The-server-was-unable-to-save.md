@@ -3,6 +3,8 @@ title: "SharePoint: The server was unable to save the form at this time"
 date: "2016-07-06"
 author: Jon Badgett
 categories:
+    - SysAdmin
+tags:
     - SharePoint
 draft: false
 slug: The-server-was-unable-to-save
