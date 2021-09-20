@@ -1,13 +1,4 @@
 {{ define "main" }}
-    <!--
-<header class="homepage-header">
-    <h1>{{ .Title }}</h1>
-    {{ with .Params.subtitle }}
-        <span class="subtitle">{{ . }}</span>
-    {{ end }}
-</header>
--->
-
     <div class="homepage-content">
 
         <div class="container">
@@ -16,9 +7,6 @@
         </div>
     </div>
     <div class="container">
-        <div style="float:right">
-            {{ template "partials/tag-cloud.html" . }}
-        </div>
         <div class="post-list">
             {{ $paginator := .Paginate (where (where .Site.Pages "Type" "posts") "IsPage" true) }}
             {{ range $paginator.Pages }}

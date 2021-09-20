@@ -8,8 +8,7 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By {{ .Params.Author }}
-                | <time
+                <time
                     datetime="{{ .Date | time.Format " 2006-01-02" }}"
                     itemprop="datePublished"
                     >{{ .Date | time.Format
