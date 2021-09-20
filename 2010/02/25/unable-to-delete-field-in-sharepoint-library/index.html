@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,16 +45,18 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2010-02-25"
                     itemprop="datePublished"
                     >February 25, 2010</time
                 >
                 
                     | Posted in
-                    <a href="/categories/sharepoint">SharePoint</a>
-
+                    <a href="/categories/sysadmin">SysAdmin</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/sharepoint">SharePoint</a>
                 
             </div>
         </div>
@@ -65,15 +68,19 @@ complete this action. Pleast try again.&rdquo;? This drove me nuts, as even invo
 the delete method via the object model gives this message. What I found to allow
 a delete was pushing down changes via the content type gallery in the site
 collection (if the field was ever a part of that content type). This can be
-found by going to the following:<!-- raw HTML omitted -->_ Site Settings<!-- raw HTML omitted -->_ Site Content Type
-Gallery<!-- raw HTML omitted -->_ Choose Content Type<!-- raw HTML omitted -->_ Advanced Settings<!-- raw HTML omitted -->_ Make sure
-radio button &ldquo;Update all content types inheriting from this type&rdquo; is
-checked<!-- raw HTML omitted -->_ Click OK<!-- raw HTML omitted --><!-- raw HTML omitted -->I had several libraries with several fields
-that had this issue (all fields used to be a part of the content type but had
-since been orphaned due to changing the definition of the content type in the
-elements.xml) and now they are all clean and free of these unneeded
-fields.<!-- raw HTML omitted --><!-- raw HTML omitted -->If only the error would have told me something
-meaningful&hellip;because trying again was surely never going to fix it.</p>
+found by going to the following:</p>
+<ol>
+<li>Site Settings</li>
+<li>Site Content Type Gallery</li>
+<li>Choose Content Type</li>
+<li>Advanced Settings</li>
+<li>Make sure radio button &ldquo;Update all content types inheriting from this type&rdquo; is
+checked</li>
+<li>Click OK</li>
+</ol>
+<p>I had several libraries with several fields that had this issue (all fields used to be a part of the content type but had since been orphaned due to changing the definition of the content type in the
+elements.xml) and now they are all clean and free of these unneeded fields.</p>
+<p>If only the error would have told me something meaningful&hellip;because trying again was surely never going to fix it.</p>
 
         </div>
     </div>

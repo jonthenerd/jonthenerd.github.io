@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,16 +45,18 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2016-07-06"
                     itemprop="datePublished"
                     >July 6, 2016</time
                 >
                 
                     | Posted in
-                    <a href="/categories/sharepoint">SharePoint</a>
-
+                    <a href="/categories/sysadmin">SysAdmin</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/sharepoint">SharePoint</a>
                 
             </div>
         </div>
@@ -68,7 +71,7 @@ to upload a document.</p>
 </code></pre></div><p>Looking in the ULS log, there were odd messages dealing with authentication that
 seemed to indicate that the Javascript CSOM was unable to process my request due
 to conversion of Windows to Claims&hellip; but we&rsquo;re using Kerberos. What&rsquo;s up?</p>
-<pre><code>Claims Windows Sign-In: Redirecting successfully signed-in user '&lt;user here&gt;' for request url 'https://your-sharepoint/_windows/default.aspx?ReturnUrl=/_vti.bin/client.svc/ProcessQuery'
+<pre tabindex="0"><code>Claims Windows Sign-In: Redirecting successfully signed-in user '&lt;user here&gt;' for request url 'https://your-sharepoint/_windows/default.aspx?ReturnUrl=/_vti.bin/client.svc/ProcessQuery'
 </code></pre><p>There are several claimed ways to fix this error. They range from restarting
 your server to enabling anonymous access (why anyone would resort to this is
 beyond me). Luckily, I found a voice of sanity -

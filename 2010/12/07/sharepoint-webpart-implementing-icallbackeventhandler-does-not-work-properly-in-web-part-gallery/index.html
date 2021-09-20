@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,16 +45,18 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2010-12-07"
                     itemprop="datePublished"
                     >December 7, 2010</time
                 >
                 
                     | Posted in
-                    <a href="/categories/programming">Programming</a>, <a href="/categories/sharepoint">SharePoint</a>
-
+                    <a href="/categories/programming">Programming</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/sharepoint">SharePoint</a>
                 
             </div>
         </div>
@@ -63,21 +66,28 @@
         <p>In migrating some WebParts from SP2007 to SP2010, I came across a webpart that
 implements ICallbackEventHandler. This webpart was working fine when placed on
 the page, but did not work correctly in the webpart gallery. The specific error
-message being received was &ldquo;The target &lsquo;ctl00$PlaceHolderMain$ctl00&rsquo; for the
-callback could not be found or did not implement ICallbackEventHandler&rdquo;. This
-error is due to the webpart being added to the preview page dynamically at
+message being received was:</p>
+<blockquote>
+<blockquote>
+<p>The target &lsquo;ctl00$PlaceHolderMain$ctl00&rsquo; for the
+callback could not be found or did not implement ICallbackEventHandler</p>
+</blockquote>
+</blockquote>
+<p>This error is due to the webpart being added to the preview page dynamically at
 runtime. Everything online I&rsquo;ve seen assumes that pages doing this can be
 modified to load controls dynamically either in the Init event or on each Load
 event. Since SharePoint developers can&rsquo;t affect the Web Part preview page - the
 best I could come up with is to prevent the registratration for callback by
 checking the ID of the control in the Load event. This will tell you if the
 control is being loaded dynamically, or if it has been placed on a page.</p>
-<p>Here&rsquo;s the code to use in the OnLoad event: [sourcecode language=&ldquo;csharp&rdquo;] if
-(this.ID == null) { // This occurs in the webpart gallery and causes it to throw
-a javascript error. Controls.Add(new LiteralControl(&quot;This webpart does not
-function correctly in the webpart gallery. Please test on a page within a
-webpart zone.&quot;)); } else { // Do what you normally do. } [/sourcecode]</p>
-<p>Have a better idea on how to get this to work in the web part preview page? Let
+<p>Here&rsquo;s the code to use in the OnLoad event:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">ID</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This occurs in the webpart gallery and causes it to throw a javascript error.
+</span><span class="c1"></span>    <span class="n">Controls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">LiteralControl</span><span class="p">(</span><span class="s">&#34;This webpart does not function correctly in the webpart gallery. Please test on a page within a webpart zone.&#34;</span><span class="p">));</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Do what you normally do.
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><p>Have a better idea on how to get this to work in the web part preview page? Let
 me know. At this point I&rsquo;m content not throwing the javascript error.</p>
 
         </div>

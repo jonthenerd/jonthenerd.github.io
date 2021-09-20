@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,16 +45,18 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2011-02-28"
                     itemprop="datePublished"
                     >February 28, 2011</time
                 >
                 
                     | Posted in
-                    <a href="/categories/programming">Programming</a>, <a href="/categories/programming">Programming</a>, <a href="/categories/sharepoint">SharePoint</a>
-
+                    <a href="/categories/sysadmin">SysAdmin</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/sharepoint">SharePoint</a>
                 
             </div>
         </div>
@@ -66,7 +69,7 @@
 feature is not present.</p>
 </blockquote>
 <p>The feature it is complaining about is a hidden feature with displayname
-&ldquo;IPFSSiteFeatures&rdquo;. This feature was already enabled on the migrated
+<code>IPFSSiteFeatures</code>. This feature was already enabled on the migrated
 application&hellip;but resolving the error was as simple as disabling and then
 re-enabling the feature. Here&rsquo;s the PowerShell to do that:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Disable-SPFeature</span> <span class="s2">&#34;IPFSSiteFeatures&#34;</span> <span class="n">-url</span> <span class="s2">&#34;http://yourwebapp&#34;</span><span class="p">;</span>

@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,16 +45,18 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2014-09-05"
                     itemprop="datePublished"
                     >September 5, 2014</time
                 >
                 
                     | Posted in
-                    <a href="/categories/cms-made-simple">CMS Made Simple</a>, <a href="/categories/programming">Programming</a>
-
+                    <a href="/categories/sysadmin">SysAdmin</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/cms-made-simple">CMS Made Simple</a>
                 
             </div>
         </div>
@@ -64,29 +67,36 @@
 I found that in certain areas I was seeing warning messages at the top of the
 screen after editing calendar events within CGCalendar.</p>
 <p>They looked like this:</p>
-<p>[code] Warning: Cannot modify header information - headers already sent by
+<pre tabindex="0"><code>Warning: Cannot modify header information - headers already sent by
 (output started at /home4/user/public_html/admin/moduleinterface.php:99) in
-/home4/user/public_html/include.php on line 96</p>
-<p>Warning: Cannot modify header information - headers already sent by (output
+/home4/user/public_html/include.php on line 96
+
+Warning: Cannot modify header information - headers already sent by (output
 started at /home4/user/public_html/admin/moduleinterface.php:99) in
-/home4/user/public_html/include.php on line 99</p>
-<p>Warning: Cannot modify header information - headers already sent by (output
+/home4/user/public_html/include.php on line 99
+
+Warning: Cannot modify header information - headers already sent by (output
 started at /home4/user/public_html/admin/moduleinterface.php:99) in
-/home4/user/public_html/include.php on line 102</p>
-<p>Warning: Cannot modify header information - headers already sent by (output
+/home4/user/public_html/include.php on line 102
+
+Warning: Cannot modify header information - headers already sent by (output
 started at /home4/user/public_html/admin/moduleinterface.php:99) in
-/home4/user/public_html/include.php on line 103</p>
-<p>Warning: Cannot modify header information - headers already sent by (output
+/home4/user/public_html/include.php on line 103
+
+Warning: Cannot modify header information - headers already sent by (output
 started at /home4/user/public_html/admin/moduleinterface.php:99) in
-/home4/user/public_html/include.php on line 106</p>
-<p>Warning: Cannot modify header information - headers already sent by (output
+/home4/user/public_html/include.php on line 106
+
+Warning: Cannot modify header information - headers already sent by (output
 started at /home4/user/public_html/admin/moduleinterface.php:99) in
-/home4/user/public_html/include.php on line 109 [/code]</p>
-<p><!-- raw HTML omitted -->The Solution<!-- raw HTML omitted --> The solution I found was to change my
+/home4/user/public_html/include.php on line 109
+</code></pre><h2 id="the-solution">The Solution</h2>
+<p>The solution I found was to change my
 Administration Theme preference from the older &ldquo;NCleanGrey&rdquo; to the newer
 &ldquo;OneEleven&rdquo;. This option is under My Preferences -&gt; My Account -&gt; User
 Preferences.</p>
-<p><!-- raw HTML omitted -->Tracing it down<!-- raw HTML omitted --> I&rsquo;m fairly new to PHP, having developed C#
+<h2 id="tracing-it-down">Tracing it down</h2>
+<p>I&rsquo;m fairly new to PHP, having developed C#
 primarily the last few years. However, I believe what&rsquo;s causing this is that
 within the moduleinterface.php file (line 99), it&rsquo;s calling a &ldquo;ShowMessage&rdquo;
 function that&rsquo;s supposed to exist within your preferred theme. The NCleanGrey

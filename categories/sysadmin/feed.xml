@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SysAdmin on JonTheNerd</title>
+    <link>http://www.jonthenerd.com/categories/sysadmin/</link>
+    <description>Recent content in SysAdmin on JonTheNerd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 16 Sep 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/categories/sysadmin/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SharePoint: Search Managed Properties missing after full crawl</title>
+      <link>http://www.jonthenerd.com/2017/09/16/managed-props-and-config-cache/</link>
+      <pubDate>Sat, 16 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2017/09/16/managed-props-and-config-cache/</guid>
+      <description>&lt;p&gt;Scenario:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SharePoint 2013&lt;/li&gt;
+&lt;li&gt;You&amp;rsquo;ve created some site columns, added them to a content type, then added
+that content type to a list/library.&lt;/li&gt;
+&lt;li&gt;You add some test data.&lt;/li&gt;
+&lt;li&gt;Run a full crawl.&lt;/li&gt;
+&lt;li&gt;Create managed properties, mapping them to the crawled properties.&lt;/li&gt;
+&lt;li&gt;Run another full crawl (to populate the managed properties)&lt;/li&gt;
+&lt;li&gt;Managed properties on search results are missing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What do you do now?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SharePoint: The server was unable to save the form at this time</title>
+      <link>http://www.jonthenerd.com/2016/07/06/the-server-was-unable-to-save/</link>
+      <pubDate>Wed, 06 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2016/07/06/the-server-was-unable-to-save/</guid>
+      <description>&lt;p&gt;We ran across an issue in a test environment where we were unable to add items
+to a list, or a document library. However, you could use Windows explorer view
+to upload a document.&lt;/p&gt;
+&lt;p&gt;The specific error message seen was:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;The server was unable to save the form at this time. Please try again.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Muhimbi PDF Converter Services &amp; InfoPath Error</title>
+      <link>http://www.jonthenerd.com/2016/04/04/muhimbi-pdf-converter-services-and-infopath-error/</link>
+      <pubDate>Mon, 04 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2016/04/04/muhimbi-pdf-converter-services-and-infopath-error/</guid>
+      <description>&lt;p&gt;Ran across an error while proving out a new Muhimbi PDF Converter Services
+install. I haven&amp;rsquo;t seen it&amp;rsquo;s like anywhere online, but managed to find a
+resolution.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>K2 - Service Account Rights Issue</title>
+      <link>http://www.jonthenerd.com/2016/03/31/k2-service-account-rights-issue/</link>
+      <pubDate>Thu, 31 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2016/03/31/k2-service-account-rights-issue/</guid>
+      <description>&lt;p&gt;In two scenarios, errors wer observed when using K2 designer within
+SharePoint 2013.&lt;/p&gt;
+&lt;p&gt;Working with K2 support, a resolution was found to this.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CMS Made Simple &amp; HostGator - Can&#39;t upload files</title>
+      <link>http://www.jonthenerd.com/2014/11/22/cms-made-simple-hostgator/</link>
+      <pubDate>Sat, 22 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2014/11/22/cms-made-simple-hostgator/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CMS Made Simple - Post-Upgrade to v1.11.11</title>
+      <link>http://www.jonthenerd.com/2014/09/05/cms-made-simple-post-upgrade-to-v1-11-11/</link>
+      <pubDate>Fri, 05 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2014/09/05/cms-made-simple-post-upgrade-to-v1-11-11/</guid>
+      <description>&lt;p&gt;After finishing an upgrade of another site&amp;rsquo;s CMS Made Simple to version 1.11.11,
+I found that in certain areas I was seeing warning messages at the top of the
+screen after editing calendar events within CGCalendar.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CMS Made Simple - Enable SSL for the Admin Directory</title>
+      <link>http://www.jonthenerd.com/2014/09/02/cms-made-simple-enable-ssl-for-the-admin-directory/</link>
+      <pubDate>Tue, 02 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2014/09/02/cms-made-simple-enable-ssl-for-the-admin-directory/</guid>
+      <description>&lt;p&gt;Recently updated a site I maintain that uses the great
+&lt;!-- raw HTML omitted --&gt;CMS Made Simple&lt;!-- raw HTML omitted --&gt; and had to
+reconfigure SSL (https) for the administrative areas of the site. I&amp;rsquo;ve done this
+previously, but had forgotten exactly what I did.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010 - MigrateUser Error &#39;Value cannot be null. Parameter name: userProfileApplicationProxy&#39;</title>
+      <link>http://www.jonthenerd.com/2013/01/22/sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy/</link>
+      <pubDate>Tue, 22 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2013/01/22/sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy/</guid>
+      <description>When using the stsadm command:
+stsadm.exe -o migrateuser oldlogin &amp;ldquo;domainusername&amp;rdquo; -newlogin &amp;ldquo;domainnewusername&amp;rdquo;
+We received this error message:
+Value cannot be null. Parameter name: userProfileApplicationProxy
+If you look in the ULS logs, you&amp;rsquo;ll find that there is an Access Denied event occuring. We were able to resolve this by going into Central Administration, selecting the User Service Application, and ensuring that the administrator account being used to run the above command has Full Control rights to the Service Application.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: Observations and Revelations on the User Profile Sync Service and the Update-SPProfilePhotoStore cmdlet</title>
+      <link>http://www.jonthenerd.com/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/</link>
+      <pubDate>Fri, 20 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/</guid>
+      <description>These are my notes while trying to diagnose and better understnad some issues and oddities with the SharePoint 2010 User Profile Service Application.
+If you&amp;rsquo;re wanting to populate pictures into people&amp;rsquo;s profiles, you&amp;rsquo;ll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is Redgate Reflector(a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: Add a file to the root of your site using PowerShell</title>
+      <link>http://www.jonthenerd.com/2011/08/17/sharepoint-2010-add-a-file-to-the-root-of-your-site-using-powershell/</link>
+      <pubDate>Wed, 17 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/08/17/sharepoint-2010-add-a-file-to-the-root-of-your-site-using-powershell/</guid>
+      <description>This can be useful when you need a file to be right off the root of your Internet facing site - files like robots.txt, sitemap.xml, or the verification file for Google Webmaster tools. We&amp;rsquo;ll take advantage of PowerShell&amp;rsquo;s ability to use any .NET methods along with the Files collection on each SPWeb in SharePoint. $fileBytes = [system.io.file]::ReadAllBytes(&amp;quot;c:\the\full\path\to\your\file.txt&amp;quot;); $site = Get-SPSite &amp;quot;http://yourdomain:portifneeded&amp;quot;; $site.RootWeb.Files.Add(&amp;quot;file.txt&amp;quot;, $fileBytes, $true); This will result in a file.txt located at &amp;ldquo;http://yourdomain:portifneeded/file.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: Finding the largest document library in a site collection</title>
+      <link>http://www.jonthenerd.com/2011/08/16/sharepoint-2010-findinglargestdoclibrary/</link>
+      <pubDate>Tue, 16 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/08/16/sharepoint-2010-findinglargestdoclibrary/</guid>
+      <description>SharePoint 2007 came with a page (storman.aspx) dedicated to showing you how much space each of the lists in your site collection were taking up. SharePoint 2010 removed this page. Luckily, SharePoint 2010 SP1 added it back in. But what if you&amp;rsquo;re still haven&amp;rsquo;t updated to SP1 and you&amp;rsquo;re getting warnings/errors about running out of space?
+Obviously - up the space so as to avoid additional noise from your users. Then - figure out which libraries are taking up the most space.</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: Unable to delete site/web after SP1</title>
+      <link>http://www.jonthenerd.com/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/</link>
+      <pubDate>Thu, 11 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/</guid>
+      <description>&lt;p&gt;While doing some testing after upgrading my dev machine to SP1, I ran into two
+separate issues when trying to delete a web through the UI by using the &amp;ldquo;Sites
+and Workspaces&amp;rdquo; link in Site Settings. Deleting through powershell worked fine.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: Disable Feature on all Web Applications PowerShell</title>
+      <link>http://www.jonthenerd.com/2011/07/21/sharepoint-2010-disable-feature-on-all-web-applications-powershell/</link>
+      <pubDate>Thu, 21 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/07/21/sharepoint-2010-disable-feature-on-all-web-applications-powershell/</guid>
+      <description>Because it&amp;rsquo;s easier to copy+paste this later&amp;hellip; This will disable a feature on all web applications in a farm. Very convenient for when you&amp;rsquo;re removing a feature from a solution.
+Get-SPWebApplication | ForEach-Object {Disable-SPFeature &amp;#34;Solution.Name.FeatureName&amp;#34; -url $_.Url;} </description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010: Remove existing reusable content items using PowerShell</title>
+      <link>http://www.jonthenerd.com/2011/07/06/sharepoint-2010-remove-existing-reusable-content-items-using-powershell/</link>
+      <pubDate>Wed, 06 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/07/06/sharepoint-2010-remove-existing-reusable-content-items-using-powershell/</guid>
+      <description>This same PowerShell could be used for any other list to remove all of the items. I just needed it to remove the OOB reusable content.
+$siteColTemp = Get-SPSite &amp;#34;http://yourSiteCollectionUrl&amp;#34;; $reusableContentList = $siteColTemp.RootWeb.Lists[&amp;#34;Reusable Content&amp;#34;]; $reusableContentItems = $reusableContentList.Items; $reusableContentItemsCount = $reusableContentItems.Count; for($x=$reusableContentItemsCount-1;$x -ge 0; $x--){ $reusableContentItems[$x].Delete(); } </description>
+    </item>
+    
+    <item>
+      <title>SharePoint 2010 SP1 Upgrade Error &#34;Unable to create a Service Connection Point in the current Active Directory domain.&#34;</title>
+      <link>http://www.jonthenerd.com/2011/06/30/sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain/</link>
+      <pubDate>Thu, 30 Jun 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/06/30/sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain/</guid>
+      <description>Full error: &amp;ldquo;Unable to create a Service Connection Point in the current Active Directory domain. Verify that the SharePoint container exists in the current domain and that you have rights to write to it.&amp;rdquo;
+After installing SP2010 SP1, PSConfig failed and the log had the above error. I found that the timer service was stopped and restarted it. Retried install - no error.</description>
+    </item>
+    
+    <item>
+      <title>Easy SharePoint 2010 warmup Script using PowerShell</title>
+      <link>http://www.jonthenerd.com/2011/04/19/easy-sharepoint-2010-warmup-script-using-powershell/</link>
+      <pubDate>Tue, 19 Apr 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/04/19/easy-sharepoint-2010-warmup-script-using-powershell/</guid>
+      <description>This idea comes from Kirk Hofer&amp;rsquo;s blog, but modfied to use the SharePoint 2010 powershell commandlets and not care about specifying credentials in the script. I figured most people would just keep using the credentials specified in their scheduled task. The script loads the SharePoint plugin, enumerates the zones, and sends a request to each one.
+Add-PSSnapin Microsoft.SharePoint.PowerShell; function Get-WebPage([string]$url) { $wc = new-object net.webclient; $wc.credentials = [System.Net.CredentialCache]::DefaultCredentials; $pageContents = $wc.</description>
+    </item>
+    
+    <item>
+      <title>Activate Feature on all Site Collections in a Web Application</title>
+      <link>http://www.jonthenerd.com/2011/03/24/activate-feature-on-all-sc/</link>
+      <pubDate>Thu, 24 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/03/24/activate-feature-on-all-sc/</guid>
+      <description>This is pretty easy using powerhell with SharePoint 2010:
+Get-SPWebApplication &amp;#34;http://WebApplicationUrl:PortIfNeeded&amp;#34; | Get-SPSite | ForEach-Object{Enable-SPFeature &amp;#34;Solution.Name.FeatureName&amp;#34; -url $_.Url} </description>
+    </item>
+    
+    <item>
+      <title>Trying to access _Layouts/ChangeSiteMasterPage.aspx and receiving error</title>
+      <link>http://www.jonthenerd.com/2011/03/02/trying-to-access-_layoutschangesitemasterpage-aspx-and-receiving-error/</link>
+      <pubDate>Wed, 02 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/03/02/trying-to-access-_layoutschangesitemasterpage-aspx-and-receiving-error/</guid>
+      <description>If you try to access the SharePoint URL \_Layouts/ChangeSiteMasterPage.aspx and receive the following error:
+  One or more field types are not installed properly. Go to the list settings page to delete these fields.
+  The SharePoint Server Publishing Infrastructure feature needs to be turned on.</description>
+    </item>
+    
+    <item>
+      <title>Activation could not be completed because the InfoPath Forms Services support feature is not present.</title>
+      <link>http://www.jonthenerd.com/2011/02/28/activation-could-not-be-completed-because-the-infopath-forms-services-support-feature-is-not-present/</link>
+      <pubDate>Mon, 28 Feb 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/02/28/activation-could-not-be-completed-because-the-infopath-forms-services-support-feature-is-not-present/</guid>
+      <description>&lt;p&gt;Got this error after migrating a SP2007 application to SP2010.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Disable Throttling for a specific SharePoint 2010 list with PowerShell</title>
+      <link>http://www.jonthenerd.com/2011/01/11/disable-throttling-for-a-specific-sharepoint-2010-list-with-powershell/</link>
+      <pubDate>Tue, 11 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2011/01/11/disable-throttling-for-a-specific-sharepoint-2010-list-with-powershell/</guid>
+      <description>The following can be used to disable throttling on a specific list (must be run as an account with enough priv.):
+$web = Get-SPWeb &amp;#34;http://whateverWeb&amp;#34;; $list = $web.Lists[&amp;#34;List Title&amp;#34;]; $list.enablethrottling = $false; $list.update(); </description>
+    </item>
+    
+    <item>
+      <title>ASP.NET Padding Oracle</title>
+      <link>http://www.jonthenerd.com/2010/09/22/asp-net-padding-oracle/</link>
+      <pubDate>Wed, 22 Sep 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2010/09/22/asp-net-padding-oracle/</guid>
+      <description>I&amp;rsquo;m doing research to better understand the padding oracle attack that was recently disclosed to affect ASP.NET and thought to provide a quick list of links that I&amp;rsquo;ve found most helpful:
+ Microsoft SharePoint Team Blog: Security Advisory 2416728 (Vulnerability in ASP.NET) and SharePoint Automated Padding Oracle Attacks with PadBuster How to check if your application is vulnerable to the ASP.NET Padding Oracle Vulnerability Duncan Smart&amp;rsquo;s post on ASP.NET detailing how to check if your application masks the oracle Duncan Smart&amp;rsquo;s blog entry on the matter (with link to a wsh script to use for testing) ASP.</description>
+    </item>
+    
+    <item>
+      <title>Unable to delete field in SharePoint library</title>
+      <link>http://www.jonthenerd.com/2010/02/25/unable-to-delete-field-in-sharepoint-library/</link>
+      <pubDate>Thu, 25 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2010/02/25/unable-to-delete-field-in-sharepoint-library/</guid>
+      <description>Trying to delete a field in a SharePoint library and get the message &amp;ldquo;Cannot complete this action. Pleast try again.&amp;rdquo;? This drove me nuts, as even invoking the delete method via the object model gives this message. What I found to allow a delete was pushing down changes via the content type gallery in the site collection (if the field was ever a part of that content type). This can be found by going to the following:</description>
+    </item>
+    
+    <item>
+      <title>Active Directory homeDrive (Home Folder)</title>
+      <link>http://www.jonthenerd.com/2008/06/19/active-directory-homedrive-home-folder/</link>
+      <pubDate>Thu, 19 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2008/06/19/active-directory-homedrive-home-folder/</guid>
+      <description>If you&amp;rsquo;re using an automated tool to create your user accounts and assign a Home Folder (a mapped drive pointing to shared location on a server) - make certain that the property has a colon after the drive letter (e.g. Z: not Z). Without the colon, the drive will not be mapped on user log on. How do you know if this property is set correctly? Active Directory Users and Computers won&amp;rsquo;t show you.</description>
+    </item>
+    
+  </channel>
+</rss>

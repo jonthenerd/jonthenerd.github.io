@@ -298,7 +298,8 @@ and Workspaces&amp;rdquo; link in Site Settings. Deleting through powershell wor
       <pubDate>Thu, 21 Jul 2011 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2011/07/21/sharepoint-2010-disable-feature-on-all-web-applications-powershell/</guid>
-      <description>Because it&amp;rsquo;s easier to copy+paste this later&amp;hellip; This will disable a feature on all web applications in a farm. Very convenient for when you&amp;rsquo;re removing a feature from a solution. [code lang=&amp;ldquo;ps&amp;rdquo;] Get-SPWebApplication | ForEach-Object {Disable-SPFeature &amp;quot;Solution.NameFeatureName&amp;quot; -url $.Url;} [/code]</description>
+      <description>Because it&amp;rsquo;s easier to copy+paste this later&amp;hellip; This will disable a feature on all web applications in a farm. Very convenient for when you&amp;rsquo;re removing a feature from a solution.
+Get-SPWebApplication | ForEach-Object {Disable-SPFeature &amp;#34;Solution.Name.FeatureName&amp;#34; -url $_.Url;} </description>
     </item>
     
     <item>
@@ -307,7 +308,8 @@ and Workspaces&amp;rdquo; link in Site Settings. Deleting through powershell wor
       <pubDate>Wed, 06 Jul 2011 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2011/07/06/sharepoint-2010-remove-existing-reusable-content-items-using-powershell/</guid>
-      <description>|- This same PowerShell could be used for any other list to remove all of the items. I just needed it to remove the OOB reusable content. [ps] $siteColTemp = Get-SPSite &amp;quot;http://yourSiteCollectionUrl&amp;quot;; $reusableContentList = $siteColTemp.RootWeb.Lists[&amp;quot;Reusable Content&amp;quot;]; $reusableContentItems = $reusableContentList.Items; $reusableContentItemsCount = $reusableContentItems.Count; for($x=$reusableContentItemsCount-1;$x -ge 0; $x&amp;ndash;){$reusableContentItems[$x].Delete();} [/ps]</description>
+      <description>This same PowerShell could be used for any other list to remove all of the items. I just needed it to remove the OOB reusable content.
+$siteColTemp = Get-SPSite &amp;#34;http://yourSiteCollectionUrl&amp;#34;; $reusableContentList = $siteColTemp.RootWeb.Lists[&amp;#34;Reusable Content&amp;#34;]; $reusableContentItems = $reusableContentList.Items; $reusableContentItemsCount = $reusableContentItems.Count; for($x=$reusableContentItemsCount-1;$x -ge 0; $x--){ $reusableContentItems[$x].Delete(); } </description>
     </item>
     
     <item>
@@ -335,8 +337,8 @@ After installing SP2010 SP1, PSConfig failed and the log had the above error. I 
       <pubDate>Tue, 19 Apr 2011 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2011/04/19/easy-sharepoint-2010-warmup-script-using-powershell/</guid>
-      <description>|- This idea comes from Kirk Hofer&amp;rsquo;s blog, but modfied to use the SharePoint 2010 powershell commandlets and not care about specifying credentials in the script. I figured most people would just keep using the credentials specified in their scheduled task. The script loads the SharePoint plugin, enumerates the zones, and sends a request to each one.
-function Get-WebPage([string]$url) { $wc = new-object net.webclient; $wc.credentials = [System.Net.CredentialCache]::DefaultCredentials; $pageContents = $wc.DownloadString($url); $wc.</description>
+      <description>This idea comes from Kirk Hofer&amp;rsquo;s blog, but modfied to use the SharePoint 2010 powershell commandlets and not care about specifying credentials in the script. I figured most people would just keep using the credentials specified in their scheduled task. The script loads the SharePoint plugin, enumerates the zones, and sends a request to each one.
+Add-PSSnapin Microsoft.SharePoint.PowerShell; function Get-WebPage([string]$url) { $wc = new-object net.webclient; $wc.credentials = [System.Net.CredentialCache]::DefaultCredentials; $pageContents = $wc.</description>
     </item>
     
     <item>
@@ -346,7 +348,8 @@ function Get-WebPage([string]$url) { $wc = new-object net.webclient; $wc.credent
       
       <guid>http://www.jonthenerd.com/2011/04/05/sharepoint-2010-custom-action-ids-for-site-settings-page/</guid>
       <description>Since the MSDN documentation for Default Custom Action Loacations and IDs is unreliable (they look to have copy+pasted the information from the SharePoint 2007 documentation), our only sure bet is to browse the file system and find the custom action IDs and groups ourselves.
-I had need of this information today, and found the items from the site settings page located at: C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\14\TEMPLATE\FEATURES\SiteSettings\SiteSettings.xml
+I had need of this information today, and found the items from the site settings page located at:
+C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\14\TEMPLATE\FEATURES\SiteSettings\SiteSettings.xml
 For those looking specifically for it, here is the custom action for &amp;ldquo;Delete this site&amp;rdquo;:</description>
     </item>
     
@@ -357,7 +360,7 @@ For those looking specifically for it, here is the custom action for &amp;ldquo;
       
       <guid>http://www.jonthenerd.com/2011/03/24/activate-feature-on-all-sc/</guid>
       <description>This is pretty easy using powerhell with SharePoint 2010:
-[powershell]Get-SPWebApplication &amp;quot;http://WebApplicationUrl:PortIfNeeded&amp;quot; | Get-SPSite | ForEach-Object{Enable-SPFeature &amp;quot;Solution.NameFeatureName&amp;quot; -url $.Url}[/powershell]</description>
+Get-SPWebApplication &amp;#34;http://WebApplicationUrl:PortIfNeeded&amp;#34; | Get-SPSite | ForEach-Object{Enable-SPFeature &amp;#34;Solution.Name.FeatureName&amp;#34; -url $_.Url} </description>
     </item>
     
     <item>
@@ -366,9 +369,9 @@ For those looking specifically for it, here is the custom action for &amp;ldquo;
       <pubDate>Wed, 02 Mar 2011 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2011/03/02/trying-to-access-_layoutschangesitemasterpage-aspx-and-receiving-error/</guid>
-      <description>If you try to access the SharePoint URL &amp;ldquo;_Layouts/ChangeSiteMasterPage.aspx&amp;rdquo; and receive the following error:
-&amp;ldquo;One or more field types are not installed properly. Go to the list settings page to delete these fields.&amp;rdquo;
-The &amp;ldquo;SharePoint Server Publishing Infrastructure&amp;rdquo; feature needs to be turned on.</description>
+      <description>If you try to access the SharePoint URL \_Layouts/ChangeSiteMasterPage.aspx and receive the following error:
+  One or more field types are not installed properly. Go to the list settings page to delete these fields.
+  The SharePoint Server Publishing Infrastructure feature needs to be turned on.</description>
     </item>
     
     <item>
@@ -396,7 +399,8 @@ Calendar.&lt;/p&gt;</description>
       <pubDate>Tue, 11 Jan 2011 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2011/01/11/disable-throttling-for-a-specific-sharepoint-2010-list-with-powershell/</guid>
-      <description>The following can be used to disable throttling on a specific list (must be run as an account with enough priv.): [powershell] $web = Get-SPWeb http://whateverWeb $list = $web.Lists[“List Title”] $list.enablethrottling = $false $list.update() [/powershell]</description>
+      <description>The following can be used to disable throttling on a specific list (must be run as an account with enough priv.):
+$web = Get-SPWeb &amp;#34;http://whateverWeb&amp;#34;; $list = $web.Lists[&amp;#34;List Title&amp;#34;]; $list.enablethrottling = $false; $list.update(); </description>
     </item>
     
     <item>
@@ -405,7 +409,9 @@ Calendar.&lt;/p&gt;</description>
       <pubDate>Tue, 07 Dec 2010 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2010/12/07/sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/</guid>
-      <description>In migrating some WebParts from SP2007 to SP2010, I came across a webpart that implements ICallbackEventHandler. This webpart was working fine when placed on the page, but did not work correctly in the webpart gallery. The specific error message being received was &amp;ldquo;The target &amp;lsquo;ctl00$PlaceHolderMain$ctl00&amp;rsquo; for the callback could not be found or did not implement ICallbackEventHandler&amp;rdquo;. This error is due to the webpart being added to the preview page dynamically at runtime.</description>
+      <description>In migrating some WebParts from SP2007 to SP2010, I came across a webpart that implements ICallbackEventHandler. This webpart was working fine when placed on the page, but did not work correctly in the webpart gallery. The specific error message being received was:
+  The target &amp;lsquo;ctl00$PlaceHolderMain$ctl00&amp;rsquo; for the callback could not be found or did not implement ICallbackEventHandler
+  This error is due to the webpart being added to the preview page dynamically at runtime.</description>
     </item>
     
     <item>
@@ -415,7 +421,7 @@ Calendar.&lt;/p&gt;</description>
       
       <guid>http://www.jonthenerd.com/2010/10/21/sonic-fan-remix/</guid>
       <description>The new Sonic 4 is a bit of a novelty. This though - this is what Sonic fans have been waiting for:
-More information on the game can be found at http://sonicfanremix.com/.</description>
+  More information on the game can be found at http://sonicfanremix.com/.</description>
     </item>
     
     <item>
@@ -425,7 +431,7 @@ More information on the game can be found at http://sonicfanremix.com/.</descrip
       
       <guid>http://www.jonthenerd.com/2010/10/14/sharepoint-content-query-webpart-easy-values/</guid>
       <description>Sometimes it&amp;rsquo;s helpful to see exactly what your CQW is receiving. Put this into a style and see what properties and data you&amp;rsquo;re receiving:
-[sourcecode language=&amp;ldquo;xslt&amp;rdquo;]&amp;lt;xsl:for-each select=&amp;quot;@*&amp;quot;&amp;gt; P:&amp;lt;xsl:value-of select=&amp;quot;name()&amp;quot; /&amp;gt;&amp;lt;br/&amp;gt; V:&amp;lt;xsl:value-of select=&amp;quot;.&amp;quot; /&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;/xsl:for-each&amp;gt;[/sourcecode]</description>
+&amp;lt;xsl:for-each select=&amp;#34;@*&amp;#34;&amp;gt; P:&amp;lt;xsl:value-of select=&amp;#34;name()&amp;#34; /&amp;gt;&amp;lt;br/&amp;gt; V:&amp;lt;xsl:value-of select=&amp;#34;.&amp;#34; /&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;/xsl:for-each&amp;gt; </description>
     </item>
     
     <item>
@@ -454,7 +460,8 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Sun, 01 Aug 2010 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2010/08/01/unreal-tournament-server-on-ubuntu-linux-10-04/</guid>
-      <description>I&amp;rsquo;m putting together a server for some friends to play Unreal Tournament (yes, the original). I had heard this was doable on Linux, and I have a friend&amp;rsquo;s old laptop here to play with. I&amp;rsquo;ll be putting good links here that have helped me to get this working.I got it all setup in a VirtualBox VM, but need it on the separate machine. This old laptop has a broken screen and no hard drive&amp;hellip;no problem!</description>
+      <description>I&amp;rsquo;m putting together a server for some friends to play Unreal Tournament (yes, the original). I had heard this was doable on Linux, and I have a friend&amp;rsquo;s old laptop here to play with. I&amp;rsquo;ll be putting good links here that have helped me to get this working.
+I got it all setup in a VirtualBox VM, but need it on the separate machine. This old laptop has a broken screen and no hard drive&amp;hellip;no problem!</description>
     </item>
     
     <item>
@@ -463,7 +470,7 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Sat, 10 Jul 2010 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2010/07/10/dev-cheat-sheets/</guid>
-      <description>Found this sitevia downloadsquad. It has lots of condensed &amp;ldquo;cheat sheets&amp;rdquo; for different programming languages, tools, etc. that could be handy. I know I&amp;rsquo;ll be using the built-in VS 2010 Code snippets for C#.</description>
+      <description>Found this site via downloadsquad. It has lots of condensed &amp;ldquo;cheat sheets&amp;rdquo; for different programming languages, tools, etc. that could be handy. I know I&amp;rsquo;ll be using the built-in VS 2010 Code snippets for C#.</description>
     </item>
     
     <item>
@@ -476,21 +483,13 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
     </item>
     
     <item>
-      <title>What motivates us?</title>
-      <link>http://www.jonthenerd.com/2010/06/01/what-motivates-us/</link>
-      <pubDate>Tue, 01 Jun 2010 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.jonthenerd.com/2010/06/01/what-motivates-us/</guid>
-      <description>It may surprise you.</description>
-    </item>
-    
-    <item>
       <title>Anonymous users and aspx pages inside the _layouts folder</title>
       <link>http://www.jonthenerd.com/2010/03/16/anonymous-users-and-aspx-pages-inside-the-_layouts-folder/</link>
       <pubDate>Tue, 16 Mar 2010 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2010/03/16/anonymous-users-and-aspx-pages-inside-the-_layouts-folder/</guid>
-      <description>I ran smack into an issue that was looking to be a serious problem yesterday. One of my development projects (SharePoint) is an anonymous access public-facing website. This site using built-in SharePoint web services and the download.aspx page in the _layouts directory to facilitate lookup of related documents and provide download capability. The issue? Anonymous users can&amp;rsquo;t use any of the application pages in the _layouts folder. Lots of head scratching and some creative Google searches led me to the &amp;ldquo;DotNetIdeas&amp;rdquo; blog, specifically this post.</description>
+      <description>I ran smack into an issue that was looking to be a serious problem yesterday. One of my development projects (SharePoint) is an anonymous access public-facing website. This site using built-in SharePoint web services and the download.aspx page in the \_layouts directory to facilitate lookup of related documents and provide download capability. The issue? Anonymous users can&amp;rsquo;t use any of the application pages in the \_layouts folder.
+Lots of head scratching and some creative Google searches led me to the &amp;ldquo;DotNetIdeas&amp;rdquo; blog, specifically this post.</description>
     </item>
     
     <item>
@@ -517,7 +516,7 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Thu, 25 Feb 2010 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2010/02/25/unable-to-delete-field-in-sharepoint-library/</guid>
-      <description>Trying to delete a field in a SharePoint library and get the message &amp;ldquo;Cannot complete this action. Pleast try again.&amp;rdquo;? This drove me nuts, as even invoking the delete method via the object model gives this message. What I found to allow a delete was pushing down changes via the content type gallery in the site collection (if the field was ever a part of that content type). This can be found by going to the following:_ Site Settings_ Site Content Type Gallery_ Choose Content Type_ Advanced Settings_ Make sure radio button &amp;ldquo;Update all content types inheriting from this type&amp;rdquo; is checked_ Click OKI had several libraries with several fields that had this issue (all fields used to be a part of the content type but had since been orphaned due to changing the definition of the content type in the elements.</description>
+      <description>Trying to delete a field in a SharePoint library and get the message &amp;ldquo;Cannot complete this action. Pleast try again.&amp;rdquo;? This drove me nuts, as even invoking the delete method via the object model gives this message. What I found to allow a delete was pushing down changes via the content type gallery in the site collection (if the field was ever a part of that content type). This can be found by going to the following:</description>
     </item>
     
     <item>
@@ -526,7 +525,8 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Sat, 20 Feb 2010 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2010/02/20/terminal-cancer-patient-gets-restored-car/</guid>
-      <description>From AutoBlog: &amp;quot;Tyler Shipmanwas an 18-year-old Fiero nut from Frazee, Minnesota. In the middle of restoring his favorite car last October he was diagnosed with terminal cancer, and posted a note on a Fiero forum to ask for help with the restoration so that he wouldn&amp;rsquo;t leave his parents with the burden. He got his wish. In the middle of this crazy all and everything, Tyler is more proof that simple humanity still works.</description>
+      <description>From AutoBlog:
+  Tyler Shipman was an 18-year-old Fiero nut from Frazee, Minnesota. In the middle of restoring his favorite car last October he was diagnosed with terminal cancer, and posted a note on a Fiero forum to ask for help with the restoration so that he wouldn&amp;rsquo;t leave his parents with the burden. He got his wish. In the middle of this crazy all and everything, Tyler is more proof that simple humanity still works.</description>
     </item>
     
     <item>
@@ -535,7 +535,8 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Wed, 03 Feb 2010 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2010/02/03/the-right-tools-for-the-job/</guid>
-      <description>This post is more for my own self-reference later, but others may find it helpful too.I&amp;rsquo;ve been looking to do some modification to the k-member on my car whenever the weather warms up. This will involve removing the k-member before any of the work can be done. Most seem to do this while the engine is removed, but I&amp;rsquo;d rather not go through that again. I&amp;rsquo;ve been doing some reading on how to do this the safest way with the engine still in the car, and here are the tools I&amp;rsquo;m looking at:_ OTC Spring Compressor 7045B (what the GM dealer uses)_ OTC Tools 4324 Tubular Engine Support* 4 6-ton pound jack standsIt&amp;rsquo;s not the completed task you&amp;rsquo;re most proud of - it&amp;rsquo;s the tool collection you&amp;rsquo;ve amassed.</description>
+      <description>This post is more for my own self-reference later, but others may find it helpful too.
+I&amp;rsquo;ve been looking to do some modification to the k-member on my car whenever the weather warms up. This will involve removing the k-member before any of the work can be done. Most seem to do this while the engine is removed, but I&amp;rsquo;d rather not go through that again. I&amp;rsquo;ve been doing some reading on how to do this the safest way with the engine still in the car, and here are the tools I&amp;rsquo;m looking at:</description>
     </item>
     
     <item>
@@ -544,7 +545,8 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Wed, 27 Jan 2010 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2010/01/27/xslt-that-emits-source-xml/</guid>
-      <description>? I got this from a friend and have found it very useful for debugging my XSLT from content query web parts and data view web parts in Visual Studio. The below XSLT will output the source XML given to it:&amp;lt;pre style=&amp;ldquo;BORDER-BOTTOM #999999 1px dashed; BORDER-LEFT: #999999 1px dashed; PADDING-BOTTOM: 5px; LINE-HEIGHT: 14px; BACKGROUND-COLOR: #eee; PADDING-LEFT: 5px; WIDTH: 100%; PADDING-RIGHT: 5px; FONT-FAMILY: Andale Mono, Lucida Console, Monaco, fixed, monospace; COLOR: #000000; FONT-SIZE: 12px; OVERFLOW: auto; BORDER-TOP: #999999 1px dashed; BORDER-RIGHT: #999999 1px dashed; PADDING-TOP: 5px&amp;rdquo;&amp;gt;&amp;lt;?</description>
+      <description>I got this from a friend and have found it very useful for debugging my XSLT from content query web parts and data view web parts in Visual Studio. The below XSLT will output the source XML given to it:
+&amp;lt;xsl:stylesheet version=&amp;#34;1.0&amp;#34; xmlns:xsl=&amp;#34;http://www.w3.org/1999/XSL/Transform&amp;#34; xmlns:msxsl=&amp;#34;urn:schemas-microsoft-com:xslt&amp;#34; exclude-result-prefixes=&amp;#34;msxsl&amp;#34;&amp;gt; &amp;lt;xsl:output method=&amp;#34;xml&amp;#34; indent=&amp;#34;yes&amp;#34;/&amp;gt; &amp;lt;xsl:template match=&amp;#34;@ node()&amp;#34;&amp;gt; &amp;lt;xsl:copy&amp;gt; &amp;lt;xsl:apply-templates select=&amp;#34;@ node()&amp;#34;/&amp;gt; &amp;lt;/xsl:copy&amp;gt; &amp;lt;/xsl:template&amp;gt; &amp;lt;/xsl:stylesheet&amp;gt; </description>
     </item>
     
     <item>
@@ -553,7 +555,10 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Fri, 15 Jan 2010 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2010/01/15/if-clients-treated-architects-like-they-treat-software-designers/</guid>
-      <description>I ran across this the other day and found it funny. A google search reveals that it may be from a mailing list from around 2000.If clients treated architects like they treat software designers…Dear Mr. Architect,Please design and build me a house. I am not quite sure of what I need, so you should use your discretion. My house should have somewhere between two and forty-five bedrooms. Just make sure the plans are such that the bedrooms can be easily added or deleted.</description>
+      <description>I ran across this the other day and found it funny. A google search reveals that it may be from a mailing list from around 2000.
+If clients treated architects like they treat software designers…
+Dear Mr. Architect,
+Please design and build me a house. I am not quite sure of what I need, so you should use your discretion. My house should have somewhere between two and forty-five bedrooms. Just make sure the plans are such that the bedrooms can be easily added or deleted.</description>
     </item>
     
     <item>
@@ -562,7 +567,9 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Mon, 26 Oct 2009 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2009/10/26/ie8-standards-mode-and-moss/</guid>
-      <description>Using IE8 Standards Mode with MOSS has been fairly trouble-free so far. However, the richhtmlfield editor throws javascript errors when the page is in IE8 Standards mode. Without switching to the Telerikcontrol or defaulting all of my pages to IE7 mode - there is a simpler fix!Enable IE7 compatability mode only on your edit pages. My master page had the IE8 meta tag:&amp;lt;meta equiv=&amp;ldquo;X-UA-Compatible&amp;rdquo; content=&amp;ldquo;IE=8&amp;rdquo;&amp;gt;right under the head element. To force your edit pages into IE7 mode, use the PublishingWebControls:EditModePanel to conditionally display it.</description>
+      <description>Using IE8 Standards Mode with MOSS has been fairly trouble-free so far. However, the richhtmlfield editor throws javascript errors when the page is in IE8 Standards mode. Without switching to the Telerik control or defaulting all of my pages to IE7 mode - there is a simpler fix!
+Enable IE7 compatability mode only on your edit pages. My master page had the IE8 meta tag:
+&amp;lt;meta equiv=&amp;#34;X-UA-Compatible&amp;#34; content=&amp;#34;IE=8&amp;#34; /&amp;gt; right under the head element.</description>
     </item>
     
     <item>
@@ -571,7 +578,9 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Sun, 25 Oct 2009 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2009/10/25/fixing-a-noisy-toilet/</guid>
-      <description>I&amp;rsquo;ve had to replace the flappers in all of my toilets in the 2 years I&amp;rsquo;ve been in my house. I thought that installing the higher quality flapper would be the last toilet fixes I&amp;rsquo;d be doing&amp;hellip;I was wrong.First, here&amp;rsquo;s what the inside of most toilet tanks look like:Last night the toilet in the master bath started sounding like somebody was filling the tank with a high pressure water hose. Checking the tank revealed that water was shooting out of the top of the fill valve instead of going through the fill tube.</description>
+      <description>I&amp;rsquo;ve had to replace the flappers in all of my toilets in the 2 years I&amp;rsquo;ve been in my house. I thought that installing the higher quality flapper would be the last toilet fixes I&amp;rsquo;d be doing&amp;hellip;I was wrong.
+First, here&amp;rsquo;s what the inside of most toilet tanks look like:
+Last night the toilet in the master bath started sounding like somebody was filling the tank with a high pressure water hose.</description>
     </item>
     
     <item>
@@ -580,7 +589,8 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Fri, 18 Sep 2009 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2009/09/18/windows-7-x64-ultimate-taking-the-plunge/</guid>
-      <description>I&amp;rsquo;m just about finished backing everything up off of my main machine (Windows 7 32-bit Ultimate). I&amp;rsquo;ve heard alot of good things about Windows 7 (read quite a bit too) - and even decent things about the install process. What&amp;rsquo;s tying me to Windows is Fallout 3 and the random Windows-only game&amp;hellip;sorry Ubuntu, I love ya&#39; but we just can&amp;rsquo;t go steady yet.I&amp;rsquo;ll update this post as I install and use this new OS.</description>
+      <description>I&amp;rsquo;m just about finished backing everything up off of my main machine (Windows 7 32-bit Ultimate). I&amp;rsquo;ve heard alot of good things about Windows 7 (read quite a bit too) - and even decent things about the install process. What&amp;rsquo;s tying me to Windows is Fallout 3 and the random Windows-only game&amp;hellip;sorry Ubuntu, I love ya&#39; but we just can&amp;rsquo;t go steady yet.
+I&amp;rsquo;ll update this post as I install and use this new OS.</description>
     </item>
     
     <item>
@@ -598,7 +608,8 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Sun, 11 Jan 2009 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2009/01/11/jon-can-cook/</guid>
-      <description>Sushi!Tonight I tried my hand at making one of my favorite eat-out foods. This is my second try&amp;hellip;the first ended up in the trash can. And which roll did I make? The classic Americanized sushi - the California Roll.Where did I get my inspiration? Youtube videos. Search for &amp;ldquo;how to sushi rice&amp;rdquo; and &amp;ldquo;how to california roll&amp;rdquo; and enough instructions will appear that even the slowest of cooks&amp;hellip;ahem&amp;hellip;can figure it out.</description>
+      <description>Tonight I tried my hand at making one of my favorite eat-out foods. This is my second try&amp;hellip;the first ended up in the trash can. And which roll did I make? The classic Americanized sushi - the California Roll.
+Where did I get my inspiration? Youtube videos. Search for &amp;ldquo;how to sushi rice&amp;rdquo; and &amp;ldquo;how to california roll&amp;rdquo; and enough instructions will appear that even the slowest of cooks&amp;hellip;ahem&amp;hellip;can figure it out.</description>
     </item>
     
     <item>
@@ -607,7 +618,7 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Mon, 18 Aug 2008 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2008/08/18/lenovo-t61-speakers-popping/</guid>
-      <description>I was fortunate to get a new laptop at work recently. I took my time on a long weekend configuring it to my satisfaction, but was annoyed by an annoying &amp;ldquo;pop&amp;rdquo; noise coming from the speakers after every sound. A little further testing showed that this was only when the machine was on battery power. This poston notebookreview and this poston the OpenSuse forums point to incorrect power management settings for the sound hardware.</description>
+      <description>I was fortunate to get a new laptop at work recently. I took my time on a long weekend configuring it to my satisfaction, but was annoyed by an annoying &amp;ldquo;pop&amp;rdquo; noise coming from the speakers after every sound. A little further testing showed that this was only when the machine was on battery power. This post on notebookreview and this post on the OpenSuse forums point to incorrect power management settings for the sound hardware.</description>
     </item>
     
     <item>
@@ -616,7 +627,7 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Sat, 02 Aug 2008 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2008/08/02/code-memories/</guid>
-      <description>Every once in a while I&amp;rsquo;ll start thinking of long-past written code. Lately I&amp;rsquo;ve been thinking of C/C++&amp;hellip; This isn&amp;rsquo;t a language I wish to make a language coding. In fact - many parts of my C/C++ education were /very/ lacking. However, there are times when I think back to things that I could have done better, things I really enjoyed coding (Blackjack console app with ASCII cards..heh), and things I just plain didn&amp;rsquo;t understand or care to.</description>
+      <description>Every once in a while I&amp;rsquo;ll start thinking of long-past written code. Lately I&amp;rsquo;ve been thinking of C/C++&amp;hellip; This isn&amp;rsquo;t a language I wish to make a living coding. In fact - many parts of my C/C++ education were /very/ lacking. However, there are times when I think back to things that I could have done better, things I really enjoyed coding (Blackjack console app with ASCII cards..heh), and things I just plain didn&amp;rsquo;t understand or care to.</description>
     </item>
     
     <item>
@@ -625,7 +636,7 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Thu, 19 Jun 2008 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2008/06/19/active-directory-homedrive-home-folder/</guid>
-      <description>If you&amp;rsquo;re using an automated tool to create your user accounts and assign a Home Folder (a mapped drive pointing to shared location on a server) - make certain that the property has a colon after the drive letter (e.g. Z:not Z). Without the colon, the drive will not be mapped on user log on. How do you know if this property is set correctly? Active Directory Users and Computers won&amp;rsquo;t show you.</description>
+      <description>If you&amp;rsquo;re using an automated tool to create your user accounts and assign a Home Folder (a mapped drive pointing to shared location on a server) - make certain that the property has a colon after the drive letter (e.g. Z: not Z). Without the colon, the drive will not be mapped on user log on. How do you know if this property is set correctly? Active Directory Users and Computers won&amp;rsquo;t show you.</description>
     </item>
     
     <item>
@@ -688,7 +699,8 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Sun, 11 Mar 2007 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2007/03/11/spoofing-the-mac-commercials/</guid>
-      <description>I don&amp;rsquo;t often laugh at online videos - but this one got me. Now don&amp;rsquo;t get me wrong - I love the Mac&amp;rsquo;s interface. It&amp;rsquo;s truly a wonder. But this video is absolutely hilarious :)</description>
+      <description>I don&amp;rsquo;t often laugh at online videos - but this one got me. Now don&amp;rsquo;t get me wrong - I love the Mac&amp;rsquo;s interface. It&amp;rsquo;s truly a wonder. But this video is absolutely hilarious 😄
+  </description>
     </item>
     
     <item>
@@ -697,7 +709,8 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       <pubDate>Sat, 10 Feb 2007 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2007/02/10/docx-file-converter/</guid>
-      <description> ? In my other life, I teach computer courses and accept assignments through an online course management system. Our school (and myself) have yet to upgrade to Office 2007, but students aren&amp;rsquo;t wasting any time. I found an official Microsoft converter for Office 2007 formats available here:&amp;lt;span style=&amp;ldquo;text-decoration underline;&amp;quot;&amp;gt;http://www.microsoft.com/downloads/details.aspx?displaylang=en&amp;amp;amp;FamilyID=941B3470-3AE9-4AEE-8F43-C6BB74CD1466  </description>
+      <description>In my other life, I teach computer courses and accept assignments through an online course management system. Our school (and myself) have yet to upgrade to Office 2007, but students aren&amp;rsquo;t wasting any time. I found an official Microsoft converter for Office 2007 formats available here:
+http://www.microsoft.com/downloads/details.aspx?displaylang=en&amp;amp;FamilyID=941B3470-3AE9-4AEE-8F43-C6BB74CD1466</description>
     </item>
     
     <item>
@@ -734,7 +747,8 @@ Initially I considered paying for hosting on my own blog - just to learn the ins
       <pubDate>Fri, 26 Jan 2007 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2007/01/26/the-little-linux-box-that-could/</guid>
-      <description>I decided that in order to tinker without disrupting the smooth operation of my workhorse PC, I ought to just build a testing box. In the event that I can actually tinker enough to stop wanting to tinker (like that&amp;rsquo;s going to happen), I also wanted the PC to serve a dual role as an eventual Media Center PC (Windows or otherwise). So I laid out some requirements:Multiple Core - I&amp;rsquo;ve read that the latest versions of software that play High-Def video (DVD &amp;amp; Blu-Ray) recommend having dual core.</description>
+      <description>I decided that in order to tinker without disrupting the smooth operation of my workhorse PC, I ought to just build a testing box. In the event that I can actually tinker enough to stop wanting to tinker (like that&amp;rsquo;s going to happen), I also wanted the PC to serve a dual role as an eventual Media Center PC (Windows or otherwise). So I laid out some requirements:
+ Multiple Core - I&amp;rsquo;ve read that the latest versions of software that play High-Def video (DVD &amp;amp; Blu-Ray) recommend having dual core.</description>
     </item>
     
     <item>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xml on JonTheNerd</title>
+    <link>http://www.jonthenerd.com/tags/xml/</link>
+    <description>Recent content in xml on JonTheNerd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Mar 2010 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/tags/xml/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fastest XML Editor/Viewer</title>
+      <link>http://www.jonthenerd.com/2010/03/10/fastest-xml-editorviewer/</link>
+      <pubDate>Wed, 10 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2010/03/10/fastest-xml-editorviewer/</guid>
+      <description>I use Visual Studio every day for just about all of my development tasks. However, I attempted to open a large xml file (&amp;gt; 20 megs) and Visual studio spiked up to 1.5 gigs of memory consumption and I couldn&amp;rsquo;t do anything&amp;hellip; My old standby notepad++ (great editor!) also hung on opening the file. A quick search yielded First Object&amp;rsquo;s XML Editor. Worked great. Super fast.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Internet Explorer on JonTheNerd</title>
+    <link>http://www.jonthenerd.com/tags/internet-explorer/</link>
+    <description>Recent content in Internet Explorer on JonTheNerd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 26 Oct 2009 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/tags/internet-explorer/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IE8 Standards Mode and MOSS</title>
+      <link>http://www.jonthenerd.com/2009/10/26/ie8-standards-mode-and-moss/</link>
+      <pubDate>Mon, 26 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2009/10/26/ie8-standards-mode-and-moss/</guid>
+      <description>Using IE8 Standards Mode with MOSS has been fairly trouble-free so far. However, the richhtmlfield editor throws javascript errors when the page is in IE8 Standards mode. Without switching to the Telerik control or defaulting all of my pages to IE7 mode - there is a simpler fix!
+Enable IE7 compatability mode only on your edit pages. My master page had the IE8 meta tag:
+&amp;lt;meta equiv=&amp;#34;X-UA-Compatible&amp;#34; content=&amp;#34;IE=8&amp;#34; /&amp;gt; right under the head element.</description>
+    </item>
+    
+  </channel>
+</rss>

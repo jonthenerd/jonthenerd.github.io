@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,16 +45,18 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2010-02-26"
                     itemprop="datePublished"
                     >February 26, 2010</time
                 >
                 
                     | Posted in
-                    <a href="/categories/sharepoint">SharePoint</a>
-
+                    <a href="/categories/programming">Programming</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/sharepoint">SharePoint</a>
                 
             </div>
         </div>
@@ -66,21 +69,26 @@ item. This worked great each time I&rsquo;d test it out and add some additional
 functionality. When I finished the control, I did a little harder testing by
 hitting the refresh button in my browser over and over again. Randomly, my
 control wouldn&rsquo;t render. Other times it would be fine. What&rsquo;s up with
-that?<!-- raw HTML omitted --><!-- raw HTML omitted -->If you Google it enough, you&rsquo;ll find that this message
+that?</p>
+<p>If you Google it enough, you&rsquo;ll find that this message
 generally appears when your CAML is malformed. Well - I used an XmlWriter to
 build my CAML query (that way my inserted value from the item would be escaped
 properly for XML), so surely my CAML must be fine if it&rsquo;s working most times???
 Right??? Nope. The XmlWriter by default puts in a processing instruction on the
-first line:<!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;xml version=&ldquo;1.0&rdquo; encoding=&ldquo;UTF-8&rdquo;
-?&gt;<!-- raw HTML omitted --><!-- raw HTML omitted -->Remove this first line and the field controls render each time
-without error. The specific error I was receiving
-was:<!-- raw HTML omitted --><!-- raw HTML omitted -->Microsoft.SharePoint.SPException was
-caught<!-- raw HTML omitted -->Message=&ldquo;Exception occurred. (Exception from HRESULT: 0x80020009
-(DISP_E_EXCEPTION))&quot;<!-- raw HTML omitted -->Source=&ldquo;Microsoft.SharePoint&rdquo;<!-- raw HTML omitted -->ErrorCode=-2147352567<!-- raw HTML omitted -->StackTrace:<!-- raw HTML omitted -->at
-Microsoft.SharePoint.Library.SPRequest.GetListItemDataWithCallback(String
-bstrUrl, String bstrListName, String bstrViewName, String bstrViewXml,
-SAFEARRAYFLAGS fSafeArrayFlags, ISP2DSafeArrayWriter pSACallback,
-ISPDataCallback pPagingCallback, ISPDataCallback pSchemaCallback)</p>
+first line:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;xml</span> <span class="na">version=</span><span class="s">&#34;1.0&#34;</span> <span class="na">encoding=</span><span class="s">&#34;UTF-8&#34;</span> <span class="err">?</span><span class="nt">&gt;</span>
+</code></pre></div><p>Remove this first line and the field controls render each time without error. The specific error I was receiving was:</p>
+<blockquote>
+<blockquote>
+<p>Microsoft.SharePoint.SPException was caught
+Message=&ldquo;Exception occurred. (Exception from HRESULT: 0x80020009
+(DISP_E_EXCEPTION))&rdquo;
+Source=&ldquo;Microsoft.SharePoint&rdquo;
+ErrorCode=-2147352567
+StackTrace:
+at Microsoft.SharePoint.Library.SPRequest.GetListItemDataWithCallback(String bstrUrl, String bstrListName, String bstrViewName, String bstrViewXml, SAFEARRAYFLAGS fSafeArrayFlags, ISP2DSafeArrayWriter pSACallback, ISPDataCallback pPagingCallback, ISPDataCallback pSchemaCallback)</p>
+</blockquote>
+</blockquote>
 
         </div>
     </div>

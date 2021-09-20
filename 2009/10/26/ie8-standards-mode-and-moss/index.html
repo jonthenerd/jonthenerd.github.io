@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,16 +45,18 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2009-10-26"
                     itemprop="datePublished"
                     >October 26, 2009</time
                 >
                 
                     | Posted in
-                    <a href="/categories/sharepoint">SharePoint</a>
-
+                    <a href="/categories/programming">Programming</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/sharepoint">SharePoint</a>, <a href="/tags/internet-explorer">Internet Explorer</a>
                 
             </div>
         </div>
@@ -62,18 +65,23 @@
         <div class="container">
         <p>Using IE8 Standards Mode with MOSS has been fairly trouble-free so far. However,
 the richhtmlfield editor throws javascript errors when the page is in IE8
-Standards mode. Without switching to the
-<!-- raw HTML omitted -->Telerik<!-- raw HTML omitted --> control or defaulting <!-- raw HTML omitted -->all
-<!-- raw HTML omitted -->of my pages to IE7 mode - there is a simpler fix!<!-- raw HTML omitted --><!-- raw HTML omitted -->Enable IE7
-compatability mode only on your edit pages. My master page had the IE8 meta
-tag:<!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;meta equiv=&ldquo;X-UA-Compatible&rdquo;
-content=&ldquo;IE=8&rdquo;&gt;<!-- raw HTML omitted --><!-- raw HTML omitted -->right under the head element. To force your edit
-pages into IE7 mode, use the PublishingWebControls:EditModePanel to
+Standards mode. Without switching to the Telerik control or defaulting <strong>all</strong>
+of my pages to IE7 mode - there is a simpler fix!</p>
+<p>Enable IE7 compatability mode only on your edit pages. My master page had the IE8 meta
+tag:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">equiv</span><span class="o">=</span><span class="s">&#34;X-UA-Compatible&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;IE=8&#34;</span> <span class="p">/&gt;</span>
+</code></pre></div><p>right under the head element. To force your edit
+pages into IE7 mode, use the <code>PublishingWebControls:EditModePanel</code> to
 conditionally display it. Directly under the head element should now look
-like:<!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;publishingwebcontrols:editmodepanel id=&ldquo;EditModePanel1&rdquo;
-runat=&ldquo;server&rdquo; suppresstag=&ldquo;true&rdquo;&gt;<!-- raw HTML omitted -->&lt;meta equiv=&ldquo;X-UA-Compatible&rdquo;
-content=&ldquo;IE=7&rdquo;&gt;<!-- raw HTML omitted -->&lt;/PublishingWebControls:EditModePanel&gt;<!-- raw HTML omitted -->&lt;meta
-equiv=&ldquo;X-UA-Compatible&rdquo; content=&ldquo;IE=8&rdquo;&gt;<!-- raw HTML omitted --><!-- raw HTML omitted -->Yay.</p>
+like:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">publishingwebcontrols:editmodepanel</span>
+    <span class="na">id</span><span class="o">=</span><span class="s">&#34;EditModePanel1&#34;</span>
+    <span class="na">runat</span><span class="o">=</span><span class="s">&#34;server&#34;</span>
+    <span class="na">suppresstag</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">equiv</span><span class="o">=</span><span class="s">&#34;X-UA-Compatible&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;IE=7&#34;</span> <span class="p">/&gt;</span>
+<span class="err">&lt;</span>/PublishingWebControls:EditModePanel/&gt;
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">equiv</span><span class="o">=</span><span class="s">&#34;X-UA-Compatible&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;IE=8&#34;</span> <span class="p">/&gt;</span>
+</code></pre></div><p>Yay.</p>
 
         </div>
     </div>

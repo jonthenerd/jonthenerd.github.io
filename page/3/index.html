@@ -21,7 +21,7 @@
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
         <link rel="alternate" type="application/rss+xml" href="http://www.jonthenerd.com/feed.xml" title="JonTheNerd" />
-        </head>
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -38,16 +38,15 @@
 
         <main>
             
-    
-
     <div class="homepage-content">
+
         <div class="container">
             
             
         </div>
     </div>
-    <div class="post-list">
-        <div class="container">
+    <div class="container">
+        <div class="post-list">
             
             
                 <article>
@@ -174,7 +173,8 @@ and Workspaces&rdquo; link in Site Settings. Deleting through powershell worked 
                         >
                     </div>
                     <div class="summary">
-                        Because it&rsquo;s easier to copy+paste this later&hellip; This will disable a feature on all web applications in a farm. Very convenient for when you&rsquo;re removing a feature from a solution. [code lang=&ldquo;ps&rdquo;] Get-SPWebApplication | ForEach-Object {Disable-SPFeature &quot;Solution.NameFeatureName&quot; -url $.Url;} [/code]
+                        Because it&rsquo;s easier to copy+paste this later&hellip; This will disable a feature on all web applications in a farm. Very convenient for when you&rsquo;re removing a feature from a solution.
+Get-SPWebApplication | ForEach-Object {Disable-SPFeature &#34;Solution.Name.FeatureName&#34; -url $_.Url;} 
                     </div>
                     
                 </article>
@@ -189,7 +189,8 @@ and Workspaces&rdquo; link in Site Settings. Deleting through powershell worked 
                         >
                     </div>
                     <div class="summary">
-                        |- This same PowerShell could be used for any other list to remove all of the items. I just needed it to remove the OOB reusable content. [ps] $siteColTemp = Get-SPSite &quot;http://yourSiteCollectionUrl&quot;; $reusableContentList = $siteColTemp.RootWeb.Lists[&quot;Reusable Content&quot;]; $reusableContentItems = $reusableContentList.Items; $reusableContentItemsCount = $reusableContentItems.Count; for($x=$reusableContentItemsCount-1;$x -ge 0; $x&ndash;){$reusableContentItems[$x].Delete();} [/ps]
+                        This same PowerShell could be used for any other list to remove all of the items. I just needed it to remove the OOB reusable content.
+$siteColTemp = Get-SPSite &#34;http://yourSiteCollectionUrl&#34;; $reusableContentList = $siteColTemp.RootWeb.Lists[&#34;Reusable Content&#34;]; $reusableContentItems = $reusableContentList.Items; $reusableContentItemsCount = $reusableContentItems.Count; for($x=$reusableContentItemsCount-1;$x -ge 0; $x--){ $reusableContentItems[$x].Delete(); } 
                     </div>
                     
                 </article>

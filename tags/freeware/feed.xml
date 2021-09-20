@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Freeware on JonTheNerd</title>
+    <link>http://www.jonthenerd.com/tags/freeware/</link>
+    <description>Recent content in Freeware on JonTheNerd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Apr 2007 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/tags/freeware/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WinAudit - a shameless plug for a nifty tool</title>
+      <link>http://www.jonthenerd.com/2007/04/13/winaudit-a-shameless-plug-for-a-nifty-tool/</link>
+      <pubDate>Fri, 13 Apr 2007 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2007/04/13/winaudit-a-shameless-plug-for-a-nifty-tool/</guid>
+      <description>While surfing the interwebs, checking the emails, etc. I came upon a program called WinAudit. It&amp;rsquo;s a FREEware app that can report a lot of things about your machine and output it in a lot of different formats. Straight from their site: &amp;ldquo;The programme has advanced features such as service tag detection, hard-drive failure diagnosis, network port to process mapping, network connection speed, system availability statistics as well as Windows® update and firewall settings.</description>
+    </item>
+    
+  </channel>
+</rss>

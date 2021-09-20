@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,46 +45,53 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2011-04-05"
                     itemprop="datePublished"
                     >April 5, 2011</time
                 >
                 
                     | Posted in
-                    <a href="/categories/sharepoint">SharePoint</a>, <a href="/categories/programming">Programming</a>
-
+                    <a href="/categories/programming">Programming</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/sharepoint">SharePoint</a>
                 
             </div>
         </div>
     </header>
     <div itemprop="articleBody">
         <div class="container">
-        <p>Since the <!-- raw HTML omitted -->MSDN
-documentation for Default Custom Action Loacations and IDs <!-- raw HTML omitted -->is unreliable
+        <p>Since the <a href="http://msdn.microsoft.com/en-us/library/bb802730.aspx">MSDN
+documentation for Default Custom Action Loacations and IDs</a> is unreliable
 (they look to have copy+pasted the information from the SharePoint 2007
 documentation), our only sure bet is to browse the file system and find the
 custom action IDs and groups ourselves.</p>
 <p>I had need of this information today, and found the items from the site settings
-page located at: C:\Program Files\Common Files\Microsoft Shared\Web Server
-Extensions\14\TEMPLATE\FEATURES\SiteSettings\SiteSettings.xml</p>
+page located at:</p>
+<p><code>C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\14\TEMPLATE\FEATURES\SiteSettings\SiteSettings.xml</code></p>
 <p>For those looking specifically for it, here is the custom action for &ldquo;Delete
 this site&rdquo;:</p>
-<p>[xml] &lt;CustomAction Id=&quot;DeleteWeb&quot; GroupId=&quot;SiteTasks&quot;
-Location=&quot;Microsoft.SharePoint.SiteSettings&quot;
-Rights=&quot;ManageWeb,BrowseUserInfo&quot; Sequence=&quot;40&quot;
-Title=&quot;$Resources:core,SiteSettings_DeleteWeb_Title;&quot;
-Description=&quot;$Resources:core,SiteSettings_DeleteThisSite_Tooltip;&quot;&gt;
-&lt;UrlAction Url=&quot;_layouts/deleteweb.aspx&quot; /&gt;
-&lt;/CustomAction&gt; [/xml]</p>
-<p>If you&rsquo;re looking for that custom action, you&rsquo;re probably wanting to hide it.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;CustomAction</span>
+    <span class="na">Id=</span><span class="s">&#34;DeleteWeb&#34;</span>
+    <span class="na">GroupId=</span><span class="s">&#34;SiteTasks&#34;</span>
+    <span class="na">Location=</span><span class="s">&#34;Microsoft.SharePoint.SiteSettings&#34;</span>
+    <span class="na">Rights=</span><span class="s">&#34;ManageWeb,BrowseUserInfo&#34;</span>
+    <span class="na">Sequence=</span><span class="s">&#34;40&#34;</span>
+    <span class="na">Title=</span><span class="s">&#34;$Resources:core,SiteSettings_DeleteWeb_Title;&#34;</span>
+    <span class="na">Description=</span><span class="s">&#34;$Resources:core,SiteSettings_DeleteThisSite_Tooltip;&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;UrlAction</span> <span class="na">Url=</span><span class="s">&#34;\_layouts/deleteweb.aspx&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/CustomAction&gt;</span>
+</code></pre></div><p>If you&rsquo;re looking for that custom action, you&rsquo;re probably wanting to hide it.
 Here&rsquo;s the xml you&rsquo;ll need in your elements file:</p>
-<p>[xml] &lt;HideCustomAction Id=&quot;HideDeleteWeb&quot;
-GroupId=&quot;SiteTasks&quot; HideActionId=&quot;DeleteWeb&quot;
-Location=&quot;Microsoft.SharePoint.SiteSettings&quot;&gt;
-&lt;/HideCustomAction&gt; [/xml]</p>
-
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;HideCustomAction</span>
+    <span class="na">Id=</span><span class="s">&#34;HideDeleteWeb&#34;</span>
+    <span class="na">GroupId=</span><span class="s">&#34;SiteTasks&#34;</span>
+    <span class="na">HideActionId=</span><span class="s">&#34;DeleteWeb&#34;</span>
+    <span class="na">Location=</span><span class="s">&#34;Microsoft.SharePoint.SiteSettings&#34;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/HideCustomAction&gt;</span>
+</code></pre></div>
         </div>
     </div>
 </article>

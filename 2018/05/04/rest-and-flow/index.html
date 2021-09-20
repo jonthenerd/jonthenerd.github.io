@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,16 +45,18 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2018-05-04"
                     itemprop="datePublished"
                     >May 4, 2018</time
                 >
                 
                     | Posted in
-                    <a href="/categories/sharepoint">SharePoint</a>, <a href="/categories/programming">Programming</a>
-
+                    <a href="/categories/programming">Programming</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/sharepoint">SharePoint</a>
                 
             </div>
         </div>
@@ -87,7 +90,7 @@ of the access tokens typically used for SharePoint Addins/Apps</li>
 <li>
 <p>On the SharePoint site that you need to communicate with, navigate to
 AppRegNew page</p>
-<pre><code>&lt;your site's URL&gt;/_layouts/15/appregnew.aspx
+<pre tabindex="0"><code>&lt;your site's URL&gt;/_layouts/15/appregnew.aspx
 </code></pre></li>
 <li>
 <p>Fill in the information.</p>
@@ -126,7 +129,7 @@ AppRegNew page</p>
 <ol>
 <li>On the SharePoint site that you just finished app registration on, navigate
 to the AppPrincipals page
-<pre><code>/_layouts/15/AppPrincipals.aspx
+<pre tabindex="0"><code>/_layouts/15/AppPrincipals.aspx
 </code></pre></li>
 <li>You should see your recently registered app principle along with an App
 Identifier. The last section of the App Identifier, after the @, is the
@@ -274,7 +277,7 @@ owner</li>
 <h3 id="get-role-definition-or-group-id">Get Role Definition or Group Id</h3>
 <ul>
 <li>Example URLs:
-<pre><code>https://{TENANT}/{SPSITE_URL}/_api/web/roledefinitions/getbyname('Contribute')/id
+<pre tabindex="0"><code>https://{TENANT}/{SPSITE_URL}/_api/web/roledefinitions/getbyname('Contribute')/id
 https://{TENANT}/{SPSITE_URL}/_api/web/sitegroups/getbyname('Some%20Group')/id
 </code></pre></li>
 <li>Schema:

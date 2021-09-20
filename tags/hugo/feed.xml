@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on JonTheNerd</title>
+    <link>http://www.jonthenerd.com/tags/hugo/</link>
+    <description>Recent content in Hugo on JonTheNerd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 28 Aug 2021 15:08:02 -0500</lastBuildDate><atom:link href="http://www.jonthenerd.com/tags/hugo/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo</title>
+      <link>http://www.jonthenerd.com/2021/08/28/hugo/</link>
+      <pubDate>Sat, 28 Aug 2021 15:08:02 -0500</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2021/08/28/hugo/</guid>
+      <description>I decided to rebuild my blog atop Hugo, the &amp;ldquo;world&amp;rsquo;s fastest framework for building websites.&amp;rdquo; I did this for a few reasons:
+  GitHub has been diligent in reminding me that there are security vulnerabilities in the dependencies of my blog. I used jekyll for the static site building, a collection of npm packages for some glue-code in the build process, and based my theme on twitter bootstrap. All of this adds up to a lot of dependencies to keep up with, and I haven&amp;rsquo;t been blogging for a while&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FTP on JonTheNerd</title>
+    <link>http://www.jonthenerd.com/tags/ftp/</link>
+    <description>Recent content in FTP on JonTheNerd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 29 Sep 2010 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/tags/ftp/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>.NET 4 and FTP</title>
+      <link>http://www.jonthenerd.com/2010/09/29/net-4-and-ftp/</link>
+      <pubDate>Wed, 29 Sep 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2010/09/29/net-4-and-ftp/</guid>
+      <description>It comes baked in. Yay!
+Update: Apparently seeing products that do FTP in .NET for years made me think this wasn&amp;rsquo;t built in. It&amp;rsquo;s been around since .NET 2.0&amp;hellip; Another blogger has even created a helper class that encapsulates everything you want to do in .NET with FTP (and it works on mono!).</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,16 +45,18 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2008-06-12"
                     itemprop="datePublished"
                     >June 12, 2008</time
                 >
                 
                     | Posted in
-                    <a href="/categories/.net">.NET</a>, <a href="/categories/programming">Programming</a>
-
+                    <a href="/categories/programming">Programming</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/windows">Windows</a>, <a href="/tags/.net">.NET</a>
                 
             </div>
         </div>
@@ -66,29 +69,28 @@ largest project thus far has been an ever growing inventory script (now a .NET 2
 app) that reports information back to a SQL database. This app is run on a
 schedule by a service I wrote. The script collects great pieces of information -
 everything from the screen resolution being used to information on SQL Server
-instances on the device (yep - inventories servers too!).<!-- raw HTML omitted --><!-- raw HTML omitted -->Anyway -
-one area that posed an issue was reporting back all profiles present on a
+instances on the device (yep - inventories servers too!).</p>
+<p>Anyway - one area that posed an issue was reporting back all profiles present on a
 computer and when they were last used. This can be done a number of ways - the
 simplest of which being to enumerate the folders in the Documents and Settings
 folder and then get the last modified date off of the ntuser.dat.log file within
 each directory. This file is a log (wow, couldn&rsquo;t have guessed that!) of all
 registry actions for that specific user&rsquo;s registry hive - think everything under
 HKEY_CURRENT_USER while you&rsquo;re logged in. This works great - and has for a long
-time. Recent developments have changed some of that though&hellip;<!-- raw HTML omitted --><!-- raw HTML omitted -->What
-happens when AntiVirus crawls each user&rsquo;s registry hive? It updates that file.
+time. Recent developments have changed some of that though&hellip;</p>
+<p>What happens when AntiVirus crawls each user&rsquo;s registry hive? It updates that file.
 Suddenly the inventory app was reporting each profile to be current as of the
 day the app was run&hellip;not good. I searched a long time via the Internet - and
 just poking around the registry for days. WMI didnt' help any - and neither did
 a hunch I had about using the local computer as an Active Directory forest to
 find the last login time. I came across another file you can check - and I
-believe I&rsquo;m the first on the net to post this.<!-- raw HTML omitted --><!-- raw HTML omitted -->Check the file date on
-this file:<!-- raw HTML omitted -->C:\Documents and
-Settings&lt;user&gt;<!-- raw HTML omitted -->UserName<!-- raw HTML omitted -->\Local
-Settings\Application Data\Microsoft\Windows\UsrClass.dat.LOG<!-- raw HTML omitted --><!-- raw HTML omitted -->This has
-proved to be a reliable way of getting the last login time for each profile when
+believe I&rsquo;m the first on the net to post this.</p>
+<p>Check the file date on this file:</p>
+<pre tabindex="0"><code>C:\Documents and Settings\&lt;user&gt;\Local Settings\Application Data\Microsoft\Windows\UsrClass.dat.LOG
+</code></pre><p>This has proved to be a reliable way of getting the last login time for each profile when
 the other log file isn&rsquo;t reliable. I suspect that it may be updated on certain
 software installations - so beware. But in my case - this was a life saver. Have
-fun and let me know if it helps!<!-- raw HTML omitted --></p>
+fun and let me know if it helps!</p>
 
         </div>
     </div>

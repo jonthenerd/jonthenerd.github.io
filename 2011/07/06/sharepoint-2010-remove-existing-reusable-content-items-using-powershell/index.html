@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,27 +45,34 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2011-07-06"
                     itemprop="datePublished"
                     >July 6, 2011</time
                 >
                 
                     | Posted in
-                    <a href="/categories/powershell">PowerShell</a>, <a href="/categories/programming">Programming</a>, <a href="/categories/sharepoint">SharePoint</a>
-
+                    <a href="/categories/sysadmin">SysAdmin</a>, <a href="/categories/programming">Programming</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/powershell">PowerShell</a>, <a href="/tags/sharepoint">SharePoint</a>
                 
             </div>
         </div>
     </header>
     <div itemprop="articleBody">
         <div class="container">
-        <p>|- This same PowerShell could be used for any other list to remove all of the
-items. I just needed it to remove the OOB reusable content. [ps]
-$siteColTemp = Get-SPSite &quot;http://yourSiteCollectionUrl&quot;; $reusableContentList = $siteColTemp.RootWeb.Lists[&quot;Reusable Content&quot;]; $reusableContentItems = $reusableContentList.Items; $reusableContentItemsCount = $reusableContentItems.Count; for($x=$reusableContentItemsCount-1;$x
--ge 0; $x&ndash;){$reusableContentItems[$x].Delete();} [/ps]</p>
-
+        <p>This same PowerShell could be used for any other list to remove all of the
+items. I just needed it to remove the OOB reusable content.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-posh" data-lang="posh"><span class="nv">$siteColTemp</span> <span class="p">=</span> <span class="nb">Get-SPSite</span> <span class="s2">&#34;http://yourSiteCollectionUrl&#34;</span><span class="p">;</span>
+<span class="nv">$reusableContentList</span> <span class="p">=</span> <span class="nv">$siteColTemp</span><span class="p">.</span><span class="n">RootWeb</span><span class="p">.</span><span class="n">Lists</span><span class="p">[</span><span class="s2">&#34;Reusable Content&#34;</span><span class="p">];</span>
+<span class="nv">$reusableContentItems</span> <span class="p">=</span> <span class="nv">$reusableContentList</span><span class="p">.</span><span class="n">Items</span><span class="p">;</span>
+<span class="nv">$reusableContentItemsCount</span> <span class="p">=</span> <span class="nv">$reusableContentItems</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="nv">$x</span><span class="p">=</span><span class="nv">$reusableContentItemsCount</span><span class="p">-</span><span class="n">1</span><span class="p">;</span><span class="nv">$x</span> <span class="o">-ge</span> <span class="n">0</span><span class="p">;</span> <span class="nv">$x</span><span class="p">--){</span>
+    <span class="nv">$reusableContentItems</span><span class="p">[</span><span class="nv">$x</span><span class="p">].</span><span class="n">Delete</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
         </div>
     </div>
 </article>

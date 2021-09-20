@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>wine on JonTheNerd</title>
+    <link>http://www.jonthenerd.com/tags/wine/</link>
+    <description>Recent content in wine on JonTheNerd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 Feb 2007 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/tags/wine/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Increasing the Wine font size</title>
+      <link>http://www.jonthenerd.com/2007/02/04/increasing-the-wine-font-size/</link>
+      <pubDate>Sun, 04 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2007/02/04/increasing-the-wine-font-size/</guid>
+      <description>Thus far in using Ubuntu, I&amp;rsquo;ve been able to use only Linux applications. I&amp;rsquo;ll admit that some of them were just ports of their Windows or Mac OS X counterparts&amp;hellip;but I never had to install wine (a compatibility layer for running Windows programs). Well you know that torrent app I recommended? kTorrent? It&amp;rsquo;s crashed on me several times in the last couple days&amp;hellip;and ate up every bit of memory the system had this morning.</description>
+    </item>
+    
+  </channel>
+</rss>

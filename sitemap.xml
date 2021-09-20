@@ -8,7 +8,7 @@
     <loc>http://www.jonthenerd.com/categories/</loc>
     <lastmod>2021-08-28T15:08:02-05:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/hugo/</loc>
+    <loc>http://www.jonthenerd.com/tags/hugo/</loc>
     <lastmod>2021-08-28T15:08:02-05:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2021/08/28/hugo/</loc>
@@ -20,13 +20,16 @@
     <loc>http://www.jonthenerd.com/posts/</loc>
     <lastmod>2021-08-28T15:08:02-05:00</lastmod>
   </url><url>
+    <loc>http://www.jonthenerd.com/tags/</loc>
+    <lastmod>2021-08-28T15:08:02-05:00</lastmod>
+  </url><url>
     <loc>http://www.jonthenerd.com/2018/05/04/rest-and-flow/</loc>
     <lastmod>2018-05-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/categories/programming/</loc>
     <lastmod>2018-05-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/sharepoint/</loc>
+    <loc>http://www.jonthenerd.com/tags/sharepoint/</loc>
     <lastmod>2018-05-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2018/01/17/learning-spfx-pt-2/</loc>
@@ -35,28 +38,37 @@
     <loc>http://www.jonthenerd.com/2018/01/16/configuring-nvm-for-osx/</loc>
     <lastmod>2018-01-16T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://www.jonthenerd.com/tags/javascript/</loc>
+    <lastmod>2018-01-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/tags/node/</loc>
+    <lastmod>2018-01-16T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://www.jonthenerd.com/2018/01/16/learning-spfx-pt-1/</loc>
     <lastmod>2018-01-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2017/09/16/managed-props-and-config-cache/</loc>
     <lastmod>2017-09-16T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://www.jonthenerd.com/categories/sysadmin/</loc>
+    <lastmod>2017-09-16T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://www.jonthenerd.com/2016/07/06/the-server-was-unable-to-save/</loc>
     <lastmod>2016-07-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/muhimbi-pdf-converter-services/</loc>
+    <loc>http://www.jonthenerd.com/tags/muhimbi/</loc>
     <lastmod>2016-04-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2016/04/04/muhimbi-pdf-converter-services-and-infopath-error/</loc>
     <lastmod>2016-04-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/k2/</loc>
+    <loc>http://www.jonthenerd.com/tags/k2/</loc>
     <lastmod>2016-03-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2016/03/31/k2-service-account-rights-issue/</loc>
     <lastmod>2016-03-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/cms-made-simple/</loc>
+    <loc>http://www.jonthenerd.com/tags/cms-made-simple/</loc>
     <lastmod>2014-11-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2014/11/22/cms-made-simple-hostgator/</loc>
@@ -71,6 +83,9 @@
     <loc>http://www.jonthenerd.com/categories/cars/</loc>
     <lastmod>2014-02-09T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://www.jonthenerd.com/tags/is350/</loc>
+    <lastmod>2014-02-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://www.jonthenerd.com/2014/02/09/navigation-dvd-replacement-tools-lexus-is250is350/</loc>
     <lastmod>2014-02-09T00:00:00+00:00</lastmod>
   </url><url>
@@ -80,7 +95,7 @@
     <loc>http://www.jonthenerd.com/2013/01/22/sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy/</loc>
     <lastmod>2013-01-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/android/</loc>
+    <loc>http://www.jonthenerd.com/tags/android/</loc>
     <lastmod>2012-10-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2012/10/07/ip30-programming-part-2/</loc>
@@ -110,7 +125,7 @@
     <loc>http://www.jonthenerd.com/2011/09/14/sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly/</loc>
     <lastmod>2011-09-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/powershell/</loc>
+    <loc>http://www.jonthenerd.com/tags/powershell/</loc>
     <lastmod>2011-08-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2011/08/17/sharepoint-2010-add-a-file-to-the-root-of-your-site-using-powershell/</loc>
@@ -158,40 +173,49 @@
     <loc>http://www.jonthenerd.com/2010/12/07/sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/</loc>
     <lastmod>2010-12-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/freeware/</loc>
-    <lastmod>2010-10-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://www.jonthenerd.com/categories/fun/</loc>
-    <lastmod>2010-10-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://www.jonthenerd.com/categories/gaming/</loc>
+    <lastmod>2010-10-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/tags/retro-gaming/</loc>
+    <lastmod>2010-10-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/tags/sega/</loc>
     <lastmod>2010-10-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2010/10/21/sonic-fan-remix/</loc>
     <lastmod>2010-10-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/video-games/</loc>
-    <lastmod>2010-10-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://www.jonthenerd.com/2010/10/14/sharepoint-content-query-webpart-easy-values/</loc>
     <lastmod>2010-10-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/.net/</loc>
+    <loc>http://www.jonthenerd.com/tags/.net/</loc>
     <lastmod>2010-09-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2010/09/29/net-4-and-ftp/</loc>
     <lastmod>2010-09-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/asp.net/</loc>
+    <loc>http://www.jonthenerd.com/tags/ftp/</loc>
+    <lastmod>2010-09-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/tags/asp.net/</loc>
     <lastmod>2010-09-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2010/09/22/asp-net-padding-oracle/</loc>
     <lastmod>2010-09-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/linux/</loc>
+    <loc>http://www.jonthenerd.com/tags/padding-oracle/</loc>
+    <lastmod>2010-09-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/categories/security/</loc>
+    <lastmod>2010-09-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/tags/linux/</loc>
     <lastmod>2010-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/ubuntu/</loc>
+    <loc>http://www.jonthenerd.com/tags/ubuntu/</loc>
+    <lastmod>2010-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/tags/unreal-tournament/</loc>
     <lastmod>2010-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2010/08/01/unreal-tournament-server-on-ubuntu-linux-10-04/</loc>
@@ -200,19 +224,22 @@
     <loc>http://www.jonthenerd.com/2010/07/10/dev-cheat-sheets/</loc>
     <lastmod>2010-07-10T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://www.jonthenerd.com/tags/gimp/</loc>
+    <lastmod>2010-06-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://www.jonthenerd.com/2010/06/13/gimp-how-to-make-fuzzy-border-transparent/</loc>
     <lastmod>2010-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/motivation/</loc>
-    <lastmod>2010-06-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://www.jonthenerd.com/2010/06/01/what-motivates-us/</loc>
-    <lastmod>2010-06-01T00:00:00+00:00</lastmod>
+    <loc>http://www.jonthenerd.com/tags/open-source/</loc>
+    <lastmod>2010-06-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2010/03/16/anonymous-users-and-aspx-pages-inside-the-_layouts-folder/</loc>
     <lastmod>2010-03-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2010/03/10/fastest-xml-editorviewer/</loc>
+    <lastmod>2010-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/tags/xml/</loc>
     <lastmod>2010-03-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2010/02/26/occasional-spexception-from-getlistitemdatawithcallback/</loc>
@@ -224,16 +251,16 @@
     <loc>http://www.jonthenerd.com/2010/02/20/terminal-cancer-patient-gets-restored-car/</loc>
     <lastmod>2010-02-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/diy/</loc>
+    <loc>http://www.jonthenerd.com/2010/02/03/the-right-tools-for-the-job/</loc>
     <lastmod>2010-02-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/2010/02/03/the-right-tools-for-the-job/</loc>
+    <loc>http://www.jonthenerd.com/categories/tools/</loc>
     <lastmod>2010-02-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2010/01/27/xslt-that-emits-source-xml/</loc>
     <lastmod>2010-01-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/funny/</loc>
+    <loc>http://www.jonthenerd.com/tags/funny/</loc>
     <lastmod>2010-01-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2010/01/15/if-clients-treated-architects-like-they-treat-software-designers/</loc>
@@ -242,13 +269,19 @@
     <loc>http://www.jonthenerd.com/2009/10/26/ie8-standards-mode-and-moss/</loc>
     <lastmod>2009-10-26T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://www.jonthenerd.com/tags/internet-explorer/</loc>
+    <lastmod>2009-10-26T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://www.jonthenerd.com/2009/10/25/fixing-a-noisy-toilet/</loc>
     <lastmod>2009-10-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/computers/</loc>
+    <loc>http://www.jonthenerd.com/categories/home-repair/</loc>
+    <lastmod>2009-10-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/categories/computing/</loc>
     <lastmod>2009-09-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/windows/</loc>
+    <loc>http://www.jonthenerd.com/tags/windows/</loc>
     <lastmod>2009-09-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2009/09/18/windows-7-x64-ultimate-taking-the-plunge/</loc>
@@ -257,10 +290,13 @@
     <loc>http://www.jonthenerd.com/2009/06/07/fixing-a-jumpy-cusorpointer-on-your-opticallaser-mouse/</loc>
     <lastmod>2009-06-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/food/</loc>
+    <loc>http://www.jonthenerd.com/categories/cooking/</loc>
     <lastmod>2009-01-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2009/01/11/jon-can-cook/</loc>
+    <lastmod>2009-01-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/tags/sushi/</loc>
     <lastmod>2009-01-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2008/08/18/lenovo-t61-speakers-popping/</loc>
@@ -269,7 +305,7 @@
     <loc>http://www.jonthenerd.com/2008/08/02/code-memories/</loc>
     <lastmod>2008-08-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/active-directory/</loc>
+    <loc>http://www.jonthenerd.com/tags/active-directory/</loc>
     <lastmod>2008-06-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2008/06/19/active-directory-homedrive-home-folder/</loc>
@@ -281,20 +317,35 @@
     <loc>http://www.jonthenerd.com/2008/06/12/eeepc-not-for-the-masses/</loc>
     <lastmod>2008-06-12T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://www.jonthenerd.com/tags/fantasy/</loc>
+    <lastmod>2008-06-12T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://www.jonthenerd.com/2008/06/12/finding-the-last-login-date-for-all-profiles/</loc>
+    <lastmod>2008-06-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/categories/linux/</loc>
+    <lastmod>2008-06-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/categories/reading/</loc>
     <lastmod>2008-06-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2007/05/30/laptop-bioscmos-reset-pain/</loc>
     <lastmod>2007-05-30T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://www.jonthenerd.com/tags/adventure/</loc>
+    <lastmod>2007-05-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/tags/sam-max/</loc>
+    <lastmod>2007-05-11T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://www.jonthenerd.com/2007/05/11/the-resurgence-of-the-adventure-game-genre/</loc>
     <lastmod>2007-05-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/2007/04/13/winaudit-a-shameless-plug-for-a-nifty-tool/</loc>
+    <loc>http://www.jonthenerd.com/tags/freeware/</loc>
     <lastmod>2007-04-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/mac/</loc>
-    <lastmod>2007-03-11T00:00:00+00:00</lastmod>
+    <loc>http://www.jonthenerd.com/2007/04/13/winaudit-a-shameless-plug-for-a-nifty-tool/</loc>
+    <lastmod>2007-04-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2007/03/11/spoofing-the-mac-commercials/</loc>
     <lastmod>2007-03-11T00:00:00+00:00</lastmod>
@@ -302,19 +353,19 @@
     <loc>http://www.jonthenerd.com/2007/02/10/docx-file-converter/</loc>
     <lastmod>2007-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/microsoft-office/</loc>
-    <lastmod>2007-02-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://www.jonthenerd.com/2007/02/04/increasing-the-wine-font-size/</loc>
+    <lastmod>2007-02-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/tags/wine/</loc>
     <lastmod>2007-02-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2007/01/29/forced-enjoyment/</loc>
     <lastmod>2007-01-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://www.jonthenerd.com/categories/media-center/</loc>
-    <lastmod>2007-01-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://www.jonthenerd.com/2007/01/26/decided-it-was-time-to-start-a-blog/</loc>
+    <lastmod>2007-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/tags/media-center/</loc>
     <lastmod>2007-01-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2007/01/26/the-little-linux-box-that-could/</loc>
@@ -323,7 +374,5 @@
     <loc>http://www.jonthenerd.com/about/</loc>
   </url><url>
     <loc>http://www.jonthenerd.com/license/</loc>
-  </url><url>
-    <loc>http://www.jonthenerd.com/tags/</loc>
   </url>
 </urlset>

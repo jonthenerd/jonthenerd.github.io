@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,16 +45,18 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2011-07-21"
                     itemprop="datePublished"
                     >July 21, 2011</time
                 >
                 
                     | Posted in
-                    <a href="/categories/powershell">PowerShell</a>, <a href="/categories/programming">Programming</a>, <a href="/categories/sharepoint">SharePoint</a>
-
+                    <a href="/categories/sysadmin">SysAdmin</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/powershell">PowerShell</a>, <a href="/tags/sharepoint">SharePoint</a>
                 
             </div>
         </div>
@@ -62,9 +65,9 @@
         <div class="container">
         <p>Because it&rsquo;s easier to copy+paste this later&hellip; This will disable a feature on
 all web applications in a farm. Very convenient for when you&rsquo;re removing a
-feature from a solution. [code lang=&ldquo;ps&rdquo;] Get-SPWebApplication | ForEach-Object
-{Disable-SPFeature &quot;Solution.Name<em>FeatureName&quot; -url $</em>.Url;} [/code]</p>
-
+feature from a solution.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-posh" data-lang="posh"><span class="nb">Get-SPWebApplication</span> <span class="p">|</span> <span class="nb">ForEach-Object</span> <span class="p">{</span><span class="nb">Disable-SPFeature</span> <span class="s2">&#34;Solution.Name.FeatureName&#34;</span> <span class="n">-url</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Url</span><span class="p">;}</span>
+</code></pre></div>
         </div>
     </div>
 </article>

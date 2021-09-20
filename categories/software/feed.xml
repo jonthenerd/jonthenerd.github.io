@@ -25,5 +25,42 @@
       <description> Do not use the &amp;ldquo;Flatten Image&amp;rdquo; option. A new layer will be created containing only the border (this layer will be the active layer). Perform &amp;ldquo;Layer-&amp;gt;Transparency-&amp;gt;Alpha to Selection&amp;rdquo; Perform &amp;ldquo;Layer-&amp;gt;Delete&amp;rdquo;. (you don&amp;rsquo;t need this layer any more) Perform &amp;ldquo;Layer-&amp;gt;Transparency-&amp;gt;Add Alpha Channel&amp;rdquo; (if possible) Perform &amp;ldquo;Edit-&amp;gt;Clear&amp;rdquo; Note: the &amp;ldquo;Layer&amp;rdquo; commands are also available on the context menu accessed by right-clicking on the layer&amp;rsquo;s thumbnail preview in the Layer Dialog.  </description>
     </item>
     
+    <item>
+      <title>Fastest XML Editor/Viewer</title>
+      <link>http://www.jonthenerd.com/2010/03/10/fastest-xml-editorviewer/</link>
+      <pubDate>Wed, 10 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2010/03/10/fastest-xml-editorviewer/</guid>
+      <description>I use Visual Studio every day for just about all of my development tasks. However, I attempted to open a large xml file (&amp;gt; 20 megs) and Visual studio spiked up to 1.5 gigs of memory consumption and I couldn&amp;rsquo;t do anything&amp;hellip; My old standby notepad++ (great editor!) also hung on opening the file. A quick search yielded First Object&amp;rsquo;s XML Editor. Worked great. Super fast.</description>
+    </item>
+    
+    <item>
+      <title>WinAudit - a shameless plug for a nifty tool</title>
+      <link>http://www.jonthenerd.com/2007/04/13/winaudit-a-shameless-plug-for-a-nifty-tool/</link>
+      <pubDate>Fri, 13 Apr 2007 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2007/04/13/winaudit-a-shameless-plug-for-a-nifty-tool/</guid>
+      <description>While surfing the interwebs, checking the emails, etc. I came upon a program called WinAudit. It&amp;rsquo;s a FREEware app that can report a lot of things about your machine and output it in a lot of different formats. Straight from their site: &amp;ldquo;The programme has advanced features such as service tag detection, hard-drive failure diagnosis, network port to process mapping, network connection speed, system availability statistics as well as Windows® update and firewall settings.</description>
+    </item>
+    
+    <item>
+      <title>docx file converter</title>
+      <link>http://www.jonthenerd.com/2007/02/10/docx-file-converter/</link>
+      <pubDate>Sat, 10 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2007/02/10/docx-file-converter/</guid>
+      <description>In my other life, I teach computer courses and accept assignments through an online course management system. Our school (and myself) have yet to upgrade to Office 2007, but students aren&amp;rsquo;t wasting any time. I found an official Microsoft converter for Office 2007 formats available here:
+http://www.microsoft.com/downloads/details.aspx?displaylang=en&amp;amp;FamilyID=941B3470-3AE9-4AEE-8F43-C6BB74CD1466</description>
+    </item>
+    
+    <item>
+      <title>Forced Enjoyment</title>
+      <link>http://www.jonthenerd.com/2007/01/29/forced-enjoyment/</link>
+      <pubDate>Mon, 29 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2007/01/29/forced-enjoyment/</guid>
+      <description>This isn&amp;rsquo;t the first time I&amp;rsquo;ve tried Ubuntu (or Linux for that matter). Several times in the past few years (since 2002 actually), I&amp;rsquo;d get the &amp;ldquo;Linux Bug&amp;rdquo; and repartition my hard drive to be able to try out some new distro. This would normally come about after I&amp;rsquo;d read some positive review of said distro (or from a friend). What have I tried in the past? I started out on Mandrake (now Mandriva), moved to SUSE 8 &amp;amp; 9, then MEPIS (great distro btw), and now Ubuntu.</description>
+    </item>
+    
   </channel>
 </rss>

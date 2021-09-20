@@ -21,7 +21,7 @@
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
         <link rel="alternate" type="application/rss+xml" href="http://www.jonthenerd.com/feed.xml" title="JonTheNerd" />
-        </head>
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -38,16 +38,15 @@
 
         <main>
             
-    
-
     <div class="homepage-content">
+
         <div class="container">
             
             
         </div>
     </div>
-    <div class="post-list">
-        <div class="container">
+    <div class="container">
+        <div class="post-list">
             
             
                 <article>
@@ -60,8 +59,8 @@
                         >
                     </div>
                     <div class="summary">
-                        |- This idea comes from Kirk Hofer&rsquo;s blog, but modfied to use the SharePoint 2010 powershell commandlets and not care about specifying credentials in the script. I figured most people would just keep using the credentials specified in their scheduled task. The script loads the SharePoint plugin, enumerates the zones, and sends a request to each one.
-function Get-WebPage([string]$url) { $wc = new-object net.webclient; $wc.credentials = [System.Net.CredentialCache]::DefaultCredentials; $pageContents = $wc.DownloadString($url); $wc.
+                        This idea comes from Kirk Hofer&rsquo;s blog, but modfied to use the SharePoint 2010 powershell commandlets and not care about specifying credentials in the script. I figured most people would just keep using the credentials specified in their scheduled task. The script loads the SharePoint plugin, enumerates the zones, and sends a request to each one.
+Add-PSSnapin Microsoft.SharePoint.PowerShell; function Get-WebPage([string]$url) { $wc = new-object net.webclient; $wc.credentials = [System.Net.CredentialCache]::DefaultCredentials; $pageContents = $wc.
                     </div>
                     
                         <div>
@@ -81,7 +80,8 @@ function Get-WebPage([string]$url) { $wc = new-object net.webclient; $wc.credent
                     </div>
                     <div class="summary">
                         Since the MSDN documentation for Default Custom Action Loacations and IDs is unreliable (they look to have copy+pasted the information from the SharePoint 2007 documentation), our only sure bet is to browse the file system and find the custom action IDs and groups ourselves.
-I had need of this information today, and found the items from the site settings page located at: C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\14\TEMPLATE\FEATURES\SiteSettings\SiteSettings.xml
+I had need of this information today, and found the items from the site settings page located at:
+C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\14\TEMPLATE\FEATURES\SiteSettings\SiteSettings.xml
 For those looking specifically for it, here is the custom action for &ldquo;Delete this site&rdquo;:
                     </div>
                     
@@ -102,7 +102,7 @@ For those looking specifically for it, here is the custom action for &ldquo;Dele
                     </div>
                     <div class="summary">
                         This is pretty easy using powerhell with SharePoint 2010:
-[powershell]Get-SPWebApplication &quot;http://WebApplicationUrl:PortIfNeeded&quot; | Get-SPSite | ForEach-Object{Enable-SPFeature &quot;Solution.NameFeatureName&quot; -url $.Url}[/powershell]
+Get-SPWebApplication &#34;http://WebApplicationUrl:PortIfNeeded&#34; | Get-SPSite | ForEach-Object{Enable-SPFeature &#34;Solution.Name.FeatureName&#34; -url $_.Url} 
                     </div>
                     
                 </article>
@@ -117,9 +117,9 @@ For those looking specifically for it, here is the custom action for &ldquo;Dele
                         >
                     </div>
                     <div class="summary">
-                        If you try to access the SharePoint URL &ldquo;_Layouts/ChangeSiteMasterPage.aspx&rdquo; and receive the following error:
-&ldquo;One or more field types are not installed properly. Go to the list settings page to delete these fields.&rdquo;
-The &ldquo;SharePoint Server Publishing Infrastructure&rdquo; feature needs to be turned on.
+                        If you try to access the SharePoint URL \_Layouts/ChangeSiteMasterPage.aspx and receive the following error:
+  One or more field types are not installed properly. Go to the list settings page to delete these fields.
+  The SharePoint Server Publishing Infrastructure feature needs to be turned on.
                     </div>
                     
                 </article>
@@ -173,7 +173,8 @@ Calendar.</p>
                         >
                     </div>
                     <div class="summary">
-                        The following can be used to disable throttling on a specific list (must be run as an account with enough priv.): [powershell] $web = Get-SPWeb http://whateverWeb $list = $web.Lists[“List Title”] $list.enablethrottling = $false $list.update() [/powershell]
+                        The following can be used to disable throttling on a specific list (must be run as an account with enough priv.):
+$web = Get-SPWeb &#34;http://whateverWeb&#34;; $list = $web.Lists[&#34;List Title&#34;]; $list.enablethrottling = $false; $list.update(); 
                     </div>
                     
                 </article>
@@ -188,7 +189,9 @@ Calendar.</p>
                         >
                     </div>
                     <div class="summary">
-                        In migrating some WebParts from SP2007 to SP2010, I came across a webpart that implements ICallbackEventHandler. This webpart was working fine when placed on the page, but did not work correctly in the webpart gallery. The specific error message being received was &ldquo;The target &lsquo;ctl00$PlaceHolderMain$ctl00&rsquo; for the callback could not be found or did not implement ICallbackEventHandler&rdquo;. This error is due to the webpart being added to the preview page dynamically at runtime.
+                        In migrating some WebParts from SP2007 to SP2010, I came across a webpart that implements ICallbackEventHandler. This webpart was working fine when placed on the page, but did not work correctly in the webpart gallery. The specific error message being received was:
+  The target &lsquo;ctl00$PlaceHolderMain$ctl00&rsquo; for the callback could not be found or did not implement ICallbackEventHandler
+  This error is due to the webpart being added to the preview page dynamically at runtime.
                     </div>
                     
                         <div>
@@ -208,7 +211,7 @@ Calendar.</p>
                     </div>
                     <div class="summary">
                         The new Sonic 4 is a bit of a novelty. This though - this is what Sonic fans have been waiting for:
-More information on the game can be found at http://sonicfanremix.com/.
+  More information on the game can be found at http://sonicfanremix.com/.
                     </div>
                     
                 </article>
@@ -224,7 +227,7 @@ More information on the game can be found at http://sonicfanremix.com/.
                     </div>
                     <div class="summary">
                         Sometimes it&rsquo;s helpful to see exactly what your CQW is receiving. Put this into a style and see what properties and data you&rsquo;re receiving:
-[sourcecode language=&ldquo;xslt&rdquo;]&lt;xsl:for-each select=&quot;@*&quot;&gt; P:&lt;xsl:value-of select=&quot;name()&quot; /&gt;&lt;br/&gt; V:&lt;xsl:value-of select=&quot;.&quot; /&gt;&lt;br/&gt; &lt;/xsl:for-each&gt;[/sourcecode]
+&lt;xsl:for-each select=&#34;@*&#34;&gt; P:&lt;xsl:value-of select=&#34;name()&#34; /&gt;&lt;br/&gt; V:&lt;xsl:value-of select=&#34;.&#34; /&gt;&lt;br/&gt; &lt;/xsl:for-each&gt; 
                     </div>
                     
                 </article>

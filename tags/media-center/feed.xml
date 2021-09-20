@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Media Center on JonTheNerd</title>
+    <link>http://www.jonthenerd.com/tags/media-center/</link>
+    <description>Recent content in Media Center on JonTheNerd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 26 Jan 2007 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/tags/media-center/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The little Linux Box that could</title>
+      <link>http://www.jonthenerd.com/2007/01/26/the-little-linux-box-that-could/</link>
+      <pubDate>Fri, 26 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2007/01/26/the-little-linux-box-that-could/</guid>
+      <description>I decided that in order to tinker without disrupting the smooth operation of my workhorse PC, I ought to just build a testing box. In the event that I can actually tinker enough to stop wanting to tinker (like that&amp;rsquo;s going to happen), I also wanted the PC to serve a dual role as an eventual Media Center PC (Windows or otherwise). So I laid out some requirements:
+ Multiple Core - I&amp;rsquo;ve read that the latest versions of software that play High-Def video (DVD &amp;amp; Blu-Ray) recommend having dual core.</description>
+    </item>
+    
+  </channel>
+</rss>

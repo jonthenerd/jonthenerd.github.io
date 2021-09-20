@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,16 +45,18 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2012-01-20"
                     itemprop="datePublished"
                     >January 20, 2012</time
                 >
                 
                     | Posted in
-                    <a href="/categories/sharepoint">SharePoint</a>
-
+                    <a href="/categories/programming">Programming</a>, <a href="/categories/sysadmin">SysAdmin</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/sharepoint">SharePoint</a>
                 
             </div>
         </div>
@@ -65,15 +68,13 @@ and oddities with the SharePoint 2010 User Profile Service Application.</p>
 <p>If you&rsquo;re wanting to populate pictures into people&rsquo;s profiles, you&rsquo;ll be using
 the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or
 incremental - or your custom built one). This cmdlet is in
-the Microsoft.Office.Server.UserProfiles dll, specifically the
-Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore
+the <code>Microsoft.Office.Server.UserProfiles</code> dll, specifically the
+<code>Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore</code>
 class. Thanks to the goodness that is
 <!-- raw HTML omitted -->Redgate Reflector<!-- raw HTML omitted --> (a must have for any
 SP developer), we can get a more clear undertanding of what the cmdlet is doing.
 I&rsquo;ve written some comments to help understand what&rsquo;s going on, as well as
-renamed some variables for the section I was more interested in understanding.
-You&rsquo;ll want to open the code in a new window (highlight on the top right of the
-code section), as some of the lines are quite long:</p>
+renamed some variables for the section I was more interested in understanding.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[Cmdlet(&#34;Update&#34;, &#34;SPProfilePhotoStore&#34;)]</span>
 <span class="k">internal</span> <span class="k">sealed</span> <span class="k">class</span> <span class="nc">SPCmdletUserProfilePhotoStore</span> <span class="p">:</span> <span class="n">SPCmdlet</span>
 <span class="p">{</span>

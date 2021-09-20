@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,16 +45,18 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2008-06-19"
                     itemprop="datePublished"
                     >June 19, 2008</time
                 >
                 
                     | Posted in
-                    <a href="/categories/active-directory">Active Directory</a>, <a href="/categories/programming">Programming</a>, <a href="/categories/windows">Windows</a>
-
+                    <a href="/categories/sysadmin">SysAdmin</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/active-directory">Active Directory</a>, <a href="/tags/windows">Windows</a>
                 
             </div>
         </div>
@@ -63,12 +66,9 @@
         <p>If you&rsquo;re using an automated tool to create your user accounts and assign a Home
 Folder (a mapped drive pointing to shared location on a server) - make certain
 that the property has a colon after the drive letter (e.g.
-<!-- raw HTML omitted -->Z:<!-- raw HTML omitted --> not
-<!-- raw HTML omitted -->Z<!-- raw HTML omitted -->). Without the
-colon, the drive will not be mapped on user log on. How do you know if this
-property is set correctly? Active Directory Users and Computers won&rsquo;t show you.
-Use
-<!-- raw HTML omitted -->ADExplorer<!-- raw HTML omitted -->.
+<strong>Z:</strong> not <strong>Z</strong>). Without the colon, the drive will not be mapped on user log on. How do you know if this
+property is set correctly? Active Directory Users and Computers won&rsquo;t show you.</p>
+<p>Use <a href="http://technet.microsoft.com/en-us/sysinternals/bb963907.aspx">ADExplorer</a>.
 This tool will show you the properties, value types, and actual values of any
 object in your Active Directory structure&hellip;very helpful for writing scripts and
 apps that interface with LDAP.</p>

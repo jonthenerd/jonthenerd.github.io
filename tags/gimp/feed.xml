@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gimp on JonTheNerd</title>
+    <link>http://www.jonthenerd.com/tags/gimp/</link>
+    <description>Recent content in Gimp on JonTheNerd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 13 Jun 2010 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/tags/gimp/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GIMP How to make fuzzy border transparent</title>
+      <link>http://www.jonthenerd.com/2010/06/13/gimp-how-to-make-fuzzy-border-transparent/</link>
+      <pubDate>Sun, 13 Jun 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2010/06/13/gimp-how-to-make-fuzzy-border-transparent/</guid>
+      <description> Do not use the &amp;ldquo;Flatten Image&amp;rdquo; option. A new layer will be created containing only the border (this layer will be the active layer). Perform &amp;ldquo;Layer-&amp;gt;Transparency-&amp;gt;Alpha to Selection&amp;rdquo; Perform &amp;ldquo;Layer-&amp;gt;Delete&amp;rdquo;. (you don&amp;rsquo;t need this layer any more) Perform &amp;ldquo;Layer-&amp;gt;Transparency-&amp;gt;Add Alpha Channel&amp;rdquo; (if possible) Perform &amp;ldquo;Edit-&amp;gt;Clear&amp;rdquo; Note: the &amp;ldquo;Layer&amp;rdquo; commands are also available on the context menu accessed by right-clicking on the layer&amp;rsquo;s thumbnail preview in the Layer Dialog.  </description>
+    </item>
+    
+  </channel>
+</rss>

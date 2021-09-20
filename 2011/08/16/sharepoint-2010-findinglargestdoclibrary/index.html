@@ -20,7 +20,8 @@
         <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
         <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
         <link rel="stylesheet" href="/assets/style.css" />
-        </head>
+        
+    </head>
     <body>
         <header class="site-header">
     <div class="container">
@@ -44,16 +45,18 @@
         </h1>
         <div class="post-meta">
             <div class="container">
-                By Jon Badgett
-                | <time
+                <time
                     datetime=" 2011-08-16"
                     itemprop="datePublished"
                     >August 16, 2011</time
                 >
                 
                     | Posted in
-                    <a href="/categories/powershell">PowerShell</a>, <a href="/categories/programming">Programming</a>, <a href="/categories/sharepoint">SharePoint</a>
-
+                    <a href="/categories/sysadmin">SysAdmin</a>, <a href="/categories/programming">Programming</a>
+                
+                
+                    | Tagged with
+                    <a href="/tags/powershell">PowerShell</a>, <a href="/tags/sharepoint">SharePoint</a>
                 
             </div>
         </div>
@@ -68,20 +71,19 @@ running out of space?</p>
 <p>Obviously - up the space so as to avoid additional noise from your users. Then -
 figure out which libraries are taking up the most space. This can be done by
 using the (now obsolete - but working)
-<!-- raw HTML omitted -->StorageManagementInformation
-method off of SPSite<!-- raw HTML omitted -->. You can write some C# to use it, or you can use
+<a href="http://msdn.microsoft.com/en-us/library/microsoft.sharepoint.spsite.storagemanagementinformation.aspx">StorageManagementInformation
+method off of SPSite</a>. You can write some C# to use it, or you can use
 PowerShell.</p>
 <p>The required arguments for this method (listed below) can be found by looking at
 the above MSDN link. I&rsquo;ll also include the potential values that can be found by
 using Reflector to look at the Microsoft.SharePoint dll:</p>
 <!-- raw HTML omitted -->
 <p>So if you want to find the top 5 largest document libraries in a specific site
-collection, here&rsquo;s the PowerShell: [code lang=&ldquo;ps&rdquo;]
-$site = Get-SPSite &quot;http://yoursitecollection:portifneeded&quot;;
-$dataTable
-= $site.StorageManagementInformation(2,0x11,0,5);
-$dataTable | Select * [/code]</p>
-<p>This is very helpful if you aren&rsquo;t yet on SP2010 SP1. A note though - the method
+collection, here&rsquo;s the PowerShell:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-posh" data-lang="posh"><span class="nv">$site</span> <span class="p">=</span> <span class="nb">Get-SPSite</span> <span class="s2">&#34;http://yoursitecollection:portifneeded&#34;</span><span class="p">;</span>
+<span class="nv">$dataTable</span> <span class="p">=</span> <span class="nv">$site</span><span class="p">.</span><span class="n">StorageManagementInformation</span><span class="p">(</span><span class="n">2</span><span class="p">,</span><span class="n">0x11</span><span class="p">,</span><span class="n">0</span><span class="p">,</span><span class="n">5</span><span class="p">);</span>
+<span class="nv">$dataTable</span> <span class="p">|</span> <span class="nb">Select </span><span class="p">*</span>
+</code></pre></div><p>This is very helpful if you aren&rsquo;t yet on SP2010 SP1. A note though - the method
 is marked as obselete with this description &ldquo;SPSite.StorageManagementInformation
 is expensive; avoid using it.&rdquo;. There&rsquo;s no further explanation on what is being
 spooled up to execute the method or why it was OK in SP2007 but not SP2010. So
