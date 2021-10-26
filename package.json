@@ -23,10 +23,10 @@
     },
     "homepage": "https://github.com/jonthenerd/jonthenerd.github.io#readme",
     "devDependencies": {
-        "concurrently": "^6.2.1",
+        "concurrently": "^6.3.0",
         "gray-matter": "^4.0.3",
-        "prettier": "^2.3.2",
+        "prettier": "^2.4.1",
         "prettier-plugin-go-template": "0.0.11",
-        "sass": "^1.38.2"
+        "sass": "^1.43.3"
     }
 }

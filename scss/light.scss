@@ -1,5 +1,6 @@
 /* Theme Variables (dark on light) */
 :root {
+    --gap: 1.5rem;
     --background-color: rgb(250, 250, 250);
     --color: #000;
 
@@ -12,6 +13,19 @@
     --post-meta-background-color: #036;
     --post-meta-color: #fff;
     --post-meta-a-color: #ffccb3;
+
+    --alert-tip-background: #dff6dd;
+    --alert-tip-border: #dff6dd;
+    --alert-note-background: #efd9fd;
+    --alert-note-border: #efd9fd;
+    --alert-important-background: #d7eaf8;
+    --alert-important-border: #d7eaf8;
+    --alert-caution-background: #fde7e9;
+    --alert-caution-border: #fde7e9;
+    --alert-warning-background: #fff4ce;
+    --alert-warning-border: #fff4ce;
+
+    --code-background: #6e76812a;
 }
 
 /* Syntax */

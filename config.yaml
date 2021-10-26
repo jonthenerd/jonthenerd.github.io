@@ -20,3 +20,9 @@ outputs:
 
 pygmentsUseClasses: true
 enableEmoji: true
+
+markup:
+    goldmark:
+        parser:
+            attribute:
+                block: true
