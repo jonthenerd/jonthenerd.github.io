@@ -119,7 +119,7 @@ Let's review each of these properties and what they're for.
 -   **main** - the entry point of your application. By default, it's `index.js`... which is what we need! If you ever change the location/name of your `index.js`, make sure and update this.
 -   **scripts** - this is a configurable set of node scripts that you can run. It comes with the default `test`, but we can (and will!) add some more.
 -   **author** - the package author name. Another one good for NPM packages.
--   **liense** - indicates the license of the package.
+-   **license** - indicates the license of the package.
 
 Ouf of all of the above, the ones to watch at this point in learning are **main** and **scripts**.
 
