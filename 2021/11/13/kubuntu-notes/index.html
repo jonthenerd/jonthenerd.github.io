@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>Kubuntu Notes &ndash; JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        
+    </head>
+    <body>
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+        <main>
+            
+<article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name headline">
+            <div class="container">Kubuntu Notes</div>
+        </h1>
+        <div class="post-meta">
+            <div class="container">
+                <time datetime=" 2021-11-13" itemprop="datePublished">November 13, 2021</time>
+                
+                
+            </div>
+        </div>
+    </header>
+    <div itemprop="articleBody">
+        <div class="container">
+            <p>These are my notes while configuring Kubuntu 21.10 to my liking after first install. Mainly for my own future reference on other distribution installs.</p>
+<h1 id="install">Install</h1>
+<p>While installing Kubuntu, I clicked the checkbox to have it install proprietary drivers and codecs, assuming this would be best for my nVidia GPU. However, upon reboot after install all I got was a black screen after GRUB.</p>
+<p>I repeated the installation, this time leaving the box unchecked and made it all the way to the KDE desktop, where I could perform updates and install the proprietary nVidia driver.</p>
+<h1 id="gaming">Gaming</h1>
+<h2 id="steam">Steam</h2>
+<p>After Steam is installed, it will not automatically start making use of Proton to play Windows-only games. To enable it:</p>
+<ol>
+<li>Open <code>Settings</code></li>
+<li>Navigate to <code>Steam Play</code></li>
+<li>Under <code>Advanced</code>, enable <code>Steam Play for all other titles</code></li>
+<li>Click <code>OK</code></li>
+</ol>
+<h2 id="skyrim-special-edition">Skyrim (Special Edition)</h2>
+<p>My installation started Skyrim okay, but I was unable to hear sound effects, music, or NPC voices during gameplay. The simple fix that I found <a href="https://steamcommunity.com/app/489830/discussions/0/3441214221459912300/?ctp=2#c3038229380336710200">on the Steam Forums</a> is the following:</p>
+<ol>
+<li>Open <code>Steam</code></li>
+<li>Navigate to the <code>Skyrim (Special Edition)</code> game.</li>
+<li>Click the gear icon on the right and select <code>Properties</code></li>
+<li>Under the main <code>General</code> tab, under <code>Launch Options</code>, place  the following:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">WINEDLLOVERRIDES</span><span class="o">=</span><span class="s2">&#34;xaudio2_7=n,b&#34;</span> %command%
+</code></pre></div>
+        </div>
+    </div>
+</article>
+
+        </main>
+        <div class="feedback">
+    <div class="container">
+        <h4>Feedback</h4>
+        <p>Submit feedback, ask questions, or just leave a comment by starting a
+            <a target="_blank" href="https://github.com/login?return_to=https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io%2fdiscussions%2fnew%3ftitle%3d%26labels%3dblog-feedback%26body%3d%250A%250A%255BEnter%2520feedback%2520here%255D%250A%250A%250A---%250A%2523%2523%2523%2523%2520Post%2520Details%250A%250A%25E2%259A%25A0%2520%2aDo%2520not%2520edit%2520this%2520section.%2520It%2520helps%2520Jon%2520know%2520what%2520page%2520you%2520were%2520reading.%250A%250A%2a%2520Content%253A%2520%255BKubuntu%20Notes%255D%28https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io%2ftree%2fmain%2fcontent%2fposts%2f2021-11-13-kubuntu-notes.md%29%250A%2a%2520Post%253A%2520http%3a%2f%2fwww.jonthenerd.com%2f2021%2f11%2f13%2fkubuntu-notes%2f">GitHub Discussion</a>.
+        </p>
+    </div>
+</div>
+
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
+</footer>
+
+    </body>
+</html>

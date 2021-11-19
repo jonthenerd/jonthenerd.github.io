@@ -50,6 +50,21 @@
             
             
                 <article>
+                    <h2><a href="/2012/01/04/sharepoint-2010-ribbon-customactions/">SharePoint 2010: Ribbon CustomActions</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2012-01-04"
+                            itemprop="datePublished"
+                            >January 4, 2012</time
+                        >
+                    </div>
+                    <div class="summary">
+                        Developing a CustomAction for the Ribbon and SharePoint 2010? If you&rsquo;re like me - you follow some instructions online, deploy it once to verify it works, then change as needed and redeploy. One catch though - the data needed for the ribbon custom action to work is fetched by the browser and CACHED! So you won&rsquo;t see your changes&hellip;until you clear your cache. Stupid but true. You&rsquo;re welcome.
+                    </div>
+                    
+                </article>
+            
+                <article>
                     <h2><a href="/2011/12/01/hands-down-the-best-blog-post-on-helpful-utility-programs-ever/">Hands down, the best blog post on helpful utility programs ever.</a></h2>
                     <div class="post-meta">
                         <time
@@ -206,22 +221,6 @@ Get-SPWebApplication | ForEach-Object {Disable-SPFeature &#34;Solution.Name.Feat
                     <div class="summary">
                         This same PowerShell could be used for any other list to remove all of the items. I just needed it to remove the OOB reusable content.
 $siteColTemp = Get-SPSite &#34;http://yourSiteCollectionUrl&#34;; $reusableContentList = $siteColTemp.RootWeb.Lists[&#34;Reusable Content&#34;]; $reusableContentItems = $reusableContentList.Items; $reusableContentItemsCount = $reusableContentItems.Count; for($x=$reusableContentItemsCount-1;$x -ge 0; $x--){ $reusableContentItems[$x].Delete(); } 
-                    </div>
-                    
-                </article>
-            
-                <article>
-                    <h2><a href="/2011/06/30/sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain/">SharePoint 2010 SP1 Upgrade Error &#34;Unable to create a Service Connection Point in the current Active Directory domain.&#34;</a></h2>
-                    <div class="post-meta">
-                        <time
-                            datetime="2011-06-30"
-                            itemprop="datePublished"
-                            >June 30, 2011</time
-                        >
-                    </div>
-                    <div class="summary">
-                        Full error: &ldquo;Unable to create a Service Connection Point in the current Active Directory domain. Verify that the SharePoint container exists in the current domain and that you have rights to write to it.&rdquo;
-After installing SP2010 SP1, PSConfig failed and the log had the above error. I found that the timer service was stopped and restarted it. Retried install - no error.
                     </div>
                     
                 </article>
