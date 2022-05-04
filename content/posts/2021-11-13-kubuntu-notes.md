@@ -1,6 +1,7 @@
 ---
 title: "Kubuntu Notes"
 date: 2021-11-13
+categories: [Linux]
 draft: false
 ---
 

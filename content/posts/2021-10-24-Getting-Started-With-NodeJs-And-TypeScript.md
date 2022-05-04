@@ -1,6 +1,7 @@
 ---
 title: "Getting Started With Node.js and TypeScript"
 date: 2021-10-24T12:48:55-05:00
+categories: [Programming]
 draft: false
 ---
 
