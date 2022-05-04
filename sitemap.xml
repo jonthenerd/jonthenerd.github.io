@@ -20,7 +20,13 @@
     <loc>http://www.jonthenerd.com/2021/11/13/kubuntu-notes/</loc>
     <lastmod>2021-11-13T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://www.jonthenerd.com/categories/linux/</loc>
+    <lastmod>2021-11-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://www.jonthenerd.com/2021/10/24/getting-started-with-node.js-and-typescript/</loc>
+    <lastmod>2021-10-24T12:48:55-05:00</lastmod>
+  </url><url>
+    <loc>http://www.jonthenerd.com/categories/programming/</loc>
     <lastmod>2021-10-24T12:48:55-05:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/tags/hugo/</loc>
@@ -33,9 +39,6 @@
     <lastmod>2021-08-28T15:08:02-05:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2018/05/04/rest-and-flow/</loc>
-    <lastmod>2018-05-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://www.jonthenerd.com/categories/programming/</loc>
     <lastmod>2018-05-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/tags/sharepoint/</loc>
@@ -330,9 +333,6 @@
     <lastmod>2008-06-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/2008/06/12/finding-the-last-login-date-for-all-profiles/</loc>
-    <lastmod>2008-06-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://www.jonthenerd.com/categories/linux/</loc>
     <lastmod>2008-06-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://www.jonthenerd.com/categories/reading/</loc>
