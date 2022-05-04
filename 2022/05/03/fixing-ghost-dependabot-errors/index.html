@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>Fixing Ghost Dependabot Errors &ndash; JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        
+    </head>
+    <body>
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+        <main>
+            
+<article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name headline">
+            <div class="container">Fixing Ghost Dependabot Errors</div>
+        </h1>
+        <div class="post-meta">
+            <div class="container">
+                <time datetime=" 2022-05-03" itemprop="datePublished">May 3, 2022</time>
+                
+                | Posted in
+                <a
+                    href="/categories/blogging">blogging</a>
+                
+                
+            </div>
+        </div>
+    </header>
+    <div itemprop="articleBody">
+        <div class="container">
+            <p>In a previous post, I wrote about how I moved this blog to Hugo. Since then, I&rsquo;ve been receiving notifications from GitHub&rsquo;s Dependabot about dependencies needing to be addressed&hellip; in the <code>Gemfile</code> and <code>Gemfile.lock</code>. These are two files that don&rsquo;t exist in the repo or any branches.</p>
+<p>I got tired of the emails and large yellow banner at the top of the repo. Time to hunt for a fix.</p>
+<p>Some brief Googling later, I found that others have reported something similar to the Dependabot maintainers (see <a href="https://github.com/dependabot/dependabot-core/issues/2041">#2041, Dependabot reporting on deleted files</a>). User wigsofoz <a href="https://github.com/dependabot/dependabot-core/issues/2041#issuecomment-747799414">posted a workaround</a>, which worked for me overall. Here&rsquo;s my modified steps:</p>
+<ol>
+<li>On the repo in question, navigate to the dependency graph (tack <code>/network/dependencies</code> onto the end of the repo URL).</li>
+<li>Note the dependencies GitHub thinks you have from the non-existent dependency files.</li>
+<li>Create files in your repo matching those that need to be deleted. For me, this was <code>Gemfile</code>, <code>Gemfile.lock</code>, and <code>yarn.lock</code></li>
+<li>Populate each file with some text (I put a line of text in the Gemfile ones, and an empty JSON object in the yarn.lock)</li>
+<li>Stage, commit, and push your changes.</li>
+<li>Refresh the dependency graph screen. Note how the Gemfiles now don&rsquo;t have any listed dependencies.</li>
+<li>Delete all of you created junk files.</li>
+<li>Stage, commit, and push your changes.</li>
+<li>Refresh the dependency graph screen. Note that now the ghost dependency files have been removed.</li>
+<li>Navigate back to your main repo page, observe how the giant Dependabot yellow banner is now gone (or it should be, unless you have legit dependencies that need some work).</li>
+</ol>
+<p>This should result in a few less emails and a few less swipes to delete them. Worth it.</p>
+        </div>
+    </div>
+</article>
+
+        </main>
+        <div class="feedback">
+    <div class="container">
+        <h4>Feedback</h4>
+        <p>Submit feedback, ask questions, or just leave a comment by starting a
+            <a target="_blank" href="https://github.com/login?return_to=https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io%2fdiscussions%2fnew%3ftitle%3d%26labels%3dblog-feedback%26body%3d%250A%250A%255BEnter%2520feedback%2520here%255D%250A%250A%250A---%250A%2523%2523%2523%2523%2520Post%2520Details%250A%250A%25E2%259A%25A0%2520%2aDo%2520not%2520edit%2520this%2520section.%2520It%2520helps%2520Jon%2520know%2520what%2520page%2520you%2520were%2520reading.%250A%250A%2a%2520Content%253A%2520%255BFixing%20Ghost%20Dependabot%20Errors%255D%28https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io%2ftree%2fmain%2fcontent%2fposts%2f2022-05-03-fixing-ghost-dependabot-errors.md%29%250A%2a%2520Post%253A%2520http%3a%2f%2fwww.jonthenerd.com%2f2022%2f05%2f03%2ffixing-ghost-dependabot-errors%2f">GitHub Discussion</a>.
+        </p>
+    </div>
+</div>
+
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
+</footer>
+
+    </body>
+</html>

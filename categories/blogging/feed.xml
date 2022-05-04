@@ -6,7 +6,17 @@
     <description>Recent content in Blogging on JonTheNerd</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Aug 2021 15:08:02 -0500</lastBuildDate><atom:link href="http://www.jonthenerd.com/categories/blogging/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/categories/blogging/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fixing Ghost Dependabot Errors</title>
+      <link>http://www.jonthenerd.com/2022/05/03/fixing-ghost-dependabot-errors/</link>
+      <pubDate>Tue, 03 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2022/05/03/fixing-ghost-dependabot-errors/</guid>
+      <description>&lt;p&gt;In a previous post, I wrote about how I moved this blog to Hugo. Since then, I&amp;rsquo;ve been receiving notifications from GitHub&amp;rsquo;s Dependabot about dependencies needing to be addressed&amp;hellip; in the &lt;code&gt;Gemfile&lt;/code&gt; and &lt;code&gt;Gemfile.lock&lt;/code&gt;. These are two files that don&amp;rsquo;t exist in the repo or any branches.&lt;/p&gt;
+&lt;p&gt;I got tired of the emails and large yellow banner at the top of the repo. Time to hunt for a fix.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Hugo</title>
       <link>http://www.jonthenerd.com/2021/08/28/hugo/</link>

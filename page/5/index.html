@@ -50,6 +50,27 @@
             
             
                 <article>
+                    <h2><a href="/2010/12/07/sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/">SharePoint WebPart implementing ICallbackEventHandler does not work properly in Web Part Gallery</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2010-12-07"
+                            itemprop="datePublished"
+                            >December 7, 2010</time
+                        >
+                    </div>
+                    <div class="summary">
+                        In migrating some WebParts from SP2007 to SP2010, I came across a webpart that implements ICallbackEventHandler. This webpart was working fine when placed on the page, but did not work correctly in the webpart gallery. The specific error message being received was:
+  The target &lsquo;ctl00$PlaceHolderMain$ctl00&rsquo; for the callback could not be found or did not implement ICallbackEventHandler
+  This error is due to the webpart being added to the preview page dynamically at runtime.
+                    </div>
+                    
+                        <div>
+                            <a href="/2010/12/07/sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
                     <h2><a href="/2010/10/21/sonic-fan-remix/">Sonic Fan Remix</a></h2>
                     <div class="post-meta">
                         <time
@@ -199,25 +220,6 @@ Lots of head scratching and some creative Google searches led me to the &ldquo;D
                     <div class="summary">
                         I use Visual Studio every day for just about all of my development tasks. However, I attempted to open a large xml file (&gt; 20 megs) and Visual studio spiked up to 1.5 gigs of memory consumption and I couldn&rsquo;t do anything&hellip; My old standby notepad++ (great editor!) also hung on opening the file. A quick search yielded First Object&rsquo;s XML Editor. Worked great. Super fast.
                     </div>
-                    
-                </article>
-            
-                <article>
-                    <h2><a href="/2010/02/26/occasional-spexception-from-getlistitemdatawithcallback/">Occasional SPException from GetListItemDataWithCallback</a></h2>
-                    <div class="post-meta">
-                        <time
-                            datetime="2010-02-26"
-                            itemprop="datePublished"
-                            >February 26, 2010</time
-                        >
-                    </div>
-                    <div class="summary">
-                        Wrote a new field control today (SharePoint) that queried a specific list in another site collection based on the value of a field from the current list item. This worked great each time I&rsquo;d test it out and add some additional functionality. When I finished the control, I did a little harder testing by hitting the refresh button in my browser over and over again. Randomly, my control wouldn&rsquo;t render. Other times it would be fine.
-                    </div>
-                    
-                        <div>
-                            <a href="/2010/02/26/occasional-spexception-from-getlistitemdatawithcallback/">Read More...</a>
-                        </div>
                     
                 </article>
             

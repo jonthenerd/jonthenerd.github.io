@@ -50,6 +50,26 @@
             
             
                 <article>
+                    <h2><a href="/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/">SharePoint 2010: Observations and Revelations on the User Profile Sync Service and the Update-SPProfilePhotoStore cmdlet</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2012-01-20"
+                            itemprop="datePublished"
+                            >January 20, 2012</time
+                        >
+                    </div>
+                    <div class="summary">
+                        These are my notes while trying to diagnose and better understnad some issues and oddities with the SharePoint 2010 User Profile Service Application.
+If you&rsquo;re wanting to populate pictures into people&rsquo;s profiles, you&rsquo;ll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is Redgate Reflector(a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing.
+                    </div>
+                    
+                        <div>
+                            <a href="/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
                     <h2><a href="/2012/01/04/sharepoint-2010-ribbon-customactions/">SharePoint 2010: Ribbon CustomActions</a></h2>
                     <div class="post-meta">
                         <time
@@ -205,22 +225,6 @@ and Workspaces&rdquo; link in Site Settings. Deleting through powershell worked 
                     <div class="summary">
                         Because it&rsquo;s easier to copy+paste this later&hellip; This will disable a feature on all web applications in a farm. Very convenient for when you&rsquo;re removing a feature from a solution.
 Get-SPWebApplication | ForEach-Object {Disable-SPFeature &#34;Solution.Name.FeatureName&#34; -url $_.Url;} 
-                    </div>
-                    
-                </article>
-            
-                <article>
-                    <h2><a href="/2011/07/06/sharepoint-2010-remove-existing-reusable-content-items-using-powershell/">SharePoint 2010: Remove existing reusable content items using PowerShell</a></h2>
-                    <div class="post-meta">
-                        <time
-                            datetime="2011-07-06"
-                            itemprop="datePublished"
-                            >July 6, 2011</time
-                        >
-                    </div>
-                    <div class="summary">
-                        This same PowerShell could be used for any other list to remove all of the items. I just needed it to remove the OOB reusable content.
-$siteColTemp = Get-SPSite &#34;http://yourSiteCollectionUrl&#34;; $reusableContentList = $siteColTemp.RootWeb.Lists[&#34;Reusable Content&#34;]; $reusableContentItems = $reusableContentList.Items; $reusableContentItemsCount = $reusableContentItems.Count; for($x=$reusableContentItemsCount-1;$x -ge 0; $x--){ $reusableContentItems[$x].Delete(); } 
                     </div>
                     
                 </article>

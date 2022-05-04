@@ -50,6 +50,22 @@
             
             
                 <article>
+                    <h2><a href="/2011/07/06/sharepoint-2010-remove-existing-reusable-content-items-using-powershell/">SharePoint 2010: Remove existing reusable content items using PowerShell</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2011-07-06"
+                            itemprop="datePublished"
+                            >July 6, 2011</time
+                        >
+                    </div>
+                    <div class="summary">
+                        This same PowerShell could be used for any other list to remove all of the items. I just needed it to remove the OOB reusable content.
+$siteColTemp = Get-SPSite &#34;http://yourSiteCollectionUrl&#34;; $reusableContentList = $siteColTemp.RootWeb.Lists[&#34;Reusable Content&#34;]; $reusableContentItems = $reusableContentList.Items; $reusableContentItemsCount = $reusableContentItems.Count; for($x=$reusableContentItemsCount-1;$x -ge 0; $x--){ $reusableContentItems[$x].Delete(); } 
+                    </div>
+                    
+                </article>
+            
+                <article>
                     <h2><a href="/2011/06/30/sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain/">SharePoint 2010 SP1 Upgrade Error &#34;Unable to create a Service Connection Point in the current Active Directory domain.&#34;</a></h2>
                     <div class="post-meta">
                         <time
@@ -211,27 +227,6 @@ Calendar.</p>
                         The following can be used to disable throttling on a specific list (must be run as an account with enough priv.):
 $web = Get-SPWeb &#34;http://whateverWeb&#34;; $list = $web.Lists[&#34;List Title&#34;]; $list.enablethrottling = $false; $list.update(); 
                     </div>
-                    
-                </article>
-            
-                <article>
-                    <h2><a href="/2010/12/07/sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/">SharePoint WebPart implementing ICallbackEventHandler does not work properly in Web Part Gallery</a></h2>
-                    <div class="post-meta">
-                        <time
-                            datetime="2010-12-07"
-                            itemprop="datePublished"
-                            >December 7, 2010</time
-                        >
-                    </div>
-                    <div class="summary">
-                        In migrating some WebParts from SP2007 to SP2010, I came across a webpart that implements ICallbackEventHandler. This webpart was working fine when placed on the page, but did not work correctly in the webpart gallery. The specific error message being received was:
-  The target &lsquo;ctl00$PlaceHolderMain$ctl00&rsquo; for the callback could not be found or did not implement ICallbackEventHandler
-  This error is due to the webpart being added to the preview page dynamically at runtime.
-                    </div>
-                    
-                        <div>
-                            <a href="/2010/12/07/sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/">Read More...</a>
-                        </div>
                     
                 </article>
             
