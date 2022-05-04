@@ -59,8 +59,8 @@
 <h3 id="nodejs-installation">Node.js Installation</h3>
 <p>If you&rsquo;re in a corporate environment, you may have Node.js packaged for easier distribution - so look into that first. If you&rsquo;re free to install it on your own though, start by downloading either the latest long term service (LTS) or current release <a href="https://nodejs.org/en/download/">at the Node.js website</a> if you&rsquo;re on Windows or MacOS. If you&rsquo;re on Linux, check your distribution&rsquo;s prefered method for Node.js installation. For this post, I&rsquo;ll be using the latest LTS release (currently v14.18.1).</p>
 <p>Once you&rsquo;ve run the download and install, fire up a terminal (or Windows PowerShell) and check which version of Node.js you have installed:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">node --version
-</code></pre></div><p>It should match what you elected to download. If it doesn&rsquo;t and you&rsquo;re on Windows, check your <code>PATH</code> environment variable to ensure the <code>node</code> executable path is in it (the MSI installer of Node.js installs to <code>C:\Program Files\nodejs\</code>, which needs to be either in your system or user <code>PATH</code> environment variable).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">node --version
+</span></span></code></pre></div><p>It should match what you elected to download. If it doesn&rsquo;t and you&rsquo;re on Windows, check your <code>PATH</code> environment variable to ensure the <code>node</code> executable path is in it (the MSI installer of Node.js installs to <code>C:\Program Files\nodejs\</code>, which needs to be either in your system or user <code>PATH</code> environment variable).</p>
 <h3 id="hello-world">Hello World!</h3>
 <p>With the runtime installed, you&rsquo;re ready to write your first program using it.</p>
 <div class="alert is-tip">
@@ -71,20 +71,20 @@
 <ol>
 <li>
 <p>First thing&rsquo;s first, we need a fresh directory to store our application.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">mkdir nodejs-hello-world
-<span class="nb">cd</span> nodejs-hello-world
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">mkdir nodejs-hello-world
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> nodejs-hello-world
+</span></span></code></pre></div></li>
 <li>
 <p>Let&rsquo;s create a file for our JavaScript:</p>
 <p><strong>Windows</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">ECHO <span class="s2">&#34;&#34;</span> &gt; index.js
-</code></pre></div><p><strong>Mac/Linux</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">touch index.js
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">ECHO <span class="s2">&#34;&#34;</span> &gt; index.js
+</span></span></code></pre></div><p><strong>Mac/Linux</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">touch index.js
+</span></span></code></pre></div></li>
 <li>
 <p>Next you&rsquo;ll open the file in your editor of choice (I&rsquo;m using Visual Studio Code here):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">code index.js
-</code></pre></div><div class="alert is-tip">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">code index.js
+</span></span></code></pre></div><div class="alert is-tip">
     <p class="title">Tip</p>
     <p>If you&rsquo;re using Visual Studio Code, it&rsquo;s actually better to open the directory. Try <code>code .</code> instead!</p>
 </div>
@@ -92,12 +92,12 @@
 </li>
 <li>
 <p>With <code>index.js</code> open, let&rsquo;s write some simple code in <code>index.js</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">);</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">);</span>
+</span></span></code></pre></div></li>
 <li>
 <p>Back in your terminal, let&rsquo;s go ahead and run the program. This is done by providing <code>node</code> the location of the script.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">node index.js
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">node index.js
+</span></span></code></pre></div></li>
 <li>
 <p>Celebrate! Really. You just installed Node.js and wrote your first application using JavaScript. 😄</p>
 </li>
@@ -108,21 +108,21 @@
 <h3 id="npm-init">NPM Init</h3>
 <p>The easiest way to create one is to use the Node Package Manager (NPM) to <em>initialize</em> your project.</p>
 <p>In your current project directory, run the following:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npm init
-</code></pre></div><p>It&rsquo;s going to ask you a few questions. At this point in time, the answers don&rsquo;t matter. So you can hit the <code>ENTER</code> key until it&rsquo;s done asking them.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm init
+</span></span></code></pre></div><p>It&rsquo;s going to ask you a few questions. At this point in time, the answers don&rsquo;t matter. So you can hit the <code>ENTER</code> key until it&rsquo;s done asking them.</p>
 <p>Looking back in your project directory, you&rsquo;ll find a newly created <code>package.json</code> file with not much in it:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
-    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;nodejs-hello-world&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;index.js&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;license&#34;</span><span class="p">:</span> <span class="s2">&#34;ISC&#34;</span>
-<span class="p">}</span>
-</code></pre></div><p>Let&rsquo;s review each of these properties and what they&rsquo;re for.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;nodejs-hello-world&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;index.js&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;license&#34;</span><span class="p">:</span> <span class="s2">&#34;ISC&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Let&rsquo;s review each of these properties and what they&rsquo;re for.</p>
 <ul>
 <li><strong>name</strong> - the name of your project. This doesn&rsquo;t really matter unless you&rsquo;re creating a reusable NPM package.</li>
 <li><strong>version</strong> - the <a href="https://semver.org/">semantic version</a> of your application. Again, this matters much more for NPM packages. So don&rsquo;t sweat changing it for your own applications unless there&rsquo;s something more complex (and interesting!) that your team is doing with it.</li>
@@ -137,31 +137,31 @@
 <div class="alert is-tip">
     <p class="title">Tip</p>
     <p><p>You can run the script defined in the <code>main</code> property by running:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">node .
-</code></pre></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">node .
+</span></span></code></pre></div></p>
 </div>
 
 <h3 id="scripts">Scripts</h3>
 <p>We&rsquo;ll start by changing the <code>package.json</code> to take advantage of the <code>scripts</code> capability. Remove the <code>test</code> script, and add a <code>start</code> script like the below:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="p">{</span>
-    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;nodejs-hello-world&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;index.js&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;node index.js&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;license&#34;</span><span class="p">:</span> <span class="s2">&#34;ISC&#34;</span>
-<span class="p">}</span>
-</code></pre></div><p>Save the file, then run the below in your terminal:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm start
-</code></pre></div><p>If you&rsquo;re successful, the output looks like this on Windows:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">&gt; nodejs-hello-world@1.0.0 start C:<span class="se">\D\l</span>earning<span class="se">\n</span>odejs-hello-world
-&gt; node index.js
-
-Hello World!
-</code></pre></div><p><strong>Cool!</strong> What can we learn from this? The <code>scripts</code> configuration section can run arbitrary terminal commands on our behalf. In this way, you can write something useful, share it with those on your team, and they don&rsquo;t have to know the exact commands to run to start or interact with your application. They can just look at the <code>scripts</code> section and run what seems most appropriate!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;nodejs-hello-world&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;index.js&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;node index.js&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;license&#34;</span><span class="p">:</span> <span class="s2">&#34;ISC&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Save the file, then run the below in your terminal:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm start
+</span></span></code></pre></div><p>If you&rsquo;re successful, the output looks like this on Windows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">&gt; nodejs-hello-world@1.0.0 start C:<span class="se">\D\l</span>earning<span class="se">\n</span>odejs-hello-world
+</span></span><span class="line"><span class="cl">&gt; node index.js
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Hello World!
+</span></span></code></pre></div><p><strong>Cool!</strong> What can we learn from this? The <code>scripts</code> configuration section can run arbitrary terminal commands on our behalf. In this way, you can write something useful, share it with those on your team, and they don&rsquo;t have to know the exact commands to run to start or interact with your application. They can just look at the <code>scripts</code> section and run what seems most appropriate!</p>
 <h3 id="dependencies">Dependencies</h3>
 <p>Node.js ships with the Node Package Manger (NPM). In fact, we just used to to run the start script above. NPM also allows us to install and manage Node packages. By default, dependencies are sourced from <a href="https://www.npmjs.com">npmjs.com</a>. In some corporate environments, this may be changed to look at an internal package management feed or just an alternate to npmjs. This allows groups to build and maintain their own reusable code, distributed using private NPM packages.</p>
 <div class="alert is-warning">
@@ -173,8 +173,8 @@ Hello World!
 <p>When installing NPM packages, they can be installed either <strong>locally</strong> or <strong>globally</strong>. <strong>Local</strong> packages are available only to the application within the same directory as where they are installed. <strong>Global</strong> packages can be used by <em>any</em> Node.js package on the same machine, as well as from the terminal (if that package supports it). Unless you&rsquo;re trying to achieve something specific, <strong><em>always default to installing your packages locally</em></strong>.</p>
 <h4 id="direct-dependencies">Direct Dependencies</h4>
 <p>Let&rsquo;s install an NPM package and use it within our application. It&rsquo;s time our Hello World app had some color! For this, we&rsquo;ll be making use of the <a href="https://www.npmjs.com/package/colors">colors</a> NPM package. Take a quick look at <a href="https://github.com/Marak/colors.js#usage">how the color module may be used</a>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npm install colors
-</code></pre></div><p>Once complete, take a look at the <code>package.json</code> file. It now lists <code>colors</code> inside of the <code>dependencies</code> section. This section is used to list the direct dependencies of your application. You should use it for any dependency directly called by your application code. There are other types of dependencies, and we&rsquo;ll touch on at least one more of those before the end of the post.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm install colors
+</span></span></code></pre></div><p>Once complete, take a look at the <code>package.json</code> file. It now lists <code>colors</code> inside of the <code>dependencies</code> section. This section is used to list the direct dependencies of your application. You should use it for any dependency directly called by your application code. There are other types of dependencies, and we&rsquo;ll touch on at least one more of those before the end of the post.</p>
 <p>Now let&rsquo;s make use of it!</p>
 <ol>
 <li>
@@ -182,18 +182,18 @@ Hello World!
 </li>
 <li>
 <p>On line 1, <strong>require</strong> the <code>colors</code> module.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">require</span><span class="p">(</span><span class="s2">&#34;colors&#34;</span><span class="p">);</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">require</span><span class="p">(</span><span class="s2">&#34;colors&#34;</span><span class="p">);</span>
+</span></span></code></pre></div></li>
 <li>
 <p>Update your Hello World line to colorize it. Note that there are lots of available colors!</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">.</span><span class="nx">rainbow</span><span class="p">);</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">.</span><span class="nx">rainbow</span><span class="p">);</span>
+</span></span></code></pre></div></li>
 <li>
 <p>When you&rsquo;re done, here&rsquo;s what <code>index.js</code> should look like:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">require</span><span class="p">(</span><span class="s2">&#34;colors&#34;</span><span class="p">);</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">.</span><span class="nx">rainbow</span><span class="p">);</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">require</span><span class="p">(</span><span class="s2">&#34;colors&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">.</span><span class="nx">rainbow</span><span class="p">);</span>
+</span></span></code></pre></div></li>
 <li>
 <p>Save the file, jump back to your terminal, and run the application.</p>
 <p><img src="/assets/images/2021-10-24-getting-started-with-nodejs-and-typescript/hello-world-colors.png" alt="Successful script output with rainbow colors"></p>
@@ -211,20 +211,20 @@ Hello World!
 <ol>
 <li>
 <p>Add a <code>start:no-colors</code> script to <code>package.json</code> (just the script section shown below, leave the rest alone):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json">  <span class="s2">&#34;scripts&#34;</span><span class="err">:</span> <span class="p">{</span>
-    <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;node index.js&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;start:no-colors&#34;</span><span class="p">:</span> <span class="s2">&#34;node index.js --no-color&#34;</span>
-  <span class="p">}</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl">  <span class="s2">&#34;scripts&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;node index.js&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;start:no-colors&#34;</span><span class="p">:</span> <span class="s2">&#34;node index.js --no-color&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></div></li>
 <li>
 <p>Save the file, then try it out back in your terminal:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npm run start:no-colors
-
-&gt; nodejs-hello-world@1.0.0 start:no-colors C:<span class="se">\D\l</span>earning<span class="se">\n</span>odejs-hello-world
-&gt; node index.js --no-color
-
-Hello World!
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm run start:no-colors
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt; nodejs-hello-world@1.0.0 start:no-colors C:<span class="se">\D\l</span>earning<span class="se">\n</span>odejs-hello-world
+</span></span><span class="line"><span class="cl">&gt; node index.js --no-color
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Hello World!
+</span></span></code></pre></div></li>
 </ol>
 <p>What did we just do?</p>
 <ol>
@@ -241,73 +241,72 @@ Hello World!
 <p><em><a href="https://www.typescriptlang.org/">TypeScript</a> is <strong>JavaScript with syntax for types</strong></em>. TypeScript code gets converted to plain JavaScript before running in the web browser, or with the Node.js runtime. Most commonly, developers use it to get better editor integration and safety, as many common errors are caught during the JavaScript conversion process.</p>
 <h3 id="typescript-installation">TypeScript Installation</h3>
 <p>We can leverage NPM to install TypeScript. We&rsquo;ll tweak how we perform the install to designate TypeScript as a <em>development dependency</em> as it is not directly used at runtime, only during our development of the application. Typically this will contain packages related to unit testing, packaging, document generation, etc.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npm install typescript --save-dev
-</code></pre></div><p>Take a look at <code>package.json</code> and notice how <code>typescript</code> is referenced.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;nodejs-hello-world&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;index.js&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;node index.js&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;start:no-colors&#34;</span><span class="p">:</span> <span class="s2">&#34;node index.js --no-color&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;license&#34;</span><span class="p">:</span> <span class="s2">&#34;ISC&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;dependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;colors&#34;</span><span class="p">:</span> <span class="s2">&#34;^1.4.0&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;devDependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;typescript&#34;</span><span class="p">:</span> <span class="s2">&#34;^4.4.4&#34;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre></div><p>Next, we need to setup the current directory as a TypeScript project. We&rsquo;ll use the <code>npx</code> command, which allows us to call packages with CLI exposure that aren&rsquo;t installed globally (like TypeScript, in our case).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npx tsc --init
-</code></pre></div><p>This creates a <code>tsconfig.json</code> file in our project directory. It&rsquo;s pretty big, so I won&rsquo;t copy it here. But know that it sets some reasonable defaults for TypeScript transpilation. Depending upon your team and project needs, expect to see variations of the configuration.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm install typescript --save-dev
+</span></span></code></pre></div><p>Take a look at <code>package.json</code> and notice how <code>typescript</code> is referenced.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;nodejs-hello-world&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;index.js&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;node index.js&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;start:no-colors&#34;</span><span class="p">:</span> <span class="s2">&#34;node index.js --no-color&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;license&#34;</span><span class="p">:</span> <span class="s2">&#34;ISC&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;dependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;colors&#34;</span><span class="p">:</span> <span class="s2">&#34;^1.4.0&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;devDependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;typescript&#34;</span><span class="p">:</span> <span class="s2">&#34;^4.4.4&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Next, we need to setup the current directory as a TypeScript project. We&rsquo;ll use the <code>npx</code> command, which allows us to call packages with CLI exposure that aren&rsquo;t installed globally (like TypeScript, in our case).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npx tsc --init
+</span></span></code></pre></div><p>This creates a <code>tsconfig.json</code> file in our project directory. It&rsquo;s pretty big, so I won&rsquo;t copy it here. But know that it sets some reasonable defaults for TypeScript transpilation. Depending upon your team and project needs, expect to see variations of the configuration.</p>
 <p>Next, let&rsquo;s setup a new script in <code>package.json</code> to build our application:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-    <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;tsc&#34;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>Finally, rename the <code>index.js</code> to <code>index.ts</code>. All TypeScript files end in <code>.ts</code> (or <code>.tsx</code> for files containing JSX syntax).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;tsc&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Finally, rename the <code>index.js</code> to <code>index.ts</code>. All TypeScript files end in <code>.ts</code> (or <code>.tsx</code> for files containing JSX syntax).</p>
 <h3 id="typescript-transpilation">TypeScript Transpilation</h3>
 <p>When we write TypeScript, we must <em>transpile</em> it into JavaScript before it can be used in web browsers or by the Node.js runtime. The TypeScript CLI (<code>tsc</code>) will perform this transpilation for us, respecting the configuration in <code>tsconfig.json</code>. Let&rsquo;s give it a shot.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npm run build
-</code></pre></div><p>Well&hellip; that didn&rsquo;t go well, did it?
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm run build
+</span></span></code></pre></div><p>Well&hellip; that didn&rsquo;t go well, did it?
 <img src="/assets/images/2021-10-24-getting-started-with-nodejs-and-typescript/first-tsc-errors.png" alt="image-20211025201628365"></p>
 <p>Let&rsquo;s work through the errors and learn from them.</p>
 <p><strong>First error</strong> - it cannot find &lsquo;require&rsquo;? I thought that was valid? Yes and no. It&rsquo;s valid JavaScript, but TypeScript is complaining because <em>it can&rsquo;t find types for Node</em> and it&rsquo;s even giving us guidance on what to do. Great! Copy+paste:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npm i --save-dev @types/node
-</code></pre></div><p>What&rsquo;s that doing anyway? Well, <code>npm i</code> is the short syntax for <code>npm install</code>. <code>--save-dev</code> is an option, and while we normally put it last it can be in any position after the <code>i</code> or <code>install</code>. Lastly, <code>@types/node</code> is an NPM package that will inform TypeScript about the types present in the Node.js runtime.</p>
-<p><strong>Second error</strong> - &ldquo;Property &lsquo;rainbow&rsquo; does not exist on type &lsquo;&ldquo;Hello World!&quot;&rsquo;. Another error having to do with types&hellip; My bet is that we need types for the <code>colors</code> module. Many NPM packages come with their own types. Some don&rsquo;t. First thing we should do is check and see if this package actually has types information.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm i --save-dev @types/node
+</span></span></code></pre></div><p>What&rsquo;s that doing anyway? Well, <code>npm i</code> is the short syntax for <code>npm install</code>. <code>--save-dev</code> is an option, and while we normally put it last it can be in any position after the <code>i</code> or <code>install</code>. Lastly, <code>@types/node</code> is an NPM package that will inform TypeScript about the types present in the Node.js runtime.</p>
+<p><strong>Second error</strong> - &ldquo;Property &lsquo;rainbow&rsquo; does not exist on type &lsquo;&ldquo;Hello World!&rdquo;&rsquo;. Another error having to do with types&hellip; My bet is that we need types for the <code>colors</code> module. Many NPM packages come with their own types. Some don&rsquo;t. First thing we should do is check and see if this package actually has types information.</p>
 <ol>
-<li>In the project directory, find and expand the <code>node_modules</code> directory. This is where NPM stores all of the packages we&rsquo;ve set as dependencies (and all of those depedencies' depedencies and so on).</li>
+<li>In the project directory, find and expand the <code>node_modules</code> directory. This is where NPM stores all of the packages we&rsquo;ve set as dependencies (and all of those depedencies&rsquo; depedencies and so on).</li>
 <li>Find the <code>colors</code> directory and expand.</li>
 <li>Look for a file ending with <code>.d.ts</code>. This will contain types information so that TypeScript (and our editor) can make good decisions.</li>
 </ol>
 <p>Wow. It <em>does</em> have a types file. What&rsquo;s wrong then?</p>
 <p>Let&rsquo;s look back at our code:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">require</span><span class="p">(</span><span class="s2">&#34;colors&#34;</span><span class="p">);</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">.</span><span class="nx">rainbow</span><span class="p">);</span>
-</code></pre></div><p>While TypesScript <em>can</em> make use of the <code>require</code> method from Node.js, it much prefers for us to <code>import</code> packages instead. Let&rsquo;s swap that out.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="s2">&#34;colors&#34;</span><span class="p">;</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">.</span><span class="nx">rainbow</span><span class="p">);</span>
-</code></pre></div><p>If you&rsquo;re using Visual Studio Code, all of the red squiggly lines just went away, so you know you&rsquo;re good. Let&rsquo;s run our build now!</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npm run build
-</code></pre></div><p><strong>No errors!</strong> Let&rsquo;s take a look at our project directory. Hey! Our <code>index.js</code> file is back! TypeScript <em>transpiled</em> it from our <code>index.ts</code>. Reviewing the contents, it&rsquo;s not all that different from our previous <code>index.js</code> before we made all the changes for TypeScript. But does it still work?</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npm start
-</code></pre></div><p>Sure does. Let&rsquo;s make one last change to <code>package.json</code> to run our <code>build</code> before our <code>start</code>. We&rsquo;re going to take advantage of some nice convention to run multiple scripts in a sequence. You can prefix any script name with <code>pre</code> and it will execute before that script. Here&rsquo;s our updated <code>package.json</code> <code>scripts</code> block:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;scripts&#34;</span><span class="err">:</span> <span class="p">{</span>
-    <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;tsc&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;prestart&#34;</span><span class="p">:</span> <span class="s2">&#34;npm run build&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;node index.js&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;start:no-colors&#34;</span><span class="p">:</span> <span class="s2">&#34;node index.js --no-color&#34;</span>
-  <span class="p">}</span><span class="err">,</span>
-</code></pre></div><p>Running <code>npm start</code>, you&rsquo;ll now see that our build script runs first. Nice.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">require</span><span class="p">(</span><span class="s2">&#34;colors&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">.</span><span class="nx">rainbow</span><span class="p">);</span>
+</span></span></code></pre></div><p>While TypesScript <em>can</em> make use of the <code>require</code> method from Node.js, it much prefers for us to <code>import</code> packages instead. Let&rsquo;s swap that out.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">import</span> <span class="s2">&#34;colors&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">.</span><span class="nx">rainbow</span><span class="p">);</span>
+</span></span></code></pre></div><p>If you&rsquo;re using Visual Studio Code, all of the red squiggly lines just went away, so you know you&rsquo;re good. Let&rsquo;s run our build now!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm run build
+</span></span></code></pre></div><p><strong>No errors!</strong> Let&rsquo;s take a look at our project directory. Hey! Our <code>index.js</code> file is back! TypeScript <em>transpiled</em> it from our <code>index.ts</code>. Reviewing the contents, it&rsquo;s not all that different from our previous <code>index.js</code> before we made all the changes for TypeScript. But does it still work?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm start
+</span></span></code></pre></div><p>Sure does. Let&rsquo;s make one last change to <code>package.json</code> to run our <code>build</code> before our <code>start</code>. We&rsquo;re going to take advantage of some nice convention to run multiple scripts in a sequence. You can prefix any script name with <code>pre</code> and it will execute before that script. Here&rsquo;s our updated <code>package.json</code> <code>scripts</code> block:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;scripts&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;tsc&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;prestart&#34;</span><span class="p">:</span> <span class="s2">&#34;npm run build&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;node index.js&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;start:no-colors&#34;</span><span class="p">:</span> <span class="s2">&#34;node index.js --no-color&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span><span class="err">,</span>
+</span></span></code></pre></div><p>Running <code>npm start</code>, you&rsquo;ll now see that our build script runs first. Nice.</p>
 <h2 id="fun-with-typescript">Fun with TypeScript</h2>
 <p>Now that we can perform Hello World with Node.js and TypeScript, let&rsquo;s explore a couple more basics to get us started.</p>
 <h3 id="refactoring-round-1">Refactoring Round 1</h3>
@@ -321,12 +320,12 @@ Hello World!
 </li>
 <li>
 <p>Now, let&rsquo;s wrap our <code>console.log</code> line in a function, substitute out <code>World</code> for someone&rsquo;s name, and export that function:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="s2">&#34;colors&#34;</span><span class="p">;</span>
-
-<span class="kr">export</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">name</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hello </span><span class="si">${</span><span class="nx">name</span><span class="p">.</span><span class="nx">rainbow</span><span class="si">}</span><span class="sb">!`</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div><p>What did we just do?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">import</span> <span class="s2">&#34;colors&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">name</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hello </span><span class="si">${</span><span class="nx">name</span><span class="p">.</span><span class="nx">rainbow</span><span class="si">}</span><span class="sb">!`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>What did we just do?</p>
 <ul>
 <li>The <code>export</code> directive exposes our <code>hello</code> function to other files who may want to call it. Without it, the <code>hello</code> function wouldn&rsquo;t be visible.</li>
 <li>We provided the <code>string</code> type on the <code>name</code> function parameter. This allows the IDE and the TypeScript transpiler to error out if you try to call the <code>hello</code> function with a number, Date, or anything that&rsquo;s not a string.</li>
@@ -339,10 +338,10 @@ Hello World!
 </li>
 <li>
 <p>We need to import our new <code>hello</code> module, and call the exported <code>hello</code> function:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">import</span> <span class="p">{</span> <span class="nx">hello</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&#34;./hello&#34;</span><span class="p">;</span>
-
-<span class="nx">hello</span><span class="p">(</span><span class="s2">&#34;Jon&#34;</span><span class="p">);</span>
-</code></pre></div><p>What did we just do?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">hello</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&#34;./hello&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">hello</span><span class="p">(</span><span class="s2">&#34;Jon&#34;</span><span class="p">);</span>
+</span></span></code></pre></div><p>What did we just do?</p>
 <ul>
 <li>We imported the <strong>named export</strong> <code>hello</code> from the <code>./hello</code> file. The name of the file and the method being the same is just a coincidence. You can export whatever you want from your TypeScript files - functions, constants, classes, etc.</li>
 <li>We called the <code>hello</code> function and gave it a value.</li>
@@ -353,51 +352,51 @@ Hello World!
 </ol>
 <h3 id="organize-the-project-and-transpile-to-a-single-file">Organize the Project and Transpile to a Single File</h3>
 <p>Right now, we have too many files in the root of the directory. Let&rsquo;s follow JavaScript project convention and place all of our source code into a <code>src</code> directory. Here&rsquo;s what should be left in the root when you&rsquo;re done:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">node_modules
-src
-package-lock.json
-package.json
-tsconfig.json
-</code></pre></div><p>Note - if you build now, it will be broken. Let&rsquo;s finish out the next few steps.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">node_modules
+</span></span><span class="line"><span class="cl">src
+</span></span><span class="line"><span class="cl">package-lock.json
+</span></span><span class="line"><span class="cl">package.json
+</span></span><span class="line"><span class="cl">tsconfig.json
+</span></span></code></pre></div><p>Note - if you build now, it will be broken. Let&rsquo;s finish out the next few steps.</p>
 <p>Now that we have multiple files of source code, the TSC utility produces a <code>.js</code> file for every <code>.ts</code>. This is fine for some cases, but if you want to let users download your script in a webpage you probably want one file. For larger applications and more complex scenarios, <em>bundlers</em> are typically used (like <a href="https://webpack.js.org/">WebPack</a> or <a href="https://vitejs.dev/">Vite</a>). However, there&rsquo;s also a very simple NPM package named <a href="https://www.npmjs.com/package/@vercel/ncc"><code>@vercel/ncc</code></a> which we can use if we just want a single file output.</p>
 <ol>
 <li>
 <p>Install @vercel/ncc, saving it as a development dependency:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npm install @vercel/ncc --save-dev
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">npm install @vercel/ncc --save-dev
+</span></span></code></pre></div></li>
 <li>
 <p>Update the <code>build</code> script:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;build&#34;</span><span class="err">:</span> <span class="s2">&#34;ncc build ./src/index.ts -o ./dist&#34;</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;build&#34;</span><span class="err">:</span> <span class="s2">&#34;ncc build ./src/index.ts -o ./dist&#34;</span>
+</span></span></code></pre></div></li>
 <li>
 <p>Since the above command moved our application entry point (which needs to be JavaScript) into the <code>./dist</code> subdirectory, let&rsquo;s also update the <code>main</code> property of the <code>package.json</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;main&#34;</span><span class="err">:</span> <span class="s2">&#34;dist/index.js&#34;</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;main&#34;</span><span class="err">:</span> <span class="s2">&#34;dist/index.js&#34;</span>
+</span></span></code></pre></div></li>
 <li>
 <p>We&rsquo;ll also switch over how we&rsquo;re starting the application to use the shorter method (<code>node .</code>). Here&rsquo;s the final <code>package.json</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;nodejs-hello-world&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;dist/index.js&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;ncc build ./src/index.ts -o ./dist&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;prestart&#34;</span><span class="p">:</span> <span class="s2">&#34;npm run build&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;node .&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;start:no-colors&#34;</span><span class="p">:</span> <span class="s2">&#34;node . --no-color&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;license&#34;</span><span class="p">:</span> <span class="s2">&#34;ISC&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;dependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;colors&#34;</span><span class="p">:</span> <span class="s2">&#34;^1.4.0&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;devDependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;@types/node&#34;</span><span class="p">:</span> <span class="s2">&#34;^16.11.6&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;@vercel/ncc&#34;</span><span class="p">:</span> <span class="s2">&#34;^0.31.1&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;typescript&#34;</span><span class="p">:</span> <span class="s2">&#34;^4.4.4&#34;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;nodejs-hello-world&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;dist/index.js&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;ncc build ./src/index.ts -o ./dist&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;prestart&#34;</span><span class="p">:</span> <span class="s2">&#34;npm run build&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;node .&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;start:no-colors&#34;</span><span class="p">:</span> <span class="s2">&#34;node . --no-color&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;license&#34;</span><span class="p">:</span> <span class="s2">&#34;ISC&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;dependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;colors&#34;</span><span class="p">:</span> <span class="s2">&#34;^1.4.0&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;devDependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;@types/node&#34;</span><span class="p">:</span> <span class="s2">&#34;^16.11.6&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;@vercel/ncc&#34;</span><span class="p">:</span> <span class="s2">&#34;^0.31.1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;typescript&#34;</span><span class="p">:</span> <span class="s2">&#34;^4.4.4&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></li>
 </ol>
 <p>We can test the app using <code>npm start</code> and see that it&rsquo;s transpiling and producing a single file, located in the <code>dist</code> directory, then running that with the Node.js runtime. While this doesn&rsquo;t seem all that useful to us now, for many developers new to using TypeScript, this is a very easy path to producing the single file they need to use in their existing web applications without a lot of fuss or configuration.</p>
 <h2 id="wrapping-up">Wrapping Up</h2>

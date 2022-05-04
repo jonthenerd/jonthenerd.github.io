@@ -65,11 +65,11 @@
 to a list, or a document library. However, you could use Windows explorer view
 to upload a document.</p>
 <p>The specific error message seen was:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">The server was unable to save the form at this time. Please try again.
-</code></pre></div><p>Looking in the ULS log, there were odd messages dealing with authentication that
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">The server was unable to save the form at this time. Please try again.
+</span></span></code></pre></div><p>Looking in the ULS log, there were odd messages dealing with authentication that
 seemed to indicate that the Javascript CSOM was unable to process my request due
 to conversion of Windows to Claims&hellip; but we&rsquo;re using Kerberos. What&rsquo;s up?</p>
-<pre tabindex="0"><code>Claims Windows Sign-In: Redirecting successfully signed-in user '&lt;user here&gt;' for request url 'https://your-sharepoint/_windows/default.aspx?ReturnUrl=/_vti.bin/client.svc/ProcessQuery'
+<pre tabindex="0"><code>Claims Windows Sign-In: Redirecting successfully signed-in user &#39;&lt;user here&gt;&#39; for request url &#39;https://your-sharepoint/_windows/default.aspx?ReturnUrl=/_vti.bin/client.svc/ProcessQuery&#39;
 </code></pre><p>There are several claimed ways to fix this error. They range from restarting
 your server to enabling anonymous access (why anyone would resort to this is
 beyond me). Luckily, I found a voice of sanity -

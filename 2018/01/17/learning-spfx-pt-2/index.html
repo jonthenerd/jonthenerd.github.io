@@ -86,21 +86,21 @@ This will avoid HTTP2/SSL issues when launching the workbench.</p>
 <p>Modify the package.json scripts to include the necessary gulp commands such
 that you don&rsquo;t have to have gulp installed globally. Here&rsquo;s what that section
 should look like:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;scripts&#34;</span><span class="err">:</span> <span class="p">{</span>
-    <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp bundle&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;clean&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp clean&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp test&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;bundle&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp bundle&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;bundle:ship&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp bundle --ship&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;package&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp package-solution&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;package:ship&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp package-solution --ship&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;trust-dev-cert&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp trust-dev-cert&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;serve:nobrowser&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp serve --nobrowser&#34;</span>
-<span class="p">}</span>
-</code></pre></div><p>You&rsquo;ll then run the gulp commands listed in the tutorial using npm run &lt;scriptname&gt; :</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm run trust-dev-cert		<span class="c1"># To trust the dev cert</span>
-npm run serve:nobrowser		<span class="c1"># To start hosting the extension without launching workbench</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;scripts&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp bundle&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;clean&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp clean&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp test&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;bundle&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp bundle&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;bundle:ship&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp bundle --ship&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;package&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp package-solution&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;package:ship&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp package-solution --ship&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;trust-dev-cert&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp trust-dev-cert&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;serve:nobrowser&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp serve --nobrowser&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>You&rsquo;ll then run the gulp commands listed in the tutorial using npm run &lt;scriptname&gt; :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm run trust-dev-cert		<span class="c1"># To trust the dev cert</span>
+</span></span><span class="line"><span class="cl">npm run serve:nobrowser		<span class="c1"># To start hosting the extension without launching workbench</span>
+</span></span></code></pre></div></li>
 </ul>
 <h2 id="observations-on-application-customizer-extensions">Observations on Application Customizer Extensions</h2>
 <p>Working through the online tutorials, I had a number of items I wanted

@@ -63,11 +63,11 @@
         <div class="container">
             <p>The following can be used to disable throttling on a specific list (must be run
 as an account with enough priv.):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$web</span> <span class="p">=</span> <span class="nb">Get-SPWeb</span> <span class="s2">&#34;http://whateverWeb&#34;</span><span class="p">;</span>
-<span class="nv">$list</span> <span class="p">=</span> <span class="nv">$web</span><span class="p">.</span><span class="n">Lists</span><span class="p">[</span><span class="s2">&#34;List Title&#34;</span><span class="p">];</span>
-<span class="nv">$list</span><span class="p">.</span><span class="n">enablethrottling</span> <span class="p">=</span> <span class="nv">$false</span><span class="p">;</span>
-<span class="nv">$list</span><span class="p">.</span><span class="n">update</span><span class="p">();</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$web</span> <span class="p">=</span> <span class="nb">Get-SPWeb</span> <span class="s2">&#34;http://whateverWeb&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$list</span> <span class="p">=</span> <span class="nv">$web</span><span class="p">.</span><span class="n">Lists</span><span class="p">[</span><span class="s2">&#34;List Title&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$list</span><span class="p">.</span><span class="n">enablethrottling</span> <span class="p">=</span> <span class="nv">$false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$list</span><span class="p">.</span><span class="n">update</span><span class="p">();</span>
+</span></span></code></pre></div>
         </div>
     </div>
 </article>

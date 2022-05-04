@@ -79,13 +79,13 @@ best I could come up with is to prevent the registratration for callback by
 checking the ID of the control in the Load event. This will tell you if the
 control is being loaded dynamically, or if it has been placed on a page.</p>
 <p>Here&rsquo;s the code to use in the OnLoad event:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">ID</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// This occurs in the webpart gallery and causes it to throw a javascript error.
-</span><span class="c1"></span>    <span class="n">Controls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">LiteralControl</span><span class="p">(</span><span class="s">&#34;This webpart does not function correctly in the webpart gallery. Please test on a page within a webpart zone.&#34;</span><span class="p">));</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="c1">// Do what you normally do.
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></div><p>Have a better idea on how to get this to work in the web part preview page? Let
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">ID</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// This occurs in the webpart gallery and causes it to throw a javascript error.</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Controls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">LiteralControl</span><span class="p">(</span><span class="s">&#34;This webpart does not function correctly in the webpart gallery. Please test on a page within a webpart zone.&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Do what you normally do.</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Have a better idea on how to get this to work in the web part preview page? Let
 me know. At this point I&rsquo;m content not throwing the javascript error.</p>
 
         </div>

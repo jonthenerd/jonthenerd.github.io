@@ -68,19 +68,19 @@ Standards mode. Without switching to the Telerik control or defaulting <strong>a
 of my pages to IE7 mode - there is a simpler fix!</p>
 <p>Enable IE7 compatability mode only on your edit pages. My master page had the IE8 meta
 tag:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">equiv</span><span class="o">=</span><span class="s">&#34;X-UA-Compatible&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;IE=8&#34;</span> <span class="p">/&gt;</span>
-</code></pre></div><p>right under the head element. To force your edit
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">equiv</span><span class="o">=</span><span class="s">&#34;X-UA-Compatible&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;IE=8&#34;</span> <span class="p">/&gt;</span>
+</span></span></code></pre></div><p>right under the head element. To force your edit
 pages into IE7 mode, use the <code>PublishingWebControls:EditModePanel</code> to
 conditionally display it. Directly under the head element should now look
 like:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">publishingwebcontrols:editmodepanel</span>
-    <span class="na">id</span><span class="o">=</span><span class="s">&#34;EditModePanel1&#34;</span>
-    <span class="na">runat</span><span class="o">=</span><span class="s">&#34;server&#34;</span>
-    <span class="na">suppresstag</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">equiv</span><span class="o">=</span><span class="s">&#34;X-UA-Compatible&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;IE=7&#34;</span> <span class="p">/&gt;</span>
-<span class="err">&lt;</span>/PublishingWebControls:EditModePanel/&gt;
-<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">equiv</span><span class="o">=</span><span class="s">&#34;X-UA-Compatible&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;IE=8&#34;</span> <span class="p">/&gt;</span>
-</code></pre></div><p>Yay.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">publishingwebcontrols:editmodepanel</span>
+</span></span><span class="line"><span class="cl">    <span class="na">id</span><span class="o">=</span><span class="s">&#34;EditModePanel1&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">runat</span><span class="o">=</span><span class="s">&#34;server&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">suppresstag</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">equiv</span><span class="o">=</span><span class="s">&#34;X-UA-Compatible&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;IE=7&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="err">&lt;</span>/PublishingWebControls:EditModePanel/&gt;
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">equiv</span><span class="o">=</span><span class="s">&#34;X-UA-Compatible&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;IE=8&#34;</span> <span class="p">/&gt;</span>
+</span></span></code></pre></div><p>Yay.</p>
 
         </div>
     </div>

@@ -72,11 +72,11 @@ previously, but had forgotten exactly what I did.</p>
 </li>
 <li>
 <p>Modify the config.php file in the base directory. Find the line that&rsquo;s setting up the &ldquo;root_url&rdquo; variable. Replace it with the following, replacing <!-- raw HTML omitted --> with your site&rsquo;s host name:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;root_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;http://&lt;hostname&gt;&#39;</span><span class="p">;</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTPS&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTPS&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;on&#39;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;root_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;https://&lt;hostname&gt;&#39;</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;root_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;http://&lt;hostname&gt;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTPS&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTPS&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;on&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;root_url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;https://&lt;hostname&gt;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></li>
 <li>
 <p>Create an .htaccess file and place it in the admin directory (or whatever you&rsquo;ve renamed it to). This file should contain the following:</p>
 <pre tabindex="0"><code># force all access to /admin to SSL protected page

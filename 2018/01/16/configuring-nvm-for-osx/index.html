@@ -75,51 +75,51 @@ There&rsquo;s a
 <p>The Xcode command line tools (which you may already have for other reasons) are
 required. The easiest way to install them is to run the following in the
 terminal:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">xcode-select --install
-</code></pre></div><h2 id="run-the-nvm-install-script">Run the NVM Install Script</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">xcode-select --install
+</span></span></code></pre></div><h2 id="run-the-nvm-install-script">Run the NVM Install Script</h2>
 <p>You can either use cURL or Wget to install NVM. To test if you have either, just
 type curl or wget into a terminal window and hit return. If you get some kind of
 response that isn&rsquo;t an error, you know which to use. Otherwise, you can install
 wget via brew:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">brew install wget
-</code></pre></div><p>Then you&rsquo;ll want to run the latest install script mentioned on the
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">brew install wget
+</span></span></code></pre></div><p>Then you&rsquo;ll want to run the latest install script mentioned on the
 <a href="https://github.com/creationix/nvm">NVM repo</a>. <strong>Go there and copy+paste into
 your terminal window</strong>.</p>
 <p>After it installs, you ought to be able to open a fresh terminal window and type
 in <strong>nvm</strong> and see some kind of output, but not this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ nvm
--bash: nvm: <span class="nb">command</span> not found
-</code></pre></div><p>If you got that, it means that your shell isn&rsquo;t configured to use nvm. What I
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ nvm
+</span></span><span class="line"><span class="cl">-bash: nvm: <span class="nb">command</span> not found
+</span></span></code></pre></div><p>If you got that, it means that your shell isn&rsquo;t configured to use nvm. What I
 found after investigating is that NVM had added references to itself to the
 .bashrc file directly in my home directory. You can see this by typing the
 following in a terminal:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">open <span class="nv">$HOME</span>/.bashrc
-</code></pre></div><p>However, it hadn&rsquo;t added itself to the .bash_profile file.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">open <span class="nv">$HOME</span>/.bash_profile
-</code></pre></div><p>A kind user on Stack Exchange explains that
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">open <span class="nv">$HOME</span>/.bashrc
+</span></span></code></pre></div><p>However, it hadn&rsquo;t added itself to the .bash_profile file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">open <span class="nv">$HOME</span>/.bash_profile
+</span></span></code></pre></div><p>A kind user on Stack Exchange explains that
 <a href="https://apple.stackexchange.com/questions/51036/what-is-the-difference-between-bash-profile-and-bashrc">on OS X, every time terminal is run it considers it a <em>login terminal</em> which uses the .bash_profile file and not the .bashrc file</a>.
 An easy fix for this though is to just consolidate all of the customizations to
 the terminal load process into the .bashrc file.</p>
 <p>Add the following to your .bash_profile and move its contents into .bashrc.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="k">if</span> <span class="o">[</span> -f <span class="nv">$HOME</span>/.bashrc <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-        <span class="nb">source</span> <span class="nv">$HOME</span>/.bashrc
-<span class="k">fi</span>
-</code></pre></div><p>Fire up a fresh terminal and run the following, which should output <strong>nvm</strong> if
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -f <span class="nv">$HOME</span>/.bashrc <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">source</span> <span class="nv">$HOME</span>/.bashrc
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span></code></pre></div><p>Fire up a fresh terminal and run the following, which should output <strong>nvm</strong> if
 the install was successful.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">command</span> -v nvm
-</code></pre></div><h2 id="install-node-versions">Install Node Versions</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">command</span> -v nvm
+</span></span></code></pre></div><h2 id="install-node-versions">Install Node Versions</h2>
 <p>We&rsquo;ve got NVM, now let&rsquo;s install the versions of node we want to use across
 ourprojects.</p>
 <h4 id="latest-node">Latest node</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nvm install node
-</code></pre></div><h4 id="specific-version-of-node">Specific version of Node</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nvm install node
+</span></span></code></pre></div><h4 id="specific-version-of-node">Specific version of Node</h4>
 <p><a href="https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment">Version 6.11.5 of node.js is required for SharePoint Framework development</a>
 as of this writing.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nvm install 6.11.5
-</code></pre></div><p>Note that you can list all available installed node versions using the following
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nvm install 6.11.5
+</span></span></code></pre></div><p>Note that you can list all available installed node versions using the following
 commandline:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nvm ls
-</code></pre></div><h2 id="configure-your-project-to-use-a-specific-version">Configure your project to use a specific version</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nvm ls
+</span></span></code></pre></div><h2 id="configure-your-project-to-use-a-specific-version">Configure your project to use a specific version</h2>
 <p>For this, we&rsquo;re going to place a .nvmrc into the root of each project that
 utilizes node which indicates which version to use.</p>
 <ol>
@@ -128,16 +128,16 @@ utilizes node which indicates which version to use.</p>
 </li>
 <li>
 <p>Run one of the following:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;5.9&#34;</span> &gt; .nvmrc
-
-<span class="nb">echo</span> <span class="s2">&#34;lts/*&#34;</span> &gt; .nvmrc <span class="c1"># to default to the latest LTS version</span>
-
-<span class="nb">echo</span> <span class="s2">&#34;node&#34;</span> &gt; .nvmrc <span class="c1"># to default to the latest version</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;5.9&#34;</span> &gt; .nvmrc
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;lts/*&#34;</span> &gt; .nvmrc <span class="c1"># to default to the latest LTS version</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;node&#34;</span> &gt; .nvmrc <span class="c1"># to default to the latest version</span>
+</span></span></code></pre></div></li>
 <li>
 <p>Start using that node version using the following command:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">nvm use
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nvm use
+</span></span></code></pre></div></li>
 <li>
 <p>(optional) You can configure auto-switching to the desired node version
 instead of having to type nvm use. This requires using

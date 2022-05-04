@@ -130,25 +130,25 @@ let&rsquo;s continue on with the hello worlding.</p>
 </li>
 <li>
 <p>Initialize the project with NPM (to get our package.json)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm init
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm init
+</span></span></code></pre></div></li>
 <li>
 <p>Intall the npm package for the Yeoman SharePoint generator (locally).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install @microsoft/generator-sharepoint --save-dev
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm install @microsoft/generator-sharepoint --save-dev
+</span></span></code></pre></div></li>
 <li>
 <p>Open our project using our code editor of choice (have you tried Visual
 Studio Code yet?)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">code .
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">code .
+</span></span></code></pre></div></li>
 <li>
 <p>Notice that we&rsquo;ve got our .nvmrc file, our package.json file, and a directory
 for node_modules. Things are looking good so far.</p>
 </li>
 <li>
 <p>Let&rsquo;s run the Yeoman generator now.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">yo @microsoft/sharepoint
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yo @microsoft/sharepoint
+</span></span></code></pre></div></li>
 <li>
 <p>We can&rsquo;t follow the next instruction to just run gulp serve, as gulp isn&rsquo;t
 installed globally (I&rsquo;m not a fan of installing things globally as it makes
@@ -159,22 +159,22 @@ such, we need to change our package.json to handle running gulp for us.</p>
 <li>Open your package.json</li>
 <li>Change the scripts section to be the following:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;scripts&#34;</span><span class="err">:</span> <span class="p">{</span>
-    <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp bundle&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;clean&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp clean&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp test&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;trust-dev-cert&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp trust-dev-cert&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;serve&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp serve&#34;</span>
-<span class="p">}</span><span class="err">,</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;scripts&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp bundle&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;clean&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp clean&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp test&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;trust-dev-cert&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp trust-dev-cert&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;serve&#34;</span><span class="p">:</span> <span class="s2">&#34;gulp serve&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="err">,</span>
+</span></span></code></pre></div></li>
 <li>
 <p>Trust the Dev Cert used by workbench</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm run trust-dev-cert
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm run trust-dev-cert
+</span></span></code></pre></div></li>
 <li>
 <p>Fire up the workbench</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm run serve
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm run serve
+</span></span></code></pre></div></li>
 <li>
 <p>Marvel at it working and don&rsquo;t think about future version dependency
 conflicts :)</p>

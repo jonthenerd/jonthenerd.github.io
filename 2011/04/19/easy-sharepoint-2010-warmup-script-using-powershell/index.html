@@ -68,18 +68,18 @@ and not care about specifying credentials in the script. I figured most people
 would just keep using the credentials specified in their scheduled task. The
 script loads the SharePoint plugin, enumerates the zones, and sends a request to
 each one.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Add-PSSnapin</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">SharePoint</span><span class="p">.</span><span class="n">PowerShell</span><span class="p">;</span>
-
-<span class="k">function</span> <span class="nb">Get-WebPage</span><span class="p">(</span><span class="no">[string]</span><span class="nv">$url</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$wc</span> <span class="p">=</span> <span class="nb">new-object</span> <span class="n">net</span><span class="p">.</span><span class="n">webclient</span><span class="p">;</span>
-    <span class="nv">$wc</span><span class="p">.</span><span class="n">credentials</span> <span class="p">=</span> <span class="no">[System.Net.CredentialCache]</span><span class="p">::</span><span class="n">DefaultCredentials</span><span class="p">;</span>
-    <span class="nv">$pageContents</span> <span class="p">=</span> <span class="nv">$wc</span><span class="p">.</span><span class="n">DownloadString</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
-    <span class="nv">$wc</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
-    <span class="k">return</span> <span class="nv">$pageContents</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nb">Get-SPAlternateUrl</span> <span class="n">-Zone</span> <span class="k">Default</span> <span class="p">|</span> <span class="nb">foreach-object</span> <span class="p">{</span> <span class="nb">write-host</span> <span class="nv">$_</span><span class="p">.</span><span class="n">IncomingUrl</span><span class="p">;</span> <span class="nv">$html</span> <span class="p">=</span> <span class="nb">Get-WebPage</span> <span class="n">-url</span> <span class="nv">$_</span><span class="p">.</span><span class="n">IncomingUrl</span><span class="p">;</span> <span class="p">}</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Add-PSSnapin</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">SharePoint</span><span class="p">.</span><span class="n">PowerShell</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">function</span> <span class="nb">Get-WebPage</span><span class="p">(</span><span class="no">[string]</span><span class="nv">$url</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$wc</span> <span class="p">=</span> <span class="nb">new-object</span> <span class="n">net</span><span class="p">.</span><span class="n">webclient</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$wc</span><span class="p">.</span><span class="n">credentials</span> <span class="p">=</span> <span class="no">[System.Net.CredentialCache]</span><span class="p">::</span><span class="n">DefaultCredentials</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$pageContents</span> <span class="p">=</span> <span class="nv">$wc</span><span class="p">.</span><span class="n">DownloadString</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$wc</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$pageContents</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">Get-SPAlternateUrl</span> <span class="n">-Zone</span> <span class="k">Default</span> <span class="p">|</span> <span class="nb">foreach-object</span> <span class="p">{</span> <span class="nb">write-host</span> <span class="nv">$_</span><span class="p">.</span><span class="n">IncomingUrl</span><span class="p">;</span> <span class="nv">$html</span> <span class="p">=</span> <span class="nb">Get-WebPage</span> <span class="n">-url</span> <span class="nv">$_</span><span class="p">.</span><span class="n">IncomingUrl</span><span class="p">;</span> <span class="p">}</span>
+</span></span></code></pre></div>
         </div>
     </div>
 </article>

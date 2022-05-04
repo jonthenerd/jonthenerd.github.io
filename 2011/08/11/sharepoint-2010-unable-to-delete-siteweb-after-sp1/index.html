@@ -77,11 +77,11 @@ are experiencing the error on is running in compatibility mode, you&rsquo;ll nee
 update it using PowerShell. To do this, first get the GUID ID of the database in
 question by running the following powershell and then copying the ID of the
 database you wish to upgrade:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-posh" data-lang="posh"><span class="nb">Get-SPContentDatabase</span>
-</code></pre></div><p>Then run the following powershell to upgrade the database using the ID you just
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-posh" data-lang="posh"><span class="line"><span class="cl"><span class="nb">Get-SPContentDatabase</span>
+</span></span></code></pre></div><p>Then run the following powershell to upgrade the database using the ID you just
 copied.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-posh" data-lang="posh"><span class="nb">Upgrade-SPContentDatabase</span> <span class="n">-Identity</span> <span class="n">YourDatabaseIDGoesHere</span>
-</code></pre></div><p><strong>Issue #2: There is no Web named &ldquo;/YourWebName&rdquo;</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-posh" data-lang="posh"><span class="line"><span class="cl"><span class="nb">Upgrade-SPContentDatabase</span> <span class="n">-Identity</span> <span class="n">YourDatabaseIDGoesHere</span>
+</span></span></code></pre></div><p><strong>Issue #2: There is no Web named &ldquo;/YourWebName&rdquo;</strong></p>
 <p>Once my above issue was resolved on the one misbehaving web application, I had
 consistent behavior across all web applications when trying to delete a web&hellip;
 or so I thought. Turns out - if I create a web right off of the site collection

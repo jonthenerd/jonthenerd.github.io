@@ -80,10 +80,10 @@ using Reflector to look at the Microsoft.SharePoint dll:</p>
 <!-- raw HTML omitted -->
 <p>So if you want to find the top 5 largest document libraries in a specific site
 collection, here&rsquo;s the PowerShell:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-posh" data-lang="posh"><span class="nv">$site</span> <span class="p">=</span> <span class="nb">Get-SPSite</span> <span class="s2">&#34;http://yoursitecollection:portifneeded&#34;</span><span class="p">;</span>
-<span class="nv">$dataTable</span> <span class="p">=</span> <span class="nv">$site</span><span class="p">.</span><span class="n">StorageManagementInformation</span><span class="p">(</span><span class="n">2</span><span class="p">,</span><span class="n">0x11</span><span class="p">,</span><span class="n">0</span><span class="p">,</span><span class="n">5</span><span class="p">);</span>
-<span class="nv">$dataTable</span> <span class="p">|</span> <span class="nb">Select </span><span class="p">*</span>
-</code></pre></div><p>This is very helpful if you aren&rsquo;t yet on SP2010 SP1. A note though - the method
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-posh" data-lang="posh"><span class="line"><span class="cl"><span class="nv">$site</span> <span class="p">=</span> <span class="nb">Get-SPSite</span> <span class="s2">&#34;http://yoursitecollection:portifneeded&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$dataTable</span> <span class="p">=</span> <span class="nv">$site</span><span class="p">.</span><span class="n">StorageManagementInformation</span><span class="p">(</span><span class="n">2</span><span class="p">,</span><span class="n">0x11</span><span class="p">,</span><span class="n">0</span><span class="p">,</span><span class="n">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$dataTable</span> <span class="p">|</span> <span class="nb">Select </span><span class="p">*</span>
+</span></span></code></pre></div><p>This is very helpful if you aren&rsquo;t yet on SP2010 SP1. A note though - the method
 is marked as obselete with this description &ldquo;SPSite.StorageManagementInformation
 is expensive; avoid using it.&rdquo;. There&rsquo;s no further explanation on what is being
 spooled up to execute the method or why it was OK in SP2007 but not SP2010. So

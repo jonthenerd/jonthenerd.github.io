@@ -62,8 +62,8 @@
     <div itemprop="articleBody">
         <div class="container">
             <p>This is pretty easy using powerhell with SharePoint 2010:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Get-SPWebApplication</span> <span class="s2">&#34;http://WebApplicationUrl:PortIfNeeded&#34;</span> <span class="p">|</span> <span class="nb">Get-SPSite</span> <span class="p">|</span> <span class="nb">ForEach-Object</span><span class="p">{</span><span class="nb">Enable-SPFeature</span> <span class="s2">&#34;Solution.Name.FeatureName&#34;</span> <span class="n">-url</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Url</span><span class="p">}</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-SPWebApplication</span> <span class="s2">&#34;http://WebApplicationUrl:PortIfNeeded&#34;</span> <span class="p">|</span> <span class="nb">Get-SPSite</span> <span class="p">|</span> <span class="nb">ForEach-Object</span><span class="p">{</span><span class="nb">Enable-SPFeature</span> <span class="s2">&#34;Solution.Name.FeatureName&#34;</span> <span class="n">-url</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Url</span><span class="p">}</span>
+</span></span></code></pre></div>
         </div>
     </div>
 </article>

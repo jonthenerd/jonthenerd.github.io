@@ -74,8 +74,8 @@ build my CAML query (that way my inserted value from the item would be escaped
 properly for XML), so surely my CAML must be fine if it&rsquo;s working most times???
 Right??? Nope. The XmlWriter by default puts in a processing instruction on the
 first line:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;xml</span> <span class="na">version=</span><span class="s">&#34;1.0&#34;</span> <span class="na">encoding=</span><span class="s">&#34;UTF-8&#34;</span> <span class="err">?</span><span class="nt">&gt;</span>
-</code></pre></div><p>Remove this first line and the field controls render each time without error. The specific error I was receiving was:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;xml</span> <span class="na">version=</span><span class="s">&#34;1.0&#34;</span> <span class="na">encoding=</span><span class="s">&#34;UTF-8&#34;</span> <span class="err">?</span><span class="nt">&gt;</span>
+</span></span></code></pre></div><p>Remove this first line and the field controls render each time without error. The specific error I was receiving was:</p>
 <blockquote>
 <blockquote>
 <p>Microsoft.SharePoint.SPException was caught

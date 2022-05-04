@@ -65,8 +65,8 @@
             <p>Because it&rsquo;s easier to copy+paste this later&hellip; This will disable a feature on
 all web applications in a farm. Very convenient for when you&rsquo;re removing a
 feature from a solution.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-posh" data-lang="posh"><span class="nb">Get-SPWebApplication</span> <span class="p">|</span> <span class="nb">ForEach-Object</span> <span class="p">{</span><span class="nb">Disable-SPFeature</span> <span class="s2">&#34;Solution.Name.FeatureName&#34;</span> <span class="n">-url</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Url</span><span class="p">;}</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-posh" data-lang="posh"><span class="line"><span class="cl"><span class="nb">Get-SPWebApplication</span> <span class="p">|</span> <span class="nb">ForEach-Object</span> <span class="p">{</span><span class="nb">Disable-SPFeature</span> <span class="s2">&#34;Solution.Name.FeatureName&#34;</span> <span class="n">-url</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Url</span><span class="p">;}</span>
+</span></span></code></pre></div>
         </div>
     </div>
 </article>

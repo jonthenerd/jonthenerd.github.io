@@ -89,8 +89,8 @@ MenuFontSize=18
 </code></pre><p>You can change the 18 to whatever size you need - but that worked for me. Now we
 need to change font size of the rest of the application. To do so, use the
 terminal and launch wine&rsquo;s regedit:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">wine regedit
-</code></pre></div><p>You&rsquo;ll want to browse to this value:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">wine regedit
+</span></span></code></pre></div><p>You&rsquo;ll want to browse to this value:</p>
 <pre tabindex="0"><code>HKEY_CURRENT_CONFIG\Software\Fonts\LogPixels
 </code></pre><p>and change it to something larger. Make sure to change the selection to &ldquo;Decimal&rdquo;,
 as you probably don&rsquo;t natively speak hex. It&rsquo;s default in decimal is 96. I upped
