@@ -63,10 +63,10 @@
         <div class="container">
             <p>Sometimes it&rsquo;s helpful to see exactly what your CQW is receiving. Put this into
 a style and see what properties and data you&rsquo;re receiving:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xslt" data-lang="xslt"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">xsl:for-each</span> <span class="na">select</span><span class="o">=</span><span class="s">&#34;@*&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    P:<span class="p">&lt;</span><span class="nt">xsl:value-of</span> <span class="na">select</span><span class="o">=</span><span class="s">&#34;name()&#34;</span> <span class="p">/&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-</span></span><span class="line"><span class="cl">    V:<span class="p">&lt;</span><span class="nt">xsl:value-of</span> <span class="na">select</span><span class="o">=</span><span class="s">&#34;.&#34;</span> <span class="p">/&gt;&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">xsl:for-each</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xslt" data-lang="xslt"><span class="line"><span class="cl"><span class="nt">&lt;xsl:for-each</span> <span class="na">select=</span><span class="s">&#34;@*&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    P:<span class="nt">&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">&#34;name()&#34;</span> <span class="nt">/&gt;&lt;br/&gt;</span>
+</span></span><span class="line"><span class="cl">    V:<span class="nt">&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">&#34;.&#34;</span> <span class="nt">/&gt;&lt;br/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/xsl:for-each&gt;</span>
 </span></span></code></pre></div>
         </div>
     </div>

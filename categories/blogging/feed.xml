@@ -24,7 +24,7 @@
       
       <guid>http://www.jonthenerd.com/2021/08/28/hugo/</guid>
       <description>I decided to rebuild my blog atop Hugo, the &amp;ldquo;world&amp;rsquo;s fastest framework for building websites.&amp;rdquo; I did this for a few reasons:
-  GitHub has been diligent in reminding me that there are security vulnerabilities in the dependencies of my blog. I used jekyll for the static site building, a collection of npm packages for some glue-code in the build process, and based my theme on twitter bootstrap. All of this adds up to a lot of dependencies to keep up with, and I haven&amp;rsquo;t been blogging for a while&amp;hellip;</description>
+GitHub has been diligent in reminding me that there are security vulnerabilities in the dependencies of my blog. I used jekyll for the static site building, a collection of npm packages for some glue-code in the build process, and based my theme on twitter bootstrap. All of this adds up to a lot of dependencies to keep up with, and I haven&amp;rsquo;t been blogging for a while&amp;hellip;</description>
     </item>
     
     <item>

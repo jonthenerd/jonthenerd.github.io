@@ -96,7 +96,7 @@ If you look in the ULS logs, you&amp;rsquo;ll find that there is an Access Denie
       
       <guid>http://www.jonthenerd.com/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/</guid>
       <description>These are my notes while trying to diagnose and better understnad some issues and oddities with the SharePoint 2010 User Profile Service Application.
-If you&amp;rsquo;re wanting to populate pictures into people&amp;rsquo;s profiles, you&amp;rsquo;ll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is Redgate Reflector(a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing.</description>
+If you&amp;rsquo;re wanting to populate pictures into people&amp;rsquo;s profiles, you&amp;rsquo;ll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is Redgate Reflector (a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing.</description>
     </item>
     
     <item>
@@ -115,7 +115,7 @@ If you&amp;rsquo;re wanting to populate pictures into people&amp;rsquo;s profile
       
       <guid>http://www.jonthenerd.com/2011/10/28/sharepoint-2010-setting-custom-user-profile-properties-gotchas/</guid>
       <description>What else do you need?
-Custom User Profile Properties (and several of the Out of Box ones) depend on a Managed Metadata Service Application being setup and associated with the application you&amp;rsquo;re working with. This is fairly trivial to setup. Just remember that after you set it up via the UI, you&amp;rsquo;ll need to start it on the &amp;ldquo;Manage services on this server&amp;rdquo; page, and then perform an IIS reset. Forgetting these will keep your Managed Metadata service from working.</description>
+Custom User Profile Properties (and several of the Out of Box ones) depend on a Managed Metadata Service Application being setup and associated with the application you&amp;rsquo;re working with. This is fairly trivial to setup. Just remember that after you set it up via the UI, you&amp;rsquo;ll need to start it on the &amp;ldquo;Manage services on this server&amp;rdquo; page, and then perform an IIS reset.</description>
     </item>
     
     <item>
@@ -235,8 +235,8 @@ Get-SPWebApplication &amp;#34;http://WebApplicationUrl:PortIfNeeded&amp;#34; | G
       
       <guid>http://www.jonthenerd.com/2011/03/02/trying-to-access-_layoutschangesitemasterpage-aspx-and-receiving-error/</guid>
       <description>If you try to access the SharePoint URL \_Layouts/ChangeSiteMasterPage.aspx and receive the following error:
-  One or more field types are not installed properly. Go to the list settings page to delete these fields.
-  The SharePoint Server Publishing Infrastructure feature needs to be turned on.</description>
+One or more field types are not installed properly. Go to the list settings page to delete these fields.
+The SharePoint Server Publishing Infrastructure feature needs to be turned on.</description>
     </item>
     
     <item>
@@ -265,8 +265,8 @@ $web = Get-SPWeb &amp;#34;http://whateverWeb&amp;#34;; $list = $web.Lists[&amp;#
       
       <guid>http://www.jonthenerd.com/2010/12/07/sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/</guid>
       <description>In migrating some WebParts from SP2007 to SP2010, I came across a webpart that implements ICallbackEventHandler. This webpart was working fine when placed on the page, but did not work correctly in the webpart gallery. The specific error message being received was:
-  The target &amp;lsquo;ctl00$PlaceHolderMain$ctl00&amp;rsquo; for the callback could not be found or did not implement ICallbackEventHandler
-  This error is due to the webpart being added to the preview page dynamically at runtime.</description>
+The target &amp;lsquo;ctl00$PlaceHolderMain$ctl00&amp;rsquo; for the callback could not be found or did not implement ICallbackEventHandler
+This error is due to the webpart being added to the preview page dynamically at runtime.</description>
     </item>
     
     <item>

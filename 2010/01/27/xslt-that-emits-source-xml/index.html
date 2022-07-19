@@ -65,17 +65,17 @@
 from content query web parts and data view web parts in Visual Studio. The below
 XSLT will output the source XML given to
 it:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xslt" data-lang="xslt"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">xsl:stylesheet</span> <span class="na">version</span><span class="o">=</span><span class="s">&#34;1.0&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="na">xmlns:xsl</span><span class="o">=</span><span class="s">&#34;http://www.w3.org/1999/XSL/Transform&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="na">xmlns:msxsl</span><span class="o">=</span><span class="s">&#34;urn:schemas-microsoft-com:xslt&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="na">exclude-result-prefixes</span><span class="o">=</span><span class="s">&#34;msxsl&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">xsl:output</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;xml&#34;</span> <span class="na">indent</span><span class="o">=</span><span class="s">&#34;yes&#34;</span><span class="p">/&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">xsl:template</span> <span class="na">match</span><span class="o">=</span><span class="s">&#34;@ node()&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">xsl:copy</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">xsl:apply-templates</span> <span class="na">select</span><span class="o">=</span><span class="s">&#34;@ node()&#34;</span><span class="p">/&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">xsl:copy</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">xsl:template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">xsl:stylesheet</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xslt" data-lang="xslt"><span class="line"><span class="cl"><span class="nt">&lt;xsl:stylesheet</span> <span class="na">version=</span><span class="s">&#34;1.0&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">xmlns:xsl=</span><span class="s">&#34;http://www.w3.org/1999/XSL/Transform&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">xmlns:msxsl=</span><span class="s">&#34;urn:schemas-microsoft-com:xslt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">exclude-result-prefixes=</span><span class="s">&#34;msxsl&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;xsl:output</span> <span class="na">method=</span><span class="s">&#34;xml&#34;</span> <span class="na">indent=</span><span class="s">&#34;yes&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;xsl:template</span> <span class="na">match=</span><span class="s">&#34;@ node()&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;xsl:copy&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;xsl:apply-templates</span> <span class="na">select=</span><span class="s">&#34;@ node()&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/xsl:copy&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/xsl:template&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/xsl:stylesheet&gt;</span>
 </span></span></code></pre></div>
         </div>
     </div>

@@ -115,7 +115,7 @@ If you look in the ULS logs, you&amp;rsquo;ll find that there is an Access Denie
       
       <guid>http://www.jonthenerd.com/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/</guid>
       <description>These are my notes while trying to diagnose and better understnad some issues and oddities with the SharePoint 2010 User Profile Service Application.
-If you&amp;rsquo;re wanting to populate pictures into people&amp;rsquo;s profiles, you&amp;rsquo;ll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is Redgate Reflector(a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing.</description>
+If you&amp;rsquo;re wanting to populate pictures into people&amp;rsquo;s profiles, you&amp;rsquo;ll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is Redgate Reflector (a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing.</description>
     </item>
     
     <item>
@@ -205,8 +205,8 @@ Get-SPWebApplication &amp;#34;http://WebApplicationUrl:PortIfNeeded&amp;#34; | G
       
       <guid>http://www.jonthenerd.com/2011/03/02/trying-to-access-_layoutschangesitemasterpage-aspx-and-receiving-error/</guid>
       <description>If you try to access the SharePoint URL \_Layouts/ChangeSiteMasterPage.aspx and receive the following error:
-  One or more field types are not installed properly. Go to the list settings page to delete these fields.
-  The SharePoint Server Publishing Infrastructure feature needs to be turned on.</description>
+One or more field types are not installed properly. Go to the list settings page to delete these fields.
+The SharePoint Server Publishing Infrastructure feature needs to be turned on.</description>
     </item>
     
     <item>
@@ -235,7 +235,7 @@ $web = Get-SPWeb &amp;#34;http://whateverWeb&amp;#34;; $list = $web.Lists[&amp;#
       
       <guid>http://www.jonthenerd.com/2010/09/22/asp-net-padding-oracle/</guid>
       <description>I&amp;rsquo;m doing research to better understand the padding oracle attack that was recently disclosed to affect ASP.NET and thought to provide a quick list of links that I&amp;rsquo;ve found most helpful:
- Microsoft SharePoint Team Blog: Security Advisory 2416728 (Vulnerability in ASP.NET) and SharePoint Automated Padding Oracle Attacks with PadBuster How to check if your application is vulnerable to the ASP.NET Padding Oracle Vulnerability Duncan Smart&amp;rsquo;s post on ASP.NET detailing how to check if your application masks the oracle Duncan Smart&amp;rsquo;s blog entry on the matter (with link to a wsh script to use for testing) ASP.</description>
+Microsoft SharePoint Team Blog: Security Advisory 2416728 (Vulnerability in ASP.NET) and SharePoint Automated Padding Oracle Attacks with PadBuster How to check if your application is vulnerable to the ASP.NET Padding Oracle Vulnerability Duncan Smart&amp;rsquo;s post on ASP.NET detailing how to check if your application masks the oracle Duncan Smart&amp;rsquo;s blog entry on the matter (with link to a wsh script to use for testing) ASP.</description>
     </item>
     
     <item>

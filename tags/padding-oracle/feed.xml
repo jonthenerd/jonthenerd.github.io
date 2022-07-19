@@ -14,7 +14,7 @@
       
       <guid>http://www.jonthenerd.com/2010/09/22/asp-net-padding-oracle/</guid>
       <description>I&amp;rsquo;m doing research to better understand the padding oracle attack that was recently disclosed to affect ASP.NET and thought to provide a quick list of links that I&amp;rsquo;ve found most helpful:
- Microsoft SharePoint Team Blog: Security Advisory 2416728 (Vulnerability in ASP.NET) and SharePoint Automated Padding Oracle Attacks with PadBuster How to check if your application is vulnerable to the ASP.NET Padding Oracle Vulnerability Duncan Smart&amp;rsquo;s post on ASP.NET detailing how to check if your application masks the oracle Duncan Smart&amp;rsquo;s blog entry on the matter (with link to a wsh script to use for testing) ASP.</description>
+Microsoft SharePoint Team Blog: Security Advisory 2416728 (Vulnerability in ASP.NET) and SharePoint Automated Padding Oracle Attacks with PadBuster How to check if your application is vulnerable to the ASP.NET Padding Oracle Vulnerability Duncan Smart&amp;rsquo;s post on ASP.NET detailing how to check if your application masks the oracle Duncan Smart&amp;rsquo;s blog entry on the matter (with link to a wsh script to use for testing) ASP.</description>
     </item>
     
   </channel>

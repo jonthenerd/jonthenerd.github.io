@@ -60,7 +60,7 @@
                     </div>
                     <div class="summary">
                         These are my notes while trying to diagnose and better understnad some issues and oddities with the SharePoint 2010 User Profile Service Application.
-If you&rsquo;re wanting to populate pictures into people&rsquo;s profiles, you&rsquo;ll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is Redgate Reflector(a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing.
+If you&rsquo;re wanting to populate pictures into people&rsquo;s profiles, you&rsquo;ll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is Redgate Reflector (a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing.
                     </div>
                     
                         <div>
@@ -110,7 +110,7 @@ If you&rsquo;re wanting to populate pictures into people&rsquo;s profiles, you&r
                     </div>
                     <div class="summary">
                         What else do you need?
-Custom User Profile Properties (and several of the Out of Box ones) depend on a Managed Metadata Service Application being setup and associated with the application you&rsquo;re working with. This is fairly trivial to setup. Just remember that after you set it up via the UI, you&rsquo;ll need to start it on the &ldquo;Manage services on this server&rdquo; page, and then perform an IIS reset. Forgetting these will keep your Managed Metadata service from working.
+Custom User Profile Properties (and several of the Out of Box ones) depend on a Managed Metadata Service Application being setup and associated with the application you&rsquo;re working with. This is fairly trivial to setup. Just remember that after you set it up via the UI, you&rsquo;ll need to start it on the &ldquo;Manage services on this server&rdquo; page, and then perform an IIS reset.
                     </div>
                     
                         <div>

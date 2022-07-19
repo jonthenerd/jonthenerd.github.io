@@ -22,7 +22,7 @@
       <pubDate>Sun, 13 Jun 2010 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2010/06/13/gimp-how-to-make-fuzzy-border-transparent/</guid>
-      <description> Do not use the &amp;ldquo;Flatten Image&amp;rdquo; option. A new layer will be created containing only the border (this layer will be the active layer). Perform &amp;ldquo;Layer-&amp;gt;Transparency-&amp;gt;Alpha to Selection&amp;rdquo; Perform &amp;ldquo;Layer-&amp;gt;Delete&amp;rdquo;. (you don&amp;rsquo;t need this layer any more) Perform &amp;ldquo;Layer-&amp;gt;Transparency-&amp;gt;Add Alpha Channel&amp;rdquo; (if possible) Perform &amp;ldquo;Edit-&amp;gt;Clear&amp;rdquo; Note: the &amp;ldquo;Layer&amp;rdquo; commands are also available on the context menu accessed by right-clicking on the layer&amp;rsquo;s thumbnail preview in the Layer Dialog.  </description>
+      <description> Do not use the &amp;ldquo;Flatten Image&amp;rdquo; option. A new layer will be created containing only the border (this layer will be the active layer). Perform &amp;ldquo;Layer-&amp;gt;Transparency-&amp;gt;Alpha to Selection&amp;rdquo; Perform &amp;ldquo;Layer-&amp;gt;Delete&amp;rdquo;. (you don&amp;rsquo;t need this layer any more) Perform &amp;ldquo;Layer-&amp;gt;Transparency-&amp;gt;Add Alpha Channel&amp;rdquo; (if possible) Perform &amp;ldquo;Edit-&amp;gt;Clear&amp;rdquo; Note: the &amp;ldquo;Layer&amp;rdquo; commands are also available on the context menu accessed by right-clicking on the layer&amp;rsquo;s thumbnail preview in the Layer Dialog. </description>
     </item>
     
     <item>

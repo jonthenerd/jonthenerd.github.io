@@ -42,7 +42,7 @@
       
       <guid>http://www.jonthenerd.com/2021/08/28/hugo/</guid>
       <description>I decided to rebuild my blog atop Hugo, the &amp;ldquo;world&amp;rsquo;s fastest framework for building websites.&amp;rdquo; I did this for a few reasons:
-  GitHub has been diligent in reminding me that there are security vulnerabilities in the dependencies of my blog. I used jekyll for the static site building, a collection of npm packages for some glue-code in the build process, and based my theme on twitter bootstrap. All of this adds up to a lot of dependencies to keep up with, and I haven&amp;rsquo;t been blogging for a while&amp;hellip;</description>
+GitHub has been diligent in reminding me that there are security vulnerabilities in the dependencies of my blog. I used jekyll for the static site building, a collection of npm packages for some glue-code in the build process, and based my theme on twitter bootstrap. All of this adds up to a lot of dependencies to keep up with, and I haven&amp;rsquo;t been blogging for a while&amp;hellip;</description>
     </item>
     
     <item>
@@ -241,7 +241,7 @@ mobile RFID reader with an Android device.&lt;/p&gt;</description>
       
       <guid>http://www.jonthenerd.com/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/</guid>
       <description>These are my notes while trying to diagnose and better understnad some issues and oddities with the SharePoint 2010 User Profile Service Application.
-If you&amp;rsquo;re wanting to populate pictures into people&amp;rsquo;s profiles, you&amp;rsquo;ll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is Redgate Reflector(a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing.</description>
+If you&amp;rsquo;re wanting to populate pictures into people&amp;rsquo;s profiles, you&amp;rsquo;ll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is Redgate Reflector (a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing.</description>
     </item>
     
     <item>
@@ -269,7 +269,7 @@ If you&amp;rsquo;re wanting to populate pictures into people&amp;rsquo;s profile
       
       <guid>http://www.jonthenerd.com/2011/10/28/sharepoint-2010-setting-custom-user-profile-properties-gotchas/</guid>
       <description>What else do you need?
-Custom User Profile Properties (and several of the Out of Box ones) depend on a Managed Metadata Service Application being setup and associated with the application you&amp;rsquo;re working with. This is fairly trivial to setup. Just remember that after you set it up via the UI, you&amp;rsquo;ll need to start it on the &amp;ldquo;Manage services on this server&amp;rdquo; page, and then perform an IIS reset. Forgetting these will keep your Managed Metadata service from working.</description>
+Custom User Profile Properties (and several of the Out of Box ones) depend on a Managed Metadata Service Application being setup and associated with the application you&amp;rsquo;re working with. This is fairly trivial to setup. Just remember that after you set it up via the UI, you&amp;rsquo;ll need to start it on the &amp;ldquo;Manage services on this server&amp;rdquo; page, and then perform an IIS reset.</description>
     </item>
     
     <item>
@@ -398,8 +398,8 @@ Get-SPWebApplication &amp;#34;http://WebApplicationUrl:PortIfNeeded&amp;#34; | G
       
       <guid>http://www.jonthenerd.com/2011/03/02/trying-to-access-_layoutschangesitemasterpage-aspx-and-receiving-error/</guid>
       <description>If you try to access the SharePoint URL \_Layouts/ChangeSiteMasterPage.aspx and receive the following error:
-  One or more field types are not installed properly. Go to the list settings page to delete these fields.
-  The SharePoint Server Publishing Infrastructure feature needs to be turned on.</description>
+One or more field types are not installed properly. Go to the list settings page to delete these fields.
+The SharePoint Server Publishing Infrastructure feature needs to be turned on.</description>
     </item>
     
     <item>
@@ -438,8 +438,8 @@ $web = Get-SPWeb &amp;#34;http://whateverWeb&amp;#34;; $list = $web.Lists[&amp;#
       
       <guid>http://www.jonthenerd.com/2010/12/07/sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/</guid>
       <description>In migrating some WebParts from SP2007 to SP2010, I came across a webpart that implements ICallbackEventHandler. This webpart was working fine when placed on the page, but did not work correctly in the webpart gallery. The specific error message being received was:
-  The target &amp;lsquo;ctl00$PlaceHolderMain$ctl00&amp;rsquo; for the callback could not be found or did not implement ICallbackEventHandler
-  This error is due to the webpart being added to the preview page dynamically at runtime.</description>
+The target &amp;lsquo;ctl00$PlaceHolderMain$ctl00&amp;rsquo; for the callback could not be found or did not implement ICallbackEventHandler
+This error is due to the webpart being added to the preview page dynamically at runtime.</description>
     </item>
     
     <item>
@@ -449,7 +449,7 @@ $web = Get-SPWeb &amp;#34;http://whateverWeb&amp;#34;; $list = $web.Lists[&amp;#
       
       <guid>http://www.jonthenerd.com/2010/10/21/sonic-fan-remix/</guid>
       <description>The new Sonic 4 is a bit of a novelty. This though - this is what Sonic fans have been waiting for:
-  More information on the game can be found at http://sonicfanremix.com/.</description>
+More information on the game can be found at http://sonicfanremix.com/.</description>
     </item>
     
     <item>
@@ -479,7 +479,7 @@ Update: Apparently seeing products that do FTP in .NET for years made me think t
       
       <guid>http://www.jonthenerd.com/2010/09/22/asp-net-padding-oracle/</guid>
       <description>I&amp;rsquo;m doing research to better understand the padding oracle attack that was recently disclosed to affect ASP.NET and thought to provide a quick list of links that I&amp;rsquo;ve found most helpful:
- Microsoft SharePoint Team Blog: Security Advisory 2416728 (Vulnerability in ASP.NET) and SharePoint Automated Padding Oracle Attacks with PadBuster How to check if your application is vulnerable to the ASP.NET Padding Oracle Vulnerability Duncan Smart&amp;rsquo;s post on ASP.NET detailing how to check if your application masks the oracle Duncan Smart&amp;rsquo;s blog entry on the matter (with link to a wsh script to use for testing) ASP.</description>
+Microsoft SharePoint Team Blog: Security Advisory 2416728 (Vulnerability in ASP.NET) and SharePoint Automated Padding Oracle Attacks with PadBuster How to check if your application is vulnerable to the ASP.NET Padding Oracle Vulnerability Duncan Smart&amp;rsquo;s post on ASP.NET detailing how to check if your application masks the oracle Duncan Smart&amp;rsquo;s blog entry on the matter (with link to a wsh script to use for testing) ASP.</description>
     </item>
     
     <item>
@@ -507,7 +507,7 @@ I got it all setup in a VirtualBox VM, but need it on the separate machine. This
       <pubDate>Sun, 13 Jun 2010 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2010/06/13/gimp-how-to-make-fuzzy-border-transparent/</guid>
-      <description> Do not use the &amp;ldquo;Flatten Image&amp;rdquo; option. A new layer will be created containing only the border (this layer will be the active layer). Perform &amp;ldquo;Layer-&amp;gt;Transparency-&amp;gt;Alpha to Selection&amp;rdquo; Perform &amp;ldquo;Layer-&amp;gt;Delete&amp;rdquo;. (you don&amp;rsquo;t need this layer any more) Perform &amp;ldquo;Layer-&amp;gt;Transparency-&amp;gt;Add Alpha Channel&amp;rdquo; (if possible) Perform &amp;ldquo;Edit-&amp;gt;Clear&amp;rdquo; Note: the &amp;ldquo;Layer&amp;rdquo; commands are also available on the context menu accessed by right-clicking on the layer&amp;rsquo;s thumbnail preview in the Layer Dialog.  </description>
+      <description> Do not use the &amp;ldquo;Flatten Image&amp;rdquo; option. A new layer will be created containing only the border (this layer will be the active layer). Perform &amp;ldquo;Layer-&amp;gt;Transparency-&amp;gt;Alpha to Selection&amp;rdquo; Perform &amp;ldquo;Layer-&amp;gt;Delete&amp;rdquo;. (you don&amp;rsquo;t need this layer any more) Perform &amp;ldquo;Layer-&amp;gt;Transparency-&amp;gt;Add Alpha Channel&amp;rdquo; (if possible) Perform &amp;ldquo;Edit-&amp;gt;Clear&amp;rdquo; Note: the &amp;ldquo;Layer&amp;rdquo; commands are also available on the context menu accessed by right-clicking on the layer&amp;rsquo;s thumbnail preview in the Layer Dialog. </description>
     </item>
     
     <item>
@@ -554,7 +554,7 @@ Lots of head scratching and some creative Google searches led me to the &amp;ldq
       
       <guid>http://www.jonthenerd.com/2010/02/20/terminal-cancer-patient-gets-restored-car/</guid>
       <description>From AutoBlog:
-  Tyler Shipman was an 18-year-old Fiero nut from Frazee, Minnesota. In the middle of restoring his favorite car last October he was diagnosed with terminal cancer, and posted a note on a Fiero forum to ask for help with the restoration so that he wouldn&amp;rsquo;t leave his parents with the burden. He got his wish. In the middle of this crazy all and everything, Tyler is more proof that simple humanity still works.</description>
+Tyler Shipman was an 18-year-old Fiero nut from Frazee, Minnesota. In the middle of restoring his favorite car last October he was diagnosed with terminal cancer, and posted a note on a Fiero forum to ask for help with the restoration so that he wouldn&amp;rsquo;t leave his parents with the burden. He got his wish. In the middle of this crazy all and everything, Tyler is more proof that simple humanity still works.</description>
     </item>
     
     <item>
@@ -727,8 +727,7 @@ Where did I get my inspiration? Youtube videos. Search for &amp;ldquo;how to sus
       <pubDate>Sun, 11 Mar 2007 00:00:00 +0000</pubDate>
       
       <guid>http://www.jonthenerd.com/2007/03/11/spoofing-the-mac-commercials/</guid>
-      <description>I don&amp;rsquo;t often laugh at online videos - but this one got me. Now don&amp;rsquo;t get me wrong - I love the Mac&amp;rsquo;s interface. It&amp;rsquo;s truly a wonder. But this video is absolutely hilarious 😄
-  </description>
+      <description>I don&amp;rsquo;t often laugh at online videos - but this one got me. Now don&amp;rsquo;t get me wrong - I love the Mac&amp;rsquo;s interface. It&amp;rsquo;s truly a wonder. But this video is absolutely hilarious 😄</description>
     </item>
     
     <item>
@@ -776,7 +775,7 @@ Initially I considered paying for hosting on my own blog - just to learn the ins
       
       <guid>http://www.jonthenerd.com/2007/01/26/the-little-linux-box-that-could/</guid>
       <description>I decided that in order to tinker without disrupting the smooth operation of my workhorse PC, I ought to just build a testing box. In the event that I can actually tinker enough to stop wanting to tinker (like that&amp;rsquo;s going to happen), I also wanted the PC to serve a dual role as an eventual Media Center PC (Windows or otherwise). So I laid out some requirements:
- Multiple Core - I&amp;rsquo;ve read that the latest versions of software that play High-Def video (DVD &amp;amp; Blu-Ray) recommend having dual core.</description>
+Multiple Core - I&amp;rsquo;ve read that the latest versions of software that play High-Def video (DVD &amp;amp; Blu-Ray) recommend having dual core.</description>
     </item>
     
     <item>
