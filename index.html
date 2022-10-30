@@ -50,6 +50,35 @@
             
             
                 <article>
+                    <h2><a href="/2022/10/30/visual-basic-methods-in-c/">Visual Basic Methods in C#</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2022-10-30"
+                            itemprop="datePublished"
+                            >October 30, 2022</time
+                        >
+                    </div>
+                    <div class="summary">
+                        <p>A friend of mine needed some legacy code, written in VB6, ported to work in C# (.NET 6 / Core). This code used several Visual Basic functions that have equivalents in C#, but those versions didn&rsquo;t yield the same output given the same input. Using the <a href="https://www.nuget.org/packages/Microsoft.VisualBasic/">Microsoft.VisualBasic</a> package got the code closer to working, but still wasn&rsquo;t 100% what was needed. It turns out that package is used for porting VB.Net code, not legacy VB6 or earlier code.</p>
+<p>Some methods had fairly close equivalents in C#, others were way off the mark due to string encoding differences.</p>
+<p>A lot of searching and unit testing later, I came up with this class of functions that allowed the legacy code to be ported with fairly minimal changes. My goal was to copy + paste VB6 code and make as few a changes as possible. Here are the methods covered:</p>
+<ul>
+<li>Mid</li>
+<li>Len</li>
+<li>Int</li>
+<li>Divide (while not an actual VB function, this replaces the C# <code>/</code> operator so output is the same as Visual Basic 6 would have produced)</li>
+<li>Chr</li>
+<li>Asc</li>
+</ul>
+                    </div>
+                    
+                        <div>
+                            <a href="/2022/10/30/visual-basic-methods-in-c/">Read More...</a>
+                        </div>
+                    
+                </article>
+            
+                <article>
                     <h2><a href="/2022/05/03/fixing-ghost-dependabot-errors/">Fixing Ghost Dependabot Errors</a></h2>
                     <div class="post-meta">
                         <time
@@ -241,30 +270,6 @@ that content type to a list/library.</li>
                     
                         <div>
                             <a href="/2017/09/16/managed-props-and-config-cache/">Read More...</a>
-                        </div>
-                    
-                </article>
-            
-                <article>
-                    <h2><a href="/2016/07/06/the-server-was-unable-to-save/">SharePoint: The server was unable to save the form at this time</a></h2>
-                    <div class="post-meta">
-                        <time
-                            datetime="2016-07-06"
-                            itemprop="datePublished"
-                            >July 6, 2016</time
-                        >
-                    </div>
-                    <div class="summary">
-                        <p>We ran across an issue in a test environment where we were unable to add items
-to a list, or a document library. However, you could use Windows explorer view
-to upload a document.</p>
-<p>The specific error message seen was:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">The server was unable to save the form at this time. Please try again.
-</span></span></code></pre></div>
-                    </div>
-                    
-                        <div>
-                            <a href="/2016/07/06/the-server-was-unable-to-save/">Read More...</a>
                         </div>
                     
                 </article>

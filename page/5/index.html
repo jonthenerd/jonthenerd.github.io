@@ -50,6 +50,22 @@
             
             
                 <article>
+                    <h2><a href="/2011/01/11/disable-throttling-for-a-specific-sharepoint-2010-list-with-powershell/">Disable Throttling for a specific SharePoint 2010 list with PowerShell</a></h2>
+                    <div class="post-meta">
+                        <time
+                            datetime="2011-01-11"
+                            itemprop="datePublished"
+                            >January 11, 2011</time
+                        >
+                    </div>
+                    <div class="summary">
+                        The following can be used to disable throttling on a specific list (must be run as an account with enough priv.):
+$web = Get-SPWeb &#34;http://whateverWeb&#34;; $list = $web.Lists[&#34;List Title&#34;]; $list.enablethrottling = $false; $list.update(); 
+                    </div>
+                    
+                </article>
+            
+                <article>
                     <h2><a href="/2010/12/07/sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/">SharePoint WebPart implementing ICallbackEventHandler does not work properly in Web Part Gallery</a></h2>
                     <div class="post-meta">
                         <time
@@ -205,21 +221,6 @@ Lots of head scratching and some creative Google searches led me to the &ldquo;D
                         <div>
                             <a href="/2010/03/16/anonymous-users-and-aspx-pages-inside-the-_layouts-folder/">Read More...</a>
                         </div>
-                    
-                </article>
-            
-                <article>
-                    <h2><a href="/2010/03/10/fastest-xml-editorviewer/">Fastest XML Editor/Viewer</a></h2>
-                    <div class="post-meta">
-                        <time
-                            datetime="2010-03-10"
-                            itemprop="datePublished"
-                            >March 10, 2010</time
-                        >
-                    </div>
-                    <div class="summary">
-                        I use Visual Studio every day for just about all of my development tasks. However, I attempted to open a large xml file (&gt; 20 megs) and Visual studio spiked up to 1.5 gigs of memory consumption and I couldn&rsquo;t do anything&hellip; My old standby notepad++ (great editor!) also hung on opening the file. A quick search yielded First Object&rsquo;s XML Editor. Worked great. Super fast.
-                    </div>
                     
                 </article>
             

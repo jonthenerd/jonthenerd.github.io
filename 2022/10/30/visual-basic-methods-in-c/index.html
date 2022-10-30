@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>Visual Basic Methods in C# &ndash; JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        
+    </head>
+    <body>
+        <header class="site-header">
+    <div class="container">
+        <h1>
+            <a href="/">JonTheNerd</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+        <main>
+            
+<article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name headline">
+            <div class="container">Visual Basic Methods in C#</div>
+        </h1>
+        <div class="post-meta">
+            <div class="container">
+                <time datetime=" 2022-10-30" itemprop="datePublished">October 30, 2022</time>
+                
+                | Posted in
+                <a
+                    href="/categories/programming">programming</a>
+                
+                
+            </div>
+        </div>
+    </header>
+    <div itemprop="articleBody">
+        <div class="container">
+            <p>A friend of mine needed some legacy code, written in VB6, ported to work in C# (.NET 6 / Core). This code used several Visual Basic functions that have equivalents in C#, but those versions didn&rsquo;t yield the same output given the same input. Using the <a href="https://www.nuget.org/packages/Microsoft.VisualBasic/">Microsoft.VisualBasic</a> package got the code closer to working, but still wasn&rsquo;t 100% what was needed. It turns out that package is used for porting VB.Net code, not legacy VB6 or earlier code.</p>
+<p>Some methods had fairly close equivalents in C#, others were way off the mark due to string encoding differences.</p>
+<p>A lot of searching and unit testing later, I came up with this class of functions that allowed the legacy code to be ported with fairly minimal changes. My goal was to copy + paste VB6 code and make as few a changes as possible. Here are the methods covered:</p>
+<ul>
+<li>Mid</li>
+<li>Len</li>
+<li>Int</li>
+<li>Divide (while not an actual VB function, this replaces the C# <code>/</code> operator so output is the same as Visual Basic 6 would have produced)</li>
+<li>Chr</li>
+<li>Asc</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>For this to work, you must install the <a href="https://www.nuget.org/packages/System.Text.Encoding.CodePages"><code>System.Text.Encoding.CodePages</code></a> Nuget package. This provides the needed Windows-1252 string encoding that isn&rsquo;t available in .NET Core.</p>
+<p>Once added to your own code, usage is as simple as prefixing the above supported VB methods in your C# with <code>VB.</code>. Like so:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">output</span> <span class="p">=</span> <span class="n">VB</span><span class="p">.</span><span class="n">Mid</span><span class="p">(</span><span class="s">&#34;Mid Function Demo&#34;</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">);</span> <span class="c1">// output = Mid</span>
+</span></span></code></pre></div><h2 id="helper-class">Helper Class</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// Helper class with familiar Visual Basic methods. Avoid unless legacy code conversions demands such arcane behaviors.</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// Always attempt to refactor into normal C# methods first...</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// In these methods, all arrays start at index 1. Behaviors should match VB6 and operate using Windows-1252 encoding.</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">VB</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// Returns a string containing a specified number of characters from a string. First character is at index 1.</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;input&#34;&gt;String expression from which characters are returned. If string contains Null, Null is returned.&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;start&#34;&gt;Character position in string at which the part to be taken begins. If start is greater than the number of characters in string, Mid returns a zero-length string (&#34;&#34;).&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;length&#34;&gt;Number of characters to return. If omitted or if there are fewer than length characters in the text (including the character at start), all characters from the start position to the end of the string are returned.&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="n">Mid</span><span class="p">(</span><span class="kt">string</span> <span class="n">input</span><span class="p">,</span> <span class="kt">int</span> <span class="n">start</span><span class="p">,</span> <span class="kt">int?</span> <span class="n">length</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">input</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">inputLength</span> <span class="p">=</span> <span class="n">input</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">start</span> <span class="p">&gt;</span> <span class="n">inputLength</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">String</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">length</span><span class="p">.</span><span class="n">HasValue</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">input</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="n">start</span> <span class="p">-</span> <span class="m">1</span><span class="p">,</span> <span class="n">length</span><span class="p">.</span><span class="n">Value</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">input</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="n">start</span> <span class="p">-</span> <span class="m">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// Returns the number of characters in a string</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;input&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">Len</span><span class="p">(</span><span class="kt">string</span> <span class="n">input</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">input</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// Converts a float to an int</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;value&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">Int</span><span class="p">(</span><span class="kt">float</span> <span class="k">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="k">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">Math</span><span class="p">.</span><span class="n">Round</span><span class="p">(</span><span class="k">value</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">MidpointRounding</span><span class="p">.</span><span class="n">AwayFromZero</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// Divides 2 numbers, returning a float. Replaces the VB / operator which operates differently than the C# / operator</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;x&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;y&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="kt">float</span> <span class="n">Divide</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">x</span> <span class="p">/</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// Returns a string containing the character associated with the specific character code</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;charCode&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="n">Chr</span><span class="p">(</span><span class="kt">int</span> <span class="n">charCode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Encoding</span><span class="p">.</span><span class="n">RegisterProvider</span><span class="p">(</span><span class="n">CodePagesEncodingProvider</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">legacyEncoding</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">GetEncoding</span><span class="p">(</span><span class="m">1252</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">legacyEncoding</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="k">new</span><span class="p">[]</span> <span class="p">{</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span><span class="n">charCode</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// Returns an intenger representing the character code corresponding to the first letter in a string</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;input&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">Asc</span><span class="p">(</span><span class="kt">string</span> <span class="n">input</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Encoding</span><span class="p">.</span><span class="n">RegisterProvider</span><span class="p">(</span><span class="n">CodePagesEncodingProvider</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">legacyEncoding</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">GetEncoding</span><span class="p">(</span><span class="m">1252</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">bytes</span> <span class="p">=</span> <span class="n">legacyEncoding</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="k">new</span> <span class="kt">char</span><span class="p">[]</span> <span class="p">{</span> <span class="n">input</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">converted</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">legacyEncoding</span><span class="p">.</span><span class="n">GetChars</span><span class="p">(</span><span class="n">bytes</span><span class="p">)[</span><span class="m">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">converted</span> <span class="p">&gt;=</span> <span class="m">128</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Strings.Asc is not equivalent with a plain C# cast for non ASCII chars that can go beyond 127 code value.</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// See https://social.msdn.microsoft.com/Forums/vstudio/en-US/13fec271-9a97-4b71-ab28-4911ff3ecca0/equivalent-in-c-of-asc-amp-chr-functions-of-vb?forum=csharpgeneral</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">buffer</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="p">[</span><span class="m">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// if the resulting conversion is 1 byte in length, just use the value</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">legacyEncoding</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="k">new</span> <span class="kt">char</span><span class="p">[]</span> <span class="p">{</span> <span class="n">input</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">},</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span> <span class="p">==</span> <span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">converted</span> <span class="p">=</span> <span class="n">buffer</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// byte swap bytes 1 and 2;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">converted</span> <span class="p">=</span> <span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">&lt;&lt;</span> <span class="m">16</span> <span class="p">|</span> <span class="n">buffer</span><span class="p">[</span><span class="m">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">converted</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Find this useful? Want the unit tests? Let me know. I figured posting these methods would meet a lot of folks&rsquo; needs who may not care about having the unit tests, so wanted to make them available without waiting any longer.</p>
+        </div>
+    </div>
+</article>
+
+        </main>
+        <div class="feedback">
+    <div class="container">
+        <h4>Feedback</h4>
+        <p>Submit feedback, ask questions, or just leave a comment by starting a
+            <a target="_blank" href="https://github.com/login?return_to=https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io%2fdiscussions%2fnew%3ftitle%3d%26labels%3dblog-feedback%26body%3d%250A%250A%255BEnter%2520feedback%2520here%255D%250A%250A%250A---%250A%2523%2523%2523%2523%2520Post%2520Details%250A%250A%25E2%259A%25A0%2520%2aDo%2520not%2520edit%2520this%2520section.%2520It%2520helps%2520Jon%2520know%2520what%2520page%2520you%2520were%2520reading.%250A%250A%2a%2520Content%253A%2520%255BVisual%20Basic%20Methods%20in%20C%23%255D%28https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io%2ftree%2fmain%2fcontent%2fposts%2f2022-10-30-vb-methods.md%29%250A%2a%2520Post%253A%2520http%3a%2f%2fwww.jonthenerd.com%2f2022%2f10%2f30%2fvisual-basic-methods-in-c%2f">GitHub Discussion</a>.
+        </p>
+    </div>
+</div>
+
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a>
+    </div>
+</footer>
+
+    </body>
+</html>

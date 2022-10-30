@@ -6,7 +6,26 @@
     <description>Recent content in Programming on JonTheNerd</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Oct 2021 12:48:55 -0500</lastBuildDate><atom:link href="http://www.jonthenerd.com/categories/programming/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/categories/programming/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Visual Basic Methods in C#</title>
+      <link>http://www.jonthenerd.com/2022/10/30/visual-basic-methods-in-c/</link>
+      <pubDate>Sun, 30 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2022/10/30/visual-basic-methods-in-c/</guid>
+      <description>&lt;p&gt;A friend of mine needed some legacy code, written in VB6, ported to work in C# (.NET 6 / Core). This code used several Visual Basic functions that have equivalents in C#, but those versions didn&amp;rsquo;t yield the same output given the same input. Using the &lt;a href=&#34;https://www.nuget.org/packages/Microsoft.VisualBasic/&#34;&gt;Microsoft.VisualBasic&lt;/a&gt; package got the code closer to working, but still wasn&amp;rsquo;t 100% what was needed. It turns out that package is used for porting VB.Net code, not legacy VB6 or earlier code.&lt;/p&gt;
+&lt;p&gt;Some methods had fairly close equivalents in C#, others were way off the mark due to string encoding differences.&lt;/p&gt;
+&lt;p&gt;A lot of searching and unit testing later, I came up with this class of functions that allowed the legacy code to be ported with fairly minimal changes. My goal was to copy + paste VB6 code and make as few a changes as possible. Here are the methods covered:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mid&lt;/li&gt;
+&lt;li&gt;Len&lt;/li&gt;
+&lt;li&gt;Int&lt;/li&gt;
+&lt;li&gt;Divide (while not an actual VB function, this replaces the C# &lt;code&gt;/&lt;/code&gt; operator so output is the same as Visual Basic 6 would have produced)&lt;/li&gt;
+&lt;li&gt;Chr&lt;/li&gt;
+&lt;li&gt;Asc&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
     <item>
       <title>Getting Started With Node.js and TypeScript</title>
       <link>http://www.jonthenerd.com/2021/10/24/getting-started-with-node.js-and-typescript/</link>
