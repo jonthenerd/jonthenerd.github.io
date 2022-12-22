@@ -81,7 +81,7 @@ using Reflector to look at the Microsoft.SharePoint dll:</p>
 <p>So if you want to find the top 5 largest document libraries in a specific site
 collection, here&rsquo;s the PowerShell:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-posh" data-lang="posh"><span class="line"><span class="cl"><span class="nv">$site</span> <span class="p">=</span> <span class="nb">Get-SPSite</span> <span class="s2">&#34;http://yoursitecollection:portifneeded&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">$dataTable</span> <span class="p">=</span> <span class="nv">$site</span><span class="p">.</span><span class="n">StorageManagementInformation</span><span class="p">(</span><span class="n">2</span><span class="p">,</span><span class="n">0x11</span><span class="p">,</span><span class="n">0</span><span class="p">,</span><span class="n">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$dataTable</span> <span class="p">=</span> <span class="nv">$site</span><span class="p">.</span><span class="py">StorageManagementInformation</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="n">0x11</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">5</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$dataTable</span> <span class="p">|</span> <span class="nb">Select </span><span class="p">*</span>
 </span></span></code></pre></div><p>This is very helpful if you aren&rsquo;t yet on SP2010 SP1. A note though - the method
 is marked as obselete with this description &ldquo;SPSite.StorageManagementInformation
@@ -99,12 +99,18 @@ your farm, etc. etc.</p>
         </main>
         <div class="feedback">
     <div class="container">
-        <h4>Feedback</h4>
-        <p>Submit feedback, ask questions, or just leave a comment by starting a
-            <a target="_blank" href="https://github.com/login?return_to=https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io%2fdiscussions%2fnew%3ftitle%3d%26labels%3dblog-feedback%26body%3d%250A%250A%255BEnter%2520feedback%2520here%255D%250A%250A%250A---%250A%2523%2523%2523%2523%2520Post%2520Details%250A%250A%25E2%259A%25A0%2520%2aDo%2520not%2520edit%2520this%2520section.%2520It%2520helps%2520Jon%2520know%2520what%2520page%2520you%2520were%2520reading.%250A%250A%2a%2520Content%253A%2520%255BSharePoint%202010%3a%20Finding%20the%20largest%20document%20library%20in%20a%20site%20collection%255D%28https%3a%2f%2fgithub.com%2fjonthenerd%2fjonthenerd.github.io%2ftree%2fmain%2fcontent%2fposts%2f2011-08-16-sharepoint-2010-findinglargestdoclibrary.md%29%250A%2a%2520Post%253A%2520http%3a%2f%2fwww.jonthenerd.com%2f2011%2f08%2f16%2fsharepoint-2010-findinglargestdoclibrary%2f">GitHub Discussion</a>.
-        </p>
+        <div id="disqus_thread"></div>
     </div>
 </div>
+<script>
+    (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jonthenerd.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
 
         <footer>
     <div class="container">
