@@ -32,26 +32,8 @@
 </article>
 {{ end }}
 
+
+
 {{ define "footer" -}}
-
-{{ $discussionUrl := .Site.Params.repoOrigin -}}
-{{ $discussionUrl = print $discussionUrl
-"/discussions/new?title=&labels=blog-feedback&body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Post%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20helps%20Jon%20know%20what%20page%20you%20were%20reading.%0A%0A*%20Content%3A%20%5B"
--}}
-{{ $discussionUrl = print $discussionUrl .Title -}}
-{{ $discussionUrl = print $discussionUrl "%5D(" -}}
-{{ $discussionUrl = print $discussionUrl .Site.Params.repoOrigin -}}
-{{ $discussionUrl = print $discussionUrl "/tree/main/content/" -}}
-{{ $discussionUrl = print $discussionUrl ((replace .File.Path "\\" "/") | safeHTML) -}}
-{{ $discussionUrl = print $discussionUrl ")%0A*%20Post%3A%20" -}}
-{{ $discussionUrl = print $discussionUrl .Permalink -}}
-
-<div class="feedback">
-    <div class="container">
-        <h4>Feedback</h4>
-        <p>Submit feedback, ask questions, or just leave a comment by starting a
-            <a target="_blank" href="https://github.com/login?return_to={{ $discussionUrl }}">GitHub Discussion</a>.
-        </p>
-    </div>
-</div>
+{{ partial "comments.html" . }}
 {{ end }}
