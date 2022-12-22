@@ -30,9 +30,6 @@
     --code-background: #6e768166;
 }
 
-/* Syntax */
-@import "./syntax-dracula";
-
 /* Anchors (because dark mode anchors look bad on IOS) */
 a {
     &:link {
@@ -53,3 +50,6 @@ a {
 iframe[src*="disqus.com"] {
     color-scheme: light;
 }
+
+/* Syntax */
+@import "./syntax-dracula";
