@@ -48,3 +48,8 @@ a {
         color: #38a7f1;
     }
 }
+
+/* Fix for Disqus - credit to https: //sergeyski.com/css-color-scheme-and-iframes-lessons-learned-from-disqus-background-bug/ */
+iframe[src*="disqus.com"] {
+    color-scheme: light;
+}
