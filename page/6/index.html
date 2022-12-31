@@ -25,16 +25,14 @@
     </head>
     <body>
         <header class="site-header">
-    <div class="container">
-        <h1>
-            <a href="/">JonTheNerd</a>
-        </h1>
-        <nav>
-            <ul>
-                <li><a href="/about">About</a></li>
-            </ul>
-        </nav>
-    </div>
+    <h1>
+        <a href="/">JonTheNerd</a>
+    </h1>
+    <nav>
+        <ul>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
 </header>
 
         <main>
@@ -62,8 +60,17 @@
                     <div class="summary">
                         I use Visual Studio every day for just about all of my development tasks. However, I attempted to open a large xml file (&gt; 20 megs) and Visual studio spiked up to 1.5 gigs of memory consumption and I couldn&rsquo;t do anything&hellip; My old standby notepad++ (great editor!) also hung on opening the file. A quick search yielded First Object&rsquo;s XML Editor. Worked great. Super fast.
                     </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a><a class="pill" href="/categories/software">Software</a>
+                        
+                        
+                        <a class="pill" href="/tags/xml">xml</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2010/02/26/occasional-spexception-from-getlistitemdatawithcallback/">Occasional SPException from GetListItemDataWithCallback</a></h2>
@@ -77,12 +84,17 @@
                     <div class="summary">
                         Wrote a new field control today (SharePoint) that queried a specific list in another site collection based on the value of a field from the current list item. This worked great each time I&rsquo;d test it out and add some additional functionality. When I finished the control, I did a little harder testing by hitting the refresh button in my browser over and over again. Randomly, my control wouldn&rsquo;t render. Other times it would be fine.
                     </div>
-                    
-                        <div>
-                            <a href="/2010/02/26/occasional-spexception-from-getlistitemdatawithcallback/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2010/02/25/unable-to-delete-field-in-sharepoint-library/">Unable to delete field in SharePoint library</a></h2>
@@ -96,12 +108,17 @@
                     <div class="summary">
                         Trying to delete a field in a SharePoint library and get the message &ldquo;Cannot complete this action. Pleast try again.&rdquo;? This drove me nuts, as even invoking the delete method via the object model gives this message. What I found to allow a delete was pushing down changes via the content type gallery in the site collection (if the field was ever a part of that content type). This can be found by going to the following:
                     </div>
-                    
-                        <div>
-                            <a href="/2010/02/25/unable-to-delete-field-in-sharepoint-library/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/sysadmin">SysAdmin</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2010/02/20/terminal-cancer-patient-gets-restored-car/">Terminal Cancer Patient gets restored car</a></h2>
@@ -116,12 +133,14 @@
                         From AutoBlog:
 Tyler Shipman was an 18-year-old Fiero nut from Frazee, Minnesota. In the middle of restoring his favorite car last October he was diagnosed with terminal cancer, and posted a note on a Fiero forum to ask for help with the restoration so that he wouldn&rsquo;t leave his parents with the burden. He got his wish. In the middle of this crazy all and everything, Tyler is more proof that simple humanity still works.
                     </div>
-                    
-                        <div>
-                            <a href="/2010/02/20/terminal-cancer-patient-gets-restored-car/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/cars">Cars</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2010/02/03/the-right-tools-for-the-job/">The right tools for the job</a></h2>
@@ -136,12 +155,14 @@ Tyler Shipman was an 18-year-old Fiero nut from Frazee, Minnesota. In the middle
                         This post is more for my own self-reference later, but others may find it helpful too.
 I&rsquo;ve been looking to do some modification to the k-member on my car whenever the weather warms up. This will involve removing the k-member before any of the work can be done. Most seem to do this while the engine is removed, but I&rsquo;d rather not go through that again. I&rsquo;ve been doing some reading on how to do this the safest way with the engine still in the car, and here are the tools I&rsquo;m looking at:
                     </div>
-                    
-                        <div>
-                            <a href="/2010/02/03/the-right-tools-for-the-job/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/cars">Cars</a><a class="pill" href="/categories/tools">Tools</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2010/01/27/xslt-that-emits-source-xml/">XSLT that emits source XML</a></h2>
@@ -156,8 +177,17 @@ I&rsquo;ve been looking to do some modification to the k-member on my car whenev
                         I got this from a friend and have found it very useful for debugging my XSLT from content query web parts and data view web parts in Visual Studio. The below XSLT will output the source XML given to it:
 &lt;xsl:stylesheet version=&#34;1.0&#34; xmlns:xsl=&#34;http://www.w3.org/1999/XSL/Transform&#34; xmlns:msxsl=&#34;urn:schemas-microsoft-com:xslt&#34; exclude-result-prefixes=&#34;msxsl&#34;&gt; &lt;xsl:output method=&#34;xml&#34; indent=&#34;yes&#34;/&gt; &lt;xsl:template match=&#34;@ node()&#34;&gt; &lt;xsl:copy&gt; &lt;xsl:apply-templates select=&#34;@ node()&#34;/&gt; &lt;/xsl:copy&gt; &lt;/xsl:template&gt; &lt;/xsl:stylesheet&gt; 
                     </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2010/01/15/if-clients-treated-architects-like-they-treat-software-designers/">If clients treated architects like they treat software designers…</a></h2>
@@ -174,12 +204,17 @@ If clients treated architects like they treat software designers…
 Dear Mr. Architect,
 Please design and build me a house. I am not quite sure of what I need, so you should use your discretion. My house should have somewhere between two and forty-five bedrooms. Just make sure the plans are such that the bedrooms can be easily added or deleted.
                     </div>
-                    
-                        <div>
-                            <a href="/2010/01/15/if-clients-treated-architects-like-they-treat-software-designers/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a>
+                        
+                        
+                        <a class="pill" href="/tags/funny">Funny</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2009/10/26/ie8-standards-mode-and-moss/">IE8 Standards Mode and MOSS</a></h2>
@@ -195,12 +230,18 @@ Please design and build me a house. I am not quite sure of what I need, so you s
 Enable IE7 compatability mode only on your edit pages. My master page had the IE8 meta tag:
 &lt;meta equiv=&#34;X-UA-Compatible&#34; content=&#34;IE=8&#34; /&gt; right under the head element.
                     </div>
-                    
-                        <div>
-                            <a href="/2009/10/26/ie8-standards-mode-and-moss/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        <a class="pill" href="/tags/internet-explorer">Internet Explorer</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2009/10/25/fixing-a-noisy-toilet/">Fixing a noisy toilet</a></h2>
@@ -216,12 +257,14 @@ Enable IE7 compatability mode only on your edit pages. My master page had the IE
 First, here&rsquo;s what the inside of most toilet tanks look like:
 Last night the toilet in the master bath started sounding like somebody was filling the tank with a high pressure water hose.
                     </div>
-                    
-                        <div>
-                            <a href="/2009/10/25/fixing-a-noisy-toilet/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/home-repair">Home Repair</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2009/09/18/windows-7-x64-ultimate-taking-the-plunge/">Windows 7 x64 Ultimate - Taking the plunge</a></h2>
@@ -236,12 +279,17 @@ Last night the toilet in the master bath started sounding like somebody was fill
                         I&rsquo;m just about finished backing everything up off of my main machine (Windows 7 32-bit Ultimate). I&rsquo;ve heard alot of good things about Windows 7 (read quite a bit too) - and even decent things about the install process. What&rsquo;s tying me to Windows is Fallout 3 and the random Windows-only game&hellip;sorry Ubuntu, I love ya' but we just can&rsquo;t go steady yet.
 I&rsquo;ll update this post as I install and use this new OS.
                     </div>
-                    
-                        <div>
-                            <a href="/2009/09/18/windows-7-x64-ultimate-taking-the-plunge/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/computing">Computing</a>
+                        
+                        
+                        <a class="pill" href="/tags/windows">Windows</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
             
 

@@ -25,16 +25,14 @@
     </head>
     <body>
         <header class="site-header">
-    <div class="container">
-        <h1>
-            <a href="/">JonTheNerd</a>
-        </h1>
-        <nav>
-            <ul>
-                <li><a href="/about">About</a></li>
-            </ul>
-        </nav>
-    </div>
+    <h1>
+        <a href="/">JonTheNerd</a>
+    </h1>
+    <nav>
+        <ul>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
 </header>
 
         <main>
@@ -63,8 +61,18 @@
                         Because it&rsquo;s easier to copy+paste this later&hellip; This will disable a feature on all web applications in a farm. Very convenient for when you&rsquo;re removing a feature from a solution.
 Get-SPWebApplication | ForEach-Object {Disable-SPFeature &#34;Solution.Name.FeatureName&#34; -url $_.Url;} 
                     </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/sysadmin">SysAdmin</a>
+                        
+                        
+                        <a class="pill" href="/tags/powershell">PowerShell</a>
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/07/06/sharepoint-2010-remove-existing-reusable-content-items-using-powershell/">SharePoint 2010: Remove existing reusable content items using PowerShell</a></h2>
@@ -79,8 +87,18 @@ Get-SPWebApplication | ForEach-Object {Disable-SPFeature &#34;Solution.Name.Feat
                         This same PowerShell could be used for any other list to remove all of the items. I just needed it to remove the OOB reusable content.
 $siteColTemp = Get-SPSite &#34;http://yourSiteCollectionUrl&#34;; $reusableContentList = $siteColTemp.RootWeb.Lists[&#34;Reusable Content&#34;]; $reusableContentItems = $reusableContentList.Items; $reusableContentItemsCount = $reusableContentItems.Count; for($x=$reusableContentItemsCount-1;$x -ge 0; $x--){ $reusableContentItems[$x].Delete(); } 
                     </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/sysadmin">SysAdmin</a><a class="pill" href="/categories/programming">Programming</a>
+                        
+                        
+                        <a class="pill" href="/tags/powershell">PowerShell</a>
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/06/30/sharepoint-2010-sp1-upgrade-error-unable-to-create-a-service-connection-point-in-the-current-active-directory-domain/">SharePoint 2010 SP1 Upgrade Error &#34;Unable to create a Service Connection Point in the current Active Directory domain.&#34;</a></h2>
@@ -95,8 +113,17 @@ $siteColTemp = Get-SPSite &#34;http://yourSiteCollectionUrl&#34;; $reusableConte
                         Full error: &ldquo;Unable to create a Service Connection Point in the current Active Directory domain. Verify that the SharePoint container exists in the current domain and that you have rights to write to it.&rdquo;
 After installing SP2010 SP1, PSConfig failed and the log had the above error. I found that the timer service was stopped and restarted it. Retried install - no error.
                     </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/sysadmin">SysAdmin</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/06/11/time-moves-on-google-makes-my-extension-irrelevant/">Time moves on. Google makes my extension irrelevant</a></h2>
@@ -110,12 +137,14 @@ After installing SP2010 SP1, PSConfig failed and the log had the above error. I 
                     <div class="summary">
                         |- And that&rsquo;s a good thing! This morning while working to improve my extension for Google Calendar, I noticed that Google had added the ability to print multiple weeks or months straight from the Google Calendar. So where does that leave my extension? Well&hellip; unpublished and deleted at this point. I don&rsquo;t see any reason to still make the extension available, maintain it, etc. if you can get the same or better experience straight from Google Calendar.
                     </div>
-                    
-                        <div>
-                            <a href="/2011/06/11/time-moves-on-google-makes-my-extension-irrelevant/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/04/19/easy-sharepoint-2010-warmup-script-using-powershell/">Easy SharePoint 2010 warmup Script using PowerShell</a></h2>
@@ -130,12 +159,18 @@ After installing SP2010 SP1, PSConfig failed and the log had the above error. I 
                         This idea comes from Kirk Hofer&rsquo;s blog, but modfied to use the SharePoint 2010 powershell commandlets and not care about specifying credentials in the script. I figured most people would just keep using the credentials specified in their scheduled task. The script loads the SharePoint plugin, enumerates the zones, and sends a request to each one.
 Add-PSSnapin Microsoft.SharePoint.PowerShell; function Get-WebPage([string]$url) { $wc = new-object net.webclient; $wc.credentials = [System.Net.CredentialCache]::DefaultCredentials; $pageContents = $wc.
                     </div>
-                    
-                        <div>
-                            <a href="/2011/04/19/easy-sharepoint-2010-warmup-script-using-powershell/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/sysadmin">SysAdmin</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        <a class="pill" href="/tags/powershell">PowerShell</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/04/05/sharepoint-2010-custom-action-ids-for-site-settings-page/">SharePoint 2010 Custom Action IDs for Site Settings page</a></h2>
@@ -152,12 +187,17 @@ I had need of this information today, and found the items from the site settings
 C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\14\TEMPLATE\FEATURES\SiteSettings\SiteSettings.xml
 For those looking specifically for it, here is the custom action for &ldquo;Delete this site&rdquo;:
                     </div>
-                    
-                        <div>
-                            <a href="/2011/04/05/sharepoint-2010-custom-action-ids-for-site-settings-page/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/03/24/activate-feature-on-all-sc/">Activate Feature on all Site Collections in a Web Application</a></h2>
@@ -172,8 +212,17 @@ For those looking specifically for it, here is the custom action for &ldquo;Dele
                         This is pretty easy using powerhell with SharePoint 2010:
 Get-SPWebApplication &#34;http://WebApplicationUrl:PortIfNeeded&#34; | Get-SPSite | ForEach-Object{Enable-SPFeature &#34;Solution.Name.FeatureName&#34; -url $_.Url} 
                     </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/sysadmin">SysAdmin</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/03/02/trying-to-access-_layoutschangesitemasterpage-aspx-and-receiving-error/">Trying to access _Layouts/ChangeSiteMasterPage.aspx and receiving error</a></h2>
@@ -189,8 +238,17 @@ Get-SPWebApplication &#34;http://WebApplicationUrl:PortIfNeeded&#34; | Get-SPSit
 One or more field types are not installed properly. Go to the list settings page to delete these fields.
 The SharePoint Server Publishing Infrastructure feature needs to be turned on.
                     </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/sysadmin">SysAdmin</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/02/28/activation-could-not-be-completed-because-the-infopath-forms-services-support-feature-is-not-present/">Activation could not be completed because the InfoPath Forms Services support feature is not present.</a></h2>
@@ -204,12 +262,17 @@ The SharePoint Server Publishing Infrastructure feature needs to be turned on.
                     <div class="summary">
                         <p>Got this error after migrating a SP2007 application to SP2010.</p>
                     </div>
-                    
-                        <div>
-                            <a href="/2011/02/28/activation-could-not-be-completed-because-the-infopath-forms-services-support-feature-is-not-present/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/sysadmin">SysAdmin</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/01/14/print-helper-for-google-calendar/">Print Helper for Google Calendar</a></h2>
@@ -224,12 +287,14 @@ The SharePoint Server Publishing Infrastructure feature needs to be turned on.
                         <p>Published my first Google Chrome extension today, Print Helper for Google
 Calendar.</p>
                     </div>
-                    
-                        <div>
-                            <a href="/2011/01/14/print-helper-for-google-calendar/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
             
 

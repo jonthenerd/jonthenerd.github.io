@@ -25,16 +25,14 @@
     </head>
     <body>
         <header class="site-header">
-    <div class="container">
-        <h1>
-            <a href="/">JonTheNerd</a>
-        </h1>
-        <nav>
-            <ul>
-                <li><a href="/about">About</a></li>
-            </ul>
-        </nav>
-    </div>
+    <h1>
+        <a href="/">JonTheNerd</a>
+    </h1>
+    <nav>
+        <ul>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
 </header>
 
         <main>
@@ -63,12 +61,17 @@
                         <p>|- I&rsquo;m starting work on a project for my MBA program that involves using a
 mobile RFID reader with an Android device.</p>
                     </div>
-                    
-                        <div>
-                            <a href="/2012/10/05/communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a>
+                        
+                        
+                        <a class="pill" href="/tags/android">Android</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/">SharePoint 2010: Observations and Revelations on the User Profile Sync Service and the Update-SPProfilePhotoStore cmdlet</a></h2>
@@ -83,12 +86,17 @@ mobile RFID reader with an Android device.</p>
                         These are my notes while trying to diagnose and better understnad some issues and oddities with the SharePoint 2010 User Profile Service Application.
 If you&rsquo;re wanting to populate pictures into people&rsquo;s profiles, you&rsquo;ll be using the Update-SPProfilePhotoStore powershell cmdlet after a normal sync (full or incremental - or your custom built one). This cmdlet is in the Microsoft.Office.Server.UserProfiles dll, specifically the Microsoft.Office.Server.UserProfiles.PowerShell.SPCmdletUserProfilePhotoStore class. Thanks to the goodness that is Redgate Reflector (a must have for any SP developer), we can get a more clear undertanding of what the cmdlet is doing.
                     </div>
-                    
-                        <div>
-                            <a href="/2012/01/20/sharepoint-2010-observations-and-revelations-on-the-user-profile-sync-service-and-the-update-spprofilephotostore-cmdlet/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a><a class="pill" href="/categories/sysadmin">SysAdmin</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2012/01/04/sharepoint-2010-ribbon-customactions/">SharePoint 2010: Ribbon CustomActions</a></h2>
@@ -102,8 +110,17 @@ If you&rsquo;re wanting to populate pictures into people&rsquo;s profiles, you&r
                     <div class="summary">
                         Developing a CustomAction for the Ribbon and SharePoint 2010? If you&rsquo;re like me - you follow some instructions online, deploy it once to verify it works, then change as needed and redeploy. One catch though - the data needed for the ribbon custom action to work is fetched by the browser and CACHED! So you won&rsquo;t see your changes&hellip;until you clear your cache. Stupid but true. You&rsquo;re welcome.
                     </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/12/01/hands-down-the-best-blog-post-on-helpful-utility-programs-ever/">Hands down, the best blog post on helpful utility programs ever.</a></h2>
@@ -117,8 +134,14 @@ If you&rsquo;re wanting to populate pictures into people&rsquo;s profiles, you&r
                     <div class="summary">
                         If you&rsquo;re a developer, or an admistrator, or just command your home machine with extreme prejudice - you need to read Scott Hanselman&rsquo;s 2011 Ultimate Developer and Power Users Tool List for Windows. Lots of good utilities to be found there. Some may even change your life&hellip;
                     </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a><a class="pill" href="/categories/software">Software</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/10/28/sharepoint-2010-setting-custom-user-profile-properties-gotchas/">SharePoint 2010: Setting custom User Profile properties Gotchas</a></h2>
@@ -133,12 +156,17 @@ If you&rsquo;re wanting to populate pictures into people&rsquo;s profiles, you&r
                         What else do you need?
 Custom User Profile Properties (and several of the Out of Box ones) depend on a Managed Metadata Service Application being setup and associated with the application you&rsquo;re working with. This is fairly trivial to setup. Just remember that after you set it up via the UI, you&rsquo;ll need to start it on the &ldquo;Manage services on this server&rdquo; page, and then perform an IIS reset.
                     </div>
-                    
-                        <div>
-                            <a href="/2011/10/28/sharepoint-2010-setting-custom-user-profile-properties-gotchas/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/10/18/jons-general-sharepoint-2010-development-tips/">Jon&#39;s General SharePoint 2010 Development Tips</a></h2>
@@ -152,8 +180,17 @@ Custom User Profile Properties (and several of the Out of Box ones) depend on a 
                     <div class="summary">
                         In the time I&rsquo;ve been doing SharePoint development, and SharePoint 2010 development in particular, I&rsquo;ve tried to blog about the snags or neat stuff I&rsquo;ve come across. This post is for all those little pieces of knowledge that come from working with the platform that don&rsquo;t seem large enough for their own post. If you find it useful, let me know in the comments.
                     </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/09/14/sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly/">SharePoint 2010: The web application at ... could not be found. Verify that you have typed the URL correctly.</a></h2>
@@ -167,12 +204,17 @@ Custom User Profile Properties (and several of the Out of Box ones) depend on a 
                     <div class="summary">
                         |- and so on with the error message. Do these also fit your situation? 1) The error happens when running a console application 2) Using PowerShell works to access the SPSite, SPWeb, or SPWebApplication that you&rsquo;re accessing in your console application How do you fix this? Change your build platform target to x64 instead of x86. Also keep in mind that this is a per build configuration setting (so you have the setting for Debug and Release compile modes).
                     </div>
-                    
-                        <div>
-                            <a href="/2011/09/14/sharepoint-2010-the-web-application-at-could-not-be-found-verify-that-you-have-typed-the-url-correctly/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a>
+                        
+                        
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/08/17/sharepoint-2010-add-a-file-to-the-root-of-your-site-using-powershell/">SharePoint 2010: Add a file to the root of your site using PowerShell</a></h2>
@@ -186,12 +228,18 @@ Custom User Profile Properties (and several of the Out of Box ones) depend on a 
                     <div class="summary">
                         This can be useful when you need a file to be right off the root of your Internet facing site - files like robots.txt, sitemap.xml, or the verification file for Google Webmaster tools. We&rsquo;ll take advantage of PowerShell&rsquo;s ability to use any .NET methods along with the Files collection on each SPWeb in SharePoint. $fileBytes = [system.io.file]::ReadAllBytes(&quot;c:\the\full\path\to\your\file.txt&quot;); $site = Get-SPSite &quot;http://yourdomain:portifneeded&quot;; $site.RootWeb.Files.Add(&quot;file.txt&quot;, $fileBytes, $true); This will result in a file.txt located at &ldquo;http://yourdomain:portifneeded/file.
                     </div>
-                    
-                        <div>
-                            <a href="/2011/08/17/sharepoint-2010-add-a-file-to-the-root-of-your-site-using-powershell/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/programming">Programming</a><a class="pill" href="/categories/sysadmin">SysAdmin</a>
+                        
+                        
+                        <a class="pill" href="/tags/powershell">PowerShell</a>
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/08/16/sharepoint-2010-findinglargestdoclibrary/">SharePoint 2010: Finding the largest document library in a site collection</a></h2>
@@ -206,12 +254,18 @@ Custom User Profile Properties (and several of the Out of Box ones) depend on a 
                         SharePoint 2007 came with a page (storman.aspx) dedicated to showing you how much space each of the lists in your site collection were taking up. SharePoint 2010 removed this page. Luckily, SharePoint 2010 SP1 added it back in. But what if you&rsquo;re still haven&rsquo;t updated to SP1 and you&rsquo;re getting warnings/errors about running out of space?
 Obviously - up the space so as to avoid additional noise from your users. Then - figure out which libraries are taking up the most space.
                     </div>
-                    
-                        <div>
-                            <a href="/2011/08/16/sharepoint-2010-findinglargestdoclibrary/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/sysadmin">SysAdmin</a><a class="pill" href="/categories/programming">Programming</a>
+                        
+                        
+                        <a class="pill" href="/tags/powershell">PowerShell</a>
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
                 <article>
                     <h2><a href="/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/">SharePoint 2010: Unable to delete site/web after SP1</a></h2>
@@ -227,12 +281,18 @@ Obviously - up the space so as to avoid additional noise from your users. Then -
 separate issues when trying to delete a web through the UI by using the &ldquo;Sites
 and Workspaces&rdquo; link in Site Settings. Deleting through powershell worked fine.</p>
                     </div>
-                    
-                        <div>
-                            <a href="/2011/08/11/sharepoint-2010-unable-to-delete-siteweb-after-sp1/">Read More...</a>
-                        </div>
-                    
+                    <div class="tags">
+                        
+                        <a class="pill" href="/categories/sysadmin">SysAdmin</a>
+                        
+                        
+                        <a class="pill" href="/tags/powershell">PowerShell</a>
+                        <a class="pill" href="/tags/sharepoint">SharePoint</a>
+                        
+                        
+                    </div>
                 </article>
+                <hr />
             
             
 
