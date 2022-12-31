@@ -22,12 +22,17 @@
                     <div class="summary">
                         {{ .Summary }}
                     </div>
-                    {{ if .Truncated }}
-                        <div>
-                            <a href="{{ .RelPermalink }}">Read More...</a>
-                        </div>
-                    {{ end }}
+                    <div class="tags">
+                        {{ if .Params.categories }}
+                        {{ range $index, $category := .Params.categories }}<a class="pill" href="/categories/{{ . | urlize }}">{{ . }}</a>{{ end }}
+                        {{ end }}
+                        {{ if .Params.tags }}
+                        {{ range $index, $tag := .Params.tags }}<a class="pill" href="/tags/{{ . | urlize }}">{{ . }}</a>
+                        {{ end }}
+                        {{ end }}
+                    </div>
                 </article>
+                <hr />
             {{ end }}
             {{ template "partials/pagination.html" . }}
         </div>

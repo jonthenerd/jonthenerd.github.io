@@ -1,17 +1,25 @@
 /* Theme Variables (light on dark) */
 :root {
+    --anchor-color: #73c1f5;
+    --anchor-visited-color: #d88bf7;
+    --anchor-hover-brightness: 1.25;
     --gap: 1.5rem;
-    --background-color: #1e1e1e;
-    --color: #ccc;
+    --background-color: hsl(0, 0%, 10%);
+    --color: #d5d5d5;
 
     --brand-color: #bbb;
 
-    --site-header-background-color: #252526;
+    --site-header-background-color: #000;
     --site-header-separator-color: #555;
 
     --image-filter: grayscale(50%);
 
-    --post-h1-background-color: #000;
+    --pill-background-color: hsl(0, 0%, 83%);
+    --pill-hover-background-color: hsl(0, 0%, 95%);
+    --pill-color: var(--background-color);
+
+    --post-h1-background-color: hsl(0, 0%, 15%);
+    --post-list-h2-color: #fff;
     --post-meta-background-color: #036;
     --post-meta-color: #fff;
     --post-meta-a-color: #ffccb3;
@@ -28,22 +36,6 @@
     --alert-warning-border: #6a4b16;
 
     --code-background: #6e768166;
-}
-
-/* Anchors (because dark mode anchors look bad on IOS) */
-a {
-    &:link {
-        color: #38a7f1;
-    }
-    &:visited {
-        color: #953377;
-    }
-    &:hover {
-        color: #38a7f1;
-    }
-    &:active {
-        color: #38a7f1;
-    }
 }
 
 /* Fix for Disqus - credit to https: //sergeyski.com/css-color-scheme-and-iframes-lessons-learned-from-disqus-background-bug/ */
