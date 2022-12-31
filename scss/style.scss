@@ -133,7 +133,8 @@ p {
     ul {
         list-style-type: none;
         li {
-            display: inline;
+            display: inline-block;
+            margin-left: 1em;
         }
     }
 
@@ -383,4 +384,8 @@ a.pill {
     &:hover {
         background-color: var(--pill-hover-background-color);
     }
+}
+
+#theme-toggle {
+    cursor: pointer;
 }
