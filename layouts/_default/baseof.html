@@ -9,6 +9,11 @@
         <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
         <meta name="color-scheme" content="dark light" />
         <script>
+            {{/*
+                https://web.dev/prefers-color-scheme/
+                If `prefers-color-scheme` is not supported, fall back to light mode.
+                In this case, light.css will be downloaded with `highest` priority.
+            */}}
             if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
                 document.documentElement.style.display = "none";
                 document.head.insertAdjacentHTML(
