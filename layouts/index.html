@@ -22,15 +22,11 @@
                     <div class="summary">
                         {{ .Summary }}
                     </div>
-                    <div class="tags">
-                        {{ if .Params.categories }}
-                        {{ range $index, $category := .Params.categories }}<a class="pill" href="/categories/{{ . | urlize }}">{{ . }}</a>{{ end }}
-                        {{ end }}
-                        {{ if .Params.tags }}
-                        {{ range $index, $tag := .Params.tags }}<a class="pill" href="/tags/{{ . | urlize }}">{{ . }}</a>
-                        {{ end }}
-                        {{ end }}
+                    {{ if .Truncated }}
+                    <div>
+                        <a class="pill" href="{{ .RelPermalink }}">Read More...</a>
                     </div>
+                    {{ end }}
                 </article>
                 <hr />
             {{ end }}

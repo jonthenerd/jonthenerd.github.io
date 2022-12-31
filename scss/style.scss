@@ -383,6 +383,7 @@ a.pill {
 
     &:hover {
         background-color: var(--pill-hover-background-color);
+        filter: none;
     }
 }
 
