@@ -6,7 +6,16 @@
     <description>Recent content in Programming on JonTheNerd</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/categories/programming/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jonthenerd.com/categories/programming/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Semantic URLs</title>
+      <link>http://www.jonthenerd.com/2023/01/08/semantic-urls/</link>
+      <pubDate>Sun, 08 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jonthenerd.com/2023/01/08/semantic-urls/</guid>
+      <description>&lt;p&gt;When building a web application, designers and developers have many choices. The URL structure of a web application seems to be an often overlooked and underappreciated detail. In my view, if an application adopts &lt;em&gt;semantic URLs&lt;/em&gt;, it enables some user behaviors which lead to product value and increased/extended adoption. But what exactly is a &lt;em&gt;Semantic URL&lt;/em&gt;?&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Visual Basic Methods in C#</title>
       <link>http://www.jonthenerd.com/2022/10/30/visual-basic-methods-in-c/</link>

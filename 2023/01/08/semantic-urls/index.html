@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head prefix="og: http://ogp.me/ns#">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
+        <title>Semantic URLs &ndash; JonTheNerd</title>
+        <meta name="color-scheme" content="dark light" />
+        <script>
+            
+            if (window.matchMedia("(prefers-color-scheme: dark)").media ==="not all") {
+                document.documentElement.style.display = "none";
+                document.head.insertAdjacentHTML(
+                    "beforeend",
+                    '<link rel="stylesheet" href="/assets/light.css" onload="document.documentElement.style.display = \'\'">'
+                );
+            }
+        </script>
+        <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+        <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+        <link rel="stylesheet" href="/assets/style.css" />
+        
+        <script src="/assets/scripts/main.js" defer></script>
+        <link rel="canonical" href="http://www.jonthenerd.com/2023/01/08/semantic-urls/">
+    </head>
+    <body>
+        <header class="site-header">
+    <h1>
+        <a href="/">JonTheNerd</a>
+    </h1>
+    <nav>
+        <ul>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
+</header>
+
+        <main>
+            
+<article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name headline">
+            <div class="container">Semantic URLs</div>
+        </h1>
+        <div class="post-meta">
+            <div class="container">
+                <time datetime=" 2023-01-08" itemprop="datePublished">January 8, 2023</time>
+                
+                | Posted in
+                <a
+                    href="/categories/programming">programming</a>, <a
+                    href="/categories/user-experience">user experience</a>
+                
+                
+            </div>
+        </div>
+    </header>
+    <div itemprop="articleBody">
+        <div class="container">
+            <p>When building a web application, designers and developers have many choices. The URL structure of a web application seems to be an often overlooked and underappreciated detail. In my view, if an application adopts <em>semantic URLs</em>, it enables some user behaviors which lead to product value and increased/extended adoption. But what exactly is a <em>Semantic URL</em>?</p>
+<p>A <em>Semantic URL</em> builds atop the concept of a <a href="https://en.wikipedia.org/wiki/Clean_URL">Clean URL</a> (Wikipedia).</p>
+<p>A <em>Semantic URL</em> is one whose parts convey meaning and allow effective exploration through URL manipulation. URL parts align to the team&rsquo;s <a href="https://martinfowler.com/bliki/UbiquitousLanguage.html">ubiquitous language</a> (Martin Fowler) and form an API contract with the application&rsquo;s users.</p>
+<p>Before jumping straight into the deep water, let&rsquo;s start with establishing what a URL even is.</p>
+<h2 id="introduction-to-urls">Introduction to URLs</h2>
+<p>A Uniform Resource Locator, or URL, is a unique location given to each resource on the web. In the web browser, this URL can be found in the address bar at the top of the screen.</p>
+<h3 id="url-structure">URL Structure</h3>
+<p>A URL has multiple parts. Let&rsquo;s disect the following URL:</p>
+<pre tabindex="0"><code>https://www.example.com/america/recipes?containing=apple&amp;gluten=false#ingredients
+</code></pre><ul>
+<li><code>https</code> - this is the <strong>scheme</strong> or network protocol. It tells the web browser how to connect to the location</li>
+<li><code>www.example.com</code> - this is the <strong>host</strong>, often referred to as the domain name. It is always preceded by <code>//</code>. It maps to an IP address, which is effectively the address on the network that your web browser needs to make contact with to retreive the web page. The hostname is translated into an IP address using what&rsquo;s called DNS resolution.</li>
+<li><code>/america/recipes</code> - this is the <strong>path</strong>. It&rsquo;s everything <em>before</em> a <code>?</code> or <code>#</code> character (if they are present in the URL at all). It may contain multiple <strong>segments</strong>, each separated by the <code>/</code> character.</li>
+<li><code>?containing=apply&amp;gluten=false</code> - this is the <strong>query</strong> and is optional in a URL. It is made up of several parts itself:
+<ul>
+<li><code>?</code> - the question mark starts the query</li>
+<li><code>containing</code> - this is the name of the first <strong>parameter</strong></li>
+<li><code>=</code> - the equal sign separates the name of the parameter from its value</li>
+<li><code>apple</code> - the value of the <em>containing</em> parameter</li>
+<li><code>&amp;</code> - the ampersand separates parameter/value pairs.</li>
+<li><code>gluten=false</code> - another parameter/value pair, just like the containing=apple before</li>
+</ul>
+</li>
+<li><code>#ingredients</code> - this is a <strong>fragment</strong> and is optional. It is always preceded by the <code>#</code> character and directs the web browser to scroll the page to a specific location in the page. The characters after the <code>#</code> correspond to the id of an anchor tag on the page.</li>
+</ul>
+<h2 id="web-applications-vs-web-sites">Web Applications vs. Web Sites</h2>
+<p>For the duration of this article, I&rsquo;ll be referring to URLs in the context of web applications. Any web hosted content can benefit from good URLs. However, web applications deserve a special focus as they are intended for user interaction atop a data model and are not static in nature.</p>
+<h2 id="the-bare-minimum-for-urls">The Bare Minimum for URLs</h2>
+<p>It takes very little effort to come up with a unique location to guide web browsers to your web page. Using the path portion, here are some examples:</p>
+<ul>
+<li><code>/1</code> - every page gets a new number. Add a page? Go up one number.</li>
+<li><code>/76831245-79a9-4abc-ba2d-063edd6b031c</code> - every page gets a unique guid.</li>
+<li>&hellip; if you&rsquo;re writing a web application maybe you can just expect everyone to navigate from the home page of your app to everywhere else without any change in URL at all? Technically there are ways to <em>never have more than your host</em> in the URL.</li>
+</ul>
+<p>Seems simple enough. Now the web browser can get to the page. What more should we care about? Maybe we should ask Santa Claus?</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Why semantic URLs matter <a href="https://t.co/gzljSKBDxu">pic.twitter.com/gzljSKBDxu</a></p>&mdash; Jonathon Colman (@jcolman) <a href="https://twitter.com/jcolman/status/673243648255852544?ref_src=twsrc%5Etfw">December 5, 2015</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>It turns out that the URL <em>can be</em> more than just the location your web browser uses to load a web page. The URL itself can have immense value. How so?</p>
+<ul>
+<li><strong>SEO</strong> - Search Engines prioritize pages that avoid the <code>query</code> portion to ensure uniqueness. Wikipedia defines this as a <a href="https://en.wikipedia.org/wiki/Clean_URL">Clean URL</a> (Wikipedia).</li>
+<li><strong>Ease of Use</strong> - A url which can be <em>read</em> can be easily remembered, written, read, and reused.</li>
+<li><strong>Discoverability</strong> - If done well, the URL can be used as a map by people to explore the content of the application. Segments and paramaters become collections, identifiers, and filter capabilities.</li>
+<li><strong>Stickiness</strong> - When people can read a URL and use it as a map to your site, and your site provides structured data that relates to other bodies of structured data, then people will naturally build links between applications for ease of navigation. This in turn increases the usage of your app and its usefulness.</li>
+</ul>
+<h2 id="why-semantic-urls">Why Semantic URLs?</h2>
+<p>UX/UI Designers, Product Owners, and Web Developers all have a vested interest in their site or app having a great user experience, providing value to those who use it, and having those users desire to continue using the app. One powerful, yet often overlooked, way of moving the needle in this direction is by ensuruing your URLs are <em>semantic</em>. These URLs are <em>human readable</em> and <em>easy to understand</em>. They lay out a map for your users to not only follow, but depend upon as they build their own systems which depend on yours.</p>
+<h3 id="the-parts-of-a-semantic-url">The parts of a Semantic URL</h3>
+<p>Semantic URLs pay close attention to how their <code>path</code> and <code>query</code> portions are used and when possible, making use of the <code>fragment</code> when appropriate (though this is less common). This is all geared toward giving the user a mental map of the domain model being presented through the site. This is not the same as the underlying database model, which may be a good bit more complicated.</p>
+<h4 id="path-usage">Path Usage</h4>
+<p>Here are some guidelines for what goes into the <code>path</code> portion:</p>
+<ul>
+<li><strong>All path segments should be navigable</strong>. If the user is on the page with path <code>/america/recipes</code>, they should be able to change the URL directly in their browser and land on an actual <code>/america</code> page.</li>
+<li><strong>Plurality matters</strong>. Path segments should use <code>singular</code> nouns for when the page is about <code>1 thing</code> and <code>plural nouns</code> when the page is a <code>collection of things</code>.
+<ul>
+<li><code>/america</code> should just be about one country.</li>
+<li><code>/recipes</code> (if by itself) should be <code>all the recipes on the site</code>.</li>
+<li><code>/america/recipes</code> should be <code>all the recipes from america</code>.</li>
+</ul>
+</li>
+<li><strong>Path segments may be identifiers</strong>. If a path segment acts as an identifier, use either human-readable or well-known values. Here are two examples:
+<ul>
+<li><code>/america/recipes/apple-pie</code> - in this case we would expect that <code>apple-pie</code> is an identifier that happens to be <em>human-readable</em>. In a backend database, this may correlate to a row with id 1845, but since such an id is not <em>well known</em> then a lookup-id or <code>stub</code> will be used to make the URL more human readable.</li>
+<li><code>/invoices/123456</code> - in this case, <code>123456</code> is an identifer that is <em>well-known</em>. Both the business and the customer both expect to lookup invoices by a provided invoice number. Whether this is an actual database ID or not depends upon whether you&rsquo;ve prioritized <a href="https://dev.to/anwar_nairi/do-not-expose-database-ids-in-your-urls-567">obfuscating your internal IDs</a> (dev.to), which provides some (small) obfuscation in the event your authorization logic is faulty.</li>
+</ul>
+</li>
+</ul>
+<h4 id="query-usage">Query Usage</h4>
+<p>In general, pages should be made available using only path segments, with query segments used to alter the page in some way.</p>
+<p>Common use cases include:</p>
+<ul>
+<li><strong>Filtering</strong> - On a collection page (e.g. <code>/america/recipes</code>), query parameters are the appropriate way to filter what is displayed (e.g. <code>/america/recipes?contains=apple</code>).</li>
+<li><strong>Customizing Page State</strong> - On a single valued path segment, query parameters should be used to customize the appearance of the page (e.g. show a particular tab as selected and display it&rsquo;s tabpanel - <code>/america/recipes/apple-pie?cooking-methods=oven</code>). Doing so allows users to share <em>their exact view</em> of a page with others, which is particularly important in information-dense business web applications.</li>
+<li><strong>Searching an application</strong> - Search result pages come in 2 forms - an empty page with a search box, and a page of results with the search box populated with the search query. It is customary to use the <code>q</code> search parameter as shorthand for query (e.g. <code>/search?q=apple</code>)</li>
+<li><strong>Preventing unnavigable path segments</strong> -  Regarding navigable paths, this does get more difficult to achieve when 1 page actually contains a listing of related children (e.g. an order which lists all products purchased on the page), yet wants to have a sub-page which provides details unique to that parent/child combination (e.g. the shipping status of only one of the product purchased). Such a path structure ends up looking like <code>/orders/12345/items/5</code>, but creating a page at <code>/orders/12345/items</code> just ends up recreating a portion of the parent page&rsquo;s content. In such a case, the related child identifier should use a <code>query paremeter</code> instead, yielding the url <code>/orders/12345?item=5</code>. In this way, all parts of the path are navigable and the path + query is human readable.</li>
+</ul>
+<h2 id="important-considerations">Important Considerations</h2>
+<h3 id="urls-make-up-a-cohesive-understandable-system">URLs make up a Cohesive Understandable System</h3>
+<p>For semantic URLs to be effective, they must be applied as a system to the bulk of an application. This means thinking of the underlying domain model first and how the application will grow before making the application available. The principles of <a href="https://en.wikipedia.org/wiki/Domain-driven_design">Domain Driven Design</a> (Wikipedia) apply, specifically establishing a Domain Model which uses a Ubiquitous Language that is shared between those who build an application and those who use it. There are many excellent articles online (and books!) to learn about this.  Here&rsquo;s has a good article on how to go about <a href="https://thedomaindrivendesign.io/developing-the-ubiquitous-language/">establishing such a Domain Model and Ubiquitous Language</a> (thedomaindrivendesign.io).</p>
+<h3 id="urls-are-an-api-contract">URLs are an API Contract</h3>
+<p>The URL structure of an application must be treated as an API contract, such that breaking changes (changing the URL pattern(s)) are avoided when possible, and when needed (e.g. to align to ubiquitous language changes), the old URL routes are configured to redirect to the appropriate new URLs. Failure to do so will likely frustrate and alienate anyone who has built an integration by crosslinking into your application. Jakob Nielsen wrote about this being one of the <a href="https://www.nngroup.com/articles/the-top-ten-web-design-mistakes-of-1999/">top 10 web design mistakes back in 1999</a>&hellip;</p>
+<h3 id="urls-must-allow-sharing">URLs must allow sharing</h3>
+<p>Users of applications expect to be able to share the URL they are currently viewing with others, and have them <em>see the same content and state of the page</em> as they are seeing. Seems simple, but many applications break this fundamental user experience expectation by failing to update the URL when the page state changes. Here are just a few examples:</p>
+<ul>
+<li><strong>After searching</strong></li>
+<li><strong>After changing the active tab within a page</strong></li>
+<li><strong>After opening a modal window within the page</strong></li>
+<li><strong>After navigating to an entirely different page</strong> - this seems crazy, but it&rsquo;s all too common in both Single Page Applications (SPAs) and server-generated HTML applications which use postbacks and server-state to track page-state changes.</li>
+</ul>
+<h2 id="wrapping-up">Wrapping Up</h2>
+<p>Ensuring the URL structure of a web application is semantic can provide value to your users and increases the overall worth of the application itself. With anything of value, this too requires planning and work. However, in the process of establishing Semantic URLs you&rsquo;ll be laying the groundwork for more effective application design and development by better understanding the <em>Domain Model</em> and rallying around a single <em>Ubiquitous Language</em>. Maybe they&rsquo;re not such a lot of work afterall, looking at the potential payout?</p>
+        </div>
+    </div>
+</article>
+
+        </main>
+        <div class="feedback">
+    <div class="container">
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+<script>
+    var disqus_config = function () {
+        this.page.url = "http:\/\/www.jonthenerd.com\/2023\/01\/08\/semantic-urls\/";  
+    };
+    (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jonthenerd.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        s.setAttribute("defer", "defer");
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+        <footer>
+    <div class="container">
+        built with <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a> | <span id="theme-toggle" role="button"></span>
+    </div>
+</footer>
+
+    </body>
+</html>
