@@ -1,15 +1,23 @@
 /* Theme Variables (dark on light) */
 :root {
+    --anchor-color: hsl(204, 89%, 40%);
+    --anchor-visited-color: #c144f3;
+    --anchor-hover-brightness: 0.7;
     --gap: 1.5rem;
-    --background-color: rgb(250, 250, 250);
-    --color: #000;
+    --background-color: hsl(0, 0%, 98%);
+    --color: hsl(0, 0%, 16%);
 
-    --brand-color: #616161;
+    --brand-color: hsl(0, 0%, 16%);;
 
-    --site-header-background-color: #e5e5e5;
-    --site-header-separator-color: #555;
+    --site-header-background-color: #fff;
+    --site-header-separator-color: hsl(0, 0%, 87%);
 
-    --post-h1-background-color: #fff;
+    --pill-background-color: hsl(0, 0%, 90%);
+    --pill-hover-background-color: hsl(0, 0%, 85%);
+    --pill-color: var(--color);
+
+    --post-h1-background-color: hsl(0, 0%, 90%);
+    --post-list-h2-color: rgb(2, 91, 180);
     --post-meta-background-color: #036;
     --post-meta-color: #fff;
     --post-meta-a-color: #ffccb3;
@@ -29,4 +37,4 @@
 }
 
 /* Syntax */
-@import "./syntax-github";
+@import "./syntax-vs";

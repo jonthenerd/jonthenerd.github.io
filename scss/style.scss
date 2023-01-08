@@ -1,8 +1,7 @@
 /* non-theme variables */
 :root {
     --gap: 0.75rem;
-    --font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans,
-        Helvetica Neue, Arial, sans-serif;
+    --font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 /* resets */
@@ -29,6 +28,7 @@ pre {
 
 /* main */
 :root {
+    font-size: 18px;
     font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--color);
@@ -45,14 +45,34 @@ body {
     min-height: 100%;
 }
 
+a {
+    //text-decoration: none;
+
+    &:link, &:active, &:hover {
+        color: var(--anchor-color);
+    }
+
+    &:visited {
+        color: var(--anchor-visited-color);
+    }
+
+    &:hover {
+        text-decoration: underline;
+        filter: brightness(var(--anchor-hover-brightness));
+    }
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+    font-family: var(--font-family);
     font-weight: 600;
 }
+
+
 
 /* responsive images */
 img {
@@ -96,21 +116,30 @@ p {
 
     border-bottom: 1px solid var(--site-header-separator-color);
 
-    div {
-        display: flex;
-        justify-content: space-between;
-        align-content: center;
-        align-items: center;
-    }
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    padding: 0 16px;
+
+
 
     h1 {
         font-size: 18px;
+        font-family: ui-monospace,
+            SFMono-Regular,
+            SF Mono,
+            Menlo,
+            Consolas,
+            Liberation Mono,
+            monospace;
     }
 
     ul {
         list-style-type: none;
         li {
-            display: inline;
+            display: inline-block;
+            margin-left: 1em;
         }
     }
 
@@ -119,10 +148,12 @@ p {
     a:visited {
         color: $color;
         text-decoration: none;
+        border-width: 0;
     }
     a:hover {
         color: $color;
         text-decoration: underline;
+
     }
 }
 
@@ -156,6 +187,7 @@ nav.tag-cloud {
         font-size: 1.5rem;
         padding: 0.125rem 0.25rem;
         text-decoration: none;
+        border: none;
         position: relative;
         --size: 4;
         font-size: calc(var(--size) * 0.25rem + 0.5rem);
@@ -191,6 +223,7 @@ nav.tag-cloud {
         --size: 7;
     }
 }
+
 .post-list {
     article {
         margin-top: 1em;
@@ -199,12 +232,21 @@ nav.tag-cloud {
         margin: 1em 0;
     }
 
+    & > hr {
+        height: 1px;
+        border-width: 0;
+        background-color: #ddd;
+        margin: 2em 0;
+    }
+
     article > h2 {
+        font-size: 125%;
         margin: 0;
         a,
         a:link,
         a:visited {
             text-decoration: none;
+            color: var(--post-list-h2-color);
         }
         a:hover {
             text-decoration: underline;
@@ -221,11 +263,24 @@ nav.tag-cloud {
     }
 }
 
+
+article {
+    //font-family: TimesNewRoman, Times New Roman, Times, Baskerville, Georgia, serif;
+    font-weight: 400;
+    line-height: 125%;
+}
+.post-meta {
+    font-family: var(--font-family);
+    color: #777;
+    margin-top: 4px;
+}
+
 article.single {
     header {
         h1 {
             margin: 0;
-            font-size: 36px;
+            font-size: 200%;
+            line-height: 120%;
             padding: 20px 0;
             background-color: var(--post-h1-background-color);
         }
@@ -245,6 +300,9 @@ article.single {
                 }
             }
         }
+    }
+    > div {
+        font-family: TimesNewRoman, Times New Roman, Times, Baskerville, Georgia, serif;;
     }
 }
 
@@ -308,4 +366,33 @@ pre {
         padding: initial;
         border-radius: initial;
     }
+}
+
+a.pill {
+    text-decoration: none;
+    font-size: 80%;
+
+    color: var(--pill-color);
+    background-color: var(--pill-background-color);
+    border: none;
+    padding: 4px 8px;
+    text-align: center;
+    display: inline-block;
+    margin: 4px 2px;
+    line-height: 100%;
+    border-radius: 10px;
+
+    &:link,
+    &:visited {
+        text-decoration: none;
+    }
+
+    &:hover {
+        background-color: var(--pill-hover-background-color);
+        filter: none;
+    }
+}
+
+#theme-toggle {
+    cursor: pointer;
 }

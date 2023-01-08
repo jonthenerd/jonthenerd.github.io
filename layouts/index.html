@@ -23,11 +23,12 @@
                         {{ .Summary }}
                     </div>
                     {{ if .Truncated }}
-                        <div>
-                            <a href="{{ .RelPermalink }}">Read More...</a>
-                        </div>
+                    <div>
+                        <a class="pill" href="{{ .RelPermalink }}">Read More...</a>
+                    </div>
                     {{ end }}
                 </article>
+                <hr />
             {{ end }}
             {{ template "partials/pagination.html" . }}
         </div>

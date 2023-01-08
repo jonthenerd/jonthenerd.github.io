@@ -1,0 +1,17 @@
+<div class="feedback">
+    <div class="container">
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+<script>
+    var disqus_config = function () {
+        this.page.url = "{{ .Permalink | absURL }}";  // Replace PAGE_URL with your page's canonical URL variable
+    };
+    (function () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://jonthenerd.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        s.setAttribute("defer", "defer");
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
