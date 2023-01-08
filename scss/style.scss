@@ -24,6 +24,7 @@ pre {
 
 /* main */
 :root {
+    font-size: 18px;
     font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--color);
@@ -235,6 +236,7 @@ nav.tag-cloud {
     }
 
     article > h2 {
+        font-size: 125%;
         margin: 0;
         a,
         a:link,
@@ -261,23 +263,20 @@ nav.tag-cloud {
 article {
     //font-family: TimesNewRoman, Times New Roman, Times, Baskerville, Georgia, serif;
     font-weight: 400;
-    line-height: 24px;
+    line-height: 125%;
 }
 .post-meta {
     font-family: var(--font-family);
-    font-size: 14px;
-    line-height: 20px;
     color: #777;
     margin-top: 4px;
 }
 
 article.single {
-
-
     header {
         h1 {
             margin: 0;
-            font-size: 36px;
+            font-size: 200%;
+            line-height: 120%;
             padding: 20px 0;
             background-color: var(--post-h1-background-color);
         }
@@ -297,6 +296,9 @@ article.single {
                 }
             }
         }
+    }
+    > div {
+        font-family: TimesNewRoman, Times New Roman, Times, Baskerville, Georgia, serif;;
     }
 }
 
@@ -364,7 +366,7 @@ pre {
 
 a.pill {
     text-decoration: none;
-    font-size: 14px;
+    font-size: 80%;
 
     color: var(--pill-color);
     background-color: var(--pill-background-color);
@@ -373,7 +375,7 @@ a.pill {
     text-align: center;
     display: inline-block;
     margin: 4px 2px;
-    line-height: 16px;
+    line-height: 100%;
     border-radius: 10px;
 
     &:link,
