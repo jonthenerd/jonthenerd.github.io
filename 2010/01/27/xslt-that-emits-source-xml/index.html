@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="HandheldFriendly" content="True" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
         <title>XSLT that emits source XML &ndash; JonTheNerd</title>
+        <meta name="description" content="I got this from a friend and have found it very useful for debugging my XSLT from content query web parts and data view web parts in Visual Studio. The below XSLT will output the source XML given to it:
+&lt;xsl:stylesheet version=&#34;1.0&#34; xmlns:xsl=&#34;http://www.w3.org/1999/XSL/Transform&#34; xmlns:msxsl=&#34;urn:schemas-microsoft-com:xslt&#34; exclude-result-prefixes=&#34;msxsl&#34;&gt; &lt;xsl:output method=&#34;xml&#34; indent=&#34;yes&#34;/&gt; &lt;xsl:template match=&#34;@ node()&#34;&gt; &lt;xsl:copy&gt; &lt;xsl:apply-templates select=&#34;@ node()&#34;/&gt; &lt;/xsl:copy&gt; &lt;/xsl:template&gt; &lt;/xsl:stylesheet&gt; " />
         <meta name="color-scheme" content="dark light" />
         <script>
             

@@ -5,8 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="HandheldFriendly" content="True" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
         <title>SharePoint WebPart implementing ICallbackEventHandler does not work properly in Web Part Gallery &ndash; JonTheNerd</title>
+        <meta name="description" content="In migrating some WebParts from SP2007 to SP2010, I came across a webpart that implements ICallbackEventHandler. This webpart was working fine when placed on the page, but did not work correctly in the webpart gallery. The specific error message being received was:
+The target &lsquo;ctl00$PlaceHolderMain$ctl00&rsquo; for the callback could not be found or did not implement ICallbackEventHandler
+This error is due to the webpart being added to the preview page dynamically at runtime." />
         <meta name="color-scheme" content="dark light" />
         <script>
             

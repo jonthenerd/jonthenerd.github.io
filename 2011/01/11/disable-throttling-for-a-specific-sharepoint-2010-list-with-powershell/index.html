@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="HandheldFriendly" content="True" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
         <title>Disable Throttling for a specific SharePoint 2010 list with PowerShell &ndash; JonTheNerd</title>
+        <meta name="description" content="The following can be used to disable throttling on a specific list (must be run as an account with enough priv.):
+$web = Get-SPWeb &#34;http://whateverWeb&#34;; $list = $web.Lists[&#34;List Title&#34;]; $list.enablethrottling = $false; $list.update(); " />
         <meta name="color-scheme" content="dark light" />
         <script>
             

@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="HandheldFriendly" content="True" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
         <title>SharePoint 2010: Remove existing reusable content items using PowerShell &ndash; JonTheNerd</title>
+        <meta name="description" content="This same PowerShell could be used for any other list to remove all of the items. I just needed it to remove the OOB reusable content.
+$siteColTemp = Get-SPSite &#34;http://yourSiteCollectionUrl&#34;; $reusableContentList = $siteColTemp.RootWeb.Lists[&#34;Reusable Content&#34;]; $reusableContentItems = $reusableContentList.Items; $reusableContentItemsCount = $reusableContentItems.Count; for($x=$reusableContentItemsCount-1;$x -ge 0; $x--){ $reusableContentItems[$x].Delete(); } " />
         <meta name="color-scheme" content="dark light" />
         <script>
             

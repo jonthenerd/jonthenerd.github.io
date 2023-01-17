@@ -5,8 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="HandheldFriendly" content="True" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
         <title>Visual Basic Methods in C# &ndash; JonTheNerd</title>
+        <meta name="description" content="A friend of mine needed some legacy code, written in VB6, ported to work in C# (.NET 6 / Core). This code used several Visual Basic functions that have equivalents in C#, but those versions didn&rsquo;t yield the same output given the same input. Using the Microsoft.VisualBasic package got the code closer to working, but still wasn&rsquo;t 100% what was needed. It turns out that package is used for porting VB.Net code, not legacy VB6 or earlier code.
+Some methods had fairly close equivalents in C#, others were way off the mark due to string encoding differences.
+A lot of searching and unit testing later, I came up with this class of functions that allowed the legacy code to be ported with fairly minimal changes. My goal was to copy &#43; paste VB6 code and make as few a changes as possible. Here are the methods covered:
+
+Mid
+Len
+Int
+Divide (while not an actual VB function, this replaces the C# / operator so output is the same as Visual Basic 6 would have produced)
+Chr
+Asc
+" />
         <meta name="color-scheme" content="dark light" />
         <script>
             

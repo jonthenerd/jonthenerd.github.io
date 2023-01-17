@@ -5,8 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="HandheldFriendly" content="True" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
         <title>SharePoint 2010 - MigrateUser Error &#39;Value cannot be null. Parameter name: userProfileApplicationProxy&#39; &ndash; JonTheNerd</title>
+        <meta name="description" content="When using the stsadm command:
+stsadm.exe -o migrateuser oldlogin &ldquo;domainusername&rdquo; -newlogin &ldquo;domainnewusername&rdquo;
+We received this error message:
+Value cannot be null. Parameter name: userProfileApplicationProxy
+If you look in the ULS logs, you&rsquo;ll find that there is an Access Denied event occuring. We were able to resolve this by going into Central Administration, selecting the User Service Application, and ensuring that the administrator account being used to run the above command has Full Control rights to the Service Application." />
         <meta name="color-scheme" content="dark light" />
         <script>
             

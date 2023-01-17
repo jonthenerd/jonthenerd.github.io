@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="HandheldFriendly" content="True" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="description" content="Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting." />
         <title>SharePoint 2010: Disable Feature on all Web Applications PowerShell &ndash; JonTheNerd</title>
+        <meta name="description" content="Because it&rsquo;s easier to copy&#43;paste this later&hellip; This will disable a feature on all web applications in a farm. Very convenient for when you&rsquo;re removing a feature from a solution.
+Get-SPWebApplication | ForEach-Object {Disable-SPFeature &#34;Solution.Name.FeatureName&#34; -url $_.Url;} " />
         <meta name="color-scheme" content="dark light" />
         <script>
             
