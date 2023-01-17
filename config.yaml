@@ -4,6 +4,7 @@ title: "JonTheNerd"
 
 params:
     repoOrigin: https://github.com/jonthenerd/jonthenerd.github.io
+    description: "Jon Badgett's personal blog. Open source projects, observations on life, and other oddities I find interesting."
 
 permalinks:
     posts: /:year/:month/:day/:slug/
