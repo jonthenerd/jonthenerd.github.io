@@ -31,7 +31,7 @@ https://www.example.com/america/recipes?containing=apple&gluten=false#ingredient
  - `https` - this is the **scheme** or network protocol. It tells the web browser how to connect to the location
  - `www.example.com` - this is the **host**, often referred to as the domain name. It is always preceded by `//`. It maps to an IP address, which is effectively the address on the network that your web browser needs to make contact with to retreive the web page. The hostname is translated into an IP address using what's called DNS resolution.
  - `/america/recipes` - this is the **path**. It's everything *before* a `?` or `#` character (if they are present in the URL at all). It may contain multiple **segments**, each separated by the `/` character.
- - `?containing=apply&gluten=false` - this is the **query** and is optional in a URL. It is made up of several parts itself:
+ - `?containing=apple&gluten=false` - this is the **query** and is optional in a URL. It is made up of several parts itself:
     - `?` - the question mark starts the query
     - `containing` - this is the name of the first **parameter**
     - `=` - the equal sign separates the name of the parameter from its value
