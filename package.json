@@ -6,10 +6,10 @@
     "scripts": {
         "build:site": "hugo",
         "build:styles": "sass scss/dark.scss:static/assets/dark.css scss/light.scss:static/assets/light.css scss/style.scss:static/assets/style.css --style compressed",
-        "build": "npm run build:styles && npm run build:site",
+        "build": "pnpm run build:styles && pnpm run build:site",
         "dev:site": "hugo server",
         "dev:styles": "sass scss/dark.scss:static/assets/dark.css scss/light.scss:static/assets/light.css scss/style.scss:static/assets/style.css --watch",
-        "dev": "concurrently \"npm run dev:site\" \"npm run dev:styles\"",
+        "dev": "concurrently \"pnpm run dev:site\" \"pnpm run dev:styles\"",
         "format": "prettier **/* --write --ignore-unknown"
     },
     "repository": {
@@ -23,10 +23,10 @@
     },
     "homepage": "https://github.com/jonthenerd/jonthenerd.github.io#readme",
     "devDependencies": {
-        "concurrently": "^7.6.0",
+        "concurrently": "^9.2.1",
         "gray-matter": "^4.0.3",
-        "prettier": "^2.8.1",
-        "prettier-plugin-go-template": "^0.0.13",
-        "sass": "^1.57.1"
+        "prettier": "^3.6.2",
+        "prettier-plugin-go-template": "^0.0.15",
+        "sass": "^1.90.0"
     }
 }
