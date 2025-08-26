@@ -25,7 +25,7 @@
     "devDependencies": {
         "concurrently": "^7.6.0",
         "gray-matter": "^4.0.3",
-        "prettier": "^2.8.1",
+        "prettier": "^2.8.8",
         "prettier-plugin-go-template": "^0.0.13",
         "sass": "^1.57.1"
     }
