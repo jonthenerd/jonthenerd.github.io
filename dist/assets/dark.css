@@ -36,370 +36,280 @@ iframe[src*="disqus.com"] {
   color-scheme: light;
 }
 
-/* Syntax */
-/* Background */
-.bg {
-  color: #f8f8f2;
-  background-color: #282a36;
-}
-
-/* PreWrapper */
-.chroma {
-  color: #f8f8f2;
-  background-color: #282a36;
-}
-
-/* Other */
-/* Error */
-/* CodeLine */
-/* LineLink */
-.chroma .lnlinks {
-  outline: none;
-  text-decoration: none;
-  color: inherit;
-}
-
-/* LineTableTD */
-.chroma .lntd {
-  vertical-align: top;
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-
-/* LineTable */
-.chroma .lntable {
-  border-spacing: 0;
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-
-/* LineHighlight */
-.chroma .hl {
-  background-color: #ffffcc;
-}
-
-/* LineNumbersTable */
-.chroma .lnt {
+pre[class*=language-],
+code[class*=language-] {
+  color: #d4d4d4;
+  text-shadow: none;
+  font-family: Menlo, Monaco, Consolas, "Andale Mono", "Ubuntu Mono", "Courier New", monospace;
+  direction: ltr;
+  text-align: left;
   white-space: pre;
-  user-select: none;
-  margin-right: 0.4em;
-  padding: 0 0.4em 0 0.4em;
-  color: #7f7f7f;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
 }
 
-/* LineNumbers */
-.chroma .ln {
-  white-space: pre;
-  user-select: none;
-  margin-right: 0.4em;
-  padding: 0 0.4em 0 0.4em;
-  color: #7f7f7f;
+pre[class*=language-]::selection,
+code[class*=language-]::selection,
+pre[class*=language-] *::selection,
+code[class*=language-] *::selection {
+  text-shadow: none;
+  background: #264F78;
 }
 
-/* Line */
-.chroma .line {
-  display: flex;
+@media print {
+  pre[class*=language-],
+  code[class*=language-] {
+    text-shadow: none;
+  }
+}
+pre[class*=language-] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  background: #1e1e1e;
 }
 
-/* Keyword */
-.chroma .k {
-  color: #ff79c6;
+:not(pre) > code[class*=language-] {
+  padding: 0.1em 0.3em;
+  border-radius: 0.3em;
+  color: #db4c69;
+  background: #1e1e1e;
 }
 
-/* KeywordConstant */
-.chroma .kc {
-  color: #ff79c6;
+/*********************************************************
+* Tokens
+*/
+.namespace {
+  opacity: 0.7;
 }
 
-/* KeywordDeclaration */
-.chroma .kd {
-  color: #8be9fd;
-  font-style: italic;
+.token.doctype .token.doctype-tag {
+  color: #569CD6;
 }
 
-/* KeywordNamespace */
-.chroma .kn {
-  color: #ff79c6;
+.token.doctype .token.name {
+  color: #9cdcfe;
 }
 
-/* KeywordPseudo */
-.chroma .kp {
-  color: #ff79c6;
+.token.comment,
+.token.prolog {
+  color: #6a9955;
 }
 
-/* KeywordReserved */
-.chroma .kr {
-  color: #ff79c6;
+.token.punctuation,
+.language-html .language-css .token.punctuation,
+.language-html .language-javascript .token.punctuation {
+  color: #d4d4d4;
 }
 
-/* KeywordType */
-.chroma .kt {
-  color: #8be9fd;
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.inserted,
+.token.unit {
+  color: #b5cea8;
 }
 
-/* Name */
-/* NameAttribute */
-.chroma .na {
-  color: #50fa7b;
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.deleted {
+  color: #ce9178;
 }
 
-/* NameBuiltin */
-.chroma .nb {
-  color: #8be9fd;
-  font-style: italic;
-}
-
-/* NameBuiltinPseudo */
-/* NameClass */
-.chroma .nc {
-  color: #50fa7b;
-}
-
-/* NameConstant */
-/* NameDecorator */
-/* NameEntity */
-/* NameException */
-/* NameFunction */
-.chroma .nf {
-  color: #50fa7b;
-}
-
-/* NameFunctionMagic */
-/* NameLabel */
-.chroma .nl {
-  color: #8be9fd;
-  font-style: italic;
-}
-
-/* NameNamespace */
-/* NameOther */
-/* NameProperty */
-/* NameTag */
-.chroma .nt {
-  color: #ff79c6;
-}
-
-/* NameVariable */
-.chroma .nv {
-  color: #8be9fd;
-  font-style: italic;
-}
-
-/* NameVariableClass */
-.chroma .vc {
-  color: #8be9fd;
-  font-style: italic;
-}
-
-/* NameVariableGlobal */
-.chroma .vg {
-  color: #8be9fd;
-  font-style: italic;
-}
-
-/* NameVariableInstance */
-.chroma .vi {
-  color: #8be9fd;
-  font-style: italic;
-}
-
-/* NameVariableMagic */
-/* Literal */
-/* LiteralDate */
-/* LiteralString */
-.chroma .s {
-  color: #f1fa8c;
-}
-
-/* LiteralStringAffix */
-.chroma .sa {
-  color: #f1fa8c;
-}
-
-/* LiteralStringBacktick */
-.chroma .sb {
-  color: #f1fa8c;
-}
-
-/* LiteralStringChar */
-.chroma .sc {
-  color: #f1fa8c;
-}
-
-/* LiteralStringDelimiter */
-.chroma .dl {
-  color: #f1fa8c;
-}
-
-/* LiteralStringDoc */
-.chroma .sd {
-  color: #f1fa8c;
-}
-
-/* LiteralStringDouble */
-.chroma .s2 {
-  color: #f1fa8c;
-}
-
-/* LiteralStringEscape */
-.chroma .se {
-  color: #f1fa8c;
-}
-
-/* LiteralStringHeredoc */
-.chroma .sh {
-  color: #f1fa8c;
-}
-
-/* LiteralStringInterpol */
-.chroma .si {
-  color: #f1fa8c;
-}
-
-/* LiteralStringOther */
-.chroma .sx {
-  color: #f1fa8c;
-}
-
-/* LiteralStringRegex */
-.chroma .sr {
-  color: #f1fa8c;
-}
-
-/* LiteralStringSingle */
-.chroma .s1 {
-  color: #f1fa8c;
-}
-
-/* LiteralStringSymbol */
-.chroma .ss {
-  color: #f1fa8c;
-}
-
-/* LiteralNumber */
-.chroma .m {
-  color: #bd93f9;
-}
-
-/* LiteralNumberBin */
-.chroma .mb {
-  color: #bd93f9;
-}
-
-/* LiteralNumberFloat */
-.chroma .mf {
-  color: #bd93f9;
-}
-
-/* LiteralNumberHex */
-.chroma .mh {
-  color: #bd93f9;
-}
-
-/* LiteralNumberInteger */
-.chroma .mi {
-  color: #bd93f9;
-}
-
-/* LiteralNumberIntegerLong */
-.chroma .il {
-  color: #bd93f9;
-}
-
-/* LiteralNumberOct */
-.chroma .mo {
-  color: #bd93f9;
-}
-
-/* Operator */
-.chroma .o {
-  color: #ff79c6;
-}
-
-/* OperatorWord */
-.chroma .ow {
-  color: #ff79c6;
-}
-
-/* Punctuation */
-/* Comment */
-.chroma .c {
-  color: #6272a4;
-}
-
-/* CommentHashbang */
-.chroma .ch {
-  color: #6272a4;
-}
-
-/* CommentMultiline */
-.chroma .cm {
-  color: #6272a4;
-}
-
-/* CommentSingle */
-.chroma .c1 {
-  color: #6272a4;
-}
-
-/* CommentSpecial */
-.chroma .cs {
-  color: #6272a4;
-}
-
-/* CommentPreproc */
-.chroma .cp {
-  color: #ff79c6;
-}
-
-/* CommentPreprocFile */
-.chroma .cpf {
-  color: #ff79c6;
-}
-
-/* Generic */
-/* GenericDeleted */
-.chroma .gd {
-  color: #ff5555;
-}
-
-/* GenericEmph */
-.chroma .ge {
+.language-css .token.string.url {
   text-decoration: underline;
 }
 
-/* GenericError */
-/* GenericHeading */
-.chroma .gh {
-  font-weight: bold;
+.token.operator,
+.token.entity {
+  color: #d4d4d4;
 }
 
-/* GenericInserted */
-.chroma .gi {
-  color: #50fa7b;
-  font-weight: bold;
+.token.operator.arrow {
+  color: #569CD6;
 }
 
-/* GenericOutput */
-.chroma .go {
-  color: #44475a;
+.token.atrule {
+  color: #ce9178;
 }
 
-/* GenericPrompt */
-/* GenericStrong */
-/* GenericSubheading */
-.chroma .gu {
-  font-weight: bold;
+.token.atrule .token.rule {
+  color: #c586c0;
 }
 
-/* GenericTraceback */
-/* GenericUnderline */
-.chroma .gl {
-  text-decoration: underline;
+.token.atrule .token.url {
+  color: #9cdcfe;
 }
 
-/* TextWhitespace */
+.token.atrule .token.url .token.function {
+  color: #dcdcaa;
+}
+
+.token.atrule .token.url .token.punctuation {
+  color: #d4d4d4;
+}
+
+.token.keyword {
+  color: #569CD6;
+}
+
+.token.keyword.module,
+.token.keyword.control-flow {
+  color: #c586c0;
+}
+
+.token.function,
+.token.function .token.maybe-class-name {
+  color: #dcdcaa;
+}
+
+.token.regex {
+  color: #d16969;
+}
+
+.token.important {
+  color: #569cd6;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.constant {
+  color: #9cdcfe;
+}
+
+.token.class-name,
+.token.maybe-class-name {
+  color: #4ec9b0;
+}
+
+.token.console {
+  color: #9cdcfe;
+}
+
+.token.parameter {
+  color: #9cdcfe;
+}
+
+.token.interpolation {
+  color: #9cdcfe;
+}
+
+.token.punctuation.interpolation-punctuation {
+  color: #569cd6;
+}
+
+.token.boolean {
+  color: #569cd6;
+}
+
+.token.property,
+.token.variable,
+.token.imports .token.maybe-class-name,
+.token.exports .token.maybe-class-name {
+  color: #9cdcfe;
+}
+
+.token.selector {
+  color: #d7ba7d;
+}
+
+.token.escape {
+  color: #d7ba7d;
+}
+
+.token.tag {
+  color: #569cd6;
+}
+
+.token.tag .token.punctuation {
+  color: #808080;
+}
+
+.token.cdata {
+  color: #808080;
+}
+
+.token.attr-name {
+  color: #9cdcfe;
+}
+
+.token.attr-value,
+.token.attr-value .token.punctuation {
+  color: #ce9178;
+}
+
+.token.attr-value .token.punctuation.attr-equals {
+  color: #d4d4d4;
+}
+
+.token.entity {
+  color: #569cd6;
+}
+
+.token.namespace {
+  color: #4ec9b0;
+}
+
+/*********************************************************
+* Language Specific
+*/
+pre[class*=language-javascript],
+code[class*=language-javascript],
+pre[class*=language-jsx],
+code[class*=language-jsx],
+pre[class*=language-typescript],
+code[class*=language-typescript],
+pre[class*=language-tsx],
+code[class*=language-tsx] {
+  color: #9cdcfe;
+}
+
+pre[class*=language-css],
+code[class*=language-css] {
+  color: #ce9178;
+}
+
+pre[class*=language-html],
+code[class*=language-html] {
+  color: #d4d4d4;
+}
+
+.language-regex .token.anchor {
+  color: #dcdcaa;
+}
+
+.language-html .token.punctuation {
+  color: #808080;
+}
+
+/*********************************************************
+* Line highlighting
+*/
+pre[class*=language-] > code[class*=language-] {
+  position: relative;
+  z-index: 1;
+}
+
+.line-highlight.line-highlight {
+  background: #f7ebc6;
+  box-shadow: inset 5px 0 0 #f7d87c;
+  z-index: 0;
+}
 
 /*# sourceMappingURL=dark.css.map */

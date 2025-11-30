@@ -2,6 +2,7 @@ import "tsx/esm";
 import { renderToStaticMarkup } from "react-dom/server";
 import { createExcerptExtractor } from "./excerptExtractor";
 import * as prettier from "prettier";
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import { safeStringify } from "./safe-json";
 
 export default async function(eleventyConfig): ReturnType<import("@11ty/eleventy/src/defaultConfig")> {
@@ -87,6 +88,9 @@ export default async function(eleventyConfig): ReturnType<import("@11ty/eleventy
         });
         return catSet;
     });
+
+    // Add syntax highlighting
+    eleventyConfig.addPlugin(syntaxHighlight);
 
     return {
         dir: {

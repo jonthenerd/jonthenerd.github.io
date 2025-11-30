@@ -26,6 +26,7 @@
     "homepage": "https://github.com/jonthenerd/jonthenerd.github.io#readme",
     "devDependencies": {
         "@11ty/eleventy": "^3.1.2",
+        "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
         "@types/luxon": "^3.7.1",
         "@types/node": "^24.3.0",
         "@types/react": "^19.1.11",

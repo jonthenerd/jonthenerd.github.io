@@ -65,127 +65,126 @@
               For this to work, you must install the <a href="https://www.nuget.org/packages/System.Text.Encoding.CodePages"><code>System.Text.Encoding.CodePages</code></a> Nuget package. This provides the needed Windows-1252 string encoding that isn't available in .NET Core.
             </p>
             <p>Once added to your own code, usage is as simple as prefixing the above supported VB methods in your C# with <code>VB.</code>. Like so:</p>
-            <pre><code class="language-csharp">var output = VB.Mid(&quot;Mid Function Demo&quot;, 1, 3); // output = Mid
-</code></pre>
+            <pre
+              class="language-csharp"><code class="language-csharp"><span class="token class-name"><span class="token keyword">var</span></span> output <span class="token operator">=</span> VB<span class="token punctuation">.</span><span class="token function">Mid</span><span class="token punctuation">(</span><span class="token string">"Mid Function Demo"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// output = Mid</span></code></pre>
             <h2>Helper Class</h2>
-            <pre><code class="language-csharp">/// &lt;summary&gt;
-/// Helper class with familiar Visual Basic methods. Avoid unless legacy code conversions demands such arcane behaviors.
-/// Always attempt to refactor into normal C# methods first...
-/// In these methods, all arrays start at index 1. Behaviors should match VB6 and operate using Windows-1252 encoding.
-/// &lt;/summary&gt;
-public static class VB
-{
-    /// &lt;summary&gt;
-    /// Returns a string containing a specified number of characters from a string. First character is at index 1.
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;input&quot;&gt;String expression from which characters are returned. If string contains Null, Null is returned.&lt;/param&gt;
-    /// &lt;param name=&quot;start&quot;&gt;Character position in string at which the part to be taken begins. If start is greater than the number of characters in string, Mid returns a zero-length string (&quot;&quot;).&lt;/param&gt;
-    /// &lt;param name=&quot;length&quot;&gt;Number of characters to return. If omitted or if there are fewer than length characters in the text (including the character at start), all characters from the start position to the end of the string are returned.&lt;/param&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    public static string Mid(string input, int start, int? length)
-    {
-        if (input == null)
-        {
-            return null;
-        }
+            <pre class="language-csharp"><code class="language-csharp"><span class="token comment">/// &lt;summary></span>
+<span class="token comment">/// Helper class with familiar Visual Basic methods. Avoid unless legacy code conversions demands such arcane behaviors.</span>
+<span class="token comment">/// Always attempt to refactor into normal C# methods first...</span>
+<span class="token comment">/// In these methods, all arrays start at index 1. Behaviors should match VB6 and operate using Windows-1252 encoding.</span>
+<span class="token comment">/// &lt;/summary></span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">VB</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">/// Returns a string containing a specified number of characters from a string. First character is at index 1.</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="input">String expression from which characters are returned. If string contains Null, Null is returned.&lt;/param></span>
+    <span class="token comment">/// &lt;param name="start">Character position in string at which the part to be taken begins. If start is greater than the number of characters in string, Mid returns a zero-length string ("").&lt;/param></span>
+    <span class="token comment">/// &lt;param name="length">Number of characters to return. If omitted or if there are fewer than length characters in the text (including the character at start), all characters from the start position to the end of the string are returned.&lt;/param></span>
+    <span class="token comment">/// &lt;returns>&lt;/returns></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> <span class="token function">Mid</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> input<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> start<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span><span class="token punctuation">?</span></span> length<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>input <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        var inputLength = input.Length;
-        if (start &gt; inputLength)
-        {
-            return String.Empty;
-        }
+        <span class="token class-name"><span class="token keyword">var</span></span> inputLength <span class="token operator">=</span> input<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>start <span class="token operator">></span> inputLength<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> String<span class="token punctuation">.</span>Empty<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        if (length.HasValue)
-        {
-            return input.Substring(start - 1, length.Value);
-        }
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>length<span class="token punctuation">.</span>HasValue<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> input<span class="token punctuation">.</span><span class="token function">Substring</span><span class="token punctuation">(</span>start <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> length<span class="token punctuation">.</span>Value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        return input.Substring(start - 1);
-    }
+        <span class="token keyword">return</span> input<span class="token punctuation">.</span><span class="token function">Substring</span><span class="token punctuation">(</span>start <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    /// &lt;summary&gt;
-    /// Returns the number of characters in a string
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;input&quot;&gt;&lt;/param&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    public static int Len(string input)
-    {
-        return input.Length;
-    }
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">/// Returns the number of characters in a string</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="input">&lt;/param></span>
+    <span class="token comment">/// &lt;returns>&lt;/returns></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">Len</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> input<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> input<span class="token punctuation">.</span>Length<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    /// &lt;summary&gt;
-    /// Converts a float to an int
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;value&quot;&gt;&lt;/param&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    public static int Int(float value)
-    {
-        if (value &gt; 0)
-        {
-            return (int)value;
-        }
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">/// Converts a float to an int</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="value">&lt;/param></span>
+    <span class="token comment">/// &lt;returns>&lt;/returns></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">Int</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">float</span></span> <span class="token keyword">value</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">value</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token keyword">value</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        return (int)Math.Round(value, 0, MidpointRounding.AwayFromZero);
-    }
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>Math<span class="token punctuation">.</span><span class="token function">Round</span><span class="token punctuation">(</span><span class="token keyword">value</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> MidpointRounding<span class="token punctuation">.</span>AwayFromZero<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    /// &lt;summary&gt;
-    /// Divides 2 numbers, returning a float. Replaces the VB / operator which operates differently than the C# / operator
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;x&quot;&gt;&lt;/param&gt;
-    /// &lt;param name=&quot;y&quot;&gt;&lt;/param&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    public static float Divide(int x, int y)
-    {
-        return (float)x / (float)y;
-    }
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">/// Divides 2 numbers, returning a float. Replaces the VB / operator which operates differently than the C# / operator</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="x">&lt;/param></span>
+    <span class="token comment">/// &lt;param name="y">&lt;/param></span>
+    <span class="token comment">/// &lt;returns>&lt;/returns></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">float</span></span> <span class="token function">Divide</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> x<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">int</span></span> y<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>x <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span>y<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    /// &lt;summary&gt;
-    /// Returns a string containing the character associated with the specific character code
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;charCode&quot;&gt;&lt;/param&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    public static string Chr(int charCode)
-    {
-        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-        var legacyEncoding = Encoding.GetEncoding(1252);
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">/// Returns a string containing the character associated with the specific character code</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="charCode">&lt;/param></span>
+    <span class="token comment">/// &lt;returns>&lt;/returns></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> <span class="token function">Chr</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> charCode<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Encoding<span class="token punctuation">.</span><span class="token function">RegisterProvider</span><span class="token punctuation">(</span>CodePagesEncodingProvider<span class="token punctuation">.</span>Instance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name"><span class="token keyword">var</span></span> legacyEncoding <span class="token operator">=</span> Encoding<span class="token punctuation">.</span><span class="token function">GetEncoding</span><span class="token punctuation">(</span><span class="token number">1252</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        return legacyEncoding.GetString(new[] { (byte)charCode });
-    }
+        <span class="token keyword">return</span> legacyEncoding<span class="token punctuation">.</span><span class="token function">GetString</span><span class="token punctuation">(</span><span class="token keyword">new</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span> <span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">)</span>charCode <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    /// &lt;summary&gt;
-    /// Returns an intenger representing the character code corresponding to the first letter in a string
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;input&quot;&gt;&lt;/param&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    public static int Asc(string input)
-    {
-        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-        var legacyEncoding = Encoding.GetEncoding(1252);
+    <span class="token comment">/// &lt;summary></span>
+    <span class="token comment">/// Returns an intenger representing the character code corresponding to the first letter in a string</span>
+    <span class="token comment">/// &lt;/summary></span>
+    <span class="token comment">/// &lt;param name="input">&lt;/param></span>
+    <span class="token comment">/// &lt;returns>&lt;/returns></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">Asc</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> input<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Encoding<span class="token punctuation">.</span><span class="token function">RegisterProvider</span><span class="token punctuation">(</span>CodePagesEncodingProvider<span class="token punctuation">.</span>Instance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name"><span class="token keyword">var</span></span> legacyEncoding <span class="token operator">=</span> Encoding<span class="token punctuation">.</span><span class="token function">GetEncoding</span><span class="token punctuation">(</span><span class="token number">1252</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        var bytes = legacyEncoding.GetBytes(new char[] { input[0] });
-        var converted = (int)legacyEncoding.GetChars(bytes)[0];
+        <span class="token class-name"><span class="token keyword">var</span></span> bytes <span class="token operator">=</span> legacyEncoding<span class="token punctuation">.</span><span class="token function">GetBytes</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token constructor-invocation class-name"><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> <span class="token punctuation">{</span> input<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name"><span class="token keyword">var</span></span> converted <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>legacyEncoding<span class="token punctuation">.</span><span class="token function">GetChars</span><span class="token punctuation">(</span>bytes<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        if (converted &gt;= 128)
-        {
-            // Strings.Asc is not equivalent with a plain C# cast for non ASCII chars that can go beyond 127 code value.
-            // See https://social.msdn.microsoft.com/Forums/vstudio/en-US/13fec271-9a97-4b71-ab28-4911ff3ecca0/equivalent-in-c-of-asc-amp-chr-functions-of-vb?forum=csharpgeneral
-            var buffer = new byte[2];
-            // if the resulting conversion is 1 byte in length, just use the value
-            if (legacyEncoding.GetBytes(new char[] { input[0] }, 0, 1, buffer, 0) == 1)
-            {
-                converted = buffer[0];
-            }
-            else
-            {
-                // byte swap bytes 1 and 2;
-                converted = (buffer[0] &lt;&lt; 16 | buffer[1]);
-            }
-        }
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>converted <span class="token operator">>=</span> <span class="token number">128</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">// Strings.Asc is not equivalent with a plain C# cast for non ASCII chars that can go beyond 127 code value.</span>
+            <span class="token comment">// See https://social.msdn.microsoft.com/Forums/vstudio/en-US/13fec271-9a97-4b71-ab28-4911ff3ecca0/equivalent-in-c-of-asc-amp-chr-functions-of-vb?forum=csharpgeneral</span>
+            <span class="token class-name"><span class="token keyword">var</span></span> buffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name"><span class="token keyword">byte</span></span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token comment">// if the resulting conversion is 1 byte in length, just use the value</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>legacyEncoding<span class="token punctuation">.</span><span class="token function">GetBytes</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token constructor-invocation class-name"><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> <span class="token punctuation">{</span> input<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> buffer<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                converted <span class="token operator">=</span> buffer<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                <span class="token comment">// byte swap bytes 1 and 2;</span>
+                converted <span class="token operator">=</span> <span class="token punctuation">(</span>buffer<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token number">16</span> <span class="token operator">|</span> buffer<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
 
-        return converted;
-    }
-}
-
+        <span class="token keyword">return</span> converted<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
             <p>Find this useful? Want the unit tests? Let me know. I figured posting these methods would meet a lot of folks' needs who may not care about having the unit tests, so wanted to make them available without waiting any longer.</p>
           </div>

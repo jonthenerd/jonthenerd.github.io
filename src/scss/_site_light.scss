@@ -1,0 +1,38 @@
+/* Theme Variables (dark on light) */
+:root {
+    --anchor-color: hsl(204, 89%, 40%);
+    --anchor-visited-color: #c144f3;
+    --anchor-hover-brightness: 0.7;
+    --gap: 1.5rem;
+    --background-color: hsl(0, 0%, 98%);
+    --color: hsl(0, 0%, 16%);
+
+    --brand-color: hsl(0, 0%, 16%);
+    ;
+
+    --site-header-background-color: #fff;
+    --site-header-separator-color: hsl(0, 0%, 87%);
+
+    --pill-background-color: hsl(0, 0%, 90%);
+    --pill-hover-background-color: hsl(0, 0%, 85%);
+    --pill-color: var(--color);
+
+    --post-h1-background-color: hsl(0, 0%, 90%);
+    --post-list-h2-color: rgb(2, 91, 180);
+    --post-meta-background-color: #036;
+    --post-meta-color: #fff;
+    --post-meta-a-color: #ffccb3;
+
+    --alert-tip-background: #dff6dd;
+    --alert-tip-border: #dff6dd;
+    --alert-note-background: #efd9fd;
+    --alert-note-border: #efd9fd;
+    --alert-important-background: #d7eaf8;
+    --alert-important-border: #d7eaf8;
+    --alert-caution-background: #fde7e9;
+    --alert-caution-border: #fde7e9;
+    --alert-warning-background: #fff4ce;
+    --alert-warning-border: #fff4ce;
+
+    --code-background: #6e76812a;
+}
