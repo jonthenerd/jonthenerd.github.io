@@ -1,0 +1,96 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;We ran across an issue in a test environment where we were unable to add items\nto a list, or a document library. However, you could use Windows explorer view\nto upload a document.&lt;/p&gt;\n&lt;p&gt;The specific error message seen was:&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&quot;language-shell\&quot;&gt;The server was unable to save the form at this time. Please try again.\n&lt;/code&gt;&lt;/pre&gt;\n&lt;!--more--&gt;\n&lt;p&gt;Looking in the ULS log, there were odd messages dealing with authentication that\nseemed to indicate that the Javascript CSOM was unable to process my request due\nto conversion of Windows to Claims... but we&#x27;re using Kerberos. What&#x27;s up?&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;Claims Windows Sign-In: Redirecting successfully signed-in user &#x27;&amp;lt;user here&amp;gt;&#x27; for request url &#x27;https://your-sharepoint/_windows/default.aspx?ReturnUrl=/_vti.bin/client.svc/ProcessQuery&#x27;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;There are several claimed ways to fix this error. They range from restarting\nyour server to enabling anonymous access (why anyone would resort to this is\nbeyond me). Luckily, I found a voice of sanity -\n&lt;a href=\&quot;http://blog.isrichtig.de/Lists/Beitraege/Post.aspx?ID=128\&quot;&gt;Volker @ isrichtig.de&#x27;s blog post &amp;quot; ERROR on Newform.aspx in some Lists&amp;quot;&lt;/a&gt;.\nHere are his steps, which worked in our case as well:&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Open the SharePoint Central Administration Web site, click Application\nManagement.&lt;/li&gt;\n&lt;li&gt;On the Application Management page, in the SharePoint Web Application\nManagement section, click Web application list.&lt;/li&gt;\n&lt;li&gt;On the Web Application List page, select your Web application.&lt;/li&gt;\n&lt;li&gt;Select Authentication providers from the ribbon.&lt;/li&gt;\n&lt;li&gt;Click Default.&lt;/li&gt;\n&lt;li&gt;Click Ok to save the provider again.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;Effectively, it looks like this resets your authentication settings for a\nparticular zone to what they&#x27;re believed to be in the configuration database.\nWhy this got broke, I&#x27;m not sure, but this was an easy fix that was only\nenforcing the known settings anyway.&lt;/p&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;SharePoint&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;SharePoint: The server was unable to save the form at this time&quot;,
+    &quot;date&quot;: &quot;2016-07-06&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;SysAdmin&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;The-server-was-unable-to-save&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2016-07-06-The-server-was-unable-to-save.md&quot;,
+        &quot;fileSlug&quot;: &quot;The-server-was-unable-to-save&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/The-server-was-unable-to-save&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2016-07-06T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nWe ran across an issue in a test environment where we were unable to add items\nto a list, or a document library. However, you could use Windows explorer view\nto upload a document.\n\nThe specific error message seen was:\n\n```shell\nThe server was unable to save the form at this time. Please try again.\n```\n\n&lt;!--more--&gt;\n\nLooking in the ULS log, there were odd messages dealing with authentication that\nseemed to indicate that the Javascript CSOM was unable to process my request due\nto conversion of Windows to Claims... but we&#x27;re using Kerberos. What&#x27;s up?\n\n```\nClaims Windows Sign-In: Redirecting successfully signed-in user &#x27;&lt;user here&gt;&#x27; for request url &#x27;https://your-sharepoint/_windows/default.aspx?ReturnUrl=/_vti.bin/client.svc/ProcessQuery&#x27;\n```\n\nThere are several claimed ways to fix this error. They range from restarting\nyour server to enabling anonymous access (why anyone would resort to this is\nbeyond me). Luckily, I found a voice of sanity -\n[Volker @ isrichtig.de&#x27;s blog post \&quot; ERROR on Newform.aspx in some Lists\&quot;](http://blog.isrichtig.de/Lists/Beitraege/Post.aspx?ID=128).\nHere are his steps, which worked in our case as well:\n\n-   Open the SharePoint Central Administration Web site, click Application\n    Management.\n-   On the Application Management page, in the SharePoint Web Application\n    Management section, click Web application list.\n-   On the Web Application List page, select your Web application.\n-   Select Authentication providers from the ribbon.\n-   Click Default.\n-   Click Ok to save the provider again.\n\nEffectively, it looks like this resets your authentication settings for a\nparticular zone to what they&#x27;re believed to be in the configuration database.\nWhy this got broke, I&#x27;m not sure, but this was an easy fix that was only\nenforcing the known settings anyway.\n&quot;,
+        &quot;url&quot;: &quot;/posts/2016-07-06-The-server-was-unable-to-save/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2016-07-06-The-server-was-unable-to-save/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

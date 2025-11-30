@@ -1,16 +1,18 @@
 {
     "name": "jonthenerd.github.io",
+    "type": "module",
     "version": "1.0.0",
     "description": "",
     "main": "",
     "scripts": {
-        "build:site": "hugo",
-        "build:styles": "sass scss/dark.scss:static/assets/dark.css scss/light.scss:static/assets/light.css scss/style.scss:static/assets/style.css --style compressed",
-        "build": "pnpm run build:styles && pnpm run build:site",
-        "dev:site": "hugo server",
-        "dev:styles": "sass scss/dark.scss:static/assets/dark.css scss/light.scss:static/assets/light.css scss/style.scss:static/assets/style.css --watch",
-        "dev": "concurrently \"pnpm run dev:site\" \"pnpm run dev:styles\"",
-        "format": "prettier **/* --write --ignore-unknown"
+        "dev": "concurrently --names site,styles \"pnpm run watch:site\" \"pnpm run watch:styles\"",
+        "build:site": "cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts",
+        "build:styles": "sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed",
+        "build": "concurrently \"pnpm run build:site\" \"pnpm run build:styles\"",
+        "prebuild": "rimraf dist",
+        "format": "prettier **/* --write --ignore-unknown",
+        "watch:site": "cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental",
+        "watch:styles": "sass src/scss/dark.scss:src/assets/dark.css src/scss/light.scss:src/assets/light.css src/scss/style.scss:src/assets/style.css --watch"
     },
     "repository": {
         "type": "git",
@@ -23,10 +25,21 @@
     },
     "homepage": "https://github.com/jonthenerd/jonthenerd.github.io#readme",
     "devDependencies": {
+        "@11ty/eleventy": "^3.1.2",
+        "@types/luxon": "^3.7.1",
+        "@types/node": "^24.3.0",
+        "@types/react": "^19.1.11",
         "concurrently": "^9.2.1",
+        "cross-env": "^10.0.0",
+        "eleventy-plugin-embed-everything": "^1.21.0",
         "gray-matter": "^4.0.3",
+        "luxon": "^3.7.2",
         "prettier": "^3.6.2",
-        "prettier-plugin-go-template": "^0.0.15",
-        "sass": "^1.90.0"
+        "react": "^19.1.1",
+        "react-dom": "^19.1.1",
+        "rimraf": "^6.0.1",
+        "sass": "^1.90.0",
+        "tsx": "^4.20.5",
+        "typescript": "^5.9.2"
     }
 }

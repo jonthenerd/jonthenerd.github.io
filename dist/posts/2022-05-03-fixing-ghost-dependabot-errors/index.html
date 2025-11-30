@@ -1,0 +1,93 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;In a previous post, I wrote about how I moved this blog to Hugo. Since then, I&#x27;ve been receiving notifications from GitHub&#x27;s Dependabot about dependencies needing to be addressed... in the &lt;code&gt;Gemfile&lt;/code&gt; and &lt;code&gt;Gemfile.lock&lt;/code&gt;. These are two files that don&#x27;t exist in the repo or any branches.&lt;/p&gt;\n&lt;p&gt;I got tired of the emails and large yellow banner at the top of the repo. Time to hunt for a fix.&lt;/p&gt;\n&lt;!--more--&gt;\n&lt;p&gt;Some brief Googling later, I found that others have reported something similar to the Dependabot maintainers (see &lt;a href=\&quot;https://github.com/dependabot/dependabot-core/issues/2041\&quot;&gt;#2041, Dependabot reporting on deleted files&lt;/a&gt;). User wigsofoz &lt;a href=\&quot;https://github.com/dependabot/dependabot-core/issues/2041#issuecomment-747799414\&quot;&gt;posted a workaround&lt;/a&gt;, which worked for me overall. Here&#x27;s my modified steps:&lt;/p&gt;\n&lt;ol&gt;\n&lt;li&gt;On the repo in question, navigate to the dependency graph (tack &lt;code&gt;/network/dependencies&lt;/code&gt; onto the end of the repo URL).&lt;/li&gt;\n&lt;li&gt;Note the dependencies GitHub thinks you have from the non-existent dependency files.&lt;/li&gt;\n&lt;li&gt;Create files in your repo matching those that need to be deleted. For me, this was &lt;code&gt;Gemfile&lt;/code&gt;, &lt;code&gt;Gemfile.lock&lt;/code&gt;, and &lt;code&gt;yarn.lock&lt;/code&gt;&lt;/li&gt;\n&lt;li&gt;Populate each file with some text (I put a line of text in the Gemfile ones, and an empty JSON object in the yarn.lock)&lt;/li&gt;\n&lt;li&gt;Stage, commit, and push your changes.&lt;/li&gt;\n&lt;li&gt;Refresh the dependency graph screen. Note how the Gemfiles now don&#x27;t have any listed dependencies.&lt;/li&gt;\n&lt;li&gt;Delete all of you created junk files.&lt;/li&gt;\n&lt;li&gt;Stage, commit, and push your changes.&lt;/li&gt;\n&lt;li&gt;Refresh the dependency graph screen. Note that now the ghost dependency files have been removed.&lt;/li&gt;\n&lt;li&gt;Navigate back to your main repo page, observe how the giant Dependabot yellow banner is now gone (or it should be, unless you have legit dependencies that need some work).&lt;/li&gt;\n&lt;/ol&gt;\n&lt;p&gt;This should result in a few less emails and a few less swipes to delete them. Worth it.&lt;/p&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;Fixing Ghost Dependabot Errors&quot;,
+    &quot;date&quot;: &quot;2022-05-03T00:00:00.000Z&quot;,
+    &quot;categories&quot;: [
+        &quot;blogging&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2022-05-03-fixing-ghost-dependabot-errors.md&quot;,
+        &quot;fileSlug&quot;: &quot;fixing-ghost-dependabot-errors&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/fixing-ghost-dependabot-errors&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2022-05-03T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nIn a previous post, I wrote about how I moved this blog to Hugo. Since then, I&#x27;ve been receiving notifications from GitHub&#x27;s Dependabot about dependencies needing to be addressed... in the `Gemfile` and `Gemfile.lock`. These are two files that don&#x27;t exist in the repo or any branches.\n\nI got tired of the emails and large yellow banner at the top of the repo. Time to hunt for a fix.\n\n&lt;!--more--&gt;\n\nSome brief Googling later, I found that others have reported something similar to the Dependabot maintainers (see [#2041, Dependabot reporting on deleted files](https://github.com/dependabot/dependabot-core/issues/2041)). User wigsofoz [posted a workaround](https://github.com/dependabot/dependabot-core/issues/2041#issuecomment-747799414), which worked for me overall. Here&#x27;s my modified steps:\n\n1. On the repo in question, navigate to the dependency graph (tack `/network/dependencies` onto the end of the repo URL).\n2. Note the dependencies GitHub thinks you have from the non-existent dependency files.\n3. Create files in your repo matching those that need to be deleted. For me, this was `Gemfile`, `Gemfile.lock`, and `yarn.lock`\n4. Populate each file with some text (I put a line of text in the Gemfile ones, and an empty JSON object in the yarn.lock)\n5. Stage, commit, and push your changes.\n6. Refresh the dependency graph screen. Note how the Gemfiles now don&#x27;t have any listed dependencies.\n7. Delete all of you created junk files.\n8. Stage, commit, and push your changes.\n9. Refresh the dependency graph screen. Note that now the ghost dependency files have been removed.\n10. Navigate back to your main repo page, observe how the giant Dependabot yellow banner is now gone (or it should be, unless you have legit dependencies that need some work).\n\nThis should result in a few less emails and a few less swipes to delete them. Worth it.\n&quot;,
+        &quot;url&quot;: &quot;/posts/2022-05-03-fixing-ghost-dependabot-errors/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2022-05-03-fixing-ghost-dependabot-errors/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

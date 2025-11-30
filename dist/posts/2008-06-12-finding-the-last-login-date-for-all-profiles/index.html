@@ -1,0 +1,97 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;By day I am but an humble IT worker - currently tasked with maintaining and\nimproving scripts and tools that keep our enterprise workstations humming. My\nlargest project thus far has been an ever growing inventory script (now a .NET 2\napp) that reports information back to a SQL database. This app is run on a\nschedule by a service I wrote. The script collects great pieces of information -\neverything from the screen resolution being used to information on SQL Server\ninstances on the device (yep - inventories servers too!).&lt;/p&gt;\n&lt;p&gt;Anyway - one area that posed an issue was reporting back all profiles present on a\ncomputer and when they were last used. This can be done a number of ways - the\nsimplest of which being to enumerate the folders in the Documents and Settings\nfolder and then get the last modified date off of the ntuser.dat.log file within\neach directory. This file is a log (wow, couldn&#x27;t have guessed that!) of all\nregistry actions for that specific user&#x27;s registry hive - think everything under\nHKEY_CURRENT_USER while you&#x27;re logged in. This works great - and has for a long\ntime. Recent developments have changed some of that though...&lt;/p&gt;\n&lt;p&gt;What happens when AntiVirus crawls each user&#x27;s registry hive? It updates that file.\nSuddenly the inventory app was reporting each profile to be current as of the\nday the app was run...not good. I searched a long time via the Internet - and\njust poking around the registry for days. WMI didnt&#x27; help any - and neither did\na hunch I had about using the local computer as an Active Directory forest to\nfind the last login time. I came across another file you can check - and I\nbelieve I&#x27;m the first on the net to post this.&lt;/p&gt;\n&lt;p&gt;Check the file date on this file:&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;C:\\Documents and Settings\\&amp;lt;user&amp;gt;\\Local Settings\\Application Data\\Microsoft\\Windows\\UsrClass.dat.LOG\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;This has proved to be a reliable way of getting the last login time for each profile when\nthe other log file isn&#x27;t reliable. I suspect that it may be updated on certain\nsoftware installations - so beware. But in my case - this was a life saver. Have\nfun and let me know if it helps!&lt;/p&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;Windows&quot;,
+        &quot;.NET&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;Finding the last login date for all profiles&quot;,
+    &quot;date&quot;: &quot;2008-06-12&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;Programming&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;finding-the-last-login-date-for-all-profiles&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2008-06-12-finding-the-last-login-date-for-all-profiles.md&quot;,
+        &quot;fileSlug&quot;: &quot;finding-the-last-login-date-for-all-profiles&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/finding-the-last-login-date-for-all-profiles&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2008-06-12T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nBy day I am but an humble IT worker - currently tasked with maintaining and\nimproving scripts and tools that keep our enterprise workstations humming. My\nlargest project thus far has been an ever growing inventory script (now a .NET 2\napp) that reports information back to a SQL database. This app is run on a\nschedule by a service I wrote. The script collects great pieces of information -\neverything from the screen resolution being used to information on SQL Server\ninstances on the device (yep - inventories servers too!).\n\nAnyway - one area that posed an issue was reporting back all profiles present on a\ncomputer and when they were last used. This can be done a number of ways - the\nsimplest of which being to enumerate the folders in the Documents and Settings\nfolder and then get the last modified date off of the ntuser.dat.log file within\neach directory. This file is a log (wow, couldn&#x27;t have guessed that!) of all\nregistry actions for that specific user&#x27;s registry hive - think everything under\nHKEY_CURRENT_USER while you&#x27;re logged in. This works great - and has for a long\ntime. Recent developments have changed some of that though...\n\nWhat happens when AntiVirus crawls each user&#x27;s registry hive? It updates that file.\nSuddenly the inventory app was reporting each profile to be current as of the\nday the app was run...not good. I searched a long time via the Internet - and\njust poking around the registry for days. WMI didnt&#x27; help any - and neither did\na hunch I had about using the local computer as an Active Directory forest to\nfind the last login time. I came across another file you can check - and I\nbelieve I&#x27;m the first on the net to post this.\n\nCheck the file date on this file:\n\n```\nC:\\Documents and Settings\\&lt;user&gt;\\Local Settings\\Application Data\\Microsoft\\Windows\\UsrClass.dat.LOG\n```\n\nThis has proved to be a reliable way of getting the last login time for each profile when\nthe other log file isn&#x27;t reliable. I suspect that it may be updated on certain\nsoftware installations - so beware. But in my case - this was a life saver. Have\nfun and let me know if it helps!\n&quot;,
+        &quot;url&quot;: &quot;/posts/2008-06-12-finding-the-last-login-date-for-all-profiles/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2008-06-12-finding-the-last-login-date-for-all-profiles/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

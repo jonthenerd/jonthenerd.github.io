@@ -1,0 +1,99 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;I&#x27;m doing research to better understand the padding oracle attack that was\nrecently disclosed to affect ASP.NET and thought to provide a quick list of\nlinks that I&#x27;ve found most helpful:&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&quot;http://blogs.msdn.com/b/sharepoint/archive/2010/09/21/security-advisory-2416728-vulnerability-in-asp-net-and-sharepoint.aspx\&quot;&gt;Microsoft SharePoint Team Blog: Security Advisory 2416728 (Vulnerability in ASP.NET) and SharePoint&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&quot;http://www.gdssecurity.com/l/b/2010/09/14/automated-padding-oracle-attacks-with-padbuster/\&quot;&gt;Automated Padding Oracle Attacks with PadBuster&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&quot;http://www.acunetix.com/blog/news/check-application-vulnerable-asp-net-padding-oracle-vulnerability/\&quot;&gt;How to check if your application is vulnerable to the ASP.NET Padding Oracle Vulnerability&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&quot;http://forums.asp.net/p/1604549/4090643.aspx\&quot;&gt;Duncan Smart&#x27;s post on ASP.NET detailing how to check if your application masks the oracle&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&quot;http://blog.dotsmart.net/2010/09/22/asp-net-padding-oracle-detector/\&quot;&gt;Duncan Smart&#x27;s blog entry on the matter (with link to a wsh script to use for testing)&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&quot;http://forums.asp.net/t/1604739.aspx\&quot;&gt;ASP.NET forum post dealing with classic ASP. Guess what - your ASP site may be vulnerable if you haven&#x27;t disabled some ASP.NET features&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;The ASP Classic is the most unexpected bit to me, but makes perfect sense.&lt;/p&gt;\n&lt;p&gt;Update: Patch your servers, as the padding oracle is\n&lt;a href=\&quot;http://blog.mindedsecurity.com/2010/10/breaking-net-encryption-with-or-without.html\&quot;&gt;no longer needed&lt;/a&gt;.\nThanks Matt!&lt;/p&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;ASP.NET&quot;,
+        &quot;Padding Oracle&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;ASP.NET Padding Oracle&quot;,
+    &quot;date&quot;: &quot;2010-09-22&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;SysAdmin&quot;,
+        &quot;Programming&quot;,
+        &quot;Security&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;asp-net-padding-oracle&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2010-09-22-asp-net-padding-oracle.md&quot;,
+        &quot;fileSlug&quot;: &quot;asp-net-padding-oracle&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/asp-net-padding-oracle&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2010-09-22T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nI&#x27;m doing research to better understand the padding oracle attack that was\nrecently disclosed to affect ASP.NET and thought to provide a quick list of\nlinks that I&#x27;ve found most helpful:\n\n-   [Microsoft SharePoint Team Blog: Security Advisory 2416728 (Vulnerability in ASP.NET) and SharePoint](http://blogs.msdn.com/b/sharepoint/archive/2010/09/21/security-advisory-2416728-vulnerability-in-asp-net-and-sharepoint.aspx)\n-   [Automated Padding Oracle Attacks with PadBuster](http://www.gdssecurity.com/l/b/2010/09/14/automated-padding-oracle-attacks-with-padbuster/)\n-   [How to check if your application is vulnerable to the ASP.NET Padding Oracle Vulnerability](http://www.acunetix.com/blog/news/check-application-vulnerable-asp-net-padding-oracle-vulnerability/)\n-   [Duncan Smart&#x27;s post on ASP.NET detailing how to check if your application masks the oracle](http://forums.asp.net/p/1604549/4090643.aspx)\n-   [Duncan Smart&#x27;s blog entry on the matter (with link to a wsh script to use for testing)](http://blog.dotsmart.net/2010/09/22/asp-net-padding-oracle-detector/)\n-   [ASP.NET forum post dealing with classic ASP. Guess what - your ASP site may be vulnerable if you haven&#x27;t disabled some ASP.NET features](http://forums.asp.net/t/1604739.aspx)\n\nThe ASP Classic is the most unexpected bit to me, but makes perfect sense.\n\nUpdate: Patch your servers, as the padding oracle is\n[no longer needed](http://blog.mindedsecurity.com/2010/10/breaking-net-encryption-with-or-without.html).\nThanks Matt!\n&quot;,
+        &quot;url&quot;: &quot;/posts/2010-09-22-asp-net-padding-oracle/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2010-09-22-asp-net-padding-oracle/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

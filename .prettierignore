@@ -1,5 +1,2 @@
-.cache
 node_modules
-public
-layouts
-*.md
+dist

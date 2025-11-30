@@ -1,0 +1,96 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;Scenario:&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;SharePoint 2013&lt;/li&gt;\n&lt;li&gt;You&#x27;ve created some site columns, added them to a content type, then added\nthat content type to a list/library.&lt;/li&gt;\n&lt;li&gt;You add some test data.&lt;/li&gt;\n&lt;li&gt;Run a full crawl.&lt;/li&gt;\n&lt;li&gt;Create managed properties, mapping them to the crawled properties.&lt;/li&gt;\n&lt;li&gt;Run another full crawl (to populate the managed properties)&lt;/li&gt;\n&lt;li&gt;Managed properties on search results are missing.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;What do you do now?&lt;/p&gt;\n&lt;!--more--&gt;\n&lt;ul&gt;\n&lt;li&gt;Run another full crawl and check again.&lt;/li&gt;\n&lt;li&gt;Wonder why it&#x27;s still not working.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;What else has worked for me? Clear the SharePoint Config Cache. This is\nreferenced in a\n&lt;a href=\&quot;https://sharepoint.stackexchange.com/questions/122486/new-managed-properties-dont-contain-values\&quot;&gt;Stack Overflow Question&lt;/a&gt;\nand it references a\n&lt;a href=\&quot;https://blogs.technet.microsoft.com/sp/?p=373\&quot;&gt;Technet article&lt;/a&gt;. However, the\nSO question is out of date with the article and the article has some incorrect\nquotes, making copy+paste fail. Here&#x27;s the technet article code cleaned up a\nbit.&lt;/p&gt;\n&lt;p&gt;After clearing the config cache, run a full crawl. I&#x27;ve had success in this\nallowing Managed Properties to be populated with data and present when the above\nsteps didn&#x27;t work.&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&quot;language-powershell\&quot;&gt;Add-PSSnapin -Name Microsoft.SharePoint.PowerShell -ErrorAction SilentlyContinue;\n\nwrite-host &amp;quot;CLEAR CONFIG CACHE ON FARM&amp;quot; -F Green;\n\n$servers = get-spserver | ?{$_.role -eq &amp;quot;Application&amp;quot;}\nforeach ($server in $servers)\n{\n    $servername = $server.Address;\n    write-host &amp;quot;Stop Timer Service on server $servername&amp;quot; -F Yellow;\n    (Get-WmiObject Win32_Service -filter &amp;quot;name=&#x27;SPTimerV4&#x27;&amp;quot; -ComputerName $servername).stopservice() | Out-Null;\n}\n\nforeach ($server in $servers)\n{\n    $servername = $server.Address;\n    $folders = Get-ChildItem (&amp;quot;\\\\&amp;quot; + $servername + &amp;quot;\\C$\\ProgramData\\Microsoft\\SharePoint\\Config&amp;quot;);\n\n    foreach ($folder in $folders)\n    {\n        $items = Get-ChildItem $folder.FullName -Recurse;\n        foreach ($item in $items)\n        {\n            if ($item.Name.ToLower() -eq &amp;quot;cache.ini&amp;quot;)\n            {\n                $cachefolder = $folder.FullName;\n            }\n        }\n    }\n\n    write-host &amp;quot;Found CacheFolder on Server $servername = $cachefolder&amp;quot; -F Yellow;\n    $cachefolderitems = Get-ChildItem $cachefolder -Recurse;\n\n    write-host &amp;quot;Delete all XMQL Files inside this CacheFolder&amp;quot; -F Yellow;\n    foreach ($cachefolderitem in $cachefolderitems)\n    {\n        if ($cachefolderitem -like &amp;quot;*.xml&amp;quot;)\n        {\n            $cachefolderitem.Delete();\n        }\n    }\n\n    $a = Get-Content $cachefolder\\cache.ini;\n    $a = 1;\n    write-host &amp;quot;Creating a new Cache.ini File on server $servername&amp;quot; -F Yellow;\n    Set-Content $a -Path $cachefolder\\cache.ini;\n}\n\nforeach ($server in $servers)\n{\n    $servername = $server.Address;\n    write-host &amp;quot;START Timer Service on server $servername&amp;quot; -F Yellow;\n    (Get-WmiObject Win32_Service -filter &amp;quot;name=&#x27;SPTimerV4&#x27;&amp;quot; -ComputerName $servername).startservice() | Out-Null;\n}\n&lt;/code&gt;&lt;/pre&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;SharePoint&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;SharePoint: Search Managed Properties missing after full crawl&quot;,
+    &quot;date&quot;: &quot;2017-09-16&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;SysAdmin&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;managed-props-and-config-cache&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2017-09-16-managed-props-and-config-cache.md&quot;,
+        &quot;fileSlug&quot;: &quot;managed-props-and-config-cache&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/managed-props-and-config-cache&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2017-09-16T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nScenario:\n\n-   SharePoint 2013\n-   You&#x27;ve created some site columns, added them to a content type, then added\n    that content type to a list/library.\n-   You add some test data.\n-   Run a full crawl.\n-   Create managed properties, mapping them to the crawled properties.\n-   Run another full crawl (to populate the managed properties)\n-   Managed properties on search results are missing.\n\nWhat do you do now?\n\n&lt;!--more--&gt;\n\n-   Run another full crawl and check again.\n-   Wonder why it&#x27;s still not working.\n\nWhat else has worked for me? Clear the SharePoint Config Cache. This is\nreferenced in a\n[Stack Overflow Question](https://sharepoint.stackexchange.com/questions/122486/new-managed-properties-dont-contain-values)\nand it references a\n[Technet article](https://blogs.technet.microsoft.com/sp/?p=373). However, the\nSO question is out of date with the article and the article has some incorrect\nquotes, making copy+paste fail. Here&#x27;s the technet article code cleaned up a\nbit.\n\nAfter clearing the config cache, run a full crawl. I&#x27;ve had success in this\nallowing Managed Properties to be populated with data and present when the above\nsteps didn&#x27;t work.\n\n```powershell\nAdd-PSSnapin -Name Microsoft.SharePoint.PowerShell -ErrorAction SilentlyContinue;\n\nwrite-host \&quot;CLEAR CONFIG CACHE ON FARM\&quot; -F Green;\n\n$servers = get-spserver | ?{$_.role -eq \&quot;Application\&quot;}\nforeach ($server in $servers)\n{\n    $servername = $server.Address;\n    write-host \&quot;Stop Timer Service on server $servername\&quot; -F Yellow;\n    (Get-WmiObject Win32_Service -filter \&quot;name=&#x27;SPTimerV4&#x27;\&quot; -ComputerName $servername).stopservice() | Out-Null;\n}\n\nforeach ($server in $servers)\n{\n    $servername = $server.Address;\n    $folders = Get-ChildItem (\&quot;\\\\\&quot; + $servername + \&quot;\\C$\\ProgramData\\Microsoft\\SharePoint\\Config\&quot;);\n\n    foreach ($folder in $folders)\n    {\n        $items = Get-ChildItem $folder.FullName -Recurse;\n        foreach ($item in $items)\n        {\n            if ($item.Name.ToLower() -eq \&quot;cache.ini\&quot;)\n            {\n                $cachefolder = $folder.FullName;\n            }\n        }\n    }\n\n    write-host \&quot;Found CacheFolder on Server $servername = $cachefolder\&quot; -F Yellow;\n    $cachefolderitems = Get-ChildItem $cachefolder -Recurse;\n\n    write-host \&quot;Delete all XMQL Files inside this CacheFolder\&quot; -F Yellow;\n    foreach ($cachefolderitem in $cachefolderitems)\n    {\n        if ($cachefolderitem -like \&quot;*.xml\&quot;)\n        {\n            $cachefolderitem.Delete();\n        }\n    }\n\n    $a = Get-Content $cachefolder\\cache.ini;\n    $a = 1;\n    write-host \&quot;Creating a new Cache.ini File on server $servername\&quot; -F Yellow;\n    Set-Content $a -Path $cachefolder\\cache.ini;\n}\n\nforeach ($server in $servers)\n{\n    $servername = $server.Address;\n    write-host \&quot;START Timer Service on server $servername\&quot; -F Yellow;\n    (Get-WmiObject Win32_Service -filter \&quot;name=&#x27;SPTimerV4&#x27;\&quot; -ComputerName $servername).startservice() | Out-Null;\n}\n```\n&quot;,
+        &quot;url&quot;: &quot;/posts/2017-09-16-managed-props-and-config-cache/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2017-09-16-managed-props-and-config-cache/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

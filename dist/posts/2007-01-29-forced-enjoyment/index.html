@@ -1,0 +1,100 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;This isn&#x27;t the first time I&#x27;ve tried Ubuntu (or Linux for that matter). Several\ntimes in the past few years (since 2002 actually), I&#x27;d get the &amp;quot;Linux Bug&amp;quot; and\nrepartition my hard drive to be able to try out some new distro. This would\nnormally come about after I&#x27;d read some positive review of said distro (or from\na friend). What have I tried in the past? I started out on Mandrake (now\nMandriva), moved to SUSE 8 &amp;amp; 9, then MEPIS (great distro btw), and now Ubuntu.\nAt each step, the experience has gotten better - but I&#x27;d always switch back to\nusing Windows full time for some reason or another. This typically took about\n2-3 days. Sometimes only hours.&lt;/p&gt;\n&lt;p&gt;Why only hours? HP Laserjet 1020. I bought this excellent printer a while back and absolutely love it. No more\nexpensive ink every 2 months for me! One problem though...this printer has some\nodd quirks under Linux. Last I looked, the best support for it had gotten was\nhaving the ability to print up to 20 pages - then you&#x27;d have to power cycle the\nprinter. So this PC has been only Linux for over a week now...why? I don&#x27;t print\nfrom it.&lt;/p&gt;\n&lt;p&gt;With Windows XP still on my main PC, I&#x27;ve been free to\ncontinue my fun Linux project without interruption. The more I use it - the more\nI discover that it has every bit of functionality my Windows box has (except\nprinting of course) and then some. Some favorite applications I&#x27;ve\ndiscovered:&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&quot;http://amarok.kde.org/\&quot;&gt;Amarok&lt;/a&gt; - best\nmedia player I&#x27;ve used in years. I&#x27;ve been using Winamp since the 1.x days...and\nstill do (5.x) on my Windows machine. I&#x27;d tried iTunes but didn&#x27;t like it.\nAmarok is fantastic and truly deserves a Windows\nport.&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&quot;https://apps.kde.org/ktorrent/\&quot;&gt;kTorrent&lt;/a&gt; - &lt;a href=\&quot;http://en.wikipedia.org/wiki/BitTorrent\&quot;&gt;BitTorrent&lt;/a&gt; Client. On\nWindows I&#x27;ve stuck with &lt;a href=\&quot;http://azureus.sourceforge.net/\&quot;&gt;Azureus&lt;/a&gt;.\nIt&#x27;s stable, has lots of features, etc. I tried it under Ubuntu and had lots of\nlittle issues...overdownloading, NAT/DHT connection problems (not fixed by port\nforwarding, etc.), and even the occasional lock-up. I researched a while and\nlots of people say to run uTorrent under wine. No thanks. kTorrent apparently is\nmuch like uTorrent anyway. It&#x27;s completely stable, no NAT problems (or DHT).\nEven integrates well into GNome (despite it&#x27;s KDE\nroots).&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&quot;http://en.wikipedia.org/wiki/GKrellM\&quot;&gt;GKrellM&lt;/a&gt; -\nSystem Monitor. Nice small out of the way utility that&#x27;ll let you know\nCPU/memory/ethernet\ndetails.&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&quot;http://www.mplayerhq.hu/design7/news.html\&quot;&gt;MPlayer&lt;/a&gt; -\nMedia Player that will play ANYTHING. For all your avi/h264\nneeds.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;These are pretty standard apps for Linux users, it seems.\nThey&#x27;ve got equally viable ports or competitors on the Windows front - but I&#x27;m\njust happy they exist for Linux and have fairly decent GUI design (excellent in\nsome cases). GUI design has always been lacking on Linux, in my opinion\n(specifically programs that you want to use on a typical desktop that have no\nGUI frontend). I&#x27;m really enjoying my current setup and don&#x27;t have ANY plans to\nchange back to Windows on this media center Linux box.&lt;/p&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;Linux&quot;,
+        &quot;ubuntu&quot;,
+        &quot;Open Source&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;Forced Enjoyment&quot;,
+    &quot;date&quot;: &quot;2007-01-29&quot;,
+    &quot;slug&quot;: &quot;forced-enjoyment&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;Linux&quot;,
+        &quot;Computing&quot;,
+        &quot;Software&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2007-01-29-forced-enjoyment.md&quot;,
+        &quot;fileSlug&quot;: &quot;forced-enjoyment&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/forced-enjoyment&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2007-01-29T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nThis isn&#x27;t the first time I&#x27;ve tried Ubuntu (or Linux for that matter). Several\ntimes in the past few years (since 2002 actually), I&#x27;d get the \&quot;Linux Bug\&quot; and\nrepartition my hard drive to be able to try out some new distro. This would\nnormally come about after I&#x27;d read some positive review of said distro (or from\na friend). What have I tried in the past? I started out on Mandrake (now\nMandriva), moved to SUSE 8 &amp; 9, then MEPIS (great distro btw), and now Ubuntu.\nAt each step, the experience has gotten better - but I&#x27;d always switch back to\nusing Windows full time for some reason or another. This typically took about\n2-3 days. Sometimes only hours.\n\nWhy only hours? HP Laserjet 1020. I bought this excellent printer a while back and absolutely love it. No more\nexpensive ink every 2 months for me! One problem though...this printer has some\nodd quirks under Linux. Last I looked, the best support for it had gotten was\nhaving the ability to print up to 20 pages - then you&#x27;d have to power cycle the\nprinter. So this PC has been only Linux for over a week now...why? I don&#x27;t print\nfrom it.\n\nWith Windows XP still on my main PC, I&#x27;ve been free to\ncontinue my fun Linux project without interruption. The more I use it - the more\nI discover that it has every bit of functionality my Windows box has (except\nprinting of course) and then some. Some favorite applications I&#x27;ve\ndiscovered:\n\n-   [Amarok](http://amarok.kde.org/) - best\n    media player I&#x27;ve used in years. I&#x27;ve been using Winamp since the 1.x days...and\n    still do (5.x) on my Windows machine. I&#x27;d tried iTunes but didn&#x27;t like it.\n    Amarok is fantastic and truly deserves a Windows\n    port.\n-   [kTorrent](https://apps.kde.org/ktorrent/) - [BitTorrent](http://en.wikipedia.org/wiki/BitTorrent) Client. On\n    Windows I&#x27;ve stuck with [Azureus](http://azureus.sourceforge.net/).\n    It&#x27;s stable, has lots of features, etc. I tried it under Ubuntu and had lots of\n    little issues...overdownloading, NAT/DHT connection problems (not fixed by port\n    forwarding, etc.), and even the occasional lock-up. I researched a while and\n    lots of people say to run uTorrent under wine. No thanks. kTorrent apparently is\n    much like uTorrent anyway. It&#x27;s completely stable, no NAT problems (or DHT).\n    Even integrates well into GNome (despite it&#x27;s KDE\n    roots).\n-   [GKrellM](http://en.wikipedia.org/wiki/GKrellM) -\n    System Monitor. Nice small out of the way utility that&#x27;ll let you know\n    CPU/memory/ethernet\n    details.\n-   [MPlayer](http://www.mplayerhq.hu/design7/news.html) -\n    Media Player that will play ANYTHING. For all your avi/h264\n    needs.\n\nThese are pretty standard apps for Linux users, it seems.\nThey&#x27;ve got equally viable ports or competitors on the Windows front - but I&#x27;m\njust happy they exist for Linux and have fairly decent GUI design (excellent in\nsome cases). GUI design has always been lacking on Linux, in my opinion\n(specifically programs that you want to use on a typical desktop that have no\nGUI frontend). I&#x27;m really enjoying my current setup and don&#x27;t have ANY plans to\nchange back to Windows on this media center Linux box.\n&quot;,
+        &quot;url&quot;: &quot;/posts/2007-01-29-forced-enjoyment/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2007-01-29-forced-enjoyment/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

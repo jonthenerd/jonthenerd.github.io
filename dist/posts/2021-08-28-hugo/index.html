@@ -1,0 +1,95 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;I decided to rebuild my blog atop &lt;a href=\&quot;https://gohugo.io/\&quot;&gt;Hugo&lt;/a&gt;, the &amp;quot;world&#x27;s fastest framework for building websites.&amp;quot; I did this for a few reasons:&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;\n&lt;p&gt;GitHub has been diligent in reminding me that there are security vulnerabilities in the dependencies of my blog. I used jekyll for the static site building, a collection of npm packages for some glue-code in the build process, and based my theme on twitter bootstrap. All of this adds up to a lot of dependencies to keep up with, and I haven&#x27;t been blogging for a while...&lt;/p&gt;\n&lt;p&gt;&lt;img src=\&quot;/assets/images/2021-08-28-hugo/dependabot.png\&quot; alt=\&quot;Dependabot\&quot;&gt;&lt;/p&gt;\n&lt;p&gt;Hugo is a single file that&#x27;s only needed when you build the site. Outside of that, I&#x27;ll need just enough from NPM to roll my stylesheets. We&#x27;ll see how long I keep it that slim.&lt;/p&gt;\n&lt;/li&gt;\n&lt;li&gt;\n&lt;p&gt;My site used Twitter Bootstrap as the base for its theme. This was fine at the time, as much of my work centered around usage of the framework and leveraging it for my blog felt like a good learning experience and a nice looking site. These days, my focus seems to be all about fast rendering, minimal payload, and using the latest HTML and CSS techniques to keep React components lightweight and simple to maintain. Twitter Bootstrap isn&#x27;t as popular as it once was either.&lt;/p&gt;\n&lt;p&gt;I&#x27;ve come to appreciate much simpler looking blogs and wanted the payload to be incredibly slim. While there are several static site generators popular right now, Hugo is the fastest and most capable of keeping the site lightweight. I thought hard about using &lt;a href=\&quot;https://www.gatsbyjs.com/\&quot;&gt;Gatsby&lt;/a&gt; as I&#x27;d be able to use TypeScript &amp;amp; React (which I really enjoy), but decided I didn&#x27;t need a Progressive Web App for my blog. I just wanted simple and fast.&lt;/p&gt;\n&lt;/li&gt;\n&lt;li&gt;\n&lt;p&gt;&lt;a href=\&quot;https://golang.org/\&quot;&gt;Go&lt;/a&gt;. Never used it. Didn&#x27;t think I&#x27;d have reason to. Turns out, &lt;a href=\&quot;https://www.terraform.io/\&quot;&gt;Terraform&lt;/a&gt; and particularly &lt;a href=\&quot;https://terratest.gruntwork.io/\&quot;&gt;Terratest&lt;/a&gt; can use it for unit testing your Infrastructure as Code. In my current line of work, this is becoming increasingly more important. Hugo is built on Go. This doesn&#x27;t seem like much of a reason, but it was enough to tip me toward using it.&lt;/p&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;Maybe with less need to update dependencies I&#x27;ll blog more often, with less dread of having to update dependencies before I can post. We&#x27;ll see. The site is going to look mighty plain for a while until I can put a little more time into the pretty side of things. Simple is good though. It will feel like a more modern version of the early world wide web. :smile:&lt;/p&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;Hugo&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;Hugo&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;date&quot;: &quot;2021-08-28T20:08:02.000Z&quot;,
+    &quot;draft&quot;: false,
+    &quot;categories&quot;: [
+        &quot;blogging&quot;
+    ],
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2021-08-28-hugo.md&quot;,
+        &quot;fileSlug&quot;: &quot;hugo&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/hugo&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2021-08-28T20:08:02.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nI decided to rebuild my blog atop [Hugo](https://gohugo.io/), the \&quot;world&#x27;s fastest framework for building websites.\&quot; I did this for a few reasons:\n\n-   GitHub has been diligent in reminding me that there are security vulnerabilities in the dependencies of my blog. I used jekyll for the static site building, a collection of npm packages for some glue-code in the build process, and based my theme on twitter bootstrap. All of this adds up to a lot of dependencies to keep up with, and I haven&#x27;t been blogging for a while...\n\n    ![Dependabot](/assets/images/2021-08-28-hugo/dependabot.png)\n\n    Hugo is a single file that&#x27;s only needed when you build the site. Outside of that, I&#x27;ll need just enough from NPM to roll my stylesheets. We&#x27;ll see how long I keep it that slim.\n\n-   My site used Twitter Bootstrap as the base for its theme. This was fine at the time, as much of my work centered around usage of the framework and leveraging it for my blog felt like a good learning experience and a nice looking site. These days, my focus seems to be all about fast rendering, minimal payload, and using the latest HTML and CSS techniques to keep React components lightweight and simple to maintain. Twitter Bootstrap isn&#x27;t as popular as it once was either.\n\n    I&#x27;ve come to appreciate much simpler looking blogs and wanted the payload to be incredibly slim. While there are several static site generators popular right now, Hugo is the fastest and most capable of keeping the site lightweight. I thought hard about using [Gatsby](https://www.gatsbyjs.com/) as I&#x27;d be able to use TypeScript &amp; React (which I really enjoy), but decided I didn&#x27;t need a Progressive Web App for my blog. I just wanted simple and fast.\n\n-   [Go](https://golang.org/). Never used it. Didn&#x27;t think I&#x27;d have reason to. Turns out, [Terraform](https://www.terraform.io/) and particularly [Terratest](https://terratest.gruntwork.io/) can use it for unit testing your Infrastructure as Code. In my current line of work, this is becoming increasingly more important. Hugo is built on Go. This doesn&#x27;t seem like much of a reason, but it was enough to tip me toward using it.\n\nMaybe with less need to update dependencies I&#x27;ll blog more often, with less dread of having to update dependencies before I can post. We&#x27;ll see. The site is going to look mighty plain for a while until I can put a little more time into the pretty side of things. Simple is good though. It will feel like a more modern version of the early world wide web. :smile:\n&quot;,
+        &quot;url&quot;: &quot;/posts/2021-08-28-hugo/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2021-08-28-hugo/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

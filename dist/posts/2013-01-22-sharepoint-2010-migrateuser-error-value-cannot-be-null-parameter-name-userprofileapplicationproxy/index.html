@@ -1,0 +1,96 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;When using the stsadm command:&lt;/p&gt;\n&lt;p&gt;stsadm.exe -o migrateuser oldlogin &amp;quot;domainusername&amp;quot; -newlogin\n&amp;quot;domainnewusername&amp;quot;&lt;/p&gt;\n&lt;p&gt;We received this error message:&lt;/p&gt;\n&lt;p&gt;Value cannot be null. Parameter name: userProfileApplicationProxy&lt;/p&gt;\n&lt;p&gt;If you look in the ULS logs, you&#x27;ll find that there is an Access Denied event\noccuring. We were able to resolve this by going into Central Administration,\nselecting the User Service Application, and ensuring that the administrator\naccount being used to run the above command has Full Control rights to the\nService Application. You can find this by going to the following in Central\nAdministration:&lt;/p&gt;\n&lt;p&gt;Application Management -&amp;gt; Manage Service Applications -&amp;gt; Select, but do\nnot follow the link for your User Profile Sync service -&amp;gt; The &amp;quot;Permissions&amp;quot;\nbutton in the ribbon&lt;/p&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;SharePoint&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;SharePoint 2010 - MigrateUser Error &#x27;Value cannot be null. Parameter name: userProfileApplicationProxy&#x27;&quot;,
+    &quot;date&quot;: &quot;2013-01-22&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;SysAdmin&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2013-01-22-sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy.md&quot;,
+        &quot;fileSlug&quot;: &quot;sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2013-01-22T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nWhen using the stsadm command:\n\nstsadm.exe -o migrateuser oldlogin \&quot;domainusername\&quot; -newlogin\n\&quot;domainnewusername\&quot;\n\nWe received this error message:\n\nValue cannot be null. Parameter name: userProfileApplicationProxy\n\nIf you look in the ULS logs, you&#x27;ll find that there is an Access Denied event\noccuring. We were able to resolve this by going into Central Administration,\nselecting the User Service Application, and ensuring that the administrator\naccount being used to run the above command has Full Control rights to the\nService Application. You can find this by going to the following in Central\nAdministration:\n\nApplication Management -&amp;gt; Manage Service Applications -&amp;gt; Select, but do\nnot follow the link for your User Profile Sync service -&amp;gt; The \&quot;Permissions\&quot;\nbutton in the ribbon\n&quot;,
+        &quot;url&quot;: &quot;/posts/2013-01-22-sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2013-01-22-sharepoint-2010-migrateuser-error-value-cannot-be-null-parameter-name-userprofileapplicationproxy/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

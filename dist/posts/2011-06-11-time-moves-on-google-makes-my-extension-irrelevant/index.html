@@ -1,0 +1,95 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;|- And that&#x27;s a good thing! This morning while working to improve my extension\nfor Google Calendar, I noticed that Google had added the ability to print\nmultiple weeks or months straight from the Google Calendar. So where does that\nleave my extension? Well... unpublished and deleted at this point. I don&#x27;t see\nany reason to still make the extension available, maintain it, etc. if you can\nget the same or better experience straight from Google Calendar. I knew this\nwould happen at some point. Heck - I was using Google&#x27;s own url to generate the\nprintable calendar with a different date range than they were feeding in. A\nlarge part of me is glad that Google finally got around to putting this\nfunctionality in. I&#x27;m experiencing a different subset of emotion though. It&#x27;s a\nnew thing for me. A personal project of mine is no longer needed and is no\nlonger free and available. The closest thing I can compare the emotion to is\nsomeone telling you your volunteer services are no longer needed (and they\nreplaced you with some computer software). It&#x27;s really quite an odd feeling.\nDon&#x27;t understand me though, I&#x27;m very glad that Google put this in place. In\nfact - &lt;strong&gt;it&#x27;s about time!&lt;/strong&gt; As the extension is the only free\nproject I&#x27;ve produced and supported, I feel a little empty without it. What a\nstrange world this is... where developers feel attached to the code they&#x27;ve\nwritten and released for others&#x27; enjoyment. Guess I&#x27;ll need to find something\nelse to build and give away!&lt;/p&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;Time moves on. Google makes my extension irrelevant&quot;,
+    &quot;date&quot;: &quot;2011-06-11&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;Programming&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;time-moves-on-google-makes-my-extension-irrelevant&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2011-06-11-time-moves-on-google-makes-my-extension-irrelevant.md&quot;,
+        &quot;fileSlug&quot;: &quot;time-moves-on-google-makes-my-extension-irrelevant&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/time-moves-on-google-makes-my-extension-irrelevant&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2011-06-11T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\n|- And that&#x27;s a good thing! This morning while working to improve my extension\nfor Google Calendar, I noticed that Google had added the ability to print\nmultiple weeks or months straight from the Google Calendar. So where does that\nleave my extension? Well... unpublished and deleted at this point. I don&#x27;t see\nany reason to still make the extension available, maintain it, etc. if you can\nget the same or better experience straight from Google Calendar. I knew this\nwould happen at some point. Heck - I was using Google&#x27;s own url to generate the\nprintable calendar with a different date range than they were feeding in. A\nlarge part of me is glad that Google finally got around to putting this\nfunctionality in. I&#x27;m experiencing a different subset of emotion though. It&#x27;s a\nnew thing for me. A personal project of mine is no longer needed and is no\nlonger free and available. The closest thing I can compare the emotion to is\nsomeone telling you your volunteer services are no longer needed (and they\nreplaced you with some computer software). It&#x27;s really quite an odd feeling.\nDon&#x27;t understand me though, I&#x27;m very glad that Google put this in place. In\nfact - **it&#x27;s about time!** As the extension is the only free\nproject I&#x27;ve produced and supported, I feel a little empty without it. What a\nstrange world this is... where developers feel attached to the code they&#x27;ve\nwritten and released for others&#x27; enjoyment. Guess I&#x27;ll need to find something\nelse to build and give away!\n&quot;,
+        &quot;url&quot;: &quot;/posts/2011-06-11-time-moves-on-google-makes-my-extension-irrelevant/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2011-06-11-time-moves-on-google-makes-my-extension-irrelevant/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

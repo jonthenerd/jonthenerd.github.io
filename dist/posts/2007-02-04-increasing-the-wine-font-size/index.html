@@ -1,0 +1,98 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;Thus far in using Ubuntu, I&#x27;ve been able to use only Linux applications. I&#x27;ll\nadmit that some of them were just ports of their Windows or Mac OS X\ncounterparts...but I never had to install wine (a compatibility layer for\nrunning Windows programs). Well you know that torrent app I recommended?\nkTorrent? It&#x27;s crashed on me several times in the last couple days...and ate up\nevery bit of memory the system had this morning. I went looking for a better\nalternative and my only choice was to use uTorrent under wine. No\nproblem!&lt;/p&gt;\n&lt;p&gt;Wine is only a synaptic click away. Running utorrent under\nit is a simple affair too. I found this tutorial\n&lt;em&gt;very&lt;/em&gt; helpful:\n&lt;a href=\&quot;http://www.ubuntuforums.org/showthread.php?t=191161\&quot;&gt;Using utorrent with wine - Ubuntu Forums&lt;/a&gt;&lt;/p&gt;\n&lt;p&gt;However, since my primary monitor is a\n32&amp;quot; LCD and I&#x27;m at about an 8-10 foot distance from it - the font size needs to\nbe increased. Under windows this is a simple task...but under Wine = not so\nmuch. I think this is something that NEEDS to be put into the wine configuration\napp. Anyway - here&#x27;s how it&#x27;s done.&lt;/p&gt;\n&lt;p&gt;First - close any applications that are running under wine.&lt;/p&gt;\n&lt;p&gt;To change the size of any menu font - you&#x27;ll need to edit the win.ini under the following\nfolder: &lt;code&gt;/home/yourusername/.wine/&lt;/code&gt;&lt;/p&gt;\n&lt;p&gt;Add the following information to the win.ini file:&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;[Desktop]\nMenuFontSize=18\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;You can change the 18 to whatever size you need - but that worked for me. Now we\nneed to change font size of the rest of the application. To do so, use the\nterminal and launch wine&#x27;s regedit:&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&quot;language-sh\&quot;&gt;wine regedit\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;You&#x27;ll want to browse to this value:&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;HKEY_CURRENT_CONFIG\\Software\\Fonts\\LogPixels\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;and change it to something larger. Make sure to change the selection to &amp;quot;Decimal&amp;quot;,\nas you probably don&#x27;t natively speak hex. It&#x27;s default in decimal is 96. I upped\nmine to 120 and it worked nicely. When you&#x27;re done doing that, close\nout regedit and restart your wine application. Enjoy your larger font sizes and\nlack of squinting!&lt;/p&gt;\n&lt;p&gt;Here&#x27;s the best resource I found on this matter after a bit of searching:\n&lt;a href=\&quot;http://www.winehq.com/pipermail/wine-users/2005-April/017810.html\&quot;&gt;http://www.winehq.com/pipermail/wine-users/2005-April/017810.html&lt;/a&gt;&lt;/p&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;ubuntu&quot;,
+        &quot;wine&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;Increasing the Wine font size&quot;,
+    &quot;date&quot;: &quot;2007-02-04&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;Linux&quot;,
+        &quot;Computing&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;increasing-the-wine-font-size&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2007-02-04-increasing-the-wine-font-size.md&quot;,
+        &quot;fileSlug&quot;: &quot;increasing-the-wine-font-size&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/increasing-the-wine-font-size&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2007-02-04T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nThus far in using Ubuntu, I&#x27;ve been able to use only Linux applications. I&#x27;ll\nadmit that some of them were just ports of their Windows or Mac OS X\ncounterparts...but I never had to install wine (a compatibility layer for\nrunning Windows programs). Well you know that torrent app I recommended?\nkTorrent? It&#x27;s crashed on me several times in the last couple days...and ate up\nevery bit of memory the system had this morning. I went looking for a better\nalternative and my only choice was to use uTorrent under wine. No\nproblem!\n\nWine is only a synaptic click away. Running utorrent under\nit is a simple affair too. I found this tutorial\n_very_ helpful:\n[Using utorrent with wine - Ubuntu Forums](http://www.ubuntuforums.org/showthread.php?t=191161)\n\nHowever, since my primary monitor is a\n32\&quot; LCD and I&#x27;m at about an 8-10 foot distance from it - the font size needs to\nbe increased. Under windows this is a simple task...but under Wine = not so\nmuch. I think this is something that NEEDS to be put into the wine configuration\napp. Anyway - here&#x27;s how it&#x27;s done.\n\nFirst - close any applications that are running under wine.\n\nTo change the size of any menu font - you&#x27;ll need to edit the win.ini under the following\nfolder: `/home/yourusername/.wine/`\n\nAdd the following information to the win.ini file:\n\n```\n[Desktop]\nMenuFontSize=18\n```\n\nYou can change the 18 to whatever size you need - but that worked for me. Now we\nneed to change font size of the rest of the application. To do so, use the\nterminal and launch wine&#x27;s regedit:\n\n```sh\nwine regedit\n```\n\nYou&#x27;ll want to browse to this value:\n\n```\nHKEY_CURRENT_CONFIG\\Software\\Fonts\\LogPixels\n```\n\nand change it to something larger. Make sure to change the selection to \&quot;Decimal\&quot;,\nas you probably don&#x27;t natively speak hex. It&#x27;s default in decimal is 96. I upped\nmine to 120 and it worked nicely. When you&#x27;re done doing that, close\nout regedit and restart your wine application. Enjoy your larger font sizes and\nlack of squinting!\n\nHere&#x27;s the best resource I found on this matter after a bit of searching:\n[http://www.winehq.com/pipermail/wine-users/2005-April/017810.html](http://www.winehq.com/pipermail/wine-users/2005-April/017810.html)\n&quot;,
+        &quot;url&quot;: &quot;/posts/2007-02-04-increasing-the-wine-font-size/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2007-02-04-increasing-the-wine-font-size/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

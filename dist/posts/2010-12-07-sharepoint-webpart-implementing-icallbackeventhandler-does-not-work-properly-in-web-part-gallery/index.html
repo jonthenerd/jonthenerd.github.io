@@ -1,0 +1,96 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;In migrating some WebParts from SP2007 to SP2010, I came across a webpart that\nimplements ICallbackEventHandler. This webpart was working fine when placed on\nthe page, but did not work correctly in the webpart gallery. The specific error\nmessage being received was:&lt;/p&gt;\n&lt;blockquote&gt;\n&lt;blockquote&gt;\n&lt;p&gt;The target &#x27;ctl00$PlaceHolderMain$ctl00&#x27; for the\ncallback could not be found or did not implement ICallbackEventHandler&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;/blockquote&gt;\n&lt;p&gt;This error is due to the webpart being added to the preview page dynamically at\nruntime. Everything online I&#x27;ve seen assumes that pages doing this can be\nmodified to load controls dynamically either in the Init event or on each Load\nevent. Since SharePoint developers can&#x27;t affect the Web Part preview page - the\nbest I could come up with is to prevent the registratration for callback by\nchecking the ID of the control in the Load event. This will tell you if the\ncontrol is being loaded dynamically, or if it has been placed on a page.&lt;/p&gt;\n&lt;p&gt;Here&#x27;s the code to use in the OnLoad event:&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&quot;language-csharp\&quot;&gt;if (this.ID == null) {\n    // This occurs in the webpart gallery and causes it to throw a javascript error.\n    Controls.Add(new LiteralControl(&amp;quot;This webpart does not function correctly in the webpart gallery. Please test on a page within a webpart zone.&amp;quot;));\n} else {\n    // Do what you normally do.\n}\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;Have a better idea on how to get this to work in the web part preview page? Let\nme know. At this point I&#x27;m content not throwing the javascript error.&lt;/p&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;SharePoint&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;SharePoint WebPart implementing ICallbackEventHandler does not work properly in Web Part Gallery&quot;,
+    &quot;date&quot;: &quot;2010-12-07&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;Programming&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2010-12-07-sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery.md&quot;,
+        &quot;fileSlug&quot;: &quot;sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2010-12-07T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nIn migrating some WebParts from SP2007 to SP2010, I came across a webpart that\nimplements ICallbackEventHandler. This webpart was working fine when placed on\nthe page, but did not work correctly in the webpart gallery. The specific error\nmessage being received was:\n\n&gt; &gt; The target &#x27;ctl00$PlaceHolderMain$ctl00&#x27; for the\n&gt; &gt; callback could not be found or did not implement ICallbackEventHandler\n\nThis error is due to the webpart being added to the preview page dynamically at\nruntime. Everything online I&#x27;ve seen assumes that pages doing this can be\nmodified to load controls dynamically either in the Init event or on each Load\nevent. Since SharePoint developers can&#x27;t affect the Web Part preview page - the\nbest I could come up with is to prevent the registratration for callback by\nchecking the ID of the control in the Load event. This will tell you if the\ncontrol is being loaded dynamically, or if it has been placed on a page.\n\nHere&#x27;s the code to use in the OnLoad event:\n\n```csharp\nif (this.ID == null) {\n    // This occurs in the webpart gallery and causes it to throw a javascript error.\n    Controls.Add(new LiteralControl(\&quot;This webpart does not function correctly in the webpart gallery. Please test on a page within a webpart zone.\&quot;));\n} else {\n    // Do what you normally do.\n}\n```\n\nHave a better idea on how to get this to work in the web part preview page? Let\nme know. At this point I&#x27;m content not throwing the javascript error.\n&quot;,
+        &quot;url&quot;: &quot;/posts/2010-12-07-sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2010-12-07-sharepoint-webpart-implementing-icallbackeventhandler-does-not-work-properly-in-web-part-gallery/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

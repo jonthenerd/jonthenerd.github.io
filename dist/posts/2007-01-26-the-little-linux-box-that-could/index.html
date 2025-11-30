@@ -1,0 +1,98 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;I decided that in order to tinker without disrupting the smooth operation of my\nworkhorse PC, I ought to just build a testing box. In the event that I can\nactually tinker enough to stop wanting to tinker (like that&#x27;s going to happen),\nI also wanted the PC to serve a dual role as an eventual Media Center PC\n(Windows or otherwise). So I laid out some requirements:&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Multiple Core - I&#x27;ve read that the latest versions of software that play High-Def video\n(DVD &amp;amp; Blu-Ray) recommend having dual core. No reason to skimp on this as many\ninexpensive CPUs have this now&lt;/li&gt;\n&lt;li&gt;Onboard DVI - While I may eventually get a better video card for this system, having the ability to otuput to my HDTV\nusing a DVI-&amp;gt;HDMI converter will come in really handy.&lt;/li&gt;\n&lt;li&gt;Small Case - I&#x27;ve owned plenty of too-huge computers. This should be able to blend into my entertainment\nsetup&lt;/li&gt;\n&lt;li&gt;Maximum Linux compatibility - If I&#x27;m going to be running Linux\nand don&#x27;t want headaches...Linux needs to be able to recognize my hardware\npretty much out of the box. Not that I can&#x27;t install drivers/whatnot - but the\nmost promising thing when putting together a machine and installing the OS is\nactually seeing that none of your hardware is DOA.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;With these goals, I set out to find the parts I wanted. I&#x27;ve had mostly good experiences at\n&lt;a href=\&quot;http://www.newegg.com/\&quot;&gt;Newegg&lt;/a&gt;, and chose to use them again. After several hours of comparison shopping and\nchecking the Internet for Linux compatibility - I came up with this setup:&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Case: Apevia X-QPack&lt;/li&gt;\n&lt;li&gt;Motherboard: ASU M2 NBP-VM CSM&lt;/li&gt;\n&lt;li&gt;Processor: AMD Athlon X2 3800 (Socket AM2)&lt;/li&gt;\n&lt;li&gt;Ram: Kingston DDR2 533 1GB&lt;/li&gt;\n&lt;li&gt;Hard Drive: WD 320GB SATA&lt;/li&gt;\n&lt;li&gt;DVD Burner: LG 18X&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;At the time I purchased the parts - the Intel Core 2 Duos were definitely outperforming their AMD\ncounterparts. However, the Athlon X2 3800 was cheaper than any Core 2 Duo. I&#x27;ve also had good experiences with\nNvidia chipsets &amp;amp; Linux - so what the hey. I got the ASUS motherboard primarily because of\nmy excellent experience with prior ASUS mobos. It&#x27;s also nice that it has onboard DVI.&lt;/p&gt;\n&lt;p&gt;Everything arrived quickly and nothing was DOA. I did experience some minor sound issues with different\nLinux distros and Windows - but not enough to call the motherboard defective or anything.\nProbably more of a driver issue. If you are using this motherboard under\nwindows - I would suggest uninstalling the Nvidia firewall which is installed\nwhen you use the unified driver on the ASUS CD. Find another firewall... Never\nreally liked the Nvidia one.&lt;/p&gt;\n&lt;p&gt;I&#x27;ll detail my Linux installation &lt;em&gt;fun&lt;/em&gt; (fun is also code for excrutiating\nfrustration in some cases) in a future article. Thanks for the read!&lt;/p&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;Linux&quot;,
+        &quot;Media Center&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;The little Linux Box that could&quot;,
+    &quot;date&quot;: &quot;2007-01-26&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;Computing&quot;,
+        &quot;Linux&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;the-little-linux-box-that-could&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2007-01-26-the-little-linux-box-that-could.md&quot;,
+        &quot;fileSlug&quot;: &quot;the-little-linux-box-that-could&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/the-little-linux-box-that-could&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2007-01-26T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nI decided that in order to tinker without disrupting the smooth operation of my\nworkhorse PC, I ought to just build a testing box. In the event that I can\nactually tinker enough to stop wanting to tinker (like that&#x27;s going to happen),\nI also wanted the PC to serve a dual role as an eventual Media Center PC\n(Windows or otherwise). So I laid out some requirements:\n\n-   Multiple Core - I&#x27;ve read that the latest versions of software that play High-Def video\n    (DVD &amp; Blu-Ray) recommend having dual core. No reason to skimp on this as many\n    inexpensive CPUs have this now\n-   Onboard DVI - While I may eventually get a better video card for this system, having the ability to otuput to my HDTV\n    using a DVI-&gt;HDMI converter will come in really handy.\n-   Small Case - I&#x27;ve owned plenty of too-huge computers. This should be able to blend into my entertainment\n    setup\n-   Maximum Linux compatibility - If I&#x27;m going to be running Linux\n    and don&#x27;t want headaches...Linux needs to be able to recognize my hardware\n    pretty much out of the box. Not that I can&#x27;t install drivers/whatnot - but the\n    most promising thing when putting together a machine and installing the OS is\n    actually seeing that none of your hardware is DOA.\n\nWith these goals, I set out to find the parts I wanted. I&#x27;ve had mostly good experiences at\n[Newegg](http://www.newegg.com/), and chose to use them again. After several hours of comparison shopping and\nchecking the Internet for Linux compatibility - I came up with this setup:\n\n-   Case: Apevia X-QPack\n-   Motherboard: ASU M2 NBP-VM CSM\n-   Processor: AMD Athlon X2 3800 (Socket AM2)\n-   Ram: Kingston DDR2 533 1GB\n-   Hard Drive: WD 320GB SATA\n-   DVD Burner: LG 18X\n\nAt the time I purchased the parts - the Intel Core 2 Duos were definitely outperforming their AMD\ncounterparts. However, the Athlon X2 3800 was cheaper than any Core 2 Duo. I&#x27;ve also had good experiences with\nNvidia chipsets &amp; Linux - so what the hey. I got the ASUS motherboard primarily because of\nmy excellent experience with prior ASUS mobos. It&#x27;s also nice that it has onboard DVI.\n\nEverything arrived quickly and nothing was DOA. I did experience some minor sound issues with different\nLinux distros and Windows - but not enough to call the motherboard defective or anything.\nProbably more of a driver issue. If you are using this motherboard under\nwindows - I would suggest uninstalling the Nvidia firewall which is installed\nwhen you use the unified driver on the ASUS CD. Find another firewall... Never\nreally liked the Nvidia one.\n\nI&#x27;ll detail my Linux installation _fun_ (fun is also code for excrutiating\nfrustration in some cases) in a future article. Thanks for the read!\n&quot;,
+        &quot;url&quot;: &quot;/posts/2007-01-26-the-little-linux-box-that-could/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2007-01-26-the-little-linux-box-that-could/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

@@ -1,0 +1,96 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;I ran smack into an issue that was looking to be a serious problem yesterday.\nOne of my development projects (SharePoint) is an anonymous access public-facing\nwebsite. This site using built-in SharePoint web services and the download.aspx\npage in the &lt;code&gt;\\_layouts&lt;/code&gt; directory to facilitate lookup of related documents and\nprovide download capability. The issue? &lt;strong&gt;Anonymous users can&#x27;t use any of the\napplication pages in the &lt;code&gt;\\_layouts&lt;/code&gt; folder&lt;/strong&gt;.&lt;/p&gt;\n&lt;p&gt;Lots of head scratching and some creative Google searches led me to the &amp;quot;DotNetIdeas&amp;quot; blog, specifically\n&lt;a href=\&quot;http://dotnetideasblog.blogspot.com/2009/07/sharepoint-security-for-contents-in.html\&quot;&gt;this post&lt;/a&gt;. It details how the &lt;code&gt;\\_layouts&lt;/code&gt;, &lt;code&gt;\\_controltemplates&lt;/code&gt;, and &lt;code&gt;\\_vti_bin&lt;/code&gt;\ndirectories are affected by allowing access to anonymous users.&lt;/p&gt;\n&lt;p&gt;I recommend you go read their post, but the key excerpt is this:&lt;/p&gt;\n&lt;blockquote&gt;\n&lt;blockquote&gt;\n&lt;p&gt;Anonymous users can never load pages inheriting from Microsoft.SharePoint.WebContorls.LayoutsPageBase&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;/blockquote&gt;\n&lt;p&gt;The answer to my issue is to create my own download.aspx page (not overwriting the original)\nwithout inheriting from this class. I&#x27;d still be hunting whatever setting was\nkeeping anonymous users from these pages if not for that helpful post though.&lt;/p&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;SharePoint&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;Anonymous users and aspx pages inside the _layouts folder&quot;,
+    &quot;date&quot;: &quot;2010-03-16&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;Programming&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;anonymous-users-and-aspx-pages-inside-the-_layouts-folder&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2010-03-16-anonymous-users-and-aspx-pages-inside-the-_layouts-folder.md&quot;,
+        &quot;fileSlug&quot;: &quot;anonymous-users-and-aspx-pages-inside-the-_layouts-folder&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/anonymous-users-and-aspx-pages-inside-the-_layouts-folder&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2010-03-16T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nI ran smack into an issue that was looking to be a serious problem yesterday.\nOne of my development projects (SharePoint) is an anonymous access public-facing\nwebsite. This site using built-in SharePoint web services and the download.aspx\npage in the `\\_layouts` directory to facilitate lookup of related documents and\nprovide download capability. The issue? **Anonymous users can&#x27;t use any of the\napplication pages in the `\\_layouts` folder**.\n\nLots of head scratching and some creative Google searches led me to the \&quot;DotNetIdeas\&quot; blog, specifically\n[this post](http://dotnetideasblog.blogspot.com/2009/07/sharepoint-security-for-contents-in.html). It details how the `\\_layouts`, `\\_controltemplates`, and `\\_vti_bin`\ndirectories are affected by allowing access to anonymous users.\n\nI recommend you go read their post, but the key excerpt is this:\n\n&gt; &gt; Anonymous users can never load pages inheriting from Microsoft.SharePoint.WebContorls.LayoutsPageBase\n\nThe answer to my issue is to create my own download.aspx page (not overwriting the original)\nwithout inheriting from this class. I&#x27;d still be hunting whatever setting was\nkeeping anonymous users from these pages if not for that helpful post though.\n&quot;,
+        &quot;url&quot;: &quot;/posts/2010-03-16-anonymous-users-and-aspx-pages-inside-the-_layouts-folder/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2010-03-16-anonymous-users-and-aspx-pages-inside-the-_layouts-folder/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

@@ -1,0 +1,93 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;These are my notes while configuring Kubuntu 21.10 to my liking after first install. Mainly for my own future reference on other distribution installs.&lt;/p&gt;\n&lt;!--more--&gt;\n&lt;h1&gt;Install&lt;/h1&gt;\n&lt;p&gt;While installing Kubuntu, I clicked the checkbox to have it install proprietary drivers and codecs, assuming this would be best for my nVidia GPU. However, upon reboot after install all I got was a black screen after GRUB.&lt;/p&gt;\n&lt;p&gt;I repeated the installation, this time leaving the box unchecked and made it all the way to the KDE desktop, where I could perform updates and install the proprietary nVidia driver.&lt;/p&gt;\n&lt;h1&gt;Gaming&lt;/h1&gt;\n&lt;h2&gt;Steam&lt;/h2&gt;\n&lt;p&gt;After Steam is installed, it will not automatically start making use of Proton to play Windows-only games. To enable it:&lt;/p&gt;\n&lt;ol&gt;\n&lt;li&gt;Open &lt;code&gt;Settings&lt;/code&gt;&lt;/li&gt;\n&lt;li&gt;Navigate to &lt;code&gt;Steam Play&lt;/code&gt;&lt;/li&gt;\n&lt;li&gt;Under &lt;code&gt;Advanced&lt;/code&gt;, enable &lt;code&gt;Steam Play for all other titles&lt;/code&gt;&lt;/li&gt;\n&lt;li&gt;Click &lt;code&gt;OK&lt;/code&gt;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h2&gt;Skyrim (Special Edition)&lt;/h2&gt;\n&lt;p&gt;My installation started Skyrim okay, but I was unable to hear sound effects, music, or NPC voices during gameplay. The simple fix that I found &lt;a href=\&quot;https://steamcommunity.com/app/489830/discussions/0/3441214221459912300/?ctp=2#c3038229380336710200\&quot;&gt;on the Steam Forums&lt;/a&gt; is the following:&lt;/p&gt;\n&lt;ol&gt;\n&lt;li&gt;Open &lt;code&gt;Steam&lt;/code&gt;&lt;/li&gt;\n&lt;li&gt;Navigate to the &lt;code&gt;Skyrim (Special Edition)&lt;/code&gt; game.&lt;/li&gt;\n&lt;li&gt;Click the gear icon on the right and select &lt;code&gt;Properties&lt;/code&gt;&lt;/li&gt;\n&lt;li&gt;Under the main &lt;code&gt;General&lt;/code&gt; tab, under &lt;code&gt;Launch Options&lt;/code&gt;, place  the following:&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code class=\&quot;language-sh\&quot;&gt;WINEDLLOVERRIDES=&amp;quot;xaudio2_7=n,b&amp;quot; %command%\n&lt;/code&gt;&lt;/pre&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;Kubuntu Notes&quot;,
+    &quot;date&quot;: &quot;2021-11-13T00:00:00.000Z&quot;,
+    &quot;categories&quot;: [
+        &quot;Linux&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2021-11-13-kubuntu-notes.md&quot;,
+        &quot;fileSlug&quot;: &quot;kubuntu-notes&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/kubuntu-notes&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2021-11-13T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nThese are my notes while configuring Kubuntu 21.10 to my liking after first install. Mainly for my own future reference on other distribution installs.\n\n&lt;!--more--&gt;\n\n# Install\nWhile installing Kubuntu, I clicked the checkbox to have it install proprietary drivers and codecs, assuming this would be best for my nVidia GPU. However, upon reboot after install all I got was a black screen after GRUB.\n\nI repeated the installation, this time leaving the box unchecked and made it all the way to the KDE desktop, where I could perform updates and install the proprietary nVidia driver.\n\n\n# Gaming\n## Steam\nAfter Steam is installed, it will not automatically start making use of Proton to play Windows-only games. To enable it:\n\n1. Open `Settings`\n2. Navigate to `Steam Play`\n3. Under `Advanced`, enable `Steam Play for all other titles`\n4. Click `OK`\n\n## Skyrim (Special Edition)\nMy installation started Skyrim okay, but I was unable to hear sound effects, music, or NPC voices during gameplay. The simple fix that I found [on the Steam Forums](https://steamcommunity.com/app/489830/discussions/0/3441214221459912300/?ctp=2#c3038229380336710200) is the following:\n\n1. Open `Steam`\n2. Navigate to the `Skyrim (Special Edition)` game.\n3. Click the gear icon on the right and select `Properties`\n4. Under the main `General` tab, under `Launch Options`, place  the following:\n\n```sh\nWINEDLLOVERRIDES=\&quot;xaudio2_7=n,b\&quot; %command%\n```\n&quot;,
+        &quot;url&quot;: &quot;/posts/2021-11-13-kubuntu-notes/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2021-11-13-kubuntu-notes/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

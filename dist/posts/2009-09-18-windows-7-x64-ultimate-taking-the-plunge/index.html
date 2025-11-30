@@ -1,0 +1,96 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;I&#x27;m just about finished backing everything up off of my main machine (Windows 7\n32-bit Ultimate). I&#x27;ve heard alot of good things about Windows 7 (read quite a\nbit too) - and even decent things about the install process. What&#x27;s tying me to\nWindows is Fallout 3 and the random Windows-only game...sorry Ubuntu, I love ya&#x27;\nbut we just can&#x27;t go steady yet.&lt;/p&gt;\n&lt;p&gt;I&#x27;ll update this post as I install and use this new OS. It feels like getting a new\ncomputer!&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Update 2:41pm&lt;/strong&gt; - I started the install at 2:20 and am typing this from the same machine with Windows 7 now. Checking the device manager, I&#x27;ve got only 1 device (my ATI TV tuner...don&#x27;t buy one of\nthese) not recognized. Next up - Video drivers, TV Tuner drivers, and some\napps.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Update 3:16pm&lt;/strong&gt; - It looks like my ATI TV tuner doesn&#x27;t have a listed driver available for Windows 7. Some searching revealed that some had success with using the Vista 64 bit driver from the\n&lt;a href=\&quot;http://support.amd.com/us/gpudownload/Pages/index.aspx\&quot;&gt;ATI downloads page&lt;/a&gt;. I installed this driver, but the device manager still showed the unknown device. Choosing to &amp;quot;Update driver&amp;quot;, I pointed the wizard to the\nlocation that the ATI installer had unpacked all the files to (C:\\ATI). Windows\npicked up the driver and it&#x27;s now listed as &amp;quot;ATI Unified AVStream Driver&amp;quot;. I&#x27;m\nstill configuring Windows Media Center, so I&#x27;m not sure if this will all work\nout - but the driver installed fine.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Update 3:50pm&lt;/strong&gt; - TV Tuner works fine. Getting signal out here in the stix is\nanother matter :)&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Update 5:47pm&lt;/strong&gt; - Got some of my apps installed. Restored Fallout 3 from the\nbackup I created back into Steam - only to have to do the Games for Windows Live\ndance (don&#x27;t update through the game, go get the standalone client). Oh - and\ndoing a steam backup of the game doesn&#x27;t capture any downloadable content you&#x27;ve\nacquired through GFWL. Bummer... at my current internet speed rate - I should be\nable to play Fallout 3 sometime next week.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;Overall at this point I&#x27;m liking Windows 7. The real test comes tonight when I reshare my printer to\nanother Windows XP box in the house. Vista was &lt;em&gt;terrible&lt;/em&gt; with this...I had to restart\nthe print spooler and open the printers window every time that machine needed to\nprint. Here&#x27;s hoping it&#x27;s gotten better in 7.&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;Update 10/25/2009&lt;/strong&gt; - It&#x27;s been a good while since I installed and I haven&#x27;t\nlonged for XP or Vista at all. Printer sharing worked fantastic! No more\nrestarting the print spooler. Fallout 3 finished installing and it ran the\nhardware check to auto-set my video settings. It auto-set higher settings than\nmy Vista install did - now I can see NPCs faces :) Good times.&lt;/p&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;Windows&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;Windows 7 x64 Ultimate - Taking the plunge&quot;,
+    &quot;date&quot;: &quot;2009-09-18&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;Computing&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;windows-7-x64-ultimate-taking-the-plunge&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2009-09-18-windows-7-x64-ultimate-taking-the-plunge.md&quot;,
+        &quot;fileSlug&quot;: &quot;windows-7-x64-ultimate-taking-the-plunge&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/windows-7-x64-ultimate-taking-the-plunge&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2009-09-18T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nI&#x27;m just about finished backing everything up off of my main machine (Windows 7\n32-bit Ultimate). I&#x27;ve heard alot of good things about Windows 7 (read quite a\nbit too) - and even decent things about the install process. What&#x27;s tying me to\nWindows is Fallout 3 and the random Windows-only game...sorry Ubuntu, I love ya&#x27;\nbut we just can&#x27;t go steady yet.\n\nI&#x27;ll update this post as I install and use this new OS. It feels like getting a new\ncomputer!\n\n-   **Update 2:41pm** - I started the install at 2:20 and am typing this from the same machine with Windows 7 now. Checking the device manager, I&#x27;ve got only 1 device (my ATI TV tuner...don&#x27;t buy one of\n    these) not recognized. Next up - Video drivers, TV Tuner drivers, and some\n    apps.\n-   **Update 3:16pm** - It looks like my ATI TV tuner doesn&#x27;t have a listed driver available for Windows 7. Some searching revealed that some had success with using the Vista 64 bit driver from the\n    [ATI downloads page](http://support.amd.com/us/gpudownload/Pages/index.aspx). I installed this driver, but the device manager still showed the unknown device. Choosing to \&quot;Update driver\&quot;, I pointed the wizard to the\n    location that the ATI installer had unpacked all the files to (C:\\ATI). Windows\n    picked up the driver and it&#x27;s now listed as \&quot;ATI Unified AVStream Driver\&quot;. I&#x27;m\n    still configuring Windows Media Center, so I&#x27;m not sure if this will all work\n    out - but the driver installed fine.\n-   **Update 3:50pm** - TV Tuner works fine. Getting signal out here in the stix is\n    another matter :)\n-   **Update 5:47pm** - Got some of my apps installed. Restored Fallout 3 from the\n    backup I created back into Steam - only to have to do the Games for Windows Live\n    dance (don&#x27;t update through the game, go get the standalone client). Oh - and\n    doing a steam backup of the game doesn&#x27;t capture any downloadable content you&#x27;ve\n    acquired through GFWL. Bummer... at my current internet speed rate - I should be\n    able to play Fallout 3 sometime next week.\n\nOverall at this point I&#x27;m liking Windows 7. The real test comes tonight when I reshare my printer to\nanother Windows XP box in the house. Vista was _terrible_ with this...I had to restart\nthe print spooler and open the printers window every time that machine needed to\nprint. Here&#x27;s hoping it&#x27;s gotten better in 7.\n\n**Update 10/25/2009** - It&#x27;s been a good while since I installed and I haven&#x27;t\nlonged for XP or Vista at all. Printer sharing worked fantastic! No more\nrestarting the print spooler. Fallout 3 finished installing and it ran the\nhardware check to auto-set my video settings. It auto-set higher settings than\nmy Vista install did - now I can see NPCs faces :) Good times.\n&quot;,
+        &quot;url&quot;: &quot;/posts/2009-09-18-windows-7-x64-ultimate-taking-the-plunge/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2009-09-18-windows-7-x64-ultimate-taking-the-plunge/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

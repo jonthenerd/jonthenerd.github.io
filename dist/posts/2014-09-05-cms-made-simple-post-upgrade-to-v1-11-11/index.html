@@ -1,0 +1,96 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;After finishing an upgrade of another site&#x27;s CMS Made Simple to version 1.11.11,\nI found that in certain areas I was seeing warning messages at the top of the\nscreen after editing calendar events within CGCalendar.&lt;/p&gt;\n&lt;!--more--&gt;\n&lt;p&gt;They looked like this:&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;Warning: Cannot modify header information - headers already sent by\n(output started at /home4/user/public_html/admin/moduleinterface.php:99) in\n/home4/user/public_html/include.php on line 96\n\nWarning: Cannot modify header information - headers already sent by (output\nstarted at /home4/user/public_html/admin/moduleinterface.php:99) in\n/home4/user/public_html/include.php on line 99\n\nWarning: Cannot modify header information - headers already sent by (output\nstarted at /home4/user/public_html/admin/moduleinterface.php:99) in\n/home4/user/public_html/include.php on line 102\n\nWarning: Cannot modify header information - headers already sent by (output\nstarted at /home4/user/public_html/admin/moduleinterface.php:99) in\n/home4/user/public_html/include.php on line 103\n\nWarning: Cannot modify header information - headers already sent by (output\nstarted at /home4/user/public_html/admin/moduleinterface.php:99) in\n/home4/user/public_html/include.php on line 106\n\nWarning: Cannot modify header information - headers already sent by (output\nstarted at /home4/user/public_html/admin/moduleinterface.php:99) in\n/home4/user/public_html/include.php on line 109\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2&gt;The Solution&lt;/h2&gt;\n&lt;p&gt;The solution I found was to change my\nAdministration Theme preference from the older &amp;quot;NCleanGrey&amp;quot; to the newer\n&amp;quot;OneEleven&amp;quot;. This option is under My Preferences -&amp;gt; My Account -&amp;gt; User\nPreferences.&lt;/p&gt;\n&lt;h2&gt;Tracing it down&lt;/h2&gt;\n&lt;p&gt;I&#x27;m fairly new to PHP, having developed C#\nprimarily the last few years. However, I believe what&#x27;s causing this is that\nwithin the moduleinterface.php file (line 99), it&#x27;s calling a &amp;quot;ShowMessage&amp;quot;\nfunction that&#x27;s supposed to exist within your preferred theme. The NCleanGrey\ntheme has no such function, while the newer OneEleven theme does. Why this lack\nof a function causes it to yield these particular error messages, I have no\nidea. I&#x27;m trying to post a bug report on this, so perhaps it can be fixed in the\nnext version of CMSMS. Until then, I&#x27;d suggest just using the new theme.&lt;/p&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;CMS Made Simple&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;CMS Made Simple - Post-Upgrade to v1.11.11&quot;,
+    &quot;date&quot;: &quot;2014-09-05&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;SysAdmin&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;cms-made-simple-post-upgrade-to-v1-11-11&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2014-09-05-cms-made-simple-post-upgrade-to-v1-11-11.md&quot;,
+        &quot;fileSlug&quot;: &quot;cms-made-simple-post-upgrade-to-v1-11-11&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/cms-made-simple-post-upgrade-to-v1-11-11&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2014-09-05T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nAfter finishing an upgrade of another site&#x27;s CMS Made Simple to version 1.11.11,\nI found that in certain areas I was seeing warning messages at the top of the\nscreen after editing calendar events within CGCalendar.\n\n&lt;!--more--&gt;\n\nThey looked like this:\n\n```\nWarning: Cannot modify header information - headers already sent by\n(output started at /home4/user/public_html/admin/moduleinterface.php:99) in\n/home4/user/public_html/include.php on line 96\n\nWarning: Cannot modify header information - headers already sent by (output\nstarted at /home4/user/public_html/admin/moduleinterface.php:99) in\n/home4/user/public_html/include.php on line 99\n\nWarning: Cannot modify header information - headers already sent by (output\nstarted at /home4/user/public_html/admin/moduleinterface.php:99) in\n/home4/user/public_html/include.php on line 102\n\nWarning: Cannot modify header information - headers already sent by (output\nstarted at /home4/user/public_html/admin/moduleinterface.php:99) in\n/home4/user/public_html/include.php on line 103\n\nWarning: Cannot modify header information - headers already sent by (output\nstarted at /home4/user/public_html/admin/moduleinterface.php:99) in\n/home4/user/public_html/include.php on line 106\n\nWarning: Cannot modify header information - headers already sent by (output\nstarted at /home4/user/public_html/admin/moduleinterface.php:99) in\n/home4/user/public_html/include.php on line 109\n```\n\n## The Solution\n\nThe solution I found was to change my\nAdministration Theme preference from the older \&quot;NCleanGrey\&quot; to the newer\n\&quot;OneEleven\&quot;. This option is under My Preferences -&gt; My Account -&gt; User\nPreferences.\n\n## Tracing it down\n\nI&#x27;m fairly new to PHP, having developed C#\nprimarily the last few years. However, I believe what&#x27;s causing this is that\nwithin the moduleinterface.php file (line 99), it&#x27;s calling a \&quot;ShowMessage\&quot;\nfunction that&#x27;s supposed to exist within your preferred theme. The NCleanGrey\ntheme has no such function, while the newer OneEleven theme does. Why this lack\nof a function causes it to yield these particular error messages, I have no\nidea. I&#x27;m trying to post a bug report on this, so perhaps it can be fixed in the\nnext version of CMSMS. Until then, I&#x27;d suggest just using the new theme.\n&quot;,
+        &quot;url&quot;: &quot;/posts/2014-09-05-cms-made-simple-post-upgrade-to-v1-11-11/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2014-09-05-cms-made-simple-post-upgrade-to-v1-11-11/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

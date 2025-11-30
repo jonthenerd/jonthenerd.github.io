@@ -1,0 +1,96 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;|- I&#x27;m starting work on a project for my MBA program that involves using a\nmobile RFID reader with an Android device. &lt;!--more--&gt; I&#x27;ve purchased a Nexus 7\nfor the project, and the school has loaned me an\n&lt;a href=\&quot;http://www.intermec.com/products/ip30a/index.aspx\&quot;&gt;Intermec IP30 RFID\nreader&lt;/a&gt;. I&#x27;m going to detail my steps in getting this going here.&lt;/p&gt;\n&lt;h2&gt;10/5/2012&lt;/h2&gt; Acquired the IP30 from my university. This IP30 is attached\nto the Intermec CN3 handheld computer, which is running some old version of\nWindows Mobile. I&#x27;ve confirmed that the CN3 can actually communicate with the\nIP30 and read tags - yay! I don&#x27;t plan on using the CN3, but it&#x27;s a nice\nreference for how the communication is supposed to work. The IP30 is\ncommunicated to from the CN3 by bluetooth. Intermec offers some libraries for C#\ndevelopment, but I won&#x27;t be using them as this will be an Android application.\nI&#x27;ll be using Xamarin&#x27;s Mono for Android (C#), but the Intermec assembly uses\nsome Windows CE libraries so it&#x27;s no help. Luckily, it looks like the IP30 works\nwith Intermec&#x27;s \&quot;Basic Reader Interface\&quot; or BRI. This is an ASCII-based protocol\nover serial/bluetooth. They even\nhave&lt;a href=\&quot;http://epsfiles.intermec.com/eps_files/eps_man/937-000.pdf\&quot;&gt; a\nhandy doc&lt;/a&gt; on all the relevant commands and how to structure your app if\ngoing straight against BRI. At this point, my goal is to communicate with the\nIP30 using a hyperterminal on my Windows 7 box. I wore the battery down on the\nIP30 trying to use PUTTY to for communication and couldn&#x27;t manage to get it to\nrespond to any command. I believe that I just wasn&#x27;t sending the necessary CRLF\nat the end of each command for the IP30 to respond, so I&#x27;ve downloaded a\ndifferent hyperterminal -\n&lt;a href=\&quot;https://sites.google.com/site/terminalbpp/\&quot;&gt;Bray++&#x27;s Terminal&lt;/a&gt;.\nWhenever the battery charges up for the IP30, I&#x27;ll start whittling at it again\n:) Later... Couldn&#x27;t get Bray&#x27;s Terminal to connect to the IP30. It would cause\nWindows to beep, then I&#x27;d not be able to connect to the IP30 with anything\n(including Putty) until I reset the connection by pulling the battery out of the\nIP30 and putting it back in. I downloaded Tera Term and have success! It was\nindeed the newline setting for transmission. I had to change this setting in the\nTerminal setup and also enable local echo so I could see what I was typing...\nLuckily in my searching for IP30 related posts, I ran across\n&lt;a href=\&quot;http://community.intermec.com/t5/General-Development-Developer/IP30-Serial-Connection-configuration/td-p/18394\&quot;&gt;a\npage on Intermec&#x27;s site where another developer was trying to do what I&#x27;m doing\nthrough HyperTerminal and had an issue&lt;/a&gt;. Issuing FACDFLT4 (which is issued in\nthe BRI manual I referenced earlier) reset the device to factory settings - so I\nshould be good to go! To be continued...\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;Android&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;Communicating with the Intermec IP30 RFID reader over bluetooth...hopefully with Android&quot;,
+    &quot;date&quot;: &quot;2012-10-05&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;Programming&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2012-10-05-communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android.md&quot;,
+        &quot;fileSlug&quot;: &quot;communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2012-10-05T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\n|- I&#x27;m starting work on a project for my MBA program that involves using a\nmobile RFID reader with an Android device. &lt;!--more--&gt; I&#x27;ve purchased a Nexus 7\nfor the project, and the school has loaned me an\n&lt;a href=\&quot;http://www.intermec.com/products/ip30a/index.aspx\&quot;&gt;Intermec IP30 RFID\nreader&lt;/a&gt;. I&#x27;m going to detail my steps in getting this going here.\n\n&lt;h2&gt;10/5/2012&lt;/h2&gt; Acquired the IP30 from my university. This IP30 is attached\nto the Intermec CN3 handheld computer, which is running some old version of\nWindows Mobile. I&#x27;ve confirmed that the CN3 can actually communicate with the\nIP30 and read tags - yay! I don&#x27;t plan on using the CN3, but it&#x27;s a nice\nreference for how the communication is supposed to work. The IP30 is\ncommunicated to from the CN3 by bluetooth. Intermec offers some libraries for C#\ndevelopment, but I won&#x27;t be using them as this will be an Android application.\nI&#x27;ll be using Xamarin&#x27;s Mono for Android (C#), but the Intermec assembly uses\nsome Windows CE libraries so it&#x27;s no help. Luckily, it looks like the IP30 works\nwith Intermec&#x27;s \&quot;Basic Reader Interface\&quot; or BRI. This is an ASCII-based protocol\nover serial/bluetooth. They even\nhave&lt;a href=\&quot;http://epsfiles.intermec.com/eps_files/eps_man/937-000.pdf\&quot;&gt; a\nhandy doc&lt;/a&gt; on all the relevant commands and how to structure your app if\ngoing straight against BRI. At this point, my goal is to communicate with the\nIP30 using a hyperterminal on my Windows 7 box. I wore the battery down on the\nIP30 trying to use PUTTY to for communication and couldn&#x27;t manage to get it to\nrespond to any command. I believe that I just wasn&#x27;t sending the necessary CRLF\nat the end of each command for the IP30 to respond, so I&#x27;ve downloaded a\ndifferent hyperterminal -\n&lt;a href=\&quot;https://sites.google.com/site/terminalbpp/\&quot;&gt;Bray++&#x27;s Terminal&lt;/a&gt;.\nWhenever the battery charges up for the IP30, I&#x27;ll start whittling at it again\n:) Later... Couldn&#x27;t get Bray&#x27;s Terminal to connect to the IP30. It would cause\nWindows to beep, then I&#x27;d not be able to connect to the IP30 with anything\n(including Putty) until I reset the connection by pulling the battery out of the\nIP30 and putting it back in. I downloaded Tera Term and have success! It was\nindeed the newline setting for transmission. I had to change this setting in the\nTerminal setup and also enable local echo so I could see what I was typing...\nLuckily in my searching for IP30 related posts, I ran across\n&lt;a href=\&quot;http://community.intermec.com/t5/General-Development-Developer/IP30-Serial-Connection-configuration/td-p/18394\&quot;&gt;a\npage on Intermec&#x27;s site where another developer was trying to do what I&#x27;m doing\nthrough HyperTerminal and had an issue&lt;/a&gt;. Issuing FACDFLT4 (which is issued in\nthe BRI manual I referenced earlier) reset the device to factory settings - so I\nshould be good to go! To be continued...\n&quot;,
+        &quot;url&quot;: &quot;/posts/2012-10-05-communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2012-10-05-communicating-with-the-intermec-ip30-rfid-reader-over-bluetooth-hopefully-with-android/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

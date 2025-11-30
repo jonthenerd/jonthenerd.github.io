@@ -1,0 +1,98 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;I&#x27;m putting together a server for some friends to play Unreal Tournament (yes,\nthe original). I had heard this was doable on Linux, and I have a friend&#x27;s old\nlaptop here to play with. I&#x27;ll be putting good links here that have helped me to\nget this working.&lt;/p&gt;\n&lt;p&gt;I got it all setup in a VirtualBox VM, but need it\non the separate machine. This old laptop has a broken screen and no hard\ndrive...no problem! It will be running headless anyway, and I&#x27;ve also got a 16GB\nflash drive. Ubuntu Lucid installs fine on a flash drive - the only\nrecommendation being that you use ext2, as it&#x27;s not a journaling file system (it\ndoesn&#x27;t write as much to the drive).&lt;/p&gt;\n&lt;h2&gt;Helpful Links&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&quot;http://piotr.gabryjeluk.pl/dev:playing-unreal-tournament-on-ubuntu-lucid\&quot;&gt;Playing Unreal Tournament on Ubuntu Lucid&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&quot;http://ut.congiman.com/settingup.html\&quot;&gt;Unreal Tournament Server Setup for Linux&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&quot;https://github.com/liflg\&quot;&gt;Loki Installers for Linux Gamers&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;Unreal Tournament&quot;,
+        &quot;Linux&quot;,
+        &quot;Ubuntu&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;Unreal Tournament Server on Ubuntu Linux (10.04)&quot;,
+    &quot;date&quot;: &quot;2010-08-01&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;Gaming&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;unreal-tournament-server-on-ubuntu-linux-10-04&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2010-08-01-unreal-tournament-server-on-ubuntu-linux-10-04.md&quot;,
+        &quot;fileSlug&quot;: &quot;unreal-tournament-server-on-ubuntu-linux-10-04&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/unreal-tournament-server-on-ubuntu-linux-10-04&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2010-08-01T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nI&#x27;m putting together a server for some friends to play Unreal Tournament (yes,\nthe original). I had heard this was doable on Linux, and I have a friend&#x27;s old\nlaptop here to play with. I&#x27;ll be putting good links here that have helped me to\nget this working.\n\nI got it all setup in a VirtualBox VM, but need it\non the separate machine. This old laptop has a broken screen and no hard\ndrive...no problem! It will be running headless anyway, and I&#x27;ve also got a 16GB\nflash drive. Ubuntu Lucid installs fine on a flash drive - the only\nrecommendation being that you use ext2, as it&#x27;s not a journaling file system (it\ndoesn&#x27;t write as much to the drive).\n\n## Helpful Links\n\n-   [Playing Unreal Tournament on Ubuntu Lucid](http://piotr.gabryjeluk.pl/dev:playing-unreal-tournament-on-ubuntu-lucid)\n-   [Unreal Tournament Server Setup for Linux](http://ut.congiman.com/settingup.html)\n-   [Loki Installers for Linux Gamers](https://github.com/liflg)\n&quot;,
+        &quot;url&quot;: &quot;/posts/2010-08-01-unreal-tournament-server-on-ubuntu-linux-10-04/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2010-08-01-unreal-tournament-server-on-ubuntu-linux-10-04/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

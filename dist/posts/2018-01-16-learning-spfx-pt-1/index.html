@@ -1,0 +1,98 @@
+<!doctype html>
+<pre>
+{
+    &quot;content&quot;: &quot;&lt;p&gt;Today I decided that it was time I learned how to build\n&lt;a href=\&quot;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview\&quot;&gt;SharePoint Framework (SPFx)&lt;/a&gt;\nwebparts. Easy enough right? Find the right tutorial online, follow\ninstrucitons, hello world! Let&#x27;s get started.&lt;/p&gt;\n&lt;!--more--&gt;\n&lt;p&gt;First, you&#x27;ll need to\n&lt;a href=\&quot;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment\&quot;&gt;set up your SharePoint Framework development environment&lt;/a&gt;.\nThen you&#x27;ll want to follow the tutorial to\n&lt;a href=\&quot;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part\&quot;&gt;build your first web part&lt;/a&gt;.&lt;/p&gt;\n&lt;p&gt;Of course, this all depends upon you having\n&lt;a href=\&quot;https://nodejs.org/en/\&quot;&gt;node js w/npm&lt;/a&gt; installed and your code editor of choice\nready to go.&lt;/p&gt;\n&lt;p&gt;Seeing as I had the latest version of node and a code editor ready, I just\nstarted at the tutorials. Quickly ran into an issue though, where neither Safari\nor Chrome were able to connect to the workbench site running on localhost.\nHere&#x27;s the exact error from Safari:&lt;/p&gt;\n&lt;blockquote&gt;\n&lt;p&gt;Safari can&#x27;t open the page &amp;quot;https://localhost:4321/temp/workbench.html&amp;quot;\nbecause Safari can&#x27;t establish a secure connection to the server &amp;quot;localhost&amp;quot;.&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;p&gt;&lt;a href=\&quot;https://github.com/SharePoint/sp-dev-docs/issues/1002\&quot;&gt;Issue #1002 on the sp-dev-docs repo&lt;/a&gt;\nseems to describe what&#x27;s occurring here but no amount of setting the environment\nvariable NODE_NO_HTTP2=1 would help me get past the error message.&lt;/p&gt;\n&lt;p&gt;Reading back through\n&lt;a href=\&quot;https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment\&quot;&gt;how to setup your SharePoint Framework development environment&lt;/a&gt;,\nthere is a note that says:&lt;/p&gt;\n&lt;blockquote&gt;\n&lt;p&gt;The SharePoint Framework build pipeline doesn&#x27;t currently support the LTS\nversion of Node.js. Instead, download Node.js version 6.11.5. This installs\nnpm 3.10.10. Note that if you have a v5.x version of npm, you need to\ndowngrade to an older npm version by using the following command: npm install\n-g npm@3.&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;p&gt;A couple observations on this, as I&#x27;m writing this blog post as I try to get\nthis all working:&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Embracing the open source ecosystem and modern development tooling is great.\nRequiring that in order to use your framework you must be running a version of\nnode.js that is 3 major versions behind current (9.4.0) and 2 major versions\nbehind LTS (8.9.4) is &lt;strong&gt;lame&lt;/strong&gt;. It means that most guides out there for how to\nquickly get started will only work if you&#x27;re just stepping into modern web dev\n&lt;em&gt;for the first time&lt;/em&gt;... If you&#x27;ve been using node and NPM, etc. for a while\nyou&#x27;re likely running much newer versions of these tools and they&#x27;re likely\ninstalled globally. It also makes it appear there is a lack of commitment to\nbringing development practices and patterns for SharePoint up to date and\nkeeping it there.&lt;/li&gt;\n&lt;li&gt;Let&#x27;s hope that if we follow the instructions exactly things actually work. As\nit&#x27;s going to mean making some serious changes to the configuration of my dev\nbox and going outside the 1, 2, 3 hello world box.&lt;/li&gt;\n&lt;li&gt;Maybe there&#x27;s some way to manage multiple versions of Node.js without\nstruggling...&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;At this point, I&#x27;ve got projects that use much later node and NPM versions. I\ncan&#x27;t justify unintalling them just to have to do the same dance at a later\npoint to get them reinstalled. What to do? Let&#x27;s look into\n&lt;a href=\&quot;https://github.com/creationix/nvm\&quot;&gt;Node Version Manager (NVM), which allows you to manage and switch between different Node versions &amp;quot;with ease&amp;quot;&lt;/a&gt;.\nThere&#x27;s also\n&lt;a href=\&quot;https://github.com/coreybutler/nvm-windows\&quot;&gt;nvm-windows for Windows users&lt;/a&gt;.\nInterested in how to get this setup? Read my post on\n&lt;a href=\&quot;/2018/01/16/configuring-nvm-for-osx/\&quot;&gt;configuring NVM for Mac OS X&lt;/a&gt;.&lt;/p&gt;\n&lt;p&gt;Now that I&#x27;ve got NVM working and this project directory is using 6.11.5 ...\nlet&#x27;s continue on with the hello worlding.&lt;/p&gt;\n&lt;ol&gt;\n&lt;li&gt;\n&lt;p&gt;Browse to the directory for the project in terminal.&lt;/p&gt;\n&lt;/li&gt;\n&lt;li&gt;\n&lt;p&gt;Initialize the project with NPM (to get our package.json)&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&quot;language-shell\&quot;&gt;npm init\n&lt;/code&gt;&lt;/pre&gt;\n&lt;/li&gt;\n&lt;li&gt;\n&lt;p&gt;Intall the npm package for the Yeoman SharePoint generator (locally).&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&quot;language-shell\&quot;&gt;npm install @microsoft/generator-sharepoint --save-dev\n&lt;/code&gt;&lt;/pre&gt;\n&lt;/li&gt;\n&lt;li&gt;\n&lt;p&gt;Open our project using our code editor of choice (have you tried Visual\nStudio Code yet?)&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&quot;language-shell\&quot;&gt;code .\n&lt;/code&gt;&lt;/pre&gt;\n&lt;/li&gt;\n&lt;li&gt;\n&lt;p&gt;Notice that we&#x27;ve got our .nvmrc file, our package.json file, and a directory\nfor node_modules. Things are looking good so far.&lt;/p&gt;\n&lt;/li&gt;\n&lt;li&gt;\n&lt;p&gt;Let&#x27;s run the Yeoman generator now.&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&quot;language-shell\&quot;&gt;yo @microsoft/sharepoint\n&lt;/code&gt;&lt;/pre&gt;\n&lt;/li&gt;\n&lt;li&gt;\n&lt;p&gt;We can&#x27;t follow the next instruction to just run gulp serve, as gulp isn&#x27;t\ninstalled globally (I&#x27;m not a fan of installing things globally as it makes\nprojects harder to get going on new workstations or by new developers). As\nsuch, we need to change our package.json to handle running gulp for us.&lt;/p&gt;\n&lt;p&gt;We&#x27;re going to add a script to trust the dev cert and another to serve.&lt;/p&gt;\n&lt;ol&gt;\n&lt;li&gt;Open your package.json&lt;/li&gt;\n&lt;li&gt;Change the scripts section to be the following:&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code class=\&quot;language-json\&quot;&gt;&amp;quot;scripts&amp;quot;: {\n    &amp;quot;build&amp;quot;: &amp;quot;gulp bundle&amp;quot;,\n    &amp;quot;clean&amp;quot;: &amp;quot;gulp clean&amp;quot;,\n    &amp;quot;test&amp;quot;: &amp;quot;gulp test&amp;quot;,\n    &amp;quot;trust-dev-cert&amp;quot;: &amp;quot;gulp trust-dev-cert&amp;quot;,\n    &amp;quot;serve&amp;quot;: &amp;quot;gulp serve&amp;quot;\n},\n&lt;/code&gt;&lt;/pre&gt;\n&lt;/li&gt;\n&lt;li&gt;\n&lt;p&gt;Trust the Dev Cert used by workbench&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&quot;language-shell\&quot;&gt;npm run trust-dev-cert\n&lt;/code&gt;&lt;/pre&gt;\n&lt;/li&gt;\n&lt;li&gt;\n&lt;p&gt;Fire up the workbench&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&quot;language-shell\&quot;&gt;npm run serve\n&lt;/code&gt;&lt;/pre&gt;\n&lt;/li&gt;\n&lt;li&gt;\n&lt;p&gt;Marvel at it working and don&#x27;t think about future version dependency\nconflicts :)&lt;/p&gt;\n&lt;/li&gt;\n&lt;/ol&gt;\n&quot;,
+    &quot;site&quot;: {
+        &quot;url&quot;: &quot;https://www.jonthenerd.com&quot;,
+        &quot;title&quot;: &quot;JonTheNerd&quot;,
+        &quot;description&quot;: &quot;A blog about software development, technology, and other nerdy things.&quot;,
+        &quot;author&quot;: &quot;Jon Badgett&quot;
+    },
+    &quot;eleventy&quot;: {
+        &quot;version&quot;: &quot;3.1.2&quot;,
+        &quot;generator&quot;: &quot;Eleventy v3.1.2&quot;,
+        &quot;env&quot;: {
+            &quot;source&quot;: &quot;cli&quot;,
+            &quot;runMode&quot;: &quot;serve&quot;,
+            &quot;config&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io/eleventy.config.ts&quot;,
+            &quot;root&quot;: &quot;/Users/jon/dev/personal/jonthenerd.github.io&quot;
+        },
+        &quot;directories&quot;: {
+            &quot;input&quot;: &quot;./src/&quot;,
+            &quot;data&quot;: &quot;./src/_data/&quot;,
+            &quot;includes&quot;: &quot;./src/_includes/&quot;,
+            &quot;output&quot;: &quot;./dist/&quot;
+        }
+    },
+    &quot;pkg&quot;: {
+        &quot;name&quot;: &quot;jonthenerd.github.io&quot;,
+        &quot;type&quot;: &quot;module&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;main&quot;: &quot;&quot;,
+        &quot;scripts&quot;: {
+            &quot;dev&quot;: &quot;cross-env ELEVENTY_ENV=development tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --serve --incremental&quot;,
+            &quot;build:site&quot;: &quot;cross-env ELEVENTY_ENV=production tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts&quot;,
+            &quot;build:styles&quot;: &quot;sass src/scss/dark.scss:static/assets/dark.css src/scss/light.scss:static/assets/light.css src/scss/style.scss:static/assets/style.css --style compressed&quot;,
+            &quot;build&quot;: &quot;concurrently \&quot;pnpm run build:site\&quot; \&quot;pnpm run build:styles\&quot;&quot;,
+            &quot;prebuild&quot;: &quot;rimraf dist&quot;,
+            &quot;format&quot;: &quot;prettier **/* --write --ignore-unknown&quot;
+        },
+        &quot;repository&quot;: {
+            &quot;type&quot;: &quot;git&quot;,
+            &quot;url&quot;: &quot;git+https://github.com/jonthenerd/jonthenerd.github.io.git&quot;
+        },
+        &quot;author&quot;: &quot;&quot;,
+        &quot;license&quot;: &quot;ISC&quot;,
+        &quot;bugs&quot;: {
+            &quot;url&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io/issues&quot;
+        },
+        &quot;homepage&quot;: &quot;https://github.com/jonthenerd/jonthenerd.github.io#readme&quot;,
+        &quot;devDependencies&quot;: {
+            &quot;@11ty/eleventy&quot;: &quot;^3.1.2&quot;,
+            &quot;@types/luxon&quot;: &quot;^3.7.1&quot;,
+            &quot;@types/node&quot;: &quot;^24.3.0&quot;,
+            &quot;@types/react&quot;: &quot;^19.1.11&quot;,
+            &quot;concurrently&quot;: &quot;^9.2.1&quot;,
+            &quot;cross-env&quot;: &quot;^10.0.0&quot;,
+            &quot;eleventy-plugin-embed-everything&quot;: &quot;^1.21.0&quot;,
+            &quot;gray-matter&quot;: &quot;^4.0.3&quot;,
+            &quot;luxon&quot;: &quot;^3.7.2&quot;,
+            &quot;prettier&quot;: &quot;^3.6.2&quot;,
+            &quot;react&quot;: &quot;^19.1.1&quot;,
+            &quot;react-dom&quot;: &quot;^19.1.1&quot;,
+            &quot;rimraf&quot;: &quot;^6.0.1&quot;,
+            &quot;sass&quot;: &quot;^1.90.0&quot;,
+            &quot;tsx&quot;: &quot;^4.20.5&quot;,
+            &quot;typescript&quot;: &quot;^5.9.2&quot;
+        }
+    },
+    &quot;tags&quot;: [
+        &quot;posts&quot;,
+        &quot;SharePoint&quot;,
+        &quot;Node&quot;,
+        &quot;JavaScript&quot;
+    ],
+    &quot;layout&quot;: &quot;post&quot;,
+    &quot;title&quot;: &quot;SharePoint Framework: Getting Started&quot;,
+    &quot;date&quot;: &quot;2018-01-16&quot;,
+    &quot;author&quot;: &quot;Jon Badgett&quot;,
+    &quot;categories&quot;: [
+        &quot;Programming&quot;
+    ],
+    &quot;draft&quot;: false,
+    &quot;slug&quot;: &quot;learning-spfx-pt-1&quot;,
+    &quot;page&quot;: {
+        &quot;inputPath&quot;: &quot;./src/posts/2018-01-16-learning-spfx-pt-1.md&quot;,
+        &quot;fileSlug&quot;: &quot;learning-spfx-pt-1&quot;,
+        &quot;filePathStem&quot;: &quot;/posts/learning-spfx-pt-1&quot;,
+        &quot;outputFileExtension&quot;: &quot;html&quot;,
+        &quot;templateSyntax&quot;: &quot;liquid,md&quot;,
+        &quot;date&quot;: &quot;2018-01-16T00:00:00.000Z&quot;,
+        &quot;rawInput&quot;: &quot;\nToday I decided that it was time I learned how to build\n[SharePoint Framework (SPFx)](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview)\nwebparts. Easy enough right? Find the right tutorial online, follow\ninstrucitons, hello world! Let&#x27;s get started.\n\n&lt;!--more--&gt;\n\nFirst, you&#x27;ll need to\n[set up your SharePoint Framework development environment](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment).\nThen you&#x27;ll want to follow the tutorial to\n[build your first web part](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part).\n\nOf course, this all depends upon you having\n[node js w/npm](https://nodejs.org/en/) installed and your code editor of choice\nready to go.\n\nSeeing as I had the latest version of node and a code editor ready, I just\nstarted at the tutorials. Quickly ran into an issue though, where neither Safari\nor Chrome were able to connect to the workbench site running on localhost.\nHere&#x27;s the exact error from Safari:\n\n&gt; Safari can&#x27;t open the page \&quot;https://localhost:4321/temp/workbench.html\&quot;\n&gt; because Safari can&#x27;t establish a secure connection to the server \&quot;localhost\&quot;.\n\n[Issue #1002 on the sp-dev-docs repo](https://github.com/SharePoint/sp-dev-docs/issues/1002)\nseems to describe what&#x27;s occurring here but no amount of setting the environment\nvariable NODE_NO_HTTP2=1 would help me get past the error message.\n\nReading back through\n[how to setup your SharePoint Framework development environment](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment),\nthere is a note that says:\n\n&gt; The SharePoint Framework build pipeline doesn&#x27;t currently support the LTS\n&gt; version of Node.js. Instead, download Node.js version 6.11.5. This installs\n&gt; npm 3.10.10. Note that if you have a v5.x version of npm, you need to\n&gt; downgrade to an older npm version by using the following command: npm install\n&gt; -g npm@3.\n\nA couple observations on this, as I&#x27;m writing this blog post as I try to get\nthis all working:\n\n-   Embracing the open source ecosystem and modern development tooling is great.\n    Requiring that in order to use your framework you must be running a version of\n    node.js that is 3 major versions behind current (9.4.0) and 2 major versions\n    behind LTS (8.9.4) is **lame**. It means that most guides out there for how to\n    quickly get started will only work if you&#x27;re just stepping into modern web dev\n    _for the first time_... If you&#x27;ve been using node and NPM, etc. for a while\n    you&#x27;re likely running much newer versions of these tools and they&#x27;re likely\n    installed globally. It also makes it appear there is a lack of commitment to\n    bringing development practices and patterns for SharePoint up to date and\n    keeping it there.\n-   Let&#x27;s hope that if we follow the instructions exactly things actually work. As\n    it&#x27;s going to mean making some serious changes to the configuration of my dev\n    box and going outside the 1, 2, 3 hello world box.\n-   Maybe there&#x27;s some way to manage multiple versions of Node.js without\n    struggling...\n\nAt this point, I&#x27;ve got projects that use much later node and NPM versions. I\ncan&#x27;t justify unintalling them just to have to do the same dance at a later\npoint to get them reinstalled. What to do? Let&#x27;s look into\n[Node Version Manager (NVM), which allows you to manage and switch between different Node versions \&quot;with ease\&quot;](https://github.com/creationix/nvm).\nThere&#x27;s also\n[nvm-windows for Windows users](https://github.com/coreybutler/nvm-windows).\nInterested in how to get this setup? Read my post on\n[configuring NVM for Mac OS X](/2018/01/16/configuring-nvm-for-osx/).\n\nNow that I&#x27;ve got NVM working and this project directory is using 6.11.5 ...\nlet&#x27;s continue on with the hello worlding.\n\n1. Browse to the directory for the project in terminal.\n2. Initialize the project with NPM (to get our package.json)\n\n    ```shell\n    npm init\n    ```\n\n3. Intall the npm package for the Yeoman SharePoint generator (locally).\n\n    ```shell\n    npm install @microsoft/generator-sharepoint --save-dev\n    ```\n\n4. Open our project using our code editor of choice (have you tried Visual\n   Studio Code yet?)\n\n    ```shell\n    code .\n    ```\n\n5. Notice that we&#x27;ve got our .nvmrc file, our package.json file, and a directory\n   for node_modules. Things are looking good so far.\n\n6. Let&#x27;s run the Yeoman generator now.\n\n    ```shell\n    yo @microsoft/sharepoint\n    ```\n\n7. We can&#x27;t follow the next instruction to just run gulp serve, as gulp isn&#x27;t\n   installed globally (I&#x27;m not a fan of installing things globally as it makes\n   projects harder to get going on new workstations or by new developers). As\n   such, we need to change our package.json to handle running gulp for us.\n\n    We&#x27;re going to add a script to trust the dev cert and another to serve.\n\n    1. Open your package.json\n    2. Change the scripts section to be the following:\n\n    ```json\n    \&quot;scripts\&quot;: {\n        \&quot;build\&quot;: \&quot;gulp bundle\&quot;,\n        \&quot;clean\&quot;: \&quot;gulp clean\&quot;,\n        \&quot;test\&quot;: \&quot;gulp test\&quot;,\n        \&quot;trust-dev-cert\&quot;: \&quot;gulp trust-dev-cert\&quot;,\n        \&quot;serve\&quot;: \&quot;gulp serve\&quot;\n    },\n    ```\n\n8. Trust the Dev Cert used by workbench\n\n    ```shell\n    npm run trust-dev-cert\n    ```\n\n9. Fire up the workbench\n\n    ```shell\n    npm run serve\n    ```\n\n10. Marvel at it working and don&#x27;t think about future version dependency\n    conflicts :)\n&quot;,
+        &quot;url&quot;: &quot;/posts/2018-01-16-learning-spfx-pt-1/&quot;,
+        &quot;outputPath&quot;: &quot;./dist/posts/2018-01-16-learning-spfx-pt-1/index.html&quot;
+    },
+    &quot;collections&quot;: &quot;&lt;collections&gt;&quot;
+}</pre
+>

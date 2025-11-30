@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head prefix="og: http://ogp.me/ns#">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Getting Started With Node.js and TypeScript | JonTheNerd</title>
+    <meta name="color-scheme" content="dark light" />
+    <meta name="generator" content="Eleventy v3.1.2" />
+    <link rel="canonical" href="https://www.jonthenerd.com/posts/2021-10-24-Getting-Started-With-NodeJs-And-TypeScript" />
+    <script>
+      if (window.matchMedia("(prefers-color-scheme: dark)").media === "not all") {
+        document.documentElement.style.display = "none";
+        document.head.insertAdjacentHTML("beforeend", "<link rel='stylesheet' href='/assets/light.css' onload='document.documentElement.style.display=\"\"'>");
+      }
+    </script>
+    <link rel="stylesheet" media="(prefers-color-scheme: light)" href="/assets/light.css" />
+    <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="/assets/dark.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <script src="/assets/scripts/main.js" defer=""></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <h1><a href="/">JonTheNerd</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <article class="single" itemScope="" itemType="http://schema.org/BlogPosting">
+        <header>
+          <h1 itemprop="name headline"><div class="container">Getting Started With Node.js and TypeScript</div></h1>
+          <div class="post-meta">
+            <div class="container">
+              <time datetime="2021-10-24" itemprop="datePublished">October 24, 2021</time> by
+              <span itemProp="author" itemScope="" itemType="https://schema.org/Person"
+                ><a itemprop="url" href="/about"><span itemProp="name">Jon Badgett</span></a></span
+              >
+              | Posted in <a href="/categories/programming">Programming</a>
+            </div>
+          </div>
+        </header>
+        <div itemprop="articleBody">
+          <div class="container">
+            <p>Interested in getting started with Node.js and TypeScript? Let's jump right in.</p>
+            <!--more-->
+            <h2>Node.js</h2>
+            <p>
+              <a href="https://nodejs.org/">Node.js</a> is &quot;a JavaScript runtime built on Chrome's V8 JavaScript engine.&quot; Effectively, some clever developers have separated the part of Google Chrome that runs JavaScript and made it available for people to use outside of the web browser. Node.js is open-source, cross-platform, and used by many small and large groups. Beyond just web applications, it may be used to write console-style applications, services, simple utility scripts, and much more.
+            </p>
+            <h3>Node.js Installation</h3>
+            <p>
+              If you're in a corporate environment, you may have Node.js packaged for easier distribution - so look into that first. If you're free to install it on your own though, start by downloading either the latest long term service (LTS) or current release <a href="https://nodejs.org/en/download/">at the Node.js website</a> if you're on Windows or MacOS. If you're on Linux, check your distribution's prefered method for Node.js installation. For this post, I'll be using the latest LTS release
+              (currently v14.18.1).
+            </p>
+            <p>Once you've run the download and install, fire up a terminal (or Windows PowerShell) and check which version of Node.js you have installed:</p>
+            <pre><code class="language-sh">node --version
+</code></pre>
+            <p>It should match what you elected to download. If it doesn't and you're on Windows, check your <code>PATH</code> environment variable to ensure the <code>node</code> executable path is in it (the MSI installer of Node.js installs to <code>C:\Program Files\nodejs\</code>, which needs to be either in your system or user <code>PATH</code> environment variable).</p>
+            <h3>Hello World!</h3>
+            <p>With the runtime installed, you're ready to write your first program using it.</p>
+            <aside class="is-tip">
+              <p>You're going to need a text editor of some kind to write code. While <code>Notepad.exe</code> in Windows will work, I'd recommend using <a href="https://code.visualstudio.com/">Visual Studio Code</a>. It's free and has some nice features for JavaScript development.</p>
+            </aside>
+          </div>
+        </div>
+      </article>
+    </main>
+    <footer>
+      <div class="container">built with <a href="https://www.11ty.dev">Eleventy</a> and <a href="https://github.com/jonthenerd/jonthenerd.github.io">GitHub Pages</a> | <a href="/license">License</a> | <span id="theme-toggle" role="button"></span></div>
+    </footer>
+  </body>
+</html>
